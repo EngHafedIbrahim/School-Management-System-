@@ -1,0 +1,140 @@
+using System;
+using System.Data;
+using SchoolManagementSystemDataAccessLayer;
+
+namespace SchoolManagementSystemBusinessLayer
+{
+    public class clsAttendance
+    {
+        enum enMode { AddNew = 0, Update = 1 }
+        enMode Mode = enMode.AddNew;
+
+        public int AttendanceID { get; set; }
+        public int StudentID { get; set; }
+        public int ClassID { get; set; }
+        public int SessionID { get; set; }
+        public DateTime Date { get; set; }
+        public string Status { get; set; }
+        public string Note { get; set; }
+        public int CreatedBy { get; set; }
+        public DateTime CreatedAt { get; set; }
+
+        public clsStudent StudentInfo => clsStudent.Find(this.StudentID);
+        public clsClass ClassInfo => clsClass.Find(this.ClassID);
+
+        public clsAttendance()
+        {
+            this.AttendanceID = -1;
+            this.StudentID = -1;
+            this.ClassID = -1;
+            this.SessionID = -1;
+            this.Date = DateTime.Now;
+            this.Status = "";
+            this.Note = "";
+            this.CreatedBy = -1;
+            this.CreatedAt = DateTime.Now;
+            Mode = enMode.AddNew;
+        }
+
+        private clsAttendance(int AttendanceID, int StudentID, int ClassID, int SessionID, DateTime Date, string Status, string Note, int CreatedBy, DateTime CreatedAt)
+        {
+            this.AttendanceID = AttendanceID;
+            this.StudentID = StudentID;
+            this.ClassID = ClassID;
+            this.SessionID = SessionID;
+            this.Date = Date;
+            this.Status = Status;
+            this.Note = Note;
+            this.CreatedBy = CreatedBy;
+            this.CreatedAt = CreatedAt;
+            Mode = enMode.Update;
+        }
+
+        public static clsAttendance Find(int AttendanceID)
+        {
+            int StudentID = -1;
+            int ClassID = -1;
+            int SessionID = -1;
+            DateTime Date = DateTime.Now;
+            string Status = "";
+            string Note = "";
+            int CreatedBy = -1;
+            DateTime CreatedAt = DateTime.Now;
+            if (clsDAAttendance.Find(AttendanceID, ref StudentID, ref ClassID, ref SessionID, ref Date, ref Status, ref Note, ref CreatedBy, ref CreatedAt))
+                return new clsAttendance(AttendanceID, StudentID, ClassID, SessionID, Date, Status, Note, CreatedBy, CreatedAt);
+            return null;
+        }
+
+        private bool _AddNewAttendance()
+        {
+            this.AttendanceID = clsDAAttendance.AddNewAttendance(this.StudentID, this.ClassID, this.SessionID, this.Date, this.Status, this.Note, this.CreatedBy, this.CreatedAt);
+            return (this.AttendanceID != -1);
+        }
+
+        private bool _UpdateAttendance()
+        {
+            return clsDAAttendance.UpdateAttendance(this.AttendanceID, this.StudentID, this.ClassID, this.SessionID, this.Date, this.Status, this.Note, this.CreatedBy, this.CreatedAt);
+        }
+
+        
+        public bool Validate(out string errorMessage)
+        {
+            errorMessage = "";
+            
+            if (Date > DateTime.Now)
+            {
+                errorMessage = "Cannot record attendance for a future date.";
+                return false;
+            }
+            if (Status != "Present" && Status != "Absent" && Status != "Late")
+            {
+                errorMessage = "Status must be Present, Absent, or Late.";
+                return false;
+            }
+
+            System.Data.DataTable dt = GetAllAttendances();
+            foreach (System.Data.DataRow row in dt.Rows)
+            {
+                if ((int)row["AttendanceID"] != this.AttendanceID)
+                {
+                    if ((int)row["StudentID"] == this.StudentID && (int)row["SessionID"] == this.SessionID && ((DateTime)row["Date"]).Date == this.Date.Date)
+                    {
+                        errorMessage = "Duplicate attendance record for this student on the same session and date.";
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        public bool Save()
+        {
+            string errorMessage;
+            if (!Validate(out errorMessage))
+            {
+                throw new Exception(errorMessage); // Throw exception to be handled by Presentation Layer
+            }
+
+            switch (Mode)
+            {
+                case enMode.AddNew:
+                    if (_AddNewAttendance())
+                    {
+                        Mode = enMode.Update;
+                        return true;
+                    }
+                    return false;
+                case enMode.Update:
+                    return _UpdateAttendance();
+            }
+            return false;
+        }
+
+        public static DataTable GetAllAttendances() => clsDAAttendance.GetAllAttendances();
+        public static bool IsAttendanceExist(int AttendanceID) => clsDAAttendance.IsAttendanceExist(AttendanceID);
+        public static bool DeleteAttendance(int AttendanceID) => clsDAAttendance.DeleteAttendance(AttendanceID);
+    
+        public static DataTable GetAttendanceByStudentID(int studentID) => clsDAAttendance.GetAttendanceByStudentID(studentID);
+
+}
+}

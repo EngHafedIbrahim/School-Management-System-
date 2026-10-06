@@ -1,0 +1,17 @@
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystemBusinessLayer\bin\Debug\net10.0\SchoolManagementSystemBusinessLayer.deps.json
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystemBusinessLayer\bin\Debug\net10.0\SchoolManagementSystemBusinessLayer.dll
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystemBusinessLayer\bin\Debug\net10.0\SchoolManagementSystemBusinessLayer.pdb
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystemBusinessLayer\bin\Debug\net10.0\SchoolManagementSystemDataAccessLayer.dll
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystemBusinessLayer\bin\Debug\net10.0\UtilityLib.dll
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystemBusinessLayer\bin\Debug\net10.0\SchoolManagementSystemDataAccessLayer.pdb
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystemBusinessLayer\bin\Debug\net10.0\UtilityLib.pdb
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystemBusinessLayer\obj\Debug\net10.0\SchoolManagementSystemBusinessLayer.csproj.AssemblyReference.cache
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystemBusinessLayer\obj\Debug\net10.0\SchoolManagementSystemBusinessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystemBusinessLayer\obj\Debug\net10.0\SchoolManagementSystemBusinessLayer.AssemblyInfoInputs.cache
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystemBusinessLayer\obj\Debug\net10.0\SchoolManagementSystemBusinessLayer.AssemblyInfo.cs
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystemBusinessLayer\obj\Debug\net10.0\SchoolManagementSystemBusinessLayer.csproj.CoreCompileInputs.cache
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystemBusinessLayer\obj\Debug\net10.0\SchoolMa.FFB8621B.Up2Date
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystemBusinessLayer\obj\Debug\net10.0\SchoolManagementSystemBusinessLayer.dll
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystemBusinessLayer\obj\Debug\net10.0\refint\SchoolManagementSystemBusinessLayer.dll
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystemBusinessLayer\obj\Debug\net10.0\SchoolManagementSystemBusinessLayer.pdb
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystemBusinessLayer\obj\Debug\net10.0\ref\SchoolManagementSystemBusinessLayer.dll

@@ -1,0 +1,12 @@
+C:\Users\Eng.Hafed\Desktop\School Management System\UtilityLib\obj\Debug\net10.0\UtilityLib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Eng.Hafed\Desktop\School Management System\UtilityLib\obj\Debug\net10.0\UtilityLib.AssemblyInfoInputs.cache
+C:\Users\Eng.Hafed\Desktop\School Management System\UtilityLib\obj\Debug\net10.0\UtilityLib.AssemblyInfo.cs
+C:\Users\Eng.Hafed\Desktop\School Management System\UtilityLib\obj\Debug\net10.0\UtilityLib.csproj.CoreCompileInputs.cache
+C:\Users\Eng.Hafed\Desktop\School Management System\UtilityLib\bin\Debug\net10.0\UtilityLib.deps.json
+C:\Users\Eng.Hafed\Desktop\School Management System\UtilityLib\bin\Debug\net10.0\UtilityLib.dll
+C:\Users\Eng.Hafed\Desktop\School Management System\UtilityLib\bin\Debug\net10.0\UtilityLib.pdb
+C:\Users\Eng.Hafed\Desktop\School Management System\UtilityLib\obj\Debug\net10.0\UtilityLib.csproj.AssemblyReference.cache
+C:\Users\Eng.Hafed\Desktop\School Management System\UtilityLib\obj\Debug\net10.0\UtilityLib.dll
+C:\Users\Eng.Hafed\Desktop\School Management System\UtilityLib\obj\Debug\net10.0\refint\UtilityLib.dll
+C:\Users\Eng.Hafed\Desktop\School Management System\UtilityLib\obj\Debug\net10.0\UtilityLib.pdb
+C:\Users\Eng.Hafed\Desktop\School Management System\UtilityLib\obj\Debug\net10.0\ref\UtilityLib.dll

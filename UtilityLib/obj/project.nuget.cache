@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "iipjDF7vwcg=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\UtilityLib\\UtilityLib.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Eng.Hafed\\.nuget\\packages\\system.diagnostics.eventlog\\10.0.12\\system.diagnostics.eventlog.10.0.12.nupkg.sha512"
+  ],
+  "logs": []
+}

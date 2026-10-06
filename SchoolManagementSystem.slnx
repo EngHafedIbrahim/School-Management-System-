@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="SchoolManagementSystem/SchoolManagementSystem.csproj" />
+  <Project Path="SchoolManagementSystemBusinessLayer/SchoolManagementSystemBusinessLayer.csproj" />
+  <Project Path="SchoolManagementSystemDataAccessLayer/SchoolManagementSystemDataAccessLayer.csproj" />
+  <Project Path="UtilityLib/UtilityLib.csproj" />
+</Solution>

@@ -1,0 +1,15 @@
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystemDataAccessLayer\bin\Debug\net10.0\SchoolManagementSystemDataAccessLayer.deps.json
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystemDataAccessLayer\bin\Debug\net10.0\SchoolManagementSystemDataAccessLayer.dll
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystemDataAccessLayer\bin\Debug\net10.0\SchoolManagementSystemDataAccessLayer.pdb
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystemDataAccessLayer\bin\Debug\net10.0\UtilityLib.dll
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystemDataAccessLayer\bin\Debug\net10.0\UtilityLib.pdb
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystemDataAccessLayer\obj\Debug\net10.0\SchoolManagementSystemDataAccessLayer.csproj.AssemblyReference.cache
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystemDataAccessLayer\obj\Debug\net10.0\SchoolManagementSystemDataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystemDataAccessLayer\obj\Debug\net10.0\SchoolManagementSystemDataAccessLayer.AssemblyInfoInputs.cache
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystemDataAccessLayer\obj\Debug\net10.0\SchoolManagementSystemDataAccessLayer.AssemblyInfo.cs
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystemDataAccessLayer\obj\Debug\net10.0\SchoolManagementSystemDataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystemDataAccessLayer\obj\Debug\net10.0\SchoolMa.19ACC62B.Up2Date
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystemDataAccessLayer\obj\Debug\net10.0\SchoolManagementSystemDataAccessLayer.dll
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystemDataAccessLayer\obj\Debug\net10.0\refint\SchoolManagementSystemDataAccessLayer.dll
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystemDataAccessLayer\obj\Debug\net10.0\SchoolManagementSystemDataAccessLayer.pdb
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystemDataAccessLayer\obj\Debug\net10.0\ref\SchoolManagementSystemDataAccessLayer.dll
