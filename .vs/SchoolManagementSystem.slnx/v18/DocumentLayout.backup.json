@@ -138,7 +138,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -162,6 +162,10 @@
             },
             {
               "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             },
             {
@@ -172,7 +176,7 @@
               "RelativeDocumentMoniker": "SchoolManagementSystemBusinessLayer\\clsGradeLevel.cs",
               "ToolTip": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystemBusinessLayer\\clsGradeLevel.cs",
               "RelativeToolTip": "SchoolManagementSystemBusinessLayer\\clsGradeLevel.cs",
-              "ViewState": "AgIAAEAAAAAAAAAAAIAwwFEAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAADsAAAAAAAAAAAAAAHYAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-10-10T15:31:18.993Z",
               "EditorCaption": ""
@@ -187,8 +191,7 @@
               "RelativeToolTip": "SchoolManagementSystemDataAccessLayer\\clsDAGradeLevel.cs",
               "ViewState": "AgIAAJEAAAAAAAAAAAAiwJUAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-10T15:28:39.77Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-10T15:28:39.77Z"
             },
             {
               "$type": "Document",
@@ -212,8 +215,7 @@
               "ToolTip": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Academic\\frmGradeLevels.cs [Design]",
               "RelativeToolTip": "SchoolManagementSystem\\Academic\\frmGradeLevels.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-08T12:44:03.865Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2026-10-08T12:44:03.865Z"
             },
             {
               "$type": "Document",

@@ -21,13 +21,12 @@ namespace SchoolManagementSystem.Classes
             _ClassID = classID;
             _Mode = (_ClassID == -1) ? enMode.AddNew : enMode.Update;
 
-            this.Text = _Mode == enMode.AddNew ? "Create New Class" : "Edit Class Information";
-            lblHeaderTitle.Text = _Mode == enMode.AddNew ? "Create New Class" : "Edit Class Details";
+            this.Text = _Mode == enMode.AddNew ? " اضافة الشُعب الدراسية " : "تعديل شُعبة دراسية";
+            lblHeaderTitle.Text = _Mode == enMode.AddNew ? " اضافة الشُعب الدراسية " : "تعديل شُعبة دراسية";
+            this.RightToLeft = RightToLeft.Yes;
 
-            clsUITheme.StylePrimaryButton(btnSave);
-            clsUITheme.StyleSecondaryButton(btnCancel);
 
-            LoadData();
+
         }
 
         private void LoadData()
@@ -112,6 +111,11 @@ namespace SchoolManagementSystem.Classes
         private void BtnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void FrmAddEditClass_Load(object sender, EventArgs e)
+        {
+            LoadData();
         }
     }
 }

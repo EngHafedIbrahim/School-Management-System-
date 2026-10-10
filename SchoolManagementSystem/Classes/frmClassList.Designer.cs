@@ -18,7 +18,6 @@ namespace SchoolManagementSystem.Classes
         private void InitializeComponent()
         {
             pnlHeader = new Panel();
-            lblHeaderSubtitle = new Label();
             lblHeaderTitle = new Label();
             pnlFilter = new Panel();
             btnRefresh = new Button();
@@ -44,7 +43,6 @@ namespace SchoolManagementSystem.Classes
             // pnlHeader
             // 
             pnlHeader.BackColor = Color.White;
-            pnlHeader.Controls.Add(lblHeaderSubtitle);
             pnlHeader.Controls.Add(lblHeaderTitle);
             pnlHeader.Dock = DockStyle.Top;
             pnlHeader.Location = new Point(0, 0);
@@ -54,23 +52,12 @@ namespace SchoolManagementSystem.Classes
             pnlHeader.Size = new Size(1102, 93);
             pnlHeader.TabIndex = 0;
             // 
-            // lblHeaderSubtitle
-            // 
-            lblHeaderSubtitle.AutoSize = true;
-            lblHeaderSubtitle.Font = new Font("Segoe UI", 10F);
-            lblHeaderSubtitle.ForeColor = Color.FromArgb(120, 130, 140);
-            lblHeaderSubtitle.Location = new Point(25, 53);
-            lblHeaderSubtitle.Name = "lblHeaderSubtitle";
-            lblHeaderSubtitle.Size = new Size(632, 23);
-            lblHeaderSubtitle.TabIndex = 1;
-            lblHeaderSubtitle.Text = "Manage school classroom divisions, grade attachments, and instructional cohorts.";
-            // 
             // lblHeaderTitle
             // 
             lblHeaderTitle.AutoSize = true;
             lblHeaderTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
             lblHeaderTitle.ForeColor = Color.FromArgb(44, 62, 80);
-            lblHeaderTitle.Location = new Point(23, 13);
+            lblHeaderTitle.Location = new Point(394, 13);
             lblHeaderTitle.Name = "lblHeaderTitle";
             lblHeaderTitle.Size = new Size(358, 37);
             lblHeaderTitle.TabIndex = 0;
@@ -315,7 +302,6 @@ namespace SchoolManagementSystem.Classes
 
         private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.Label lblHeaderTitle;
-        private System.Windows.Forms.Label lblHeaderSubtitle;
         private System.Windows.Forms.Panel pnlFilter;
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.TextBox txtSearch;
