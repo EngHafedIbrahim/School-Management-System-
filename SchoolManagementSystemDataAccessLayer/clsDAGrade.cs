@@ -228,5 +228,49 @@ namespace SchoolManagementSystemDataAccessLayer
             return dt;
         }
 
+
+        public static DataTable GetGradesByClassID(int classID)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = @"
+                        SELECT 
+                            g.GradeID,
+                            (s.FirstName + ' ' + s.LastName) AS StudentName,
+                            s.AdmissionNo,
+                            c.Name AS CourseName,
+                            et.Name AS ExamType,
+                            g.GradeValue,
+                            g.OutOfValue,
+                            g.Remarks
+                        FROM Grade g
+                        INNER JOIN [Student] s ON g.StudentID = s.StudentID
+                        INNER JOIN Course c ON g.CourseID = c.CourseID
+                        INNER JOIN ExamType et ON g.ExamTypeID = et.ExamTypeID
+                        INNER JOIN StudentEnrollment se ON s.StudentID = se.StudentID
+                        WHERE se.ClassID = @ClassID
+                        ORDER BY s.FirstName, c.Name";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@ClassID", classID);
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                                dt.Load(reader);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return dt;
+        }
+
 }
 }

@@ -3,24 +3,48 @@
   "WorkspaceRootPath": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|c:\\users\\eng.hafed\\desktop\\school management system\\schoolmanagementsystem\\login\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|solutionrelative:schoolmanagementsystem\\login\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{8B50D858-751B-B6A5-AB10-52D15BE9D98C}|SchoolManagementSystemBusinessLayer\\SchoolManagementSystemBusinessLayer.csproj|c:\\users\\eng.hafed\\desktop\\school management system\\schoolmanagementsystembusinesslayer\\clsgradelevel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8B50D858-751B-B6A5-AB10-52D15BE9D98C}|SchoolManagementSystemBusinessLayer\\SchoolManagementSystemBusinessLayer.csproj|solutionrelative:schoolmanagementsystembusinesslayer\\clsgradelevel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|c:\\users\\eng.hafed\\desktop\\school management system\\schoolmanagementsystem\\login\\frmlogin.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|solutionrelative:schoolmanagementsystem\\login\\frmlogin.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8C356145-DD76-67D6-DEE6-DC148470D8F4}|SchoolManagementSystemDataAccessLayer\\SchoolManagementSystemDataAccessLayer.csproj|c:\\users\\eng.hafed\\desktop\\school management system\\schoolmanagementsystemdataaccesslayer\\clsdagradelevel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C356145-DD76-67D6-DEE6-DC148470D8F4}|SchoolManagementSystemDataAccessLayer\\SchoolManagementSystemDataAccessLayer.csproj|solutionrelative:schoolmanagementsystemdataaccesslayer\\clsdagradelevel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|c:\\users\\eng.hafed\\desktop\\school management system\\schoolmanagementsystem\\login\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|solutionrelative:schoolmanagementsystem\\login\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|c:\\users\\eng.hafed\\desktop\\school management system\\schoolmanagementsystem\\academic\\frmgradelevels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|solutionrelative:schoolmanagementsystem\\academic\\frmgradelevels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8B50D858-751B-B6A5-AB10-52D15BE9D98C}|SchoolManagementSystemBusinessLayer\\SchoolManagementSystemBusinessLayer.csproj|c:\\users\\eng.hafed\\desktop\\school management system\\schoolmanagementsystembusinesslayer\\clsacademicyear.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8B50D858-751B-B6A5-AB10-52D15BE9D98C}|SchoolManagementSystemBusinessLayer\\SchoolManagementSystemBusinessLayer.csproj|solutionrelative:schoolmanagementsystembusinesslayer\\clsacademicyear.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\schoolmanagementsystem\\academic\\frmgradelevels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|solutionrelative:schoolmanagementsystem\\academic\\frmgradelevels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|c:\\users\\eng.hafed\\desktop\\school management system\\schoolmanagementsystem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|solutionrelative:schoolmanagementsystem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\schoolmanagementsystem\\classes\\frmclasslist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|solutionrelative:schoolmanagementsystem\\classes\\frmclasslist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B50D858-751B-B6A5-AB10-52D15BE9D98C}|SchoolManagementSystemBusinessLayer\\SchoolManagementSystemBusinessLayer.csproj|c:\\users\\eng.hafed\\desktop\\school management system\\schoolmanagementsystembusinesslayer\\clsteacher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8B50D858-751B-B6A5-AB10-52D15BE9D98C}|SchoolManagementSystemBusinessLayer\\SchoolManagementSystemBusinessLayer.csproj|solutionrelative:schoolmanagementsystembusinesslayer\\clsteacher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C356145-DD76-67D6-DEE6-DC148470D8F4}|SchoolManagementSystemDataAccessLayer\\SchoolManagementSystemDataAccessLayer.csproj|c:\\users\\eng.hafed\\desktop\\school management system\\schoolmanagementsystemdataaccesslayer\\clsdacourse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C356145-DD76-67D6-DEE6-DC148470D8F4}|SchoolManagementSystemDataAccessLayer\\SchoolManagementSystemDataAccessLayer.csproj|solutionrelative:schoolmanagementsystemdataaccesslayer\\clsdacourse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C356145-DD76-67D6-DEE6-DC148470D8F4}|SchoolManagementSystemDataAccessLayer\\SchoolManagementSystemDataAccessLayer.csproj|c:\\users\\eng.hafed\\desktop\\school management system\\schoolmanagementsystemdataaccesslayer\\clsdateacher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C356145-DD76-67D6-DEE6-DC148470D8F4}|SchoolManagementSystemDataAccessLayer\\SchoolManagementSystemDataAccessLayer.csproj|solutionrelative:schoolmanagementsystemdataaccesslayer\\clsdateacher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\schoolmanagementsystem\\teachers\\frmaddeditteacher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|solutionrelative:schoolmanagementsystem\\teachers\\frmaddeditteacher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|c:\\users\\eng.hafed\\desktop\\school management system\\schoolmanagementsystem\\parents\\frmparentprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|solutionrelative:schoolmanagementsystem\\parents\\frmparentprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|c:\\users\\eng.hafed\\desktop\\school management system\\schoolmanagementsystem\\academic\\frmacademicyears.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -37,10 +61,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|c:\\users\\eng.hafed\\desktop\\school management system\\schoolmanagementsystem\\globle classes\\clsuitheme.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|solutionrelative:schoolmanagementsystem\\globle classes\\clsuitheme.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|c:\\users\\eng.hafed\\desktop\\school management system\\schoolmanagementsystem\\parents\\frmparentprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|solutionrelative:schoolmanagementsystem\\parents\\frmparentprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\schoolmanagementsystem\\parents\\frmparentprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -147,53 +167,64 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "frmLogin.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Login\\frmLogin.cs",
-              "RelativeDocumentMoniker": "SchoolManagementSystem\\Login\\frmLogin.cs",
-              "ToolTip": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Login\\frmLogin.cs [Design]*",
-              "RelativeToolTip": "SchoolManagementSystem\\Login\\frmLogin.cs [Design]*",
+              "Title": "clsGradeLevel.cs",
+              "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystemBusinessLayer\\clsGradeLevel.cs",
+              "RelativeDocumentMoniker": "SchoolManagementSystemBusinessLayer\\clsGradeLevel.cs",
+              "ToolTip": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystemBusinessLayer\\clsGradeLevel.cs",
+              "RelativeToolTip": "SchoolManagementSystemBusinessLayer\\clsGradeLevel.cs",
+              "ViewState": "AgIAAEAAAAAAAAAAAIAwwFEAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-06T21:00:50.89Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2026-10-10T15:31:18.993Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "frmLogin.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Login\\frmLogin.Designer.cs",
-              "RelativeDocumentMoniker": "SchoolManagementSystem\\Login\\frmLogin.Designer.cs",
-              "ToolTip": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Login\\frmLogin.Designer.cs*",
-              "RelativeToolTip": "SchoolManagementSystem\\Login\\frmLogin.Designer.cs*",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAkwFwAAAAyAAAAAAAAAA==",
+              "Title": "clsDAGradeLevel.cs",
+              "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystemDataAccessLayer\\clsDAGradeLevel.cs",
+              "RelativeDocumentMoniker": "SchoolManagementSystemDataAccessLayer\\clsDAGradeLevel.cs",
+              "ToolTip": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystemDataAccessLayer\\clsDAGradeLevel.cs",
+              "RelativeToolTip": "SchoolManagementSystemDataAccessLayer\\clsDAGradeLevel.cs",
+              "ViewState": "AgIAAJEAAAAAAAAAAAAiwJUAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-06T20:59:54.985Z",
+              "WhenOpened": "2026-10-10T15:28:39.77Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "frmLogin.cs",
-              "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Login\\frmLogin.cs",
-              "RelativeDocumentMoniker": "SchoolManagementSystem\\Login\\frmLogin.cs",
-              "ToolTip": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Login\\frmLogin.cs*",
-              "RelativeToolTip": "SchoolManagementSystem\\Login\\frmLogin.cs*",
-              "ViewState": "AgIAAA8AAAAAAAAAAADgvxcAAAARAAAAAAAAAA==",
+              "Title": "frmGradeLevels.cs",
+              "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Academic\\frmGradeLevels.cs",
+              "RelativeDocumentMoniker": "SchoolManagementSystem\\Academic\\frmGradeLevels.cs",
+              "ToolTip": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Academic\\frmGradeLevels.cs",
+              "RelativeToolTip": "SchoolManagementSystem\\Academic\\frmGradeLevels.cs",
+              "ViewState": "AgIAAIgAAAAAAAAAAADwv5EAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-06T20:42:04.382Z",
+              "WhenOpened": "2026-10-08T13:03:54.441Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "clsAcademicYear.cs",
-              "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystemBusinessLayer\\clsAcademicYear.cs",
-              "RelativeDocumentMoniker": "SchoolManagementSystemBusinessLayer\\clsAcademicYear.cs",
-              "ToolTip": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystemBusinessLayer\\clsAcademicYear.cs",
-              "RelativeToolTip": "SchoolManagementSystemBusinessLayer\\clsAcademicYear.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAaAAAAAAAAAA==",
+              "Title": "frmGradeLevels.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Academic\\frmGradeLevels.cs",
+              "RelativeDocumentMoniker": "SchoolManagementSystem\\Academic\\frmGradeLevels.cs",
+              "ToolTip": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Academic\\frmGradeLevels.cs [Design]",
+              "RelativeToolTip": "SchoolManagementSystem\\Academic\\frmGradeLevels.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-06T11:19:05.881Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-08T12:44:03.865Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "frmClassList.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Classes\\frmClassList.cs",
+              "RelativeDocumentMoniker": "SchoolManagementSystem\\Classes\\frmClassList.cs",
+              "ToolTip": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Classes\\frmClassList.cs [Design]",
+              "RelativeToolTip": "SchoolManagementSystem\\Classes\\frmClassList.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-08T12:43:31.798Z"
             },
             {
               "$type": "Document",
@@ -203,14 +234,60 @@
               "RelativeDocumentMoniker": "SchoolManagementSystem\\Program.cs",
               "ToolTip": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Program.cs",
               "RelativeToolTip": "SchoolManagementSystem\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAQwBcAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-06T11:15:39.608Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-06T11:15:39.608Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "clsTeacher.cs",
+              "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystemBusinessLayer\\clsTeacher.cs",
+              "RelativeDocumentMoniker": "SchoolManagementSystemBusinessLayer\\clsTeacher.cs",
+              "ToolTip": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystemBusinessLayer\\clsTeacher.cs",
+              "RelativeToolTip": "SchoolManagementSystemBusinessLayer\\clsTeacher.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGQAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-07T12:10:01.737Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "clsDACourse.cs",
+              "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystemDataAccessLayer\\clsDACourse.cs",
+              "RelativeDocumentMoniker": "SchoolManagementSystemDataAccessLayer\\clsDACourse.cs",
+              "ToolTip": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystemDataAccessLayer\\clsDACourse.cs",
+              "RelativeToolTip": "SchoolManagementSystemDataAccessLayer\\clsDACourse.cs",
+              "ViewState": "AgIAAHMAAAAAAAAAAAAawIUAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-07T13:20:33.035Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "clsDATeacher.cs",
+              "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystemDataAccessLayer\\clsDATeacher.cs",
+              "RelativeDocumentMoniker": "SchoolManagementSystemDataAccessLayer\\clsDATeacher.cs",
+              "ToolTip": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystemDataAccessLayer\\clsDATeacher.cs",
+              "RelativeToolTip": "SchoolManagementSystemDataAccessLayer\\clsDATeacher.cs",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAwwGAAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-07T12:14:06.407Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
+              "Title": "frmAddEditTeacher.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Teachers\\frmAddEditTeacher.cs",
+              "RelativeDocumentMoniker": "SchoolManagementSystem\\Teachers\\frmAddEditTeacher.cs",
+              "ToolTip": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Teachers\\frmAddEditTeacher.cs [Design]",
+              "RelativeToolTip": "SchoolManagementSystem\\Teachers\\frmAddEditTeacher.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-06T22:48:52.52Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "frmParentProfile.cs",
               "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Parents\\frmParentProfile.cs",
               "RelativeDocumentMoniker": "SchoolManagementSystem\\Parents\\frmParentProfile.cs",
@@ -223,7 +300,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 11,
               "Title": "frmAcademicYears.cs",
               "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Academic\\frmAcademicYears.cs",
               "RelativeDocumentMoniker": "SchoolManagementSystem\\Academic\\frmAcademicYears.cs",
@@ -236,7 +313,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 13,
               "Title": "clsDAStudentParent.cs",
               "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystemDataAccessLayer\\clsDAStudentParent.cs",
               "RelativeDocumentMoniker": "SchoolManagementSystemDataAccessLayer\\clsDAStudentParent.cs",
@@ -248,7 +325,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 12,
               "Title": "frmAcademicYears.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Academic\\frmAcademicYears.cs",
               "RelativeDocumentMoniker": "SchoolManagementSystem\\Academic\\frmAcademicYears.cs",
@@ -259,7 +336,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 14,
               "Title": "clsUITheme.cs",
               "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Globle Classes\\clsUITheme.cs",
               "RelativeDocumentMoniker": "SchoolManagementSystem\\Globle Classes\\clsUITheme.cs",
@@ -271,7 +348,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 15,
               "Title": "frmParentProfile.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Parents\\frmParentProfile.cs",
               "RelativeDocumentMoniker": "SchoolManagementSystem\\Parents\\frmParentProfile.cs",
@@ -282,7 +359,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 17,
               "Title": "clsParent.cs",
               "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystemBusinessLayer\\clsParent.cs",
               "RelativeDocumentMoniker": "SchoolManagementSystemBusinessLayer\\clsParent.cs",
@@ -294,7 +371,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 16,
               "Title": "clsDAParent.cs",
               "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystemDataAccessLayer\\clsDAParent.cs",
               "RelativeDocumentMoniker": "SchoolManagementSystemDataAccessLayer\\clsDAParent.cs",
@@ -306,7 +383,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 18,
               "Title": "frmStudentList.cs",
               "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Students\\frmStudentList.cs",
               "RelativeDocumentMoniker": "SchoolManagementSystem\\Students\\frmStudentList.cs",
@@ -319,7 +396,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 19,
               "Title": "frmStudentList.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Students\\frmStudentList.cs",
               "RelativeDocumentMoniker": "SchoolManagementSystem\\Students\\frmStudentList.cs",
@@ -330,7 +407,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 20,
               "Title": "frmRegisterParent.cs",
               "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Parents\\frmRegisterParent.cs",
               "RelativeDocumentMoniker": "SchoolManagementSystem\\Parents\\frmRegisterParent.cs",
@@ -343,7 +420,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 21,
               "Title": "frmRegisterParent.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Parents\\frmRegisterParent.cs",
               "RelativeDocumentMoniker": "SchoolManagementSystem\\Parents\\frmRegisterParent.cs",
@@ -354,7 +431,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 22,
               "Title": "frmStudentProfile.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Students\\frmStudentProfile.cs",
               "RelativeDocumentMoniker": "SchoolManagementSystem\\Students\\frmStudentProfile.cs",
@@ -365,7 +442,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 23,
               "Title": "frmStudentProfile.cs",
               "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Students\\frmStudentProfile.cs",
               "RelativeDocumentMoniker": "SchoolManagementSystem\\Students\\frmStudentProfile.cs",
@@ -377,7 +454,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 25,
               "Title": "frmRegisterStudent.cs",
               "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Students\\frmRegisterStudent.cs",
               "RelativeDocumentMoniker": "SchoolManagementSystem\\Students\\frmRegisterStudent.cs",
@@ -390,7 +467,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 27,
               "Title": "frmMainScreen.cs",
               "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\frmMainScreen.cs",
               "RelativeDocumentMoniker": "SchoolManagementSystem\\frmMainScreen.cs",
@@ -402,7 +479,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 26,
               "Title": "clsUser.cs",
               "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystemBusinessLayer\\clsUser.cs",
               "RelativeDocumentMoniker": "SchoolManagementSystemBusinessLayer\\clsUser.cs",
@@ -414,7 +491,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 24,
               "Title": "frmRegisterStudent.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Students\\frmRegisterStudent.cs",
               "RelativeDocumentMoniker": "SchoolManagementSystem\\Students\\frmRegisterStudent.cs",
@@ -425,7 +502,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 28,
               "Title": "clsSchedule.cs",
               "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystemBusinessLayer\\clsSchedule.cs",
               "RelativeDocumentMoniker": "SchoolManagementSystemBusinessLayer\\clsSchedule.cs",
@@ -437,7 +514,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 29,
               "Title": "clsDashboard.cs",
               "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystemBusinessLayer\\clsDashboard.cs",
               "RelativeDocumentMoniker": "SchoolManagementSystemBusinessLayer\\clsDashboard.cs",
@@ -449,7 +526,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 30,
               "Title": "clsDAUser.cs",
               "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystemDataAccessLayer\\clsDAUser.cs",
               "RelativeDocumentMoniker": "SchoolManagementSystemDataAccessLayer\\clsDAUser.cs",
@@ -461,7 +538,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 31,
               "Title": "frmLinkParentToStudent.cs",
               "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Students\\frmLinkParentToStudent.cs",
               "RelativeDocumentMoniker": "SchoolManagementSystem\\Students\\frmLinkParentToStudent.cs",

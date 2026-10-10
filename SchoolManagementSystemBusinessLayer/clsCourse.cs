@@ -1,6 +1,7 @@
+using SchoolManagementSystemDataAccessLayer;
 using System;
 using System.Data;
-using SchoolManagementSystemDataAccessLayer;
+using System.Xml.Linq;
 
 namespace SchoolManagementSystemBusinessLayer
 {
@@ -85,21 +86,35 @@ namespace SchoolManagementSystemBusinessLayer
                 return false;
             }
 
-            System.Data.DataTable dt = GetAllCourses();
-            foreach (System.Data.DataRow row in dt.Rows)
+            if(Mode == enMode.AddNew)
             {
-                if ((int)row["CourseID"] != this.CourseID)
+                if (IsCourceExist( this.Name))
                 {
-                    if (row["Name"].ToString() == this.Name)
-                    {
-                        errorMessage = "Course Name already exists.";
-                        return false;
-                    }
+                    errorMessage = "Course Name already exists.";
+                    return false;
                 }
             }
+            
+
+            //System.Data.DataTable dt = GetAllCourses();
+            //foreach (System.Data.DataRow row in dt.Rows)
+            //{
+            //    if ((int)row["CourseID"] != this.CourseID)
+            //    {
+            //        if (row["Name"].ToString() == this.Name)
+            //        {
+            //            errorMessage = "Course Name already exists.";
+            //            return false;
+            //        }
+            //    }
+            //}
             return true;
         }
 
+        public static bool IsCourceExist(string Name)
+        {
+            return clsDACourse.IsCourceExist(Name);
+        }
         public bool Save()
         {
             string errorMessage;

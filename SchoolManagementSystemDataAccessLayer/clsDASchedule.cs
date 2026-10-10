@@ -188,5 +188,251 @@ namespace SchoolManagementSystemDataAccessLayer
             }
             return isFound;
         }
-    }
+    
+        public static DataTable GetSchedulesByClassID(int classID)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = @"
+                        SELECT 
+                            s.ScheduleID,
+                            s.DayOfWeek,
+                            s.StartTime,
+                            s.EndTime,
+                            c.Name AS CourseName,
+                            (t.FirstName + ' ' + t.LastName) AS TeacherName,
+                            r.Name AS RoomName,
+                            ay.YearName AS AcademicYear
+                        FROM Schedule s
+                        INNER JOIN ClassCourse cc ON s.ClassCourseID = cc.ClassCourseID
+                        INNER JOIN Course c ON cc.CourseID = c.CourseID
+                        INNER JOIN Teacher t ON cc.TeacherID = t.TeacherID
+                        INNER JOIN Room r ON s.RoomID = r.RoomID
+                        INNER JOIN AcademicYear ay ON s.AcademicYearID = ay.AcademicYearID
+                        WHERE cc.ClassID = @ClassID
+                        ORDER BY CASE s.DayOfWeek 
+                            WHEN 'Sunday' THEN 1 WHEN 'Monday' THEN 2 WHEN 'Tuesday' THEN 3
+                            WHEN 'Wednesday' THEN 4 WHEN 'Thursday' THEN 5 WHEN 'Friday' THEN 6 WHEN 'Saturday' THEN 7
+                            ELSE 8 END, s.StartTime";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@ClassID", classID);
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                                dt.Load(reader);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return dt;
+        }
+
+        public static DataTable GetSchedulesByTeacherID(int teacherID)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = @"
+                        SELECT 
+                            s.ScheduleID,
+                            s.DayOfWeek,
+                            s.StartTime,
+                            s.EndTime,
+                            cl.Name AS ClassName,
+                            c.Name AS CourseName,
+                            r.Name AS RoomName,
+                            ay.YearName AS AcademicYear
+                        FROM Schedule s
+                        INNER JOIN ClassCourse cc ON s.ClassCourseID = cc.ClassCourseID
+                        INNER JOIN Class cl ON cc.ClassID = cl.ClassID
+                        INNER JOIN Course c ON cc.CourseID = c.CourseID
+                        INNER JOIN Room r ON s.RoomID = r.RoomID
+                        INNER JOIN AcademicYear ay ON s.AcademicYearID = ay.AcademicYearID
+                        WHERE cc.TeacherID = @TeacherID
+                        ORDER BY CASE s.DayOfWeek 
+                            WHEN 'Sunday' THEN 1 WHEN 'Monday' THEN 2 WHEN 'Tuesday' THEN 3
+                            WHEN 'Wednesday' THEN 4 WHEN 'Thursday' THEN 5 WHEN 'Friday' THEN 6 WHEN 'Saturday' THEN 7
+                            ELSE 8 END, s.StartTime";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@TeacherID", teacherID);
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                                dt.Load(reader);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return dt;
+        }
+
+        public static DataTable GetAllSchedulesDetailed()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = @"
+                        SELECT 
+                            s.ScheduleID,
+                            s.ClassCourseID,
+                            cl.ClassID,
+                            cl.Name AS ClassName,
+                            c.CourseID,
+                            c.Name AS CourseName,
+                            t.TeacherID,
+                            (t.FirstName + ' ' + t.LastName) AS TeacherName,
+                            r.RoomID,
+                            r.Name AS RoomName,
+                            s.AcademicYearID,
+                            ay.YearName AS AcademicYear,
+                            s.DayOfWeek,
+                            s.StartTime,
+                            s.EndTime
+                        FROM Schedule s
+                        INNER JOIN ClassCourse cc ON s.ClassCourseID = cc.ClassCourseID
+                        INNER JOIN Class cl ON cc.ClassID = cl.ClassID
+                        INNER JOIN Course c ON cc.CourseID = c.CourseID
+                        INNER JOIN Teacher t ON cc.TeacherID = t.TeacherID
+                        INNER JOIN Room r ON s.RoomID = r.RoomID
+                        INNER JOIN AcademicYear ay ON s.AcademicYearID = ay.AcademicYearID
+                        ORDER BY ay.StartDate DESC, CASE s.DayOfWeek 
+                            WHEN 'Sunday' THEN 1 WHEN 'Monday' THEN 2 WHEN 'Tuesday' THEN 3
+                            WHEN 'Wednesday' THEN 4 WHEN 'Thursday' THEN 5 WHEN 'Friday' THEN 6 WHEN 'Saturday' THEN 7
+                            ELSE 8 END, s.StartTime";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                                dt.Load(reader);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return dt;
+        }
+
+        public static bool CheckScheduleConflict(int? currentScheduleID, int academicYearID, string dayOfWeek, TimeSpan startTime, TimeSpan endTime, int roomID, int classCourseID, out string conflictReason)
+        {
+            conflictReason = "";
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = @"
+                        SELECT 
+                            s.ScheduleID,
+                            cl.Name AS ClassName,
+                            c.Name AS CourseName,
+                            (t.FirstName + ' ' + t.LastName) AS TeacherName,
+                            r.Name AS RoomName,
+                            s.StartTime,
+                            s.EndTime,
+                            s.RoomID,
+                            cc.ClassID,
+                            cc.TeacherID
+                        FROM Schedule s
+                        INNER JOIN ClassCourse cc ON s.ClassCourseID = cc.ClassCourseID
+                        INNER JOIN Class cl ON cc.ClassID = cl.ClassID
+                        INNER JOIN Course c ON cc.CourseID = c.CourseID
+                        INNER JOIN Teacher t ON cc.TeacherID = t.TeacherID
+                        INNER JOIN Room r ON s.RoomID = r.RoomID
+                        WHERE s.AcademicYearID = @AcademicYearID
+                          AND s.DayOfWeek = @DayOfWeek
+                          AND (@CurrentScheduleID IS NULL OR s.ScheduleID <> @CurrentScheduleID)
+                          AND (s.StartTime < @EndTime AND s.EndTime > @StartTime)";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@AcademicYearID", academicYearID);
+                        command.Parameters.AddWithValue("@DayOfWeek", dayOfWeek);
+                        command.Parameters.AddWithValue("@StartTime", startTime);
+                        command.Parameters.AddWithValue("@EndTime", endTime);
+                        command.Parameters.AddWithValue("@CurrentScheduleID", (object)currentScheduleID ?? DBNull.Value);
+
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            // Fetch target class and teacher for the current classCourseID
+                            int targetClassID = -1;
+                            int targetTeacherID = -1;
+                            using (SqlConnection c2 = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                            {
+                                string q2 = "SELECT ClassID, TeacherID FROM ClassCourse WHERE ClassCourseID = @CCID";
+                                using (SqlCommand cmd2 = new SqlCommand(q2, c2))
+                                {
+                                    cmd2.Parameters.AddWithValue("@CCID", classCourseID);
+                                    c2.Open();
+                                    using (SqlDataReader r2 = cmd2.ExecuteReader())
+                                    {
+                                        if (r2.Read())
+                                        {
+                                            targetClassID = (int)r2["ClassID"];
+                                            targetTeacherID = (int)r2["TeacherID"];
+                                        }
+                                    }
+                                }
+                            }
+
+                            while (reader.Read())
+                            {
+                                int existingRoomID = (int)reader["RoomID"];
+                                int existingClassID = (int)reader["ClassID"];
+                                int existingTeacherID = (int)reader["TeacherID"];
+                                string rName = reader["RoomName"].ToString();
+                                string tName = reader["TeacherName"].ToString();
+                                string clName = reader["ClassName"].ToString();
+                                string timeStr = $"{((TimeSpan)reader["StartTime"]).ToString(@"hh\:mm")} - {((TimeSpan)reader["EndTime"]).ToString(@"hh\:mm")}";
+
+                                if (existingRoomID == roomID)
+                                {
+                                    conflictReason = $"Room conflict: Room '{rName}' is already occupied during {timeStr} by {clName}.";
+                                    return true;
+                                }
+                                if (existingTeacherID == targetTeacherID)
+                                {
+                                    conflictReason = $"Teacher conflict: Teacher '{tName}' is already assigned to {clName} during {timeStr}.";
+                                    return true;
+                                }
+                                if (existingClassID == targetClassID)
+                                {
+                                    conflictReason = $"Class conflict: Class '{clName}' is already scheduled for another lesson during {timeStr}.";
+                                    return true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return false;
+        }
+
+}
 }

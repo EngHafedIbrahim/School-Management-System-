@@ -119,21 +119,53 @@ namespace SchoolManagementSystemBusinessLayer
                 return false;
             }
 
-            System.Data.DataTable dt = GetAllTeachers();
-            foreach (System.Data.DataRow row in dt.Rows)
+            if(Mode == enMode.AddNew)
             {
-                if ((int)row["TeacherID"] != this.TeacherID)
+                if (IsEmailExist(Email))
                 {
-                    if (row["Email"].ToString() == this.Email)
-                    {
-                        errorMessage = "Email already exists.";
-                        return false;
-                    }
+                    errorMessage = "Email already exists.";
+
+                    return false;
+                }
+
+                
+            }
+            else
+            {
+                if (HasAnyTeacherSameThisEmail(Email, TeacherID))
+                {
+                    errorMessage = "Someone has same this Email , typing another email";
+
+                    return false;
                 }
             }
+            
+
+            //System.Data.DataTable dt = GetAllTeachers();
+            //foreach (System.Data.DataRow row in dt.Rows)
+            //{
+            //    if ((int)row["TeacherID"] != this.TeacherID)
+            //    {
+            //        if (row["Email"].ToString() == this.Email)
+            //        {
+            //            errorMessage = "Email already exists.";
+            //            return false;
+            //        }
+            //    }
+            //}
             return true;
         }
 
+
+        public static bool IsEmailExist(string Email)
+        {
+            return clsDATeacher.IsEmailExist(Email);
+        }
+        
+        private bool HasAnyTeacherSameThisEmail(string Email,int TeacherID)
+        {
+            return clsDATeacher.HasAnyTeacherSameThisEmail(Email,TeacherID);
+        }
         public bool Save()
         {
             string errorMessage;
@@ -160,5 +192,8 @@ namespace SchoolManagementSystemBusinessLayer
         public static DataTable GetAllTeachers() => clsDATeacher.GetAllTeachers();
         public static bool IsTeacherExist(int TeacherID) => clsDATeacher.IsTeacherExist(TeacherID);
         public static bool DeleteTeacher(int TeacherID) => clsDATeacher.DeleteTeacher(TeacherID);
+    
+        public static DataTable GetTeachersDetailed() => clsDATeacher.GetTeachersDetailed();
+
     }
 }

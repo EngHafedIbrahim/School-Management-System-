@@ -209,5 +209,112 @@ namespace SchoolManagementSystemDataAccessLayer
             }
             return isFound;
         }
-    }
+
+
+        public static bool IsEmailExist(string Email)
+        {
+            bool isFound = false;
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = "SELECT TOP 1 1 FROM Teacher WHERE Email = @Email";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@Email", Email);
+                        connection.Open();
+                        object result = command.ExecuteScalar();
+                        if (result != null)
+                        {
+                            isFound = Convert.ToInt32(result) > 0;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return isFound;
+        }
+
+        /// <summary>
+        ///  use this when user wants update Teacher info
+        /// </summary>
+        /// <param name="Email"></param>
+        /// <param name="TeacherID"></param>
+        /// <returns></returns>
+        public static bool HasAnyTeacherSameThisEmail(string Email, int TeacherID)
+        {
+            bool isFound = false;
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = "SELECT TOP 1 1 FROM Teacher WHERE Email = @Email and TeacherID != @TeacherID";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@Email", Email);
+                        command.Parameters.AddWithValue("@TeacherID", TeacherID);
+                        connection.Open();
+                        object result = command.ExecuteScalar();
+                        if (result != null)
+                        {
+                            isFound = Convert.ToInt32(result) > 0;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return isFound;
+        }
+
+        public static DataTable GetTeachersDetailed()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = @"
+                        SELECT 
+                            t.TeacherID,
+                            (t.FirstName + ' ' + t.LastName) AS FullName,
+                            t.FirstName,
+                            t.LastName,
+                            t.PhoneNumber,
+                            t.Email,
+                            t.Specialization,
+                            t.Qualification,
+                            t.HireDate,
+                            t.EmploymentStatus,
+                            ISNULL(g.Name, 'N/A') AS Gender,
+                            t.GenderID,
+                            t.Address,
+                            t.About
+                        FROM [Teacher] t
+                        LEFT JOIN [Gender] g ON t.GenderID = g.GenderID
+                        ORDER BY t.FirstName, t.LastName";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                                dt.Load(reader);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return dt;
+        }
+
+}
 }

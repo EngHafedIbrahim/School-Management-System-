@@ -147,6 +147,32 @@ namespace SchoolManagementSystemDataAccessLayer
             return dt;
         }
 
+        public static bool IsGradeLevelExist(string GradeLevelName)
+        {
+            bool isFound = false;
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = "SELECT TOP 1 1 FROM GradeLevel WHERE Name = @GradeLevelName";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@GradeLevelName", GradeLevelName);
+                        connection.Open();
+                        object result = command.ExecuteScalar();
+                        if (result != null)
+                        {
+                            isFound = Convert.ToInt32(result) > 0;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return isFound;
+        }
         public static bool IsGradeLevelExist(int GradeLevelID)
         {
             bool isFound = false;

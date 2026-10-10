@@ -188,5 +188,35 @@ namespace SchoolManagementSystemDataAccessLayer
             }
             return isFound;
         }
+
+        public static DataTable GetClassesDetailed()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = @"SELECT c.ClassID, c.Name AS ClassName, g.Name AS GradeLevelName, c.GradeLevelID, c.Details, c.IsDeleted
+                                     FROM Class c
+                                     INNER JOIN GradeLevel g ON c.GradeLevelID = g.GradeLevelID
+                                     WHERE c.IsDeleted = 0
+                                     ORDER BY g.OrderNo, c.Name";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                                dt.Load(reader);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return dt;
+        }
     }
 }

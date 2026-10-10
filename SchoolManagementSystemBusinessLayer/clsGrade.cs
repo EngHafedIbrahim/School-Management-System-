@@ -133,5 +133,8 @@ namespace SchoolManagementSystemBusinessLayer
     
         public static DataTable GetGradesByStudentID(int studentID) => clsDAGrade.GetGradesByStudentID(studentID);
 
+
+        public static DataTable GetGradesByClassID(int classID) => clsDAGrade.GetGradesByClassID(classID);
+
 }
 }

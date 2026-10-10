@@ -42,3 +42,13 @@ C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystem\obj\D
 C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystem\obj\Debug\net10.0-windows\SchoolManagementSystem.Parents.frmParentProfile.resources
 C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystem\obj\Debug\net10.0-windows\SchoolManagementSystem.Parents.frmRegisterParent.resources
 C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystem\obj\Debug\net10.0-windows\SchoolManagementSystem.Parents.frmLinkStudentToParent.resources
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystem\obj\Debug\net10.0-windows\SchoolManagementSystem.Academic.frmCourseAssignment.resources
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystem\obj\Debug\net10.0-windows\SchoolManagementSystem.Academic.frmTimetableManagement.resources
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystem\obj\Debug\net10.0-windows\SchoolManagementSystem.Courses.frmAddEditCourse.resources
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystem\obj\Debug\net10.0-windows\SchoolManagementSystem.Dashboard.frmAdminDashboard.resources
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystem\obj\Debug\net10.0-windows\SchoolManagementSystem.Teachers.frmAddEditTeacher.resources
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystem\obj\Debug\net10.0-windows\SchoolManagementSystem.Classes.frmAddEditClass.resources
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystem\obj\Debug\net10.0-windows\SchoolManagementSystem.Courses.frmCourseList.resources
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystem\obj\Debug\net10.0-windows\SchoolManagementSystem.Classes.frmClassProfile.resources
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystem\obj\Debug\net10.0-windows\SchoolManagementSystem.Academic.frmGradeLevels.resources
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystem\obj\Debug\net10.0-windows\SchoolManagementSystem.Classes.frmClassList.resources

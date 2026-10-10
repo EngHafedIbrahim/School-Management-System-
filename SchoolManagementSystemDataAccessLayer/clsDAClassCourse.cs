@@ -185,5 +185,131 @@ namespace SchoolManagementSystemDataAccessLayer
             }
             return isFound;
         }
-    }
+    
+        public static DataTable GetCoursesByClassID(int classID)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = @"
+                        SELECT 
+                            cc.ClassCourseID,
+                            cc.CourseID,
+                            c.Name AS CourseName,
+                            c.CreditHours,
+                            cc.TeacherID,
+                            (t.FirstName + ' ' + t.LastName) AS TeacherName,
+                            ay.YearName AS AcademicYear
+                        FROM ClassCourse cc
+                        INNER JOIN Course c ON cc.CourseID = c.CourseID
+                        INNER JOIN Teacher t ON cc.TeacherID = t.TeacherID
+                        INNER JOIN AcademicYear ay ON cc.AcademicYearID = ay.AcademicYearID
+                        WHERE cc.ClassID = @ClassID AND cc.IsDeleted = 0
+                        ORDER BY c.Name";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@ClassID", classID);
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                                dt.Load(reader);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return dt;
+        }
+
+        public static DataTable GetAssignmentsByTeacherID(int teacherID)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = @"
+                        SELECT 
+                            cc.ClassCourseID,
+                            cl.ClassID,
+                            cl.Name AS ClassName,
+                            c.CourseID,
+                            c.Name AS CourseName,
+                            c.CreditHours,
+                            ay.YearName AS AcademicYear
+                        FROM ClassCourse cc
+                        INNER JOIN Class cl ON cc.ClassID = cl.ClassID
+                        INNER JOIN Course c ON cc.CourseID = c.CourseID
+                        INNER JOIN AcademicYear ay ON cc.AcademicYearID = ay.AcademicYearID
+                        WHERE cc.TeacherID = @TeacherID AND cc.IsDeleted = 0
+                        ORDER BY ay.StartDate DESC, cl.Name";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@TeacherID", teacherID);
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                                dt.Load(reader);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return dt;
+        }
+
+        public static DataTable GetAllClassCoursesDetailed()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = @"
+                        SELECT 
+                            cc.ClassCourseID,
+                            cc.ClassID,
+                            cl.Name AS ClassName,
+                            cc.CourseID,
+                            c.Name AS CourseName,
+                            cc.TeacherID,
+                            (t.FirstName + ' ' + t.LastName) AS TeacherName,
+                            cc.AcademicYearID,
+                            ay.YearName AS AcademicYear
+                        FROM ClassCourse cc
+                        INNER JOIN Class cl ON cc.ClassID = cl.ClassID
+                        INNER JOIN Course c ON cc.CourseID = c.CourseID
+                        INNER JOIN Teacher t ON cc.TeacherID = t.TeacherID
+                        INNER JOIN AcademicYear ay ON cc.AcademicYearID = ay.AcademicYearID
+                        WHERE cc.IsDeleted = 0
+                        ORDER BY ay.StartDate DESC, cl.Name, c.Name";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                                dt.Load(reader);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return dt;
+        }
+
+}
 }

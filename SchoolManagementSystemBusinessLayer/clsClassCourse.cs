@@ -120,5 +120,10 @@ namespace SchoolManagementSystemBusinessLayer
         public static DataTable GetAllClassCourses() => clsDAClassCourse.GetAllClassCourses();
         public static bool IsClassCourseExist(int ClassCourseID) => clsDAClassCourse.IsClassCourseExist(ClassCourseID);
         public static bool DeleteClassCourse(int ClassCourseID) => clsDAClassCourse.DeleteClassCourse(ClassCourseID);
-    }
+    
+        public static DataTable GetCoursesByClassID(int classID) => clsDAClassCourse.GetCoursesByClassID(classID);
+        public static DataTable GetAssignmentsByTeacherID(int teacherID) => clsDAClassCourse.GetAssignmentsByTeacherID(teacherID);
+        public static DataTable GetAllClassCoursesDetailed() => clsDAClassCourse.GetAllClassCoursesDetailed();
+
+}
 }

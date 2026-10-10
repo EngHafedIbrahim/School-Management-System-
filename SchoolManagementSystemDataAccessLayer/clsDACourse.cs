@@ -1,6 +1,7 @@
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Xml.Linq;
 using UtilityLib;
 
 namespace SchoolManagementSystemDataAccessLayer
@@ -93,7 +94,7 @@ namespace SchoolManagementSystemDataAccessLayer
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@CourseID", CourseID);
-                                                command.Parameters.AddWithValue("@Name", (object)Name ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@Name", (object)Name ?? DBNull.Value);
                         command.Parameters.AddWithValue("@CreditHours", CreditHours);
                         command.Parameters.AddWithValue("@Description", (object)Description ?? DBNull.Value);
                         command.Parameters.AddWithValue("@CreatedBy", CreatedBy);
@@ -162,6 +163,32 @@ namespace SchoolManagementSystemDataAccessLayer
             return dt;
         }
 
+        public static bool IsCourceExist(string Name)
+        {
+            bool isFound = false;
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = "SELECT TOP 1 1 FROM Course WHERE Name = @Name";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@Name", Name);
+                        connection.Open();
+                        object result = command.ExecuteScalar();
+                        if (result != null)
+                        {
+                            isFound = Convert.ToInt32(result) > 0;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return isFound;
+        }
         public static bool IsCourseExist(int CourseID)
         {
             bool isFound = false;
@@ -188,5 +215,34 @@ namespace SchoolManagementSystemDataAccessLayer
             }
             return isFound;
         }
+
+        public static bool HasAnyCourseSameName(int CourseID,string Name)
+        {
+            bool isFound = false;
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = "SELECT TOP 1 1 FROM Course WHERE Name = @Name And CourseID != @CourseID";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@CourseID", CourseID);
+                        command.Parameters.AddWithValue("@Name", Name);
+                        connection.Open();
+                        object result = command.ExecuteScalar();
+                        if (result != null)
+                        {
+                            isFound = Convert.ToInt32(result) > 0;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return isFound;
+        }
+
     }
 }

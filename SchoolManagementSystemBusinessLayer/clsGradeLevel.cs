@@ -54,8 +54,43 @@ namespace SchoolManagementSystemBusinessLayer
             return clsDAGradeLevel.UpdateGradeLevel(this.GradeLevelID, this.Name, this.OrderNo, this.Description);
         }
 
+        public bool Validate(out string errorMessage)
+        {
+            errorMessage = "";
+            if (string.IsNullOrWhiteSpace(this.Name))
+            {
+                errorMessage = "Grade Level Name is required.";
+                return false;
+            }
+            if (this.OrderNo <= 0)
+            {
+                errorMessage = "Order number must be greater than zero.";
+                return false;
+            }
+
+            DataTable dt = GetAllGradeLevels();
+            foreach (DataRow row in dt.Rows)
+            {
+                if ((int)row["GradeLevelID"] != this.GradeLevelID)
+                {
+                    if (row["Name"].ToString().Trim().Equals(this.Name.Trim(), StringComparison.OrdinalIgnoreCase))
+                    {
+                        errorMessage = "A Grade Level with this name already exists.";
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
         public bool Save()
         {
+            string errorMessage;
+            if (!Validate(out errorMessage))
+            {
+                throw new Exception(errorMessage);
+            }
+
             switch (Mode)
             {
                 case enMode.AddNew:

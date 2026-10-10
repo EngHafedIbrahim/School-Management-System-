@@ -224,5 +224,46 @@ namespace SchoolManagementSystemDataAccessLayer
             return dt;
         }
 
+
+        public static DataTable GetAttendanceByClassID(int classID)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = @"
+                        SELECT 
+                            a.AttendanceID,
+                            a.AttendanceDate,
+                            (s.FirstName + ' ' + s.LastName) AS StudentName,
+                            s.AdmissionNo,
+                            a.Status,
+                            a.Remarks
+                        FROM Attendance a
+                        INNER JOIN [Student] s ON a.StudentID = s.StudentID
+                        INNER JOIN Schedule sc ON a.ScheduleID = sc.ScheduleID
+                        INNER JOIN ClassCourse cc ON sc.ClassCourseID = cc.ClassCourseID
+                        WHERE cc.ClassID = @ClassID
+                        ORDER BY a.AttendanceDate DESC";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@ClassID", classID);
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                                dt.Load(reader);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return dt;
+        }
+
 }
 }

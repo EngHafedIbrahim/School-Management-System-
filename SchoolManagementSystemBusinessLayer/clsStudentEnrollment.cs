@@ -132,5 +132,8 @@ namespace SchoolManagementSystemBusinessLayer
     
         public static DataTable GetEnrollmentHistoryByStudentID(int studentID) => clsDAStudentEnrollment.GetEnrollmentHistoryByStudentID(studentID);
 
+
+        public static DataTable GetStudentsByClassID(int classID) => clsDAStudentEnrollment.GetStudentsByClassID(classID);
+
 }
 }

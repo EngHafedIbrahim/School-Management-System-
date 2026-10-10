@@ -141,5 +141,12 @@ namespace SchoolManagementSystemBusinessLayer
         public static DataTable GetAllSchedules() => clsDASchedule.GetAllSchedules();
         public static bool IsScheduleExist(int ScheduleID) => clsDASchedule.IsScheduleExist(ScheduleID);
         public static bool DeleteSchedule(int ScheduleID) => clsDASchedule.DeleteSchedule(ScheduleID);
-    }
+    
+        public static DataTable GetSchedulesByClassID(int classID) => clsDASchedule.GetSchedulesByClassID(classID);
+        public static DataTable GetSchedulesByTeacherID(int teacherID) => clsDASchedule.GetSchedulesByTeacherID(teacherID);
+        public static DataTable GetAllSchedulesDetailed() => clsDASchedule.GetAllSchedulesDetailed();
+        public static bool CheckScheduleConflict(int? currentScheduleID, int academicYearID, string dayOfWeek, TimeSpan startTime, TimeSpan endTime, int roomID, int classCourseID, out string conflictReason) =>
+            clsDASchedule.CheckScheduleConflict(currentScheduleID, academicYearID, dayOfWeek, startTime, endTime, roomID, classCourseID, out conflictReason);
+
+}
 }

@@ -4,6 +4,30 @@
     <Compile Update="Academic\frmAcademicYears.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Academic\frmCourseAssignment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Academic\frmGradeLevels.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Academic\frmTimetableManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Classes\frmAddEditClass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Classes\frmClassList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Classes\frmClassProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Courses\frmAddEditCourse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Courses\frmCourseList.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Dashboard\frmAdminDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -35,6 +59,15 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Students\frmStudentProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Teachers\frmAddEditTeacher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Teachers\frmTeacherList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Teachers\frmTeacherProfile.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

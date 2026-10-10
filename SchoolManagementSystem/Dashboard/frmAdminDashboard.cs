@@ -6,6 +6,9 @@ using SchoolManagementSystem.Globle_Classes;
 using SchoolManagementSystem.Students;
 using SchoolManagementSystem.Parents;
 using SchoolManagementSystem.Academic;
+using SchoolManagementSystem.Classes;
+using SchoolManagementSystem.Teachers;
+using SchoolManagementSystem.Courses;
 
 namespace SchoolManagementSystem.Dashboard
 {
@@ -43,24 +46,30 @@ namespace SchoolManagementSystem.Dashboard
 
         private void BtnNavAcademic_Click(object sender, EventArgs e)
         {
-            frmAcademicYears frm = new frmAcademicYears();
+            frmClassList frm = new frmClassList();
             frm.ShowDialog();
             LoadDashboardStats();
         }
 
         private void BtnNavTeachers_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Teachers management will be implemented in Phase 3.", "Module Navigation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            frmTeacherList frm = new frmTeacherList();
+            frm.ShowDialog();
+            LoadDashboardStats();
         }
 
         private void BtnNavCourses_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Courses management will be implemented in Phase 3.", "Module Navigation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            frmCourseList frm = new frmCourseList();
+            frm.ShowDialog();
+            LoadDashboardStats();
         }
 
         private void BtnNavTimetable_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Timetable management will be implemented in Phase 3.", "Module Navigation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            frmTimetableManagement frm = new frmTimetableManagement();
+            frm.ShowDialog();
+            LoadDashboardStats();
         }
 
         private void BtnNavAttendance_Click(object sender, EventArgs e)

@@ -228,5 +228,47 @@ namespace SchoolManagementSystemDataAccessLayer
             return dt;
         }
 
+
+        public static DataTable GetStudentsByClassID(int classID)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = @"
+                        SELECT 
+                            se.StudentEnrollmentID,
+                            se.StudentID,
+                            (s.FirstName + ' ' + s.LastName) AS StudentName,
+                            s.AdmissionNo,
+                            s.PhoneNumber,
+                            se.EnrollmentDate,
+                            se.Status,
+                            ay.YearName AS AcademicYear
+                        FROM StudentEnrollment se
+                        INNER JOIN [Student] s ON se.StudentID = s.StudentID
+                        INNER JOIN AcademicYear ay ON se.AcademicYearID = ay.AcademicYearID
+                        WHERE se.ClassID = @ClassID
+                        ORDER BY s.FirstName, s.LastName";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@ClassID", classID);
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                                dt.Load(reader);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return dt;
+        }
+
 }
 }

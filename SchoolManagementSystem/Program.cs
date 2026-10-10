@@ -1,7 +1,9 @@
 using SchoolManagementSystem.Academic;
+using SchoolManagementSystem.Courses;
 using SchoolManagementSystem.Login;
 using SchoolManagementSystem.Parents;
 using SchoolManagementSystem.Students;
+using SchoolManagementSystem.Teachers;
 using System;
 using System.Windows.Forms;
 
@@ -16,8 +18,11 @@ namespace SchoolManagementSystem
 
             //Application.Run(new frmStudentList()); 
             //Application.Run(new frmAcademicYears());
-            Application.Run(new frmLogin ());
-            
+            //Application.Run(new frmLogin ());
+            //Application.Run(new frmTeacherList());
+            //application.run(new frmcourselist());
+            Application.Run(new frmGradeLevels());
+
             //frmLogin login = new frmLogin();
 
             //if (login.ShowDialog() == DialogResult.OK)
@@ -28,6 +33,6 @@ namespace SchoolManagementSystem
             //{
             //    Application.Exit();
             //}
-        }    
+        }
     }
 }

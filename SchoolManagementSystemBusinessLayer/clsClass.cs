@@ -118,6 +118,7 @@ namespace SchoolManagementSystemBusinessLayer
         }
 
         public static DataTable GetAllClasss() => clsDAClass.GetAllClasss();
+        public static DataTable GetClassesDetailed() => clsDAClass.GetClassesDetailed();
         public static bool IsClassExist(int ClassID) => clsDAClass.IsClassExist(ClassID);
         public static bool DeleteClass(int ClassID) => clsDAClass.DeleteClass(ClassID);
     }
