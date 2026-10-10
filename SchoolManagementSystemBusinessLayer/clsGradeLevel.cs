@@ -68,18 +68,26 @@ namespace SchoolManagementSystemBusinessLayer
                 return false;
             }
 
-            DataTable dt = GetAllGradeLevels();
-            foreach (DataRow row in dt.Rows)
+            if (clsGradeLevel.IsGradeLevelExist(this.Name))
             {
-                if ((int)row["GradeLevelID"] != this.GradeLevelID)
-                {
-                    if (row["Name"].ToString().Trim().Equals(this.Name.Trim(), StringComparison.OrdinalIgnoreCase))
-                    {
-                        errorMessage = "A Grade Level with this name already exists.";
-                        return false;
-                    }
-                }
+                errorMessage = "A Grade Level with this name already exists.";
+                return false;
             }
+
+
+            /*/DataTable dt = GetAllGradeLevels();
+            //foreach (DataRow row in dt.Rows)
+            //{
+            //    if ((int)row["GradeLevelID"] != this.GradeLevelID)
+            //    {
+            //        if (row["Name"].ToString().Trim().Equals(this.Name.Trim(), StringComparison.OrdinalIgnoreCase))
+            //        {
+            //            errorMessage = "A Grade Level with this name already exists.";
+            //            return false;
+            //        }
+            //    }
+            /}*/
+
             return true;
         }
 
@@ -108,6 +116,7 @@ namespace SchoolManagementSystemBusinessLayer
 
         public static DataTable GetAllGradeLevels() => clsDAGradeLevel.GetAllGradeLevels();
         public static bool IsGradeLevelExist(int GradeLevelID) => clsDAGradeLevel.IsGradeLevelExist(GradeLevelID);
+        public static bool IsGradeLevelExist(string GradeLevelName) => clsDAGradeLevel.IsGradeLevelExist(GradeLevelName);
         public static bool DeleteGradeLevel(int GradeLevelID) => clsDAGradeLevel.DeleteGradeLevel(GradeLevelID);
     }
 }
