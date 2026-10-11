@@ -14,7 +14,7 @@ namespace SchoolManagementSystem.Classes
         public frmClassList()
         {
             InitializeComponent();
-
+            //Text = "قائمة ادارة الشُعب الدراسية";
             clsUITheme.StyleDataGridView(dgvClasses);
             clsUITheme.StyleSuccessButton(btnAddClass);
             clsUITheme.StylePrimaryButton(btnViewProfile);
@@ -22,8 +22,6 @@ namespace SchoolManagementSystem.Classes
             clsUITheme.StyleDangerButton(btnDelete);
             clsUITheme.StyleSecondaryButton(btnRefresh);
 
-            LoadGradeLevelsFilter();
-            LoadClasses();
         }
 
         private void LoadGradeLevelsFilter()
@@ -70,7 +68,7 @@ namespace SchoolManagementSystem.Classes
             }
             if (dgvClasses.Columns.Contains("Details"))
             {
-                dgvClasses.Columns["Details"].HeaderText = "Notes / Room";
+                dgvClasses.Columns["Details"].HeaderText = "Notes";
             }
 
             UpdateCount();
@@ -201,6 +199,12 @@ namespace SchoolManagementSystem.Classes
                     MessageBox.Show("Error deleting class: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void FrmClassList_Load(object sender, EventArgs e)
+        {
+            LoadGradeLevelsFilter();
+            LoadClasses();
         }
     }
 }

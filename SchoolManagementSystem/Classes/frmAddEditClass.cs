@@ -25,8 +25,6 @@ namespace SchoolManagementSystem.Classes
             lblHeaderTitle.Text = _Mode == enMode.AddNew ? " اضافة الشُعب الدراسية " : "تعديل شُعبة دراسية";
             this.RightToLeft = RightToLeft.Yes;
 
-
-
         }
 
         private void LoadData()

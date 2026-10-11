@@ -17,6 +17,7 @@ namespace SchoolManagementSystem.Classes
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmClassList));
             pnlHeader = new Panel();
             lblHeaderTitle = new Label();
             pnlFilter = new Panel();
@@ -42,29 +43,20 @@ namespace SchoolManagementSystem.Classes
             // 
             // pnlHeader
             // 
+            resources.ApplyResources(pnlHeader, "pnlHeader");
             pnlHeader.BackColor = Color.White;
             pnlHeader.Controls.Add(lblHeaderTitle);
-            pnlHeader.Dock = DockStyle.Top;
-            pnlHeader.Location = new Point(0, 0);
-            pnlHeader.Margin = new Padding(3, 4, 3, 4);
             pnlHeader.Name = "pnlHeader";
-            pnlHeader.Padding = new Padding(23, 13, 23, 13);
-            pnlHeader.Size = new Size(1102, 93);
-            pnlHeader.TabIndex = 0;
             // 
             // lblHeaderTitle
             // 
-            lblHeaderTitle.AutoSize = true;
-            lblHeaderTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            resources.ApplyResources(lblHeaderTitle, "lblHeaderTitle");
             lblHeaderTitle.ForeColor = Color.FromArgb(44, 62, 80);
-            lblHeaderTitle.Location = new Point(394, 13);
             lblHeaderTitle.Name = "lblHeaderTitle";
-            lblHeaderTitle.Size = new Size(358, 37);
-            lblHeaderTitle.TabIndex = 0;
-            lblHeaderTitle.Text = "Classes & Sections Directory";
             // 
             // pnlFilter
             // 
+            resources.ApplyResources(pnlFilter, "pnlFilter");
             pnlFilter.BackColor = Color.White;
             pnlFilter.Controls.Add(btnRefresh);
             pnlFilter.Controls.Add(btnDelete);
@@ -75,181 +67,114 @@ namespace SchoolManagementSystem.Classes
             pnlFilter.Controls.Add(lblFilterGrade);
             pnlFilter.Controls.Add(txtSearch);
             pnlFilter.Controls.Add(lblSearch);
-            pnlFilter.Dock = DockStyle.Top;
-            pnlFilter.Location = new Point(0, 93);
-            pnlFilter.Margin = new Padding(3, 4, 3, 4);
             pnlFilter.Name = "pnlFilter";
-            pnlFilter.Padding = new Padding(23, 20, 23, 13);
-            pnlFilter.Size = new Size(1102, 87);
-            pnlFilter.TabIndex = 1;
             // 
             // btnRefresh
             // 
-            btnRefresh.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            resources.ApplyResources(btnRefresh, "btnRefresh");
             btnRefresh.Cursor = Cursors.Hand;
             btnRefresh.FlatAppearance.BorderColor = Color.FromArgb(220, 224, 230);
-            btnRefresh.FlatStyle = FlatStyle.Flat;
-            btnRefresh.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnRefresh.Location = new Point(1033, 32);
-            btnRefresh.Margin = new Padding(3, 4, 3, 4);
             btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new Size(46, 43);
-            btnRefresh.TabIndex = 8;
-            btnRefresh.Text = "↻";
             btnRefresh.UseVisualStyleBackColor = true;
             btnRefresh.Click += BtnRefresh_Click;
             // 
             // btnDelete
             // 
-            btnDelete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            resources.ApplyResources(btnDelete, "btnDelete");
             btnDelete.BackColor = Color.FromArgb(192, 57, 43);
             btnDelete.Cursor = Cursors.Hand;
             btnDelete.FlatAppearance.BorderSize = 0;
-            btnDelete.FlatStyle = FlatStyle.Flat;
-            btnDelete.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             btnDelete.ForeColor = Color.White;
-            btnDelete.Location = new Point(930, 32);
-            btnDelete.Margin = new Padding(3, 4, 3, 4);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(91, 43);
-            btnDelete.TabIndex = 7;
-            btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = false;
             btnDelete.Click += BtnDelete_Click;
+            btnDelete.Text = "حذف";
             // 
             // btnEdit
             // 
-            btnEdit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            resources.ApplyResources(btnEdit, "btnEdit");
             btnEdit.Cursor = Cursors.Hand;
             btnEdit.FlatAppearance.BorderColor = Color.FromArgb(220, 224, 230);
-            btnEdit.FlatStyle = FlatStyle.Flat;
-            btnEdit.Font = new Font("Segoe UI", 9.5F);
-            btnEdit.Location = new Point(827, 32);
-            btnEdit.Margin = new Padding(3, 4, 3, 4);
             btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(91, 43);
-            btnEdit.TabIndex = 6;
-            btnEdit.Text = "Edit";
             btnEdit.UseVisualStyleBackColor = true;
             btnEdit.Click += BtnEdit_Click;
+            btnEdit.Text = "تعديل";
             // 
             // btnViewProfile
             // 
-            btnViewProfile.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            resources.ApplyResources(btnViewProfile, "btnViewProfile");
             btnViewProfile.BackColor = Color.FromArgb(41, 128, 185);
             btnViewProfile.Cursor = Cursors.Hand;
             btnViewProfile.FlatAppearance.BorderSize = 0;
-            btnViewProfile.FlatStyle = FlatStyle.Flat;
-            btnViewProfile.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             btnViewProfile.ForeColor = Color.White;
-            btnViewProfile.Location = new Point(690, 32);
-            btnViewProfile.Margin = new Padding(3, 4, 3, 4);
             btnViewProfile.Name = "btnViewProfile";
-            btnViewProfile.Size = new Size(126, 43);
-            btnViewProfile.TabIndex = 5;
-            btnViewProfile.Text = "Class Profile";
             btnViewProfile.UseVisualStyleBackColor = false;
             btnViewProfile.Click += BtnViewProfile_Click;
+            btnViewProfile.Text = "عرض";
+
             // 
             // btnAddClass
             // 
-            btnAddClass.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            resources.ApplyResources(btnAddClass, "btnAddClass");
             btnAddClass.BackColor = Color.FromArgb(39, 174, 96);
             btnAddClass.Cursor = Cursors.Hand;
             btnAddClass.FlatAppearance.BorderSize = 0;
-            btnAddClass.FlatStyle = FlatStyle.Flat;
-            btnAddClass.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             btnAddClass.ForeColor = Color.White;
-            btnAddClass.Location = new Point(542, 32);
-            btnAddClass.Margin = new Padding(3, 4, 3, 4);
             btnAddClass.Name = "btnAddClass";
-            btnAddClass.Size = new Size(137, 43);
-            btnAddClass.TabIndex = 4;
-            btnAddClass.Text = "+ New Class";
             btnAddClass.UseVisualStyleBackColor = false;
             btnAddClass.Click += BtnAddClass_Click;
+            btnAddClass.Text = "+إضافة شُعبة";
+
             // 
             // cbFilterGrade
             // 
+            resources.ApplyResources(cbFilterGrade, "cbFilterGrade");
             cbFilterGrade.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbFilterGrade.Font = new Font("Segoe UI", 9.5F);
             cbFilterGrade.FormattingEnabled = true;
-            cbFilterGrade.Location = new Point(297, 37);
-            cbFilterGrade.Margin = new Padding(3, 4, 3, 4);
             cbFilterGrade.Name = "cbFilterGrade";
-            cbFilterGrade.Size = new Size(205, 29);
-            cbFilterGrade.TabIndex = 3;
             cbFilterGrade.SelectedIndexChanged += CbFilterGrade_SelectedIndexChanged;
+
             // 
             // lblFilterGrade
             // 
-            lblFilterGrade.AutoSize = true;
-            lblFilterGrade.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            resources.ApplyResources(lblFilterGrade, "lblFilterGrade");
             lblFilterGrade.ForeColor = Color.FromArgb(33, 37, 41);
-            lblFilterGrade.Location = new Point(297, 11);
             lblFilterGrade.Name = "lblFilterGrade";
-            lblFilterGrade.Size = new Size(146, 21);
-            lblFilterGrade.TabIndex = 2;
-            lblFilterGrade.Text = "Filter Grade Level:";
             // 
             // txtSearch
             // 
-            txtSearch.Font = new Font("Segoe UI", 9.5F);
-            txtSearch.Location = new Point(23, 37);
-            txtSearch.Margin = new Padding(3, 4, 3, 4);
+            resources.ApplyResources(txtSearch, "txtSearch");
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(251, 29);
-            txtSearch.TabIndex = 1;
             txtSearch.TextChanged += TxtSearch_TextChanged;
             // 
             // lblSearch
             // 
-            lblSearch.AutoSize = true;
-            lblSearch.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            resources.ApplyResources(lblSearch, "lblSearch");
             lblSearch.ForeColor = Color.FromArgb(33, 37, 41);
-            lblSearch.Location = new Point(23, 11);
             lblSearch.Name = "lblSearch";
-            lblSearch.Size = new Size(157, 21);
-            lblSearch.TabIndex = 0;
-            lblSearch.Text = "Search Class Name:";
             // 
             // pnlBottom
             // 
+            resources.ApplyResources(pnlBottom, "pnlBottom");
             pnlBottom.BackColor = Color.White;
             pnlBottom.Controls.Add(lblTotalCount);
-            pnlBottom.Dock = DockStyle.Bottom;
-            pnlBottom.Location = new Point(0, 762);
-            pnlBottom.Margin = new Padding(3, 4, 3, 4);
             pnlBottom.Name = "pnlBottom";
-            pnlBottom.Padding = new Padding(23, 13, 23, 13);
-            pnlBottom.Size = new Size(1102, 53);
-            pnlBottom.TabIndex = 2;
             // 
             // lblTotalCount
             // 
-            lblTotalCount.AutoSize = true;
-            lblTotalCount.Dock = DockStyle.Left;
-            lblTotalCount.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            resources.ApplyResources(lblTotalCount, "lblTotalCount");
             lblTotalCount.ForeColor = Color.FromArgb(120, 130, 140);
-            lblTotalCount.Location = new Point(23, 13);
             lblTotalCount.Name = "lblTotalCount";
-            lblTotalCount.Size = new Size(123, 21);
-            lblTotalCount.TabIndex = 0;
-            lblTotalCount.Text = "Total Classes: 0";
             // 
             // pnlGridWrapper
             // 
+            resources.ApplyResources(pnlGridWrapper, "pnlGridWrapper");
             pnlGridWrapper.Controls.Add(dgvClasses);
-            pnlGridWrapper.Dock = DockStyle.Fill;
-            pnlGridWrapper.Location = new Point(0, 180);
-            pnlGridWrapper.Margin = new Padding(3, 4, 3, 4);
             pnlGridWrapper.Name = "pnlGridWrapper";
-            pnlGridWrapper.Padding = new Padding(23, 27, 23, 27);
-            pnlGridWrapper.Size = new Size(1102, 582);
-            pnlGridWrapper.TabIndex = 3;
             // 
             // dgvClasses
             // 
+            resources.ApplyResources(dgvClasses, "dgvClasses");
             dgvClasses.AllowUserToAddRows = false;
             dgvClasses.AllowUserToDeleteRows = false;
             dgvClasses.AllowUserToOrderColumns = true;
@@ -257,35 +182,26 @@ namespace SchoolManagementSystem.Classes
             dgvClasses.BackgroundColor = Color.White;
             dgvClasses.BorderStyle = BorderStyle.None;
             dgvClasses.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dgvClasses.ColumnHeadersHeight = 29;
             dgvClasses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvClasses.Dock = DockStyle.Fill;
-            dgvClasses.Location = new Point(23, 27);
-            dgvClasses.Margin = new Padding(3, 4, 3, 4);
             dgvClasses.MultiSelect = false;
             dgvClasses.Name = "dgvClasses";
             dgvClasses.ReadOnly = true;
             dgvClasses.RowHeadersVisible = false;
-            dgvClasses.RowHeadersWidth = 51;
             dgvClasses.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvClasses.Size = new Size(1056, 528);
-            dgvClasses.TabIndex = 0;
             dgvClasses.DoubleClick += DgvClasses_DoubleClick;
             // 
             // frmClassList
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(245, 247, 250);
-            ClientSize = new Size(1102, 815);
             Controls.Add(pnlGridWrapper);
             Controls.Add(pnlBottom);
             Controls.Add(pnlFilter);
             Controls.Add(pnlHeader);
-            Margin = new Padding(3, 4, 3, 4);
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "frmClassList";
-            StartPosition = FormStartPosition.CenterParent;
-            Text = "Manage Classes";
+            Load += FrmClassList_Load;
             pnlHeader.ResumeLayout(false);
             pnlHeader.PerformLayout();
             pnlFilter.ResumeLayout(false);

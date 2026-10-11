@@ -139,7 +139,6 @@ namespace SchoolManagementSystem.Classes
             btnSave.Name = "btnSave";
             btnSave.UseVisualStyleBackColor = false;
             btnSave.Click += BtnSave_Click;
-            btnSave.Text = "حفظ الشُعبة";
             // 
             // btnCancel
             // 
@@ -152,7 +151,6 @@ namespace SchoolManagementSystem.Classes
             btnCancel.Name = "btnCancel";
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += BtnCancel_Click;
-            btnCancel.Text = "الغاء";
             // 
             // errorProvider1
             // 
@@ -181,7 +179,6 @@ namespace SchoolManagementSystem.Classes
             pnlCard.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
-
         }
 
         #endregion

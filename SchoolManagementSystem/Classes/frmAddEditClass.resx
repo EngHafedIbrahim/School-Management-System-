@@ -117,258 +117,393 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;pnlCard.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="lblDetails.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.5pt, style=Bold</value>
+  <data name="pnlHeader.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
-  <data name="lblName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 21</value>
+  <data name="&gt;&gt;txtDetails.Parent" xml:space="preserve">
+    <value>pnlCard</value>
   </data>
-  <data name="&gt;&gt;lblGradeLevel.Name" xml:space="preserve">
-    <value>lblGradeLevel</value>
+  <data name="&gt;&gt;lblGradeLevel.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
-  <data name="cbGradeLevels.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 117</value>
+  <data name="&gt;&gt;lblName.Parent" xml:space="preserve">
+    <value>pnlCard</value>
+  </data>
+  <data name="txtDetails.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.5pt</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="txtName.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="lblHeaderTitle.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;errorProvider1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ErrorProvider, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
   </data>
   <data name="btnSave.Error" xml:space="preserve">
     <value />
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="btnCancel.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="lblDetails.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 21</value>
-  </data>
-  <data name="lblDetails.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;lblHeaderTitle.Parent" xml:space="preserve">
-    <value>pnlHeader</value>
-  </data>
-  <data name="&gt;&gt;pnlCard.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;btnCancel.Name" xml:space="preserve">
-    <value>btnCancel</value>
-  </data>
-  <data name="lblGradeLevel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="pnlCard.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="pnlHeader.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="&gt;&gt;lblGradeLevel.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;pnlHeader.Name" xml:space="preserve">
-    <value>pnlHeader</value>
-  </data>
-  <data name="&gt;&gt;btnCancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="lblName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>370, 23</value>
-  </data>
-  <data name="&gt;&gt;lblDetails.Name" xml:space="preserve">
-    <value>lblDetails</value>
-  </data>
   <data name="txtName.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
     <value>MiddleRight</value>
   </data>
-  <data name="&gt;&gt;txtDetails.Parent" xml:space="preserve">
-    <value>pnlCard</value>
-  </data>
-  <data name="lblDetails.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="btnSave.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="txtDetails.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="pnlCard.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>23, 27, 23, 27</value>
-  </data>
-  <data name="cbGradeLevels.Size" type="System.Drawing.Size, System.Drawing">
-    <value>451, 29</value>
-  </data>
-  <data name="&gt;&gt;cbGradeLevels.Name" xml:space="preserve">
-    <value>cbGradeLevels</value>
-  </data>
-  <data name="btnCancel.Text" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 47</value>
-  </data>
-  <data name="lblHeaderTitle.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 15pt, style=Bold</value>
+  <data name="btnSave.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
   <data name="pnlCard.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
     <value>MiddleRight</value>
   </data>
-  <data name="txtDetails.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="btnSave.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="lblHeaderTitle.Text" xml:space="preserve">
-    <value>اضافة شُعبة لمستوى دراسي</value>
-  </data>
-  <data name="cbGradeLevels.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.5pt</value>
-  </data>
-  <data name="txtName.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="lblGradeLevel.IconPadding" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="pnlHeader.IconPadding" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;lblDetails.Parent" xml:space="preserve">
-    <value>pnlCard</value>
-  </data>
-  <data name="pnlHeader.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>23, 13, 23, 13</value>
-  </data>
-  <data name="lblHeaderTitle.IconPadding" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="lblDetails.Error" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;errorProvider1.Name" xml:space="preserve">
-    <value>errorProvider1</value>
-  </data>
-  <data name="txtName.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.5pt</value>
-  </data>
-  <data name="lblHeaderTitle.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="lblName.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="txtDetails.Error" xml:space="preserve">
-    <value />
-  </data>
-  <data name="btnCancel.Error" xml:space="preserve">
-    <value />
-  </data>
-  <data name="btnSave.Text" xml:space="preserve">
-    <value>Save Class</value>
-  </data>
-  <data name="pnlCard.IconPadding" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="btnCancel.IconPadding" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;pnlHeader.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="pnlHeader.Size" type="System.Drawing.Size, System.Drawing">
-    <value>553, 93</value>
-  </data>
-  <data name="lblDetails.Location" type="System.Drawing.Point, System.Drawing">
-    <value>400, 164</value>
-  </data>
-  <data name="cbGradeLevels.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
-    <value>MiddleRight</value>
-  </data>
-  <data name="btnCancel.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Manage Class</value>
   </data>
   <data name="txtName.IconPadding" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;txtName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtDetails.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="lblHeaderTitle.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
-    <value>MiddleRight</value>
-  </data>
-  <data name="lblHeaderTitle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>139, 9</value>
-  </data>
-  <data name="txtName.Error" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;lblDetails.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="lblHeaderTitle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>303, 35</value>
-  </data>
-  <data name="lblGradeLevel.Error" xml:space="preserve">
-    <value />
-  </data>
-  <data name="btnCancel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="txtDetails.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="btnSave.IconPadding" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="&gt;&gt;txtName.Parent" xml:space="preserve">
     <value>pnlCard</value>
   </data>
-  <data name="&gt;&gt;pnlCard.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="btnSave.Text" xml:space="preserve">
+    <value>Save Class</value>
   </data>
-  <data name="&gt;&gt;lblHeaderTitle.ZOrder" xml:space="preserve">
+  <data name="cbGradeLevels.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 117</value>
+  </data>
+  <data name="&gt;&gt;lblHeaderTitle.Parent" xml:space="preserve">
+    <value>pnlHeader</value>
+  </data>
+  <data name="lblHeaderTitle.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 15pt, style=Bold</value>
+  </data>
+  <data name="btnCancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="lblGradeLevel.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="pnlCard.IconPadding" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;lblHeaderTitle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="txtName.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;pnlHeader.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lblDetails.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;btnSave.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;errorProvider1.Name" xml:space="preserve">
+    <value>errorProvider1</value>
+  </data>
+  <data name="lblName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 21</value>
+  </data>
+  <data name="&gt;&gt;btnSave.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="txtDetails.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="lblHeaderTitle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>303, 35</value>
+  </data>
+  <data name="&gt;&gt;lblDetails.Name" xml:space="preserve">
+    <value>lblDetails</value>
+  </data>
+  <data name="&gt;&gt;btnCancel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnlCard.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="txtDetails.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
   <data name="lblName.Text" xml:space="preserve">
     <value>  : اسم الشُعبة </value>
   </data>
-  <data name="lblHeaderTitle.AutoSize" type="System.Boolean, mscorlib">
+  <data name="btnCancel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.5pt</value>
+  </data>
+  <data name="lblGradeLevel.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="lblGradeLevel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;cbGradeLevels.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtName.Name" xml:space="preserve">
+    <value>txtName</value>
+  </data>
+  <data name="txtName.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.5pt</value>
+  </data>
+  <data name="cbGradeLevels.IconPadding" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="lblDetails.Text" xml:space="preserve">
-    <value>: ملاحظة  </value>
+  <data name="&gt;&gt;lblName.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
-  <data name="cbGradeLevels.Error" xml:space="preserve">
-    <value />
-  </data>
-  <data name="btnCancel.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
-    <value>MiddleRight</value>
+  <data name="btnCancel.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;pnlHeader.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="lblGradeLevel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>316, 92</value>
+  </data>
+  <data name="txtDetails.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 189</value>
+  </data>
+  <data name="&gt;&gt;btnCancel.Name" xml:space="preserve">
+    <value>btnCancel</value>
+  </data>
+  <data name="&gt;&gt;txtDetails.Name" xml:space="preserve">
+    <value>txtDetails</value>
+  </data>
+  <data name="&gt;&gt;lblGradeLevel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="lblDetails.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.5pt, style=Bold</value>
+  </data>
+  <data name="pnlHeader.Size" type="System.Drawing.Size, System.Drawing">
+    <value>553, 93</value>
+  </data>
+  <data name="&gt;&gt;lblDetails.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="pnlHeader.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtDetails.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="pnlCard.Size" type="System.Drawing.Size, System.Drawing">
+    <value>507, 299</value>
+  </data>
+  <data name="txtDetails.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;txtName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pnlHeader.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>23, 13, 23, 13</value>
+  </data>
+  <data name="btnSave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>137, 47</value>
+  </data>
+  <data name="&gt;&gt;btnSave.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="pnlCard.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;pnlCard.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;cbGradeLevels.Name" xml:space="preserve">
+    <value>cbGradeLevels</value>
+  </data>
+  <data name="cbGradeLevels.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="lblDetails.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="&gt;&gt;txtName.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="lblName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>370, 23</value>
+  </data>
+  <data name="cbGradeLevels.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblGradeLevel.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lblDetails.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="cbGradeLevels.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="btnCancel.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 47</value>
+  </data>
+  <data name="cbGradeLevels.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="btnSave.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="&gt;&gt;lblDetails.Parent" xml:space="preserve">
+    <value>pnlCard</value>
+  </data>
+  <data name="&gt;&gt;pnlCard.Name" xml:space="preserve">
+    <value>pnlCard</value>
+  </data>
+  <data name="btnCancel.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="btnCancel.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>frmAddEditClass</value>
+  </data>
+  <data name="lblName.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="btnSave.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="cbGradeLevels.Size" type="System.Drawing.Size, System.Drawing">
+    <value>451, 29</value>
+  </data>
+  <data name="&gt;&gt;pnlCard.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pnlHeader.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="lblName.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lblHeaderTitle.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="lblGradeLevel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.5pt, style=Bold</value>
+  </data>
+  <data name="txtName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>451, 29</value>
+  </data>
+  <data name="btnCancel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="lblDetails.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 21</value>
+  </data>
+  <data name="lblName.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="btnSave.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="&gt;&gt;lblGradeLevel.Parent" xml:space="preserve">
+    <value>pnlCard</value>
+  </data>
+  <data name="lblHeaderTitle.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="txtDetails.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblGradeLevel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 21</value>
+  </data>
+  <data name="pnlHeader.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="pnlHeader.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;cbGradeLevels.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="txtName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 48</value>
+  </data>
+  <data name="lblGradeLevel.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="btnCancel.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtName.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="btnSave.Location" type="System.Drawing.Point, System.Drawing">
+    <value>269, 433</value>
+  </data>
+  <data name="pnlCard.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="&gt;&gt;cbGradeLevels.Parent" xml:space="preserve">
+    <value>pnlCard</value>
+  </data>
+  <data name="lblHeaderTitle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>139, 9</value>
+  </data>
+  <data name="lblDetails.Text" xml:space="preserve">
+    <value>: ملاحظة  </value>
+  </data>
+  <data name="&gt;&gt;lblHeaderTitle.Name" xml:space="preserve">
+    <value>lblHeaderTitle</value>
+  </data>
+  <data name="lblHeaderTitle.Text" xml:space="preserve">
+    <value>اضافة شُعبة لمستوى دراسي</value>
+  </data>
+  <data name="btnSave.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.5pt, style=Bold</value>
+  </data>
+  <data name="pnlCard.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="pnlCard.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>23, 27, 23, 27</value>
+  </data>
+  <data name="lblGradeLevel.Text" xml:space="preserve">
+    <value>اسم المستوى الدراسي  </value>
+  </data>
+  <data name="lblHeaderTitle.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>8, 20</value>
+  </data>
+  <data name="lblHeaderTitle.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;lblHeaderTitle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="lblName.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.5pt, style=Bold</value>
+  </data>
+  <data name="lblDetails.Location" type="System.Drawing.Point, System.Drawing">
+    <value>400, 164</value>
+  </data>
+  <data name="pnlCard.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 113</value>
+  </data>
+  <data name="lblDetails.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="lblDetails.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="pnlHeader.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
   </data>
   <data name="pnlHeader.Error" xml:space="preserve">
     <value />
@@ -376,220 +511,85 @@
   <data name="&gt;&gt;btnCancel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;cbGradeLevels.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="cbGradeLevels.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="&gt;&gt;lblGradeLevel.Parent" xml:space="preserve">
-    <value>pnlCard</value>
-  </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>553, 500</value>
-  </data>
-  <data name="btnSave.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
-    <value>MiddleRight</value>
-  </data>
-  <data name="&gt;&gt;cbGradeLevels.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="lblName.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
-    <value>MiddleRight</value>
-  </data>
-  <data name="txtName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 48</value>
-  </data>
-  <data name="txtName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>451, 29</value>
-  </data>
-  <data name="&gt;&gt;txtDetails.Name" xml:space="preserve">
-    <value>txtDetails</value>
   </data>
   <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
     <value>417, 433</value>
   </data>
-  <data name="txtDetails.Size" type="System.Drawing.Size, System.Drawing">
-    <value>451, 79</value>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
   </data>
-  <data name="txtDetails.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.5pt</value>
-  </data>
-  <data name="lblName.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.5pt, style=Bold</value>
-  </data>
-  <data name="lblGradeLevel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 21</value>
-  </data>
-  <data name="&gt;&gt;lblDetails.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="pnlHeader.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
-    <value>MiddleRight</value>
-  </data>
-  <data name="btnSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>137, 47</value>
-  </data>
-  <data name="lblGradeLevel.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="btnSave.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="txtDetails.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
-    <value>MiddleRight</value>
-  </data>
-  <data name="lblGradeLevel.Text" xml:space="preserve">
-    <value>اسم المستوى الدراسي  </value>
-  </data>
-  <data name="lblGradeLevel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+  <data name="lblHeaderTitle.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
   </data>
-  <data name="pnlCard.Size" type="System.Drawing.Size, System.Drawing">
-    <value>507, 299</value>
-  </data>
-  <data name="lblGradeLevel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.5pt, style=Bold</value>
-  </data>
-  <data name="&gt;&gt;txtName.Name" xml:space="preserve">
-    <value>txtName</value>
-  </data>
-  <data name="lblGradeLevel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>316, 92</value>
+  <data name="lblName.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
   </data>
   <data name="&gt;&gt;txtDetails.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;cbGradeLevels.Parent" xml:space="preserve">
-    <value>pnlCard</value>
-  </data>
-  <data name="cbGradeLevels.IconPadding" type="System.Int32, mscorlib">
+  <data name="pnlHeader.IconPadding" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="cbGradeLevels.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="&gt;&gt;lblDetails.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btnSave.Name" xml:space="preserve">
-    <value>btnSave</value>
+  <data name="cbGradeLevels.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.5pt</value>
   </data>
-  <data name="pnlCard.Error" xml:space="preserve">
-    <value />
-  </data>
-  <data name="pnlHeader.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="lblHeaderTitle.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;lblHeaderTitle.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="txtDetails.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 189</value>
+  <data name="btnSave.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
   </data>
-  <data name="&gt;&gt;pnlHeader.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;lblGradeLevel.Name" xml:space="preserve">
+    <value>lblGradeLevel</value>
   </data>
-  <data name="&gt;&gt;lblHeaderTitle.Name" xml:space="preserve">
-    <value>lblHeaderTitle</value>
+  <data name="&gt;&gt;errorProvider1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ErrorProvider, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="btnSave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>269, 433</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Manage Class</value>
-  </data>
-  <data name="txtDetails.IconPadding" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;txtDetails.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>frmAddEditClass</value>
+  <data name="lblName.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="pnlCard.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="txtDetails.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
   </data>
-  <data name="lblDetails.IconPadding" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="txtDetails.Size" type="System.Drawing.Size, System.Drawing">
+    <value>451, 79</value>
+  </data>
+  <data name="txtName.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
   </data>
   <data name="&gt;&gt;lblName.Name" xml:space="preserve">
     <value>lblName</value>
   </data>
-  <data name="lblName.IconPadding" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;btnSave.Name" xml:space="preserve">
+    <value>btnSave</value>
   </data>
-  <data name="&gt;&gt;lblName.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;btnSave.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="btnSave.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.5pt, style=Bold</value>
-  </data>
-  <data name="lblGradeLevel.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
-    <value>MiddleRight</value>
-  </data>
-  <data name="lblName.Error" xml:space="preserve">
-    <value />
-  </data>
-  <data name="pnlHeader.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 20</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pnlCard.Name" xml:space="preserve">
-    <value>pnlCard</value>
-  </data>
-  <data name="btnCancel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.5pt</value>
+  <data name="lblGradeLevel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
   </data>
   <data name="&gt;&gt;lblName.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="lblDetails.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
+  <data name="&gt;&gt;pnlHeader.Name" xml:space="preserve">
+    <value>pnlHeader</value>
   </data>
-  <data name="&gt;&gt;btnSave.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="lblDetails.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
-  <data name="pnlCard.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 113</value>
-  </data>
-  <data name="pnlHeader.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="&gt;&gt;lblGradeLevel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterParent</value>
-  </data>
-  <data name="lblName.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="lblHeaderTitle.Error" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;btnSave.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="lblDetails.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
-    <value>MiddleRight</value>
-  </data>
-  <data name="&gt;&gt;lblName.Parent" xml:space="preserve">
-    <value>pnlCard</value>
-  </data>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, System.Private.CoreLib, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
+    <value>ar</value>
+  </metadata>
   <metadata name="errorProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, System.Private.CoreLib, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
-    <value>ar</value>
   </metadata>
 </root>
