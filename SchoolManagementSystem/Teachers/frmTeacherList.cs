@@ -25,7 +25,7 @@ namespace SchoolManagementSystem.Teachers
             cbFilterGender.SelectedIndex = 0;
             cbFilterStatus.SelectedIndex = 0;
 
-            LoadTeachers();
+
         }
 
         private void LoadTeachers()
@@ -34,57 +34,39 @@ namespace SchoolManagementSystem.Teachers
             _dvTeachers = _dtTeachers.DefaultView;
             dgvTeachers.DataSource = _dvTeachers;
 
-            if (dgvTeachers.Columns.Contains("TeacherID"))
+            if (dgvTeachers.Rows.Count > 0)
             {
                 dgvTeachers.Columns["TeacherID"].HeaderText = "ID";
                 dgvTeachers.Columns["TeacherID"].Width = 70;
-            }
-            if (dgvTeachers.Columns.Contains("FullName"))
-            {
+
                 dgvTeachers.Columns["FullName"].HeaderText = "Teacher Name";
                 dgvTeachers.Columns["FullName"].Width = 180;
-            }
-            if (dgvTeachers.Columns.Contains("PhoneNumber"))
-            {
+
                 dgvTeachers.Columns["PhoneNumber"].HeaderText = "Phone";
                 dgvTeachers.Columns["PhoneNumber"].Width = 120;
-            }
-            if (dgvTeachers.Columns.Contains("Email"))
-            {
+
+
                 dgvTeachers.Columns["Email"].HeaderText = "Email Address";
                 dgvTeachers.Columns["Email"].Width = 180;
-            }
-            if (dgvTeachers.Columns.Contains("Specialization"))
-            {
-                dgvTeachers.Columns["Specialization"].HeaderText = "Subject/Specialty";
+
+                dgvTeachers.Columns["Specialization"].HeaderText = "Subject Name";
                 dgvTeachers.Columns["Specialization"].Width = 140;
-            }
-            if (dgvTeachers.Columns.Contains("Qualification"))
-            {
+
                 dgvTeachers.Columns["Qualification"].HeaderText = "Qualification";
                 dgvTeachers.Columns["Qualification"].Width = 130;
-            }
-            if (dgvTeachers.Columns.Contains("HireDate"))
-            {
+
                 dgvTeachers.Columns["HireDate"].HeaderText = "Hire Date";
                 dgvTeachers.Columns["HireDate"].Width = 100;
                 dgvTeachers.Columns["HireDate"].DefaultCellStyle.Format = "yyyy-MM-dd";
-            }
-            if (dgvTeachers.Columns.Contains("EmploymentStatus"))
-            {
+
+
                 dgvTeachers.Columns["EmploymentStatus"].HeaderText = "Status";
                 dgvTeachers.Columns["EmploymentStatus"].Width = 90;
-            }
-            if (dgvTeachers.Columns.Contains("Gender"))
-            {
+
                 dgvTeachers.Columns["Gender"].HeaderText = "Gender";
                 dgvTeachers.Columns["Gender"].Width = 80;
             }
-            if (dgvTeachers.Columns.Contains("FirstName")) dgvTeachers.Columns["FirstName"].Visible = false;
-            if (dgvTeachers.Columns.Contains("LastName")) dgvTeachers.Columns["LastName"].Visible = false;
-            if (dgvTeachers.Columns.Contains("GenderID")) dgvTeachers.Columns["GenderID"].Visible = false;
-            if (dgvTeachers.Columns.Contains("Address")) dgvTeachers.Columns["Address"].Visible = false;
-            if (dgvTeachers.Columns.Contains("About")) dgvTeachers.Columns["About"].Visible = false;
+
 
             UpdateCount();
         }
@@ -225,6 +207,11 @@ namespace SchoolManagementSystem.Teachers
                     MessageBox.Show("Error deleting teacher: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void FrmTeacherList_Load(object sender, EventArgs e)
+        {
+            LoadTeachers();
         }
     }
 }

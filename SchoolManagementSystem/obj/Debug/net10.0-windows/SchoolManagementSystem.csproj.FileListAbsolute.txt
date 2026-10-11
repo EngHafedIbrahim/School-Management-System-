@@ -52,3 +52,12 @@ C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystem\obj\D
 C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystem\obj\Debug\net10.0-windows\SchoolManagementSystem.Classes.frmClassProfile.resources
 C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystem\obj\Debug\net10.0-windows\SchoolManagementSystem.Academic.frmGradeLevels.resources
 C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystem\obj\Debug\net10.0-windows\SchoolManagementSystem.Classes.frmClassList.resources
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystem\obj\Debug\net10.0-windows\SchoolManagementSystem.Teachers.frmTeacherList.resources
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystem\bin\Debug\net10.0-windows\aa-DJ\SchoolManagementSystem.resources.dll
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystem\bin\Debug\net10.0-windows\aa\SchoolManagementSystem.resources.dll
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystem\obj\Debug\net10.0-windows\SchoolManagementSystem.Classes.frmAddEditClass.aa-DJ.resources
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystem\obj\Debug\net10.0-windows\SchoolManagementSystem.Classes.frmAddEditClass.aa.resources
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystem\obj\Debug\net10.0-windows\SchoolManagementSystem.Classes.frmAddEditClass.ar.resources
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystem\obj\Debug\net10.0-windows\aa-DJ\SchoolManagementSystem.resources.dll
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystem\obj\Debug\net10.0-windows\aa\SchoolManagementSystem.resources.dll
+C:\Users\Eng.Hafed\Desktop\School Management System\SchoolManagementSystem\obj\Debug\net10.0-windows\SchoolManagementSystem.Classes.frmClassList.ar.resources

@@ -281,23 +281,20 @@ namespace SchoolManagementSystemDataAccessLayer
                 {
                     string query = @"
                         SELECT 
-                            t.TeacherID,
-                            (t.FirstName + ' ' + t.LastName) AS FullName,
-                            t.FirstName,
-                            t.LastName,
-                            t.PhoneNumber,
-                            t.Email,
-                            t.Specialization,
-                            t.Qualification,
-                            t.HireDate,
-                            t.EmploymentStatus,
-                            ISNULL(g.Name, 'N/A') AS Gender,
-                            t.GenderID,
-                            t.Address,
-                            t.About
-                        FROM [Teacher] t
-                        LEFT JOIN [Gender] g ON t.GenderID = g.GenderID
-                        ORDER BY t.FirstName, t.LastName";
+                            TeacherID,
+                            (FirstName + ' ' + LastName) AS FullName,
+                            PhoneNumber,
+                            Email,
+                            Specialization,
+                            Qualification,
+                            HireDate,
+                            EmploymentStatus, 
+                              Case 
+                                WHEN GenderID = 1 THEN 'Male' ELSE 'Female' END AS Gender,
+                            Address,
+                            About
+                        FROM [Teacher] 
+                        ORDER BY FirstName, LastName";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         connection.Open();

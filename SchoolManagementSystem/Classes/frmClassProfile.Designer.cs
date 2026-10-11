@@ -136,7 +136,7 @@ namespace SchoolManagementSystem.Classes
             lblValTotalCourses.AutoSize = true;
             lblValTotalCourses.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblValTotalCourses.ForeColor = Color.FromArgb(41, 128, 185);
-            lblValTotalCourses.Location = new Point(251, 273);
+            lblValTotalCourses.Location = new Point(497, 318);
             lblValTotalCourses.Name = "lblValTotalCourses";
             lblValTotalCourses.Size = new Size(24, 28);
             lblValTotalCourses.TabIndex = 9;
@@ -147,18 +147,18 @@ namespace SchoolManagementSystem.Classes
             lblTTotalCourses.AutoSize = true;
             lblTTotalCourses.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             lblTTotalCourses.ForeColor = Color.FromArgb(120, 130, 140);
-            lblTTotalCourses.Location = new Point(34, 276);
+            lblTTotalCourses.Location = new Point(656, 324);
             lblTTotalCourses.Name = "lblTTotalCourses";
-            lblTTotalCourses.Size = new Size(151, 21);
+            lblTTotalCourses.Size = new Size(85, 21);
             lblTTotalCourses.TabIndex = 8;
-            lblTTotalCourses.Text = "Assigned Subjects:";
+            lblTTotalCourses.Text = "عدد المواد :";
             // 
             // lblValTotalStudents
             // 
             lblValTotalStudents.AutoSize = true;
             lblValTotalStudents.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblValTotalStudents.ForeColor = Color.FromArgb(39, 174, 96);
-            lblValTotalStudents.Location = new Point(251, 213);
+            lblValTotalStudents.Location = new Point(497, 258);
             lblValTotalStudents.Name = "lblValTotalStudents";
             lblValTotalStudents.Size = new Size(24, 28);
             lblValTotalStudents.TabIndex = 7;
@@ -169,19 +169,20 @@ namespace SchoolManagementSystem.Classes
             lblTTotalStudents.AutoSize = true;
             lblTTotalStudents.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             lblTTotalStudents.ForeColor = Color.FromArgb(120, 130, 140);
-            lblTTotalStudents.Location = new Point(34, 216);
+            lblTTotalStudents.Location = new Point(656, 264);
             lblTTotalStudents.Name = "lblTTotalStudents";
-            lblTTotalStudents.Size = new Size(149, 21);
+            lblTTotalStudents.Size = new Size(93, 21);
             lblTTotalStudents.TabIndex = 6;
-            lblTTotalStudents.Text = "Enrolled Students:";
+            lblTTotalStudents.Text = "عدد الطلاب :";
             // 
             // lblValDetails
             // 
+            lblValDetails.AutoSize = true;
             lblValDetails.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             lblValDetails.ForeColor = Color.FromArgb(33, 37, 41);
-            lblValDetails.Location = new Point(251, 153);
+            lblValDetails.Location = new Point(497, 198);
             lblValDetails.Name = "lblValDetails";
-            lblValDetails.Size = new Size(629, 53);
+            lblValDetails.Size = new Size(28, 21);
             lblValDetails.TabIndex = 5;
             lblValDetails.Text = "---";
             // 
@@ -190,18 +191,18 @@ namespace SchoolManagementSystem.Classes
             lblTDetails.AutoSize = true;
             lblTDetails.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             lblTDetails.ForeColor = Color.FromArgb(120, 130, 140);
-            lblTDetails.Location = new Point(34, 153);
+            lblTDetails.Location = new Point(656, 201);
             lblTDetails.Name = "lblTDetails";
-            lblTDetails.Size = new Size(119, 21);
+            lblTDetails.Size = new Size(77, 21);
             lblTDetails.TabIndex = 4;
-            lblTDetails.Text = "Notes / Room:";
+            lblTDetails.Text = "ملاحظات :";
             // 
             // lblValGradeLevel
             // 
             lblValGradeLevel.AutoSize = true;
             lblValGradeLevel.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             lblValGradeLevel.ForeColor = Color.FromArgb(33, 37, 41);
-            lblValGradeLevel.Location = new Point(251, 93);
+            lblValGradeLevel.Location = new Point(497, 138);
             lblValGradeLevel.Name = "lblValGradeLevel";
             lblValGradeLevel.Size = new Size(28, 21);
             lblValGradeLevel.TabIndex = 3;
@@ -212,18 +213,18 @@ namespace SchoolManagementSystem.Classes
             lblTGradeLevel.AutoSize = true;
             lblTGradeLevel.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             lblTGradeLevel.ForeColor = Color.FromArgb(120, 130, 140);
-            lblTGradeLevel.Location = new Point(34, 93);
+            lblTGradeLevel.Location = new Point(656, 141);
             lblTGradeLevel.Name = "lblTGradeLevel";
-            lblTGradeLevel.Size = new Size(103, 21);
+            lblTGradeLevel.Size = new Size(128, 21);
             lblTGradeLevel.TabIndex = 2;
-            lblTGradeLevel.Text = "Grade Level:";
+            lblTGradeLevel.Text = "المستوى الدراسي :";
             // 
             // lblValClassName
             // 
             lblValClassName.AutoSize = true;
             lblValClassName.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblValClassName.ForeColor = Color.FromArgb(44, 62, 80);
-            lblValClassName.Location = new Point(251, 33);
+            lblValClassName.Location = new Point(497, 78);
             lblValClassName.Name = "lblValClassName";
             lblValClassName.Size = new Size(36, 28);
             lblValClassName.TabIndex = 1;
@@ -234,11 +235,11 @@ namespace SchoolManagementSystem.Classes
             lblTClassName.AutoSize = true;
             lblTClassName.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             lblTClassName.ForeColor = Color.FromArgb(120, 130, 140);
-            lblTClassName.Location = new Point(34, 36);
+            lblTClassName.Location = new Point(656, 84);
             lblTClassName.Name = "lblTClassName";
-            lblTClassName.Size = new Size(102, 21);
+            lblTClassName.Size = new Size(92, 21);
             lblTClassName.TabIndex = 0;
-            lblTClassName.Text = "Class Name:";
+            lblTClassName.Text = "اسم الشعبة :";
             // 
             // tabStudents
             // 
@@ -418,7 +419,7 @@ namespace SchoolManagementSystem.Classes
             btnEditClass.FlatStyle = FlatStyle.Flat;
             btnEditClass.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             btnEditClass.ForeColor = Color.White;
-            btnEditClass.Location = new Point(720, 740);
+            btnEditClass.Location = new Point(40, 746);
             btnEditClass.Margin = new Padding(3, 4, 3, 4);
             btnEditClass.Name = "btnEditClass";
             btnEditClass.Size = new Size(149, 48);
@@ -433,7 +434,7 @@ namespace SchoolManagementSystem.Classes
             btnClose.FlatAppearance.BorderColor = Color.FromArgb(220, 224, 230);
             btnClose.FlatStyle = FlatStyle.Flat;
             btnClose.Font = new Font("Segoe UI", 9.5F);
-            btnClose.Location = new Point(880, 740);
+            btnClose.Location = new Point(200, 746);
             btnClose.Margin = new Padding(3, 4, 3, 4);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(126, 48);
@@ -457,6 +458,8 @@ namespace SchoolManagementSystem.Classes
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "frmClassProfile";
+            RightToLeft = RightToLeft.Yes;
+            RightToLeftLayout = true;
             StartPosition = FormStartPosition.CenterParent;
             Text = "Class Profile Hub";
             pnlHeader.ResumeLayout(false);

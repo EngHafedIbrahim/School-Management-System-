@@ -59,7 +59,7 @@ namespace SchoolManagementSystem.Globle_Classes
             dgv.DefaultCellStyle.SelectionBackColor = PrimaryColor;
             dgv.DefaultCellStyle.SelectionForeColor = Color.White;
             dgv.DefaultCellStyle.Padding = new Padding(6, 0, 6, 0);
-
+            dgv.RightToLeft = RightToLeft.Yes;
             dgv.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(248, 250, 252);
         }
 

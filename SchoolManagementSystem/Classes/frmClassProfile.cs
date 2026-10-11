@@ -24,7 +24,8 @@ namespace SchoolManagementSystem.Classes
 
             clsUITheme.StylePrimaryButton(btnEditClass);
             clsUITheme.StyleSecondaryButton(btnClose);
-
+            btnEditClass.Text = "تعديل";
+            btnClose.Text = "إغلاق";
             this.tabControl.SelectedIndexChanged += TabControl_SelectedIndexChanged;
 
             LoadClassData();
@@ -52,13 +53,13 @@ namespace SchoolManagementSystem.Classes
             lblValTotalCourses.Text = dtCourses.Rows.Count.ToString();
             dgvCourses.DataSource = dtCourses;
 
-            // Load currently active tab
-            LoadTabContent(tabControl.SelectedIndex);
+            //// Load currently active tab
+            //LoadTabContent(tabControl.SelectedIndex);
         }
 
         private void TabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadTabContent(tabControl.SelectedIndex);
+            //LoadTabContent(tabControl.SelectedIndex);
         }
 
         private void LoadTabContent(int tabIndex)

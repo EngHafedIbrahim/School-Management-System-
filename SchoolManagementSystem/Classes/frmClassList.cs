@@ -14,13 +14,18 @@ namespace SchoolManagementSystem.Classes
         public frmClassList()
         {
             InitializeComponent();
-            //Text = "قائمة ادارة الشُعب الدراسية";
             clsUITheme.StyleDataGridView(dgvClasses);
             clsUITheme.StyleSuccessButton(btnAddClass);
             clsUITheme.StylePrimaryButton(btnViewProfile);
             clsUITheme.StyleSecondaryButton(btnEdit);
             clsUITheme.StyleDangerButton(btnDelete);
             clsUITheme.StyleSecondaryButton(btnRefresh);
+            Text = "قائمة ادارة الشُعب الدراسية";
+            btnEdit.Text = "تعديل";
+            btnViewProfile.Text = "عرض";
+            btnDelete.Text = "حذف";
+            btnAddClass.Text = "+إضافة شُعبة";
+
 
         }
 
@@ -50,12 +55,12 @@ namespace SchoolManagementSystem.Classes
             }
             if (dgvClasses.Columns.Contains("ClassName"))
             {
-                dgvClasses.Columns["ClassName"].HeaderText = "Class Name";
+                dgvClasses.Columns["ClassName"].HeaderText = "اسم الشعبة";
                 dgvClasses.Columns["ClassName"].Width = 180;
             }
             if (dgvClasses.Columns.Contains("GradeLevelName"))
             {
-                dgvClasses.Columns["GradeLevelName"].HeaderText = "Grade Level";
+                dgvClasses.Columns["GradeLevelName"].HeaderText = "المستوى الدراسي";
                 dgvClasses.Columns["GradeLevelName"].Width = 180;
             }
             if (dgvClasses.Columns.Contains("GradeLevelID"))
@@ -68,7 +73,7 @@ namespace SchoolManagementSystem.Classes
             }
             if (dgvClasses.Columns.Contains("Details"))
             {
-                dgvClasses.Columns["Details"].HeaderText = "Notes";
+                dgvClasses.Columns["Details"].HeaderText = "ملاحظة";
             }
 
             UpdateCount();

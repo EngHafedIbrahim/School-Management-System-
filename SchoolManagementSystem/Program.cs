@@ -1,4 +1,5 @@
 using SchoolManagementSystem.Academic;
+using SchoolManagementSystem.Classes;
 using SchoolManagementSystem.Courses;
 using SchoolManagementSystem.Login;
 using SchoolManagementSystem.Parents;
@@ -21,7 +22,8 @@ namespace SchoolManagementSystem
             //Application.Run(new frmLogin ());
             //Application.Run(new frmTeacherList());
             //application.run(new frmcourselist());
-            Application.Run(new frmGradeLevels());
+            //Application.Run(new frmGradeLevels());
+            Application.Run(new frmClassList());
 
             //frmLogin login = new frmLogin();
 

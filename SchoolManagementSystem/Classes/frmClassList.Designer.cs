@@ -88,7 +88,6 @@ namespace SchoolManagementSystem.Classes
             btnDelete.Name = "btnDelete";
             btnDelete.UseVisualStyleBackColor = false;
             btnDelete.Click += BtnDelete_Click;
-            btnDelete.Text = "حذف";
             // 
             // btnEdit
             // 
@@ -98,7 +97,6 @@ namespace SchoolManagementSystem.Classes
             btnEdit.Name = "btnEdit";
             btnEdit.UseVisualStyleBackColor = true;
             btnEdit.Click += BtnEdit_Click;
-            btnEdit.Text = "تعديل";
             // 
             // btnViewProfile
             // 
@@ -110,8 +108,6 @@ namespace SchoolManagementSystem.Classes
             btnViewProfile.Name = "btnViewProfile";
             btnViewProfile.UseVisualStyleBackColor = false;
             btnViewProfile.Click += BtnViewProfile_Click;
-            btnViewProfile.Text = "عرض";
-
             // 
             // btnAddClass
             // 
@@ -123,8 +119,6 @@ namespace SchoolManagementSystem.Classes
             btnAddClass.Name = "btnAddClass";
             btnAddClass.UseVisualStyleBackColor = false;
             btnAddClass.Click += BtnAddClass_Click;
-            btnAddClass.Text = "+إضافة شُعبة";
-
             // 
             // cbFilterGrade
             // 
@@ -133,7 +127,6 @@ namespace SchoolManagementSystem.Classes
             cbFilterGrade.FormattingEnabled = true;
             cbFilterGrade.Name = "cbFilterGrade";
             cbFilterGrade.SelectedIndexChanged += CbFilterGrade_SelectedIndexChanged;
-
             // 
             // lblFilterGrade
             // 

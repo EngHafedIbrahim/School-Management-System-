@@ -15,6 +15,12 @@
           "SchoolManagementSystem.dll": {}
         },
         "resources": {
+          "aa-DJ/SchoolManagementSystem.resources.dll": {
+            "locale": "aa-DJ"
+          },
+          "aa/SchoolManagementSystem.resources.dll": {
+            "locale": "aa"
+          },
           "ar/SchoolManagementSystem.resources.dll": {
             "locale": "ar"
           }
