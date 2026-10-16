@@ -265,5 +265,44 @@ namespace SchoolManagementSystemDataAccessLayer
             return dt;
         }
 
+
+        public static DataTable GetAttendanceSummaryByStudent(int studentID, int academicYearID)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = @"
+                        SELECT 
+                            COUNT(*) AS TotalSessions,
+                            SUM(CASE WHEN a.Status = 'Present' THEN 1 ELSE 0 END) AS PresentCount,
+                            SUM(CASE WHEN a.Status = 'Absent' THEN 1 ELSE 0 END) AS AbsentCount,
+                            SUM(CASE WHEN a.Status = 'Late' THEN 1 ELSE 0 END) AS LateCount,
+                            CASE WHEN COUNT(*) > 0 
+                                THEN ROUND(CAST(SUM(CASE WHEN a.Status = 'Present' OR a.Status = 'Late' THEN 1 ELSE 0 END) AS FLOAT) / COUNT(*) * 100, 2) 
+                                ELSE 0 END AS AttendancePercentage
+                        FROM Attendance a
+                        INNER JOIN Schedule sc ON a.ScheduleID = sc.ScheduleID
+                        WHERE a.StudentID = @StudentID AND sc.AcademicYearID = @AcademicYearID";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@StudentID", studentID);
+                        command.Parameters.AddWithValue("@AcademicYearID", academicYearID);
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            dt.Load(reader);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return dt;
+        }
+
 }
 }

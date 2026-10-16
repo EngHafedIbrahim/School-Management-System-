@@ -7,14 +7,14 @@ namespace SchoolManagementSystemDataAccessLayer
 {
     public static class clsDAClassCourse
     {
-        public static bool Find(int ClassCourseID, ref int ClassID, ref int CourseID, ref int TeacherID, ref int AcademicYearID, ref DateTime CreatedAt, ref DateTime UpdatedAt, ref bool IsDeleted)
+        public static bool Find(int ClassCourseID,ref int GradeLevelID, ref int ClassID, ref int CourseID, ref int TeacherID, ref int AcademicYearID, ref DateTime CreatedAt, ref DateTime UpdatedAt, ref bool IsDeleted)
         {
             bool isFound = false;
             try
             {
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
                 {
-                    string query = "SELECT * FROM ClassCourse WHERE ClassCourseID = @ClassCourseID";
+                    string query = "SELECT Top (1) * FROM ClassCourse WHERE ClassCourseID = @ClassCourseID";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@ClassCourseID", ClassCourseID);
@@ -27,6 +27,7 @@ namespace SchoolManagementSystemDataAccessLayer
                                                                 ClassID = (int)reader["ClassID"];
                                 CourseID = (int)reader["CourseID"];
                                 TeacherID = (int)reader["TeacherID"];
+                                GradeLevelID = (int)reader["GradeLevelID"];
                                 AcademicYearID = (int)reader["AcademicYearID"];
                                 CreatedAt = (DateTime)reader["CreatedAt"];
                                 UpdatedAt = (DateTime)reader["UpdatedAt"];
@@ -43,21 +44,22 @@ namespace SchoolManagementSystemDataAccessLayer
             return isFound;
         }
 
-        public static int AddNewClassCourse(int ClassID, int CourseID, int TeacherID, int AcademicYearID, DateTime CreatedAt, DateTime UpdatedAt, bool IsDeleted)
+        public static int AddNewClassCourse(int ClassID,int GradeLevelID, int CourseID, int TeacherID, int AcademicYearID, DateTime CreatedAt, DateTime UpdatedAt, bool IsDeleted)
         {
             int ClassCourseID = -1;
             try
             {
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
                 {
-                    string query = @"INSERT INTO ClassCourse (ClassID, CourseID, TeacherID, AcademicYearID, CreatedAt, UpdatedAt, IsDeleted) 
-                                     VALUES (@ClassID, @CourseID, @TeacherID, @AcademicYearID, @CreatedAt, @UpdatedAt, @IsDeleted);
+                    string query = @"INSERT INTO ClassCourse (ClassID,GradeLevelID, CourseID ,TeacherID, AcademicYearID, CreatedAt, UpdatedAt, IsDeleted) 
+                                     VALUES (@ClassID,@GradeLevelID, @CourseID, @TeacherID, @AcademicYearID, @CreatedAt, @UpdatedAt, @IsDeleted);
                                      SELECT SCOPE_IDENTITY();";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                                                 command.Parameters.AddWithValue("@ClassID", ClassID);
                         command.Parameters.AddWithValue("@CourseID", CourseID);
                         command.Parameters.AddWithValue("@TeacherID", TeacherID);
+                        command.Parameters.AddWithValue("@GradeLevelID", GradeLevelID);
                         command.Parameters.AddWithValue("@AcademicYearID", AcademicYearID);
                         command.Parameters.AddWithValue("@CreatedAt", CreatedAt);
                         command.Parameters.AddWithValue("@UpdatedAt", UpdatedAt);
@@ -78,7 +80,7 @@ namespace SchoolManagementSystemDataAccessLayer
             return ClassCourseID;
         }
 
-        public static bool UpdateClassCourse(int ClassCourseID, int ClassID, int CourseID, int TeacherID, int AcademicYearID, DateTime CreatedAt, DateTime UpdatedAt, bool IsDeleted)
+        public static bool UpdateClassCourse(int ClassCourseID, int GradeLevelID, int ClassID, int CourseID, int TeacherID, int AcademicYearID, DateTime CreatedAt, DateTime UpdatedAt, bool IsDeleted)
         {
             int rowsAffected = 0;
             try
@@ -86,7 +88,7 @@ namespace SchoolManagementSystemDataAccessLayer
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
                 {
                     string query = @"UPDATE [ClassCourse] 
-                                     SET ClassID = @ClassID, CourseID = @CourseID, TeacherID = @TeacherID, AcademicYearID = @AcademicYearID, CreatedAt = @CreatedAt, UpdatedAt = @UpdatedAt, IsDeleted = @IsDeleted
+                                     SET GradeLevelID = @GradeLevelID ,ClassID = @ClassID, CourseID = @CourseID, TeacherID = @TeacherID, AcademicYearID = @AcademicYearID, CreatedAt = @CreatedAt, UpdatedAt = @UpdatedAt, IsDeleted = @IsDeleted
                                      WHERE ClassCourseID = @ClassCourseID";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -94,6 +96,7 @@ namespace SchoolManagementSystemDataAccessLayer
                                                 command.Parameters.AddWithValue("@ClassID", ClassID);
                         command.Parameters.AddWithValue("@CourseID", CourseID);
                         command.Parameters.AddWithValue("@TeacherID", TeacherID);
+                        command.Parameters.AddWithValue("@GradeLevelID", GradeLevelID);
                         command.Parameters.AddWithValue("@AcademicYearID", AcademicYearID);
                         command.Parameters.AddWithValue("@CreatedAt", CreatedAt);
                         command.Parameters.AddWithValue("@UpdatedAt", UpdatedAt);
@@ -170,6 +173,36 @@ namespace SchoolManagementSystemDataAccessLayer
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@ClassCourseID", ClassCourseID);
+                        connection.Open();
+                        object result = command.ExecuteScalar();
+                        if (result != null)
+                        {
+                            isFound = Convert.ToInt32(result) > 0;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return isFound;
+        }
+    
+        public static bool DoesClassCourseWithThoseExist(int TeacherID,int CourseID,int ClassID)
+        {
+            bool isFound = false;
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = "SELECT TOP 1 1 FROM ClassCourse WHERE TeacherID = @TeacherID and CourseID= @CourseID  and ClassID = @ClassID";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@TeacherID", TeacherID);
+                        command.Parameters.AddWithValue("@ClassID", ClassID);
+                        command.Parameters.AddWithValue("@CourseID", CourseID);
+                        //command.Parameters.AddWithValue("@GradeLevelID", GradeLevelID);
                         connection.Open();
                         object result = command.ExecuteScalar();
                         if (result != null)
@@ -278,7 +311,7 @@ namespace SchoolManagementSystemDataAccessLayer
                     string query = @"
                         SELECT 
                             cc.ClassCourseID,
-                            cc.ClassID,
+                            cc.ClassID,gl.Name as GradeLevel,
                             cl.Name AS ClassName,
                             cc.CourseID,
                             c.Name AS CourseName,
@@ -288,6 +321,7 @@ namespace SchoolManagementSystemDataAccessLayer
                             ay.YearName AS AcademicYear
                         FROM ClassCourse cc
                         INNER JOIN Class cl ON cc.ClassID = cl.ClassID
+                        INNER JOIN GradeLevel gl ON gl.GradeLevelID = cl.GradeLevelID
                         INNER JOIN Course c ON cc.CourseID = c.CourseID
                         INNER JOIN Teacher t ON cc.TeacherID = t.TeacherID
                         INNER JOIN AcademicYear ay ON cc.AcademicYearID = ay.AcademicYearID

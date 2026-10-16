@@ -1,6 +1,8 @@
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Security.Cryptography;
+using System.Timers;
 using UtilityLib;
 
 namespace SchoolManagementSystemDataAccessLayer
@@ -336,6 +338,20 @@ namespace SchoolManagementSystemDataAccessLayer
             return dt;
         }
 
+        /// <summary>
+        /// Old method that contain two queries and two connections,
+        /// replaced by the new method above
+        /// </summary>
+        /// <param name="currentScheduleID"></param>
+        /// <param name="academicYearID"></param>
+        /// <param name="dayOfWeek"></param>
+        /// <param name="startTime"></param>
+        /// <param name="endTime"></param>
+        /// <param name="roomID"></param>
+        /// <param name="classCourseID"></param>
+        /// <param name="conflictReason"></param>
+        /// <returns></returns>
+        [Obsolete("Use CheckScheduleConflictNew instead.")]
         public static bool CheckScheduleConflict(int? currentScheduleID, int academicYearID, string dayOfWeek, TimeSpan startTime, TimeSpan endTime, int roomID, int classCourseID, out string conflictReason)
         {
             conflictReason = "";
@@ -399,12 +415,12 @@ namespace SchoolManagementSystemDataAccessLayer
 
                             while (reader.Read())
                             {
-                                int existingRoomID = (int)reader["RoomID"];
+                                int existingRoomID = (int) reader["RoomID"];
                                 int existingClassID = (int)reader["ClassID"];
-                                int existingTeacherID = (int)reader["TeacherID"];
+                                int existingTeacherID=(int)reader["TeacherID"];
                                 string rName = reader["RoomName"].ToString();
                                 string tName = reader["TeacherName"].ToString();
-                                string clName = reader["ClassName"].ToString();
+                                string clName= reader["ClassName"].ToString();
                                 string timeStr = $"{((TimeSpan)reader["StartTime"]).ToString(@"hh\:mm")} - {((TimeSpan)reader["EndTime"]).ToString(@"hh\:mm")}";
 
                                 if (existingRoomID == roomID)
@@ -434,5 +450,92 @@ namespace SchoolManagementSystemDataAccessLayer
             return false;
         }
 
-}
+        public static bool CheckScheduleConflictNew(
+            int? currentScheduleID, int academicYearID, string dayOfWeek,
+            TimeSpan startTime, TimeSpan endTime,
+            int roomID, int classCourseID,
+            out string conflictReason)
+        {
+            conflictReason = "";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = @"
+                SELECT TOP 1
+                    CASE 
+                        WHEN s.RoomID = @RoomID THEN 'Room'
+                        WHEN ccExisting.TeacherID = ccTarget.TeacherID THEN 'Teacher'
+                        WHEN ccExisting.ClassID = ccTarget.ClassID THEN 'Class'
+                    END AS ConflictType,
+                    r.Name AS RoomName,
+                    (t.FirstName + ' ' + t.LastName) AS TeacherName,
+                    cl.Name AS ClassName,
+                    s.StartTime,
+                    s.EndTime
+                FROM Schedule s
+                INNER JOIN ClassCourse ccExisting ON s.ClassCourseID = ccExisting.ClassCourseID
+                INNER JOIN ClassCourse ccTarget   ON ccTarget.ClassCourseID = @ClassCourseID
+                INNER JOIN Class cl ON ccExisting.ClassID = cl.ClassID
+                INNER JOIN Teacher t ON ccExisting.TeacherID = t.TeacherID
+                INNER JOIN Room r ON s.RoomID = r.RoomID
+                WHERE s.AcademicYearID = @AcademicYearID
+                  AND s.DayOfWeek = @DayOfWeek
+                  AND s.StartTime < @EndTime AND s.EndTime > @StartTime
+                  AND (@CurrentScheduleID IS NULL OR s.ScheduleID <> @CurrentScheduleID)
+                  AND (s.RoomID = @RoomID 
+                       OR ccExisting.TeacherID = ccTarget.TeacherID 
+                       OR ccExisting.ClassID = ccTarget.ClassID)";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@AcademicYearID", academicYearID);
+                        command.Parameters.AddWithValue("@DayOfWeek", dayOfWeek);
+                        command.Parameters.AddWithValue("@StartTime", startTime);
+                        command.Parameters.AddWithValue("@EndTime", endTime);
+                        command.Parameters.AddWithValue("@RoomID", roomID);
+                        command.Parameters.AddWithValue("@ClassCourseID", classCourseID);
+                        command.Parameters.AddWithValue("@CurrentScheduleID", (object)currentScheduleID ?? DBNull.Value);
+
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                string conflictType = reader["ConflictType"].ToString();
+                                string timeRange = $"{((TimeSpan)reader["StartTime"]):hh\\:mm} - {((TimeSpan)reader["EndTime"]):hh\\:mm}";
+                                string roomName = reader["RoomName"].ToString();
+                                string teacherName = reader["TeacherName"].ToString();
+                                string className = reader["ClassName"].ToString();
+
+                                conflictReason = conflictType switch
+                                {
+                                    "Room" =>
+                                        $"Room Conflict: Room [{roomName}] is already occupied by {className} from ({timeRange}).",
+
+                                    "Teacher" =>
+                                        $"Teacher Conflict: Teacher [{teacherName}] is already assigned to {className} from ({timeRange}).",
+
+                                    "Class" =>
+                                        $"Class Conflict: Class [{className}] already has another session scheduled from ({timeRange}).",
+
+                                    _ => $"Time Conflict: A scheduling conflict was detected from ({timeRange})."
+                                };
+
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+
+            return false;
+        }
+
+    }
 }

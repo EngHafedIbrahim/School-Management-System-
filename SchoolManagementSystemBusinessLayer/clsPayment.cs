@@ -151,5 +151,16 @@ namespace SchoolManagementSystemBusinessLayer
         public static DataTable GetAllPayments() => clsDAPayment.GetAllPayments();
         public static bool IsPaymentExist(int PaymentID) => clsDAPayment.IsPaymentExist(PaymentID);
         public static bool DeletePayment(int PaymentID) => clsDAPayment.DeletePayment(PaymentID);
-    }
+    
+        public static DataTable GetPaymentsByInvoiceID(int invoiceID) => clsDAPayment.GetPaymentsByInvoiceID(invoiceID);
+        
+        public static int RecordPaymentWithTransaction(int invoiceID, DateTime paymentDate, decimal amount,
+            string paymentMethod, int paymentTypeID, string transactionID, string receiptNumber,
+            string notes, int createdBy, out string errorMessage)
+        {
+            return clsDAPayment.RecordPaymentWithTransaction(invoiceID, paymentDate, amount,
+                paymentMethod, paymentTypeID, transactionID, receiptNumber, notes, createdBy, out errorMessage);
+        }
+
+}
 }

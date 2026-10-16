@@ -29,8 +29,7 @@ namespace SchoolManagementSystem.Academic
             dtpStartTime.Value = DateTime.Today.AddHours(8).AddMinutes(0);
             dtpEndTime.Value = DateTime.Today.AddHours(8).AddMinutes(45);
 
-            LoadDropdowns();
-            LoadSchedules();
+            
         }
 
         private void LoadDropdowns()
@@ -115,37 +114,37 @@ namespace SchoolManagementSystem.Academic
             if (dgvSchedules.Columns.Contains("StartTime"))
             {
                 dgvSchedules.Columns["StartTime"].HeaderText = "Start Time";
-                dgvSchedules.Columns["StartTime"].Width = 90;
+                dgvSchedules.Columns["StartTime"].Width = 130;
             }
             if (dgvSchedules.Columns.Contains("EndTime"))
             {
                 dgvSchedules.Columns["EndTime"].HeaderText = "End Time";
-                dgvSchedules.Columns["EndTime"].Width = 90;
+                dgvSchedules.Columns["EndTime"].Width = 130;
             }
             if (dgvSchedules.Columns.Contains("ClassName"))
             {
                 dgvSchedules.Columns["ClassName"].HeaderText = "Class";
-                dgvSchedules.Columns["ClassName"].Width = 130;
+                dgvSchedules.Columns["ClassName"].Width = 150;
             }
             if (dgvSchedules.Columns.Contains("CourseName"))
             {
-                dgvSchedules.Columns["CourseName"].HeaderText = "Course / Subject";
-                dgvSchedules.Columns["CourseName"].Width = 180;
+                dgvSchedules.Columns["CourseName"].HeaderText = "Subject";
+                dgvSchedules.Columns["CourseName"].Width = 170;
             }
             if (dgvSchedules.Columns.Contains("TeacherName"))
             {
-                dgvSchedules.Columns["TeacherName"].HeaderText = "Instructor";
+                dgvSchedules.Columns["TeacherName"].HeaderText = "Teacher";
                 dgvSchedules.Columns["TeacherName"].Width = 180;
             }
             if (dgvSchedules.Columns.Contains("RoomName"))
             {
-                dgvSchedules.Columns["RoomName"].HeaderText = "Room / Hall";
-                dgvSchedules.Columns["RoomName"].Width = 120;
+                dgvSchedules.Columns["RoomName"].HeaderText = "Room";
+                dgvSchedules.Columns["RoomName"].Width = 150;
             }
             if (dgvSchedules.Columns.Contains("AcademicYear"))
             {
                 dgvSchedules.Columns["AcademicYear"].HeaderText = "Academic Year";
-                dgvSchedules.Columns["AcademicYear"].Width = 120;
+                dgvSchedules.Columns["AcademicYear"].Width = 160;
             }
 
             if (dgvSchedules.Columns.Contains("ClassCourseID")) dgvSchedules.Columns["ClassCourseID"].Visible = false;
@@ -388,6 +387,12 @@ namespace SchoolManagementSystem.Academic
         }
 
         private void BtnRefresh_Click(object sender, EventArgs e)
+        {
+            LoadDropdowns();
+            LoadSchedules();
+        }
+
+        private void FrmTimetableManagement_Load(object sender, EventArgs e)
         {
             LoadDropdowns();
             LoadSchedules();

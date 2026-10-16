@@ -172,5 +172,13 @@ namespace SchoolManagementSystemBusinessLayer
         }
 
         public static bool DeleteUser(int UserID) => clsDAUser.DeleteUser(UserID);
-    }
+    
+        public static DataTable GetAllUsersDetailed() => clsDAUser.GetAllUsersDetailed();
+        public static bool IsUsernameExist(string username, int excludeUserID = -1) => clsDAUser.IsUsernameExist(username, excludeUserID);
+        public static bool IsEmailExist(string email, int excludeUserID = -1) => clsDAUser.IsEmailExist(email, excludeUserID);
+        public static bool UpdateUserStatus(int userID, string status) => clsDAUser.UpdateUserStatus(userID, status);
+        public static bool ResetPassword(int userID, string newPasswordHash) => clsDAUser.ResetPassword(userID, newPasswordHash);
+        public static bool IsReferenceAlreadyLinked(string userType, int referenceID, int excludeUserID = -1) => clsDAUser.IsReferenceAlreadyLinked(userType, referenceID, excludeUserID);
+
+}
 }

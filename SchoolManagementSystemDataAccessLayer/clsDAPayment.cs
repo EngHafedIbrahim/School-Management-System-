@@ -194,5 +194,159 @@ namespace SchoolManagementSystemDataAccessLayer
             }
             return isFound;
         }
-    }
+    
+        public static DataTable GetPaymentsByInvoiceID(int invoiceID)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = @"
+                        SELECT 
+                            p.PaymentID, p.ReceiptNumber, p.PaymentDate, p.Amount,
+                            pt.Name AS PaymentTypeName,
+                            p.Notes,
+                            u.Username AS RecordedBy
+                        FROM Payment p
+                        INNER JOIN PaymentType pt ON p.PaymentTypeID = pt.PaymentTypeID
+                        LEFT JOIN [User] u ON p.CreatedBy = u.UserID
+                        WHERE p.InvoiceID = @InvoiceID
+                        ORDER BY p.PaymentDate DESC";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@InvoiceID", invoiceID);
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            dt.Load(reader);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return dt;
+        }
+
+        public static int RecordPaymentWithTransaction(int invoiceID, DateTime paymentDate, decimal amount,
+            string paymentMethod, int paymentTypeID, string transactionID, string receiptNumber,
+            string notes, int createdBy, out string errorMessage)
+        {
+            errorMessage = "";
+            int paymentID = -1;
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    connection.Open();
+                    using (SqlTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            // Step 1: Get invoice total and current paid amount INSIDE transaction (concurrency safe)
+                            decimal totalAmount = 0;
+                            decimal totalPaid = 0;
+                            string currentStatus = "";
+
+                            string queryInvoice = @"
+                                SELECT i.TotalAmount, i.Status,
+                                       ISNULL((SELECT SUM(p.Amount) FROM Payment p WHERE p.InvoiceID = i.InvoiceID), 0) AS TotalPaid
+                                FROM Invoice i WHERE i.InvoiceID = @InvoiceID";
+                            using (SqlCommand cmd = new SqlCommand(queryInvoice, connection, transaction))
+                            {
+                                cmd.Parameters.AddWithValue("@InvoiceID", invoiceID);
+                                using (SqlDataReader reader = cmd.ExecuteReader())
+                                {
+                                    if (reader.Read())
+                                    {
+                                        totalAmount = (decimal)reader["TotalAmount"];
+                                        totalPaid = (decimal)reader["TotalPaid"];
+                                        currentStatus = reader["Status"].ToString();
+                                    }
+                                    else
+                                    {
+                                        errorMessage = "Invoice not found.";
+                                        transaction.Rollback();
+                                        return -1;
+                                    }
+                                }
+                            }
+
+                            decimal remaining = totalAmount - totalPaid;
+                            if (amount > remaining)
+                            {
+                                errorMessage = $"Payment amount ({amount:N2}) exceeds remaining balance ({remaining:N2}).";
+                                transaction.Rollback();
+                                return -1;
+                            }
+                            if (amount <= 0)
+                            {
+                                errorMessage = "Payment amount must be greater than zero.";
+                                transaction.Rollback();
+                                return -1;
+                            }
+
+                            // Step 2: Insert Payment
+                            string queryInsert = @"
+                                INSERT INTO Payment (InvoiceID, PaymentDate, Amount, PaymentMethod, PaymentTypeID, TransactionID, ReceiptNumber, Notes, CreatedBy, CreatedAt)
+                                VALUES (@InvoiceID, @PaymentDate, @Amount, @PaymentMethod, @PaymentTypeID, @TransactionID, @ReceiptNumber, @Notes, @CreatedBy, GETDATE());
+                                SELECT SCOPE_IDENTITY();";
+                            using (SqlCommand cmd = new SqlCommand(queryInsert, connection, transaction))
+                            {
+                                cmd.Parameters.AddWithValue("@InvoiceID", invoiceID);
+                                cmd.Parameters.AddWithValue("@PaymentDate", paymentDate);
+                                cmd.Parameters.AddWithValue("@Amount", amount);
+                                cmd.Parameters.AddWithValue("@PaymentMethod", (object)paymentMethod ?? DBNull.Value);
+                                cmd.Parameters.AddWithValue("@PaymentTypeID", paymentTypeID);
+                                cmd.Parameters.AddWithValue("@TransactionID", (object)transactionID ?? DBNull.Value);
+                                cmd.Parameters.AddWithValue("@ReceiptNumber", (object)receiptNumber ?? DBNull.Value);
+                                cmd.Parameters.AddWithValue("@Notes", (object)notes ?? DBNull.Value);
+                                cmd.Parameters.AddWithValue("@CreatedBy", createdBy);
+
+                                object result = cmd.ExecuteScalar();
+                                if (result != null && int.TryParse(result.ToString(), out int id))
+                                    paymentID = id;
+                            }
+
+                            // Step 3: Calculate new status and update invoice
+                            decimal newTotalPaid = totalPaid + amount;
+                            string newStatus;
+                            if (newTotalPaid >= totalAmount)
+                                newStatus = "Paid";
+                            else if (newTotalPaid > 0)
+                                newStatus = "Partially Paid";
+                            else
+                                newStatus = "Unpaid";
+
+                            string queryUpdate = "UPDATE Invoice SET Status = @Status WHERE InvoiceID = @InvoiceID";
+                            using (SqlCommand cmd = new SqlCommand(queryUpdate, connection, transaction))
+                            {
+                                cmd.Parameters.AddWithValue("@Status", newStatus);
+                                cmd.Parameters.AddWithValue("@InvoiceID", invoiceID);
+                                cmd.ExecuteNonQuery();
+                            }
+
+                            transaction.Commit();
+                        }
+                        catch (Exception)
+                        {
+                            transaction.Rollback();
+                            throw;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+                errorMessage = "Database error: " + ex.Message;
+                paymentID = -1;
+            }
+            return paymentID;
+        }
+
+}
 }

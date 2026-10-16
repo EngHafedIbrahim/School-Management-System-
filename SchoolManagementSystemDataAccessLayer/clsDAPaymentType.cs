@@ -170,5 +170,30 @@ namespace SchoolManagementSystemDataAccessLayer
             }
             return isFound;
         }
-    }
+    
+        public static bool IsPaymentTypeUsed(int paymentTypeID)
+        {
+            bool isUsed = false;
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = "SELECT TOP 1 1 FROM Payment WHERE PaymentTypeID = @PaymentTypeID";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@PaymentTypeID", paymentTypeID);
+                        connection.Open();
+                        object result = command.ExecuteScalar();
+                        isUsed = (result != null);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return isUsed;
+        }
+
+}
 }

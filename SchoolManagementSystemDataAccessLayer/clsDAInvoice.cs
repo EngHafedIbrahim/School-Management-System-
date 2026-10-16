@@ -239,5 +239,133 @@ namespace SchoolManagementSystemDataAccessLayer
             return dt;
         }
 
+
+        public static DataTable GetInvoiceDetailed(int invoiceID)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = @"
+                        SELECT 
+                            i.InvoiceID, i.InvoiceNumber,
+                            i.StudentID, (s.FirstName + ' ' + s.LastName) AS StudentName, s.AdmissionNo AS AdmissionNumber,
+                            i.AcademicYearID, ay.YearName AS AcademicYear,
+                            i.FeeStructureID, fs.Description AS FeeDescription,
+                            i.IssueDate, i.DueDate,
+                            i.Subtotal, i.DiscountAmount, i.TaxAmount, i.TotalAmount,
+                            i.Status, i.CreatedBy,
+                            ISNULL((SELECT SUM(p.Amount) FROM Payment p WHERE p.InvoiceID = i.InvoiceID), 0) AS PaidAmount,
+                            i.TotalAmount - ISNULL((SELECT SUM(p.Amount) FROM Payment p WHERE p.InvoiceID = i.InvoiceID), 0) AS RemainingAmount
+                        FROM Invoice i
+                        INNER JOIN Student s ON i.StudentID = s.StudentID
+                        INNER JOIN AcademicYear ay ON i.AcademicYearID = ay.AcademicYearID
+                        INNER JOIN FeeStructure fs ON i.FeeStructureID = fs.FeeStructureID
+                        WHERE i.InvoiceID = @InvoiceID";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@InvoiceID", invoiceID);
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            dt.Load(reader);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return dt;
+        }
+
+        public static DataTable GetAllInvoicesDetailed()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = @"
+                        SELECT 
+                            i.InvoiceID, i.InvoiceNumber,
+                            i.StudentID, (s.FirstName + ' ' + s.LastName) AS StudentName,
+                            i.AcademicYearID, ay.YearName AS AcademicYear,
+                            i.TotalAmount,
+                            ISNULL((SELECT SUM(p.Amount) FROM Payment p WHERE p.InvoiceID = i.InvoiceID), 0) AS PaidAmount,
+                            i.TotalAmount - ISNULL((SELECT SUM(p.Amount) FROM Payment p WHERE p.InvoiceID = i.InvoiceID), 0) AS RemainingAmount,
+                            i.Status, i.IssueDate, i.DueDate
+                        FROM Invoice i
+                        INNER JOIN Student s ON i.StudentID = s.StudentID
+                        INNER JOIN AcademicYear ay ON i.AcademicYearID = ay.AcademicYearID
+                        ORDER BY i.IssueDate DESC";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            dt.Load(reader);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return dt;
+        }
+
+        public static decimal GetTotalPaidByInvoiceID(int invoiceID)
+        {
+            decimal totalPaid = 0;
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = "SELECT ISNULL(SUM(Amount), 0) FROM Payment WHERE InvoiceID = @InvoiceID";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@InvoiceID", invoiceID);
+                        connection.Open();
+                        object result = command.ExecuteScalar();
+                        if (result != null && result != DBNull.Value)
+                            totalPaid = Convert.ToDecimal(result);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return totalPaid;
+        }
+
+        public static bool UpdateInvoiceStatus(int invoiceID, string status)
+        {
+            int rowsAffected = 0;
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = "UPDATE Invoice SET Status = @Status WHERE InvoiceID = @InvoiceID";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@InvoiceID", invoiceID);
+                        command.Parameters.AddWithValue("@Status", status);
+                        connection.Open();
+                        rowsAffected = command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return (rowsAffected > 0);
+        }
+
 }
 }

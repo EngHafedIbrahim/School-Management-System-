@@ -110,7 +110,8 @@ namespace SchoolManagementSystem.Teachers
         private int GetSelectedTeacherID()
         {
             if (dgvTeachers.CurrentRow == null) return -1;
-            return Convert.ToInt32(dgvTeachers.CurrentRow.Cells["TeacherID"].Value);
+                return Convert.ToInt32(dgvTeachers.CurrentRow.Cells["TeacherID"].Value);
+        
         }
 
         private void TxtSearch_TextChanged(object sender, EventArgs e)

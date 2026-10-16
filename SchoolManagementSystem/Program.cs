@@ -23,7 +23,7 @@ namespace SchoolManagementSystem
             //Application.Run(new frmTeacherList());
             //application.run(new frmcourselist());
             //Application.Run(new frmGradeLevels());
-            Application.Run(new frmClassList());
+            Application.Run(new frmTimetableManagement());
 
             //frmLogin login = new frmLogin();
 

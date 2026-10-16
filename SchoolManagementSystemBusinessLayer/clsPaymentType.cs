@@ -70,5 +70,8 @@ namespace SchoolManagementSystemBusinessLayer
         public static DataTable GetAllPaymentTypes() => clsDAPaymentType.GetAllPaymentTypes();
         public static bool IsPaymentTypeExist(int PaymentTypeID) => clsDAPaymentType.IsPaymentTypeExist(PaymentTypeID);
         public static bool DeletePaymentType(int PaymentTypeID) => clsDAPaymentType.DeletePaymentType(PaymentTypeID);
-    }
+    
+        public static bool IsPaymentTypeUsed(int paymentTypeID) => clsDAPaymentType.IsPaymentTypeUsed(paymentTypeID);
+
+}
 }

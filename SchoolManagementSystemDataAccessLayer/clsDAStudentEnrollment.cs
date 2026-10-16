@@ -270,5 +270,40 @@ namespace SchoolManagementSystemDataAccessLayer
             return dt;
         }
 
+
+        public static DataTable GetEnrollmentsByStudentID(int studentID)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = @"
+                        SELECT 
+                            se.EnrollmentID, ay.YearName AS AcademicYear,
+                            cl.Name AS ClassName, se.EnrollmentDate, se.Status
+                        FROM StudentEnrollment se
+                        INNER JOIN AcademicYear ay ON se.AcademicYearID = ay.AcademicYearID
+                        INNER JOIN Class cl ON se.ClassID = cl.ClassID
+                        WHERE se.StudentID = @StudentID
+                        ORDER BY ay.StartDate DESC";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@StudentID", studentID);
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            dt.Load(reader);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return dt;
+        }
+
 }
 }

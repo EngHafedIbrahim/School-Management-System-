@@ -29,6 +29,7 @@ namespace SchoolManagementSystem.Classes
 
         }
 
+
         private void LoadGradeLevelsFilter()
         {
             DataTable dtGrades = clsGradeLevel.GetAllGradeLevels();

@@ -19,7 +19,6 @@ namespace SchoolManagementSystem.Academic
         {
             components = new System.ComponentModel.Container();
             pnlHeader = new Panel();
-            lblHeaderSubtitle = new Label();
             lblHeaderTitle = new Label();
             pnlEditor = new Panel();
             btnCancelEdit = new Button();
@@ -64,37 +63,25 @@ namespace SchoolManagementSystem.Academic
             // pnlHeader
             // 
             pnlHeader.BackColor = Color.White;
-            pnlHeader.Controls.Add(lblHeaderSubtitle);
             pnlHeader.Controls.Add(lblHeaderTitle);
             pnlHeader.Dock = DockStyle.Top;
             pnlHeader.Location = new Point(0, 0);
             pnlHeader.Margin = new Padding(3, 4, 3, 4);
             pnlHeader.Name = "pnlHeader";
             pnlHeader.Padding = new Padding(23, 13, 23, 13);
-            pnlHeader.Size = new Size(1170, 93);
+            pnlHeader.Size = new Size(1206, 93);
             pnlHeader.TabIndex = 0;
-            // 
-            // lblHeaderSubtitle
-            // 
-            lblHeaderSubtitle.AutoSize = true;
-            lblHeaderSubtitle.Font = new Font("Segoe UI", 10F);
-            lblHeaderSubtitle.ForeColor = Color.FromArgb(120, 130, 140);
-            lblHeaderSubtitle.Location = new Point(253, 57);
-            lblHeaderSubtitle.Name = "lblHeaderSubtitle";
-            lblHeaderSubtitle.Size = new Size(714, 23);
-            lblHeaderSubtitle.TabIndex = 1;
-            lblHeaderSubtitle.Text = "Schedule course sessions with strict conflict detection across instructors, rooms, and cohorts.";
             // 
             // lblHeaderTitle
             // 
             lblHeaderTitle.AutoSize = true;
             lblHeaderTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
             lblHeaderTitle.ForeColor = Color.FromArgb(44, 62, 80);
-            lblHeaderTitle.Location = new Point(335, 9);
+            lblHeaderTitle.Location = new Point(515, 8);
             lblHeaderTitle.Name = "lblHeaderTitle";
-            lblHeaderTitle.Size = new Size(448, 37);
+            lblHeaderTitle.Size = new Size(288, 37);
             lblHeaderTitle.TabIndex = 0;
-            lblHeaderTitle.Text = "Weekly Timetable & Class Schedule";
+            lblHeaderTitle.Text = "جدول الحصص المدرسي ";
             // 
             // pnlEditor
             // 
@@ -120,7 +107,7 @@ namespace SchoolManagementSystem.Academic
             pnlEditor.Margin = new Padding(3, 4, 3, 4);
             pnlEditor.Name = "pnlEditor";
             pnlEditor.Padding = new Padding(23, 13, 23, 13);
-            pnlEditor.Size = new Size(1170, 166);
+            pnlEditor.Size = new Size(1206, 166);
             pnlEditor.TabIndex = 1;
             // 
             // btnCancelEdit
@@ -174,9 +161,9 @@ namespace SchoolManagementSystem.Academic
             lblRoom.ForeColor = Color.FromArgb(33, 37, 41);
             lblRoom.Location = new Point(823, 32);
             lblRoom.Name = "lblRoom";
-            lblRoom.Size = new Size(143, 21);
+            lblRoom.Size = new Size(105, 21);
             lblRoom.TabIndex = 11;
-            lblRoom.Text = "Class Room / Lab:";
+            lblRoom.Text = "Class Room :";
             // 
             // dtpEndTime
             // 
@@ -197,9 +184,9 @@ namespace SchoolManagementSystem.Academic
             lblEndTime.ForeColor = Color.FromArgb(33, 37, 41);
             lblEndTime.Location = new Point(686, 32);
             lblEndTime.Name = "lblEndTime";
-            lblEndTime.Size = new Size(96, 21);
+            lblEndTime.Size = new Size(93, 21);
             lblEndTime.TabIndex = 9;
-            lblEndTime.Text = "End Time *:";
+            lblEndTime.Text = "End Time  :";
             // 
             // dtpStartTime
             // 
@@ -220,9 +207,9 @@ namespace SchoolManagementSystem.Academic
             lblStartTime.ForeColor = Color.FromArgb(33, 37, 41);
             lblStartTime.Location = new Point(549, 32);
             lblStartTime.Name = "lblStartTime";
-            lblStartTime.Size = new Size(103, 21);
+            lblStartTime.Size = new Size(100, 21);
             lblStartTime.TabIndex = 7;
-            lblStartTime.Text = "Start Time *:";
+            lblStartTime.Text = "Start Time  :";
             // 
             // cbDay
             // 
@@ -243,9 +230,9 @@ namespace SchoolManagementSystem.Academic
             lblDay.ForeColor = Color.FromArgb(33, 37, 41);
             lblDay.Location = new Point(389, 32);
             lblDay.Name = "lblDay";
-            lblDay.Size = new Size(122, 21);
+            lblDay.Size = new Size(119, 21);
             lblDay.TabIndex = 5;
-            lblDay.Text = "Day of Week *:";
+            lblDay.Text = "Day of Week  :";
             // 
             // cbYear
             // 
@@ -266,9 +253,9 @@ namespace SchoolManagementSystem.Academic
             lblYear.ForeColor = Color.FromArgb(33, 37, 41);
             lblYear.Location = new Point(23, 91);
             lblYear.Name = "lblYear";
-            lblYear.Size = new Size(137, 21);
+            lblYear.Size = new Size(134, 21);
             lblYear.TabIndex = 3;
-            lblYear.Text = "Academic Year *:";
+            lblYear.Text = "Academic Year  :";
             // 
             // cbClassCourse
             // 
@@ -288,9 +275,9 @@ namespace SchoolManagementSystem.Academic
             lblClassCourse.ForeColor = Color.FromArgb(33, 37, 41);
             lblClassCourse.Location = new Point(23, 32);
             lblClassCourse.Name = "lblClassCourse";
-            lblClassCourse.Size = new Size(309, 21);
+            lblClassCourse.Size = new Size(306, 21);
             lblClassCourse.TabIndex = 1;
-            lblClassCourse.Text = "Class Lesson (Class | Course | Teacher) *:";
+            lblClassCourse.Text = "Class Lesson (Class | Course | Teacher)  :";
             // 
             // lblFormTitle
             // 
@@ -320,7 +307,7 @@ namespace SchoolManagementSystem.Academic
             pnlToolbar.Margin = new Padding(3, 4, 3, 4);
             pnlToolbar.Name = "pnlToolbar";
             pnlToolbar.Padding = new Padding(23, 11, 23, 11);
-            pnlToolbar.Size = new Size(1170, 67);
+            pnlToolbar.Size = new Size(1206, 67);
             pnlToolbar.TabIndex = 2;
             // 
             // btnRefresh
@@ -330,7 +317,7 @@ namespace SchoolManagementSystem.Academic
             btnRefresh.FlatAppearance.BorderColor = Color.FromArgb(220, 224, 230);
             btnRefresh.FlatStyle = FlatStyle.Flat;
             btnRefresh.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnRefresh.Location = new Point(1102, 12);
+            btnRefresh.Location = new Point(1112, 9);
             btnRefresh.Margin = new Padding(3, 4, 3, 4);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.Size = new Size(46, 43);
@@ -348,7 +335,7 @@ namespace SchoolManagementSystem.Academic
             btnDelete.FlatStyle = FlatStyle.Flat;
             btnDelete.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             btnDelete.ForeColor = Color.White;
-            btnDelete.Location = new Point(999, 12);
+            btnDelete.Location = new Point(1014, 9);
             btnDelete.Margin = new Padding(3, 4, 3, 4);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(91, 43);
@@ -364,7 +351,7 @@ namespace SchoolManagementSystem.Academic
             btnEdit.FlatAppearance.BorderColor = Color.FromArgb(220, 224, 230);
             btnEdit.FlatStyle = FlatStyle.Flat;
             btnEdit.Font = new Font("Segoe UI", 9.5F);
-            btnEdit.Location = new Point(873, 12);
+            btnEdit.Location = new Point(888, 9);
             btnEdit.Margin = new Padding(3, 4, 3, 4);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(114, 43);
@@ -379,7 +366,7 @@ namespace SchoolManagementSystem.Academic
             cbFilterDay.Font = new Font("Segoe UI", 9.5F);
             cbFilterDay.FormattingEnabled = true;
             cbFilterDay.Items.AddRange(new object[] { "All Days", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Saturday" });
-            cbFilterDay.Location = new Point(594, 17);
+            cbFilterDay.Location = new Point(635, 15);
             cbFilterDay.Margin = new Padding(3, 4, 3, 4);
             cbFilterDay.Name = "cbFilterDay";
             cbFilterDay.Size = new Size(148, 29);
@@ -391,7 +378,7 @@ namespace SchoolManagementSystem.Academic
             lblFilterDay.AutoSize = true;
             lblFilterDay.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             lblFilterDay.ForeColor = Color.FromArgb(33, 37, 41);
-            lblFilterDay.Location = new Point(514, 21);
+            lblFilterDay.Location = new Point(549, 19);
             lblFilterDay.Name = "lblFilterDay";
             lblFilterDay.Size = new Size(87, 21);
             lblFilterDay.TabIndex = 4;
@@ -402,10 +389,10 @@ namespace SchoolManagementSystem.Academic
             cbFilterClass.DropDownStyle = ComboBoxStyle.DropDownList;
             cbFilterClass.Font = new Font("Segoe UI", 9.5F);
             cbFilterClass.FormattingEnabled = true;
-            cbFilterClass.Location = new Point(320, 17);
+            cbFilterClass.Location = new Point(338, 16);
             cbFilterClass.Margin = new Padding(3, 4, 3, 4);
             cbFilterClass.Name = "cbFilterClass";
-            cbFilterClass.Size = new Size(171, 29);
+            cbFilterClass.Size = new Size(205, 29);
             cbFilterClass.TabIndex = 3;
             cbFilterClass.SelectedIndexChanged += CbFilterClass_SelectedIndexChanged;
             // 
@@ -414,7 +401,7 @@ namespace SchoolManagementSystem.Academic
             lblFilterClass.AutoSize = true;
             lblFilterClass.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             lblFilterClass.ForeColor = Color.FromArgb(33, 37, 41);
-            lblFilterClass.Location = new Point(229, 21);
+            lblFilterClass.Location = new Point(247, 20);
             lblFilterClass.Name = "lblFilterClass";
             lblFilterClass.Size = new Size(95, 21);
             lblFilterClass.TabIndex = 2;
@@ -428,7 +415,7 @@ namespace SchoolManagementSystem.Academic
             cbFilterYear.Location = new Point(103, 17);
             cbFilterYear.Margin = new Padding(3, 4, 3, 4);
             cbFilterYear.Name = "cbFilterYear";
-            cbFilterYear.Size = new Size(108, 29);
+            cbFilterYear.Size = new Size(138, 29);
             cbFilterYear.TabIndex = 1;
             cbFilterYear.SelectedIndexChanged += CbFilterYear_SelectedIndexChanged;
             // 
@@ -437,7 +424,7 @@ namespace SchoolManagementSystem.Academic
             lblFilterYear.AutoSize = true;
             lblFilterYear.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             lblFilterYear.ForeColor = Color.FromArgb(33, 37, 41);
-            lblFilterYear.Location = new Point(23, 21);
+            lblFilterYear.Location = new Point(6, 21);
             lblFilterYear.Name = "lblFilterYear";
             lblFilterYear.Size = new Size(91, 21);
             lblFilterYear.TabIndex = 0;
@@ -452,7 +439,7 @@ namespace SchoolManagementSystem.Academic
             pnlBottom.Margin = new Padding(3, 4, 3, 4);
             pnlBottom.Name = "pnlBottom";
             pnlBottom.Padding = new Padding(23, 13, 23, 13);
-            pnlBottom.Size = new Size(1170, 53);
+            pnlBottom.Size = new Size(1206, 53);
             pnlBottom.TabIndex = 3;
             // 
             // lblTotalCount
@@ -475,7 +462,7 @@ namespace SchoolManagementSystem.Academic
             pnlGridWrapper.Margin = new Padding(3, 4, 3, 4);
             pnlGridWrapper.Name = "pnlGridWrapper";
             pnlGridWrapper.Padding = new Padding(23, 27, 23, 27);
-            pnlGridWrapper.Size = new Size(1170, 449);
+            pnlGridWrapper.Size = new Size(1206, 449);
             pnlGridWrapper.TabIndex = 4;
             // 
             // dgvSchedules
@@ -498,7 +485,7 @@ namespace SchoolManagementSystem.Academic
             dgvSchedules.RowHeadersVisible = false;
             dgvSchedules.RowHeadersWidth = 51;
             dgvSchedules.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvSchedules.Size = new Size(1124, 395);
+            dgvSchedules.Size = new Size(1160, 395);
             dgvSchedules.TabIndex = 0;
             dgvSchedules.DoubleClick += DgvSchedules_DoubleClick;
             // 
@@ -512,16 +499,18 @@ namespace SchoolManagementSystem.Academic
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(245, 247, 250);
-            ClientSize = new Size(1170, 828);
+            ClientSize = new Size(1206, 828);
             Controls.Add(pnlGridWrapper);
             Controls.Add(pnlBottom);
             Controls.Add(pnlToolbar);
             Controls.Add(pnlEditor);
             Controls.Add(pnlHeader);
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Margin = new Padding(3, 4, 3, 4);
             Name = "frmTimetableManagement";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Timetable & Schedules";
+            Load += FrmTimetableManagement_Load;
             pnlHeader.ResumeLayout(false);
             pnlHeader.PerformLayout();
             pnlEditor.ResumeLayout(false);
@@ -541,7 +530,6 @@ namespace SchoolManagementSystem.Academic
 
         private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.Label lblHeaderTitle;
-        private System.Windows.Forms.Label lblHeaderSubtitle;
         private System.Windows.Forms.Panel pnlEditor;
         private System.Windows.Forms.Label lblFormTitle;
         private System.Windows.Forms.Label lblClassCourse;

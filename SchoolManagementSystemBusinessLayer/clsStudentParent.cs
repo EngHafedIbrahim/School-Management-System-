@@ -131,5 +131,8 @@ namespace SchoolManagementSystemBusinessLayer
         }
 
 
-    }
+    
+        public static bool IsParentOfStudent(int parentID, int studentID) => clsDAStudentParent.IsParentOfStudent(parentID, studentID);
+
+}
 }

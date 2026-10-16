@@ -14,6 +14,7 @@ namespace SchoolManagementSystemBusinessLayer
         public int CourseID { get; set; }
         public int TeacherID { get; set; }
         public int AcademicYearID { get; set; }
+        public int GradeLevelID { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
         public bool IsDeleted { get; set; }
@@ -36,7 +37,7 @@ namespace SchoolManagementSystemBusinessLayer
             Mode = enMode.AddNew;
         }
 
-        private clsClassCourse(int ClassCourseID, int ClassID, int CourseID, int TeacherID, int AcademicYearID, DateTime CreatedAt, DateTime UpdatedAt, bool IsDeleted)
+        private clsClassCourse(int ClassCourseID, int GradeLevelID, int ClassID, int CourseID, int TeacherID, int AcademicYearID, DateTime CreatedAt, DateTime UpdatedAt, bool IsDeleted)
         {
             this.ClassCourseID = ClassCourseID;
             this.ClassID = ClassID;
@@ -46,6 +47,7 @@ namespace SchoolManagementSystemBusinessLayer
             this.CreatedAt = CreatedAt;
             this.UpdatedAt = UpdatedAt;
             this.IsDeleted = IsDeleted;
+            this.GradeLevelID =  GradeLevelID;
             Mode = enMode.Update;
         }
 
@@ -54,43 +56,50 @@ namespace SchoolManagementSystemBusinessLayer
             int ClassID = -1;
             int CourseID = -1;
             int TeacherID = -1;
+            int GradeLevelID = -1;
             int AcademicYearID = -1;
             DateTime CreatedAt = DateTime.Now;
             DateTime UpdatedAt = DateTime.Now;
             bool IsDeleted = false;
-            if (clsDAClassCourse.Find(ClassCourseID, ref ClassID, ref CourseID, ref TeacherID, ref AcademicYearID, ref CreatedAt, ref UpdatedAt, ref IsDeleted))
-                return new clsClassCourse(ClassCourseID, ClassID, CourseID, TeacherID, AcademicYearID, CreatedAt, UpdatedAt, IsDeleted);
+            if (clsDAClassCourse.Find(ClassCourseID,ref GradeLevelID, ref ClassID, ref CourseID, ref TeacherID, ref AcademicYearID, ref CreatedAt, ref UpdatedAt, ref IsDeleted))
+                return new clsClassCourse(ClassCourseID, GradeLevelID, ClassID, CourseID, TeacherID, AcademicYearID, CreatedAt, UpdatedAt, IsDeleted);
             return null;
         }
 
         private bool _AddNewClassCourse()
         {
-            this.ClassCourseID = clsDAClassCourse.AddNewClassCourse(this.ClassID, this.CourseID, this.TeacherID, this.AcademicYearID, this.CreatedAt, this.UpdatedAt, this.IsDeleted);
+            this.ClassCourseID = clsDAClassCourse.AddNewClassCourse(this.ClassID,this.GradeLevelID, this.CourseID, this.TeacherID, this.AcademicYearID, this.CreatedAt, this.UpdatedAt, this.IsDeleted);
             return (this.ClassCourseID != -1);
         }
 
         private bool _UpdateClassCourse()
         {
-            return clsDAClassCourse.UpdateClassCourse(this.ClassCourseID, this.ClassID, this.CourseID, this.TeacherID, this.AcademicYearID, this.CreatedAt, this.UpdatedAt, this.IsDeleted);
+            return clsDAClassCourse.UpdateClassCourse(this.ClassCourseID,this.GradeLevelID, this.ClassID, this.CourseID, this.TeacherID, this.AcademicYearID, this.CreatedAt, this.UpdatedAt, this.IsDeleted);
         }
 
         
         public bool Validate(out string errorMessage)
         {
             errorMessage = "";
-            
-            System.Data.DataTable dt = GetAllClassCourses();
-            foreach (System.Data.DataRow row in dt.Rows)
-            {
-                if ((int)row["ClassCourseID"] != this.ClassCourseID)
-                {
-                    if ((int)row["ClassID"] == this.ClassID && (int)row["CourseID"] == this.CourseID && (int)row["TeacherID"] == this.TeacherID && (int)row["AcademicYearID"] == this.AcademicYearID)
-                    {
-                        errorMessage = "This course is already assigned to this class with the same teacher in this academic year.";
-                        return false;
-                    }
-                }
+
+            if (this.DoesClassCourseWithThoseExist())
+            {   
+                errorMessage = "This course is already assigned to this class with the same teacher in this academic year.";
+                return false;
             }
+            
+            //System.Data.DataTable dt = GetAllClassCourses();
+            //foreach (System.Data.DataRow row in dt.Rows)
+            //{
+            //    if ((int)row["ClassCourseID"] != this.ClassCourseID)
+            //    {
+            //        if ((int)row["ClassID"] == this.ClassID && (int)row["CourseID"] == this.CourseID && (int)row["TeacherID"] == this.TeacherID && (int)row["AcademicYearID"] == this.AcademicYearID)
+            //        {
+            //            errorMessage = "This course is already assigned to this class with the same teacher in this academic year.";
+            //            return false;
+            //        }
+            //    }
+            //}
             return true;
         }
 
@@ -119,6 +128,7 @@ namespace SchoolManagementSystemBusinessLayer
 
         public static DataTable GetAllClassCourses() => clsDAClassCourse.GetAllClassCourses();
         public static bool IsClassCourseExist(int ClassCourseID) => clsDAClassCourse.IsClassCourseExist(ClassCourseID);
+        public  bool DoesClassCourseWithThoseExist() => clsDAClassCourse.DoesClassCourseWithThoseExist(this.TeacherID,this.CourseID,this.GradeLevelID);
         public static bool DeleteClassCourse(int ClassCourseID) => clsDAClassCourse.DeleteClassCourse(ClassCourseID);
     
         public static DataTable GetCoursesByClassID(int classID) => clsDAClassCourse.GetCoursesByClassID(classID);

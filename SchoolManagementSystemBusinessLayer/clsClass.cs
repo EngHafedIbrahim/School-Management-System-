@@ -132,10 +132,12 @@ namespace SchoolManagementSystemBusinessLayer
 
         public  bool IsClassExistWithGradeLevel() => clsDAClass.IsClassExistWithGradeLevel(this.Name,this.GradeLevelID);
         public static DataTable GetAllClasss() => clsDAClass.GetAllClasss();
+        public static DataTable GetAllClasss(int GradeLevelID) => clsDAClass.GetAllClasss(GradeLevelID);
         public static DataTable GetClassesDetailed() => clsDAClass.GetClassesDetailed();
         public static bool IsClassExist(int ClassID) => clsDAClass.IsClassExist(ClassID);
         public static bool DeleteClass(int ClassID) => clsDAClass.DeleteClass(ClassID);
 
 
     }
+
 }

@@ -23,23 +23,23 @@ namespace SchoolManagementSystem.Academic
             clsUITheme.StyleDangerButton(btnRemove);
             clsUITheme.StyleSecondaryButton(btnRefresh);
 
-            LoadDropdowns();
-            LoadAssignments();
+
         }
 
         private void LoadDropdowns()
         {
-            // Classes
-            DataTable dtClasses = clsClass.GetAllClasss();
-            cbClass.DataSource = dtClasses;
-            cbClass.DisplayMember = "Name";
-            cbClass.ValueMember = "ClassID";
+            DataTable dtGradeLevels = clsGradeLevel.GetAllGradeLevels();
+            cbGradeLevels.DataSource = dtGradeLevels;
+            cbGradeLevels.DisplayMember = "Name";
+            cbGradeLevels.ValueMember = "GradeLevelID";
+
 
             // Courses
             DataTable dtCourses = clsCourse.GetAllCourses();
             cbCourse.DataSource = dtCourses;
             cbCourse.DisplayMember = "Name";
             cbCourse.ValueMember = "CourseID";
+
 
             // Teachers
             DataTable dtTeachers = clsTeacher.GetAllTeachers();
@@ -68,11 +68,14 @@ namespace SchoolManagementSystem.Academic
 
             cbFilterClass.Items.Clear();
             cbFilterClass.Items.Add("All Classes");
-            foreach (DataRow r in dtClasses.Rows)
+            foreach (DataRow r in dtGradeLevels.Rows)
             {
                 cbFilterClass.Items.Add(r["Name"].ToString());
             }
             cbFilterClass.SelectedIndex = 0;
+            cbGradeLevels.SelectedIndex = -1;
+
+
         }
 
         private void LoadAssignments()
@@ -100,6 +103,11 @@ namespace SchoolManagementSystem.Academic
             {
                 dgvAssignments.Columns["TeacherName"].HeaderText = "Assigned Instructor";
                 dgvAssignments.Columns["TeacherName"].Width = 220;
+            }
+            if (dgvAssignments.Columns.Contains("GradeLevel"))
+            {
+                dgvAssignments.Columns["GradeLevel"].HeaderText = "Grade Level";
+                dgvAssignments.Columns["GradeLevel"].Width = 260;
             }
             if (dgvAssignments.Columns.Contains("AcademicYear"))
             {
@@ -131,7 +139,7 @@ namespace SchoolManagementSystem.Academic
             if (!string.IsNullOrEmpty(selectedClass) && selectedClass != "All Classes")
             {
                 if (!string.IsNullOrEmpty(filter)) filter += " AND ";
-                filter += $"ClassName = '{selectedClass.Replace("'", "''")}'";
+                filter += $"GradeLevel = '{selectedClass.Replace("'", "''")}'";
             }
 
             _dvAssignments.RowFilter = filter;
@@ -177,6 +185,11 @@ namespace SchoolManagementSystem.Academic
                 errorProvider1.SetError(cbYear, "Academic year is required.");
                 isValid = false;
             }
+            if (cbGradeLevels.SelectedValue == null)
+            {
+                errorProvider1.SetError(cbGradeLevels, "Grade Levels year is required.");
+                isValid = false;
+            }
 
             return isValid;
         }
@@ -206,6 +219,7 @@ namespace SchoolManagementSystem.Academic
             assignment.CourseID = (int)cbCourse.SelectedValue;
             assignment.TeacherID = (int)cbTeacher.SelectedValue;
             assignment.AcademicYearID = (int)cbYear.SelectedValue;
+            assignment.GradeLevelID = (int)cbGradeLevels.SelectedValue;
             assignment.IsDeleted = false;
 
             try
@@ -308,6 +322,39 @@ namespace SchoolManagementSystem.Academic
         {
             LoadDropdowns();
             LoadAssignments();
+        }
+
+        private void FrmCourseAssignment_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                LoadDropdowns();
+                LoadAssignments();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "");
+            }
+        }
+
+
+
+        private void CbGradeLevels_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            
+            if (cbGradeLevels.Items.Count <= 0)
+            {
+                return;
+            }
+            int i = (int)(cbGradeLevels.SelectedValue);
+            // Classes
+            DataTable dtClasses = clsClass.GetAllClasss(i);
+            cbClass.DataSource = dtClasses;
+            cbClass.DisplayMember = "Name";
+            cbClass.ValueMember = "ClassID";
+            
+            //cbClass.Refresh();
         }
     }
 }

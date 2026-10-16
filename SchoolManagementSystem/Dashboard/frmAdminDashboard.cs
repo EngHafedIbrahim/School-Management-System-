@@ -9,6 +9,9 @@ using SchoolManagementSystem.Academic;
 using SchoolManagementSystem.Classes;
 using SchoolManagementSystem.Teachers;
 using SchoolManagementSystem.Courses;
+using SchoolManagementSystem.Finance;
+using SchoolManagementSystem.Users;
+using SchoolManagementSystem.Reports;
 
 namespace SchoolManagementSystem.Dashboard
 {
@@ -84,17 +87,23 @@ namespace SchoolManagementSystem.Dashboard
 
         private void BtnNavFinance_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Finance management will be implemented in Phase 5.", "Module Navigation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            frmPaymentTypes frm = new frmPaymentTypes();
+            frm.ShowDialog();
+            LoadDashboardStats();
         }
 
         private void BtnNavUsers_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Users management will be implemented in Phase 6.", "Module Navigation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            frmUserList frm = new frmUserList();
+            frm.ShowDialog();
+            LoadDashboardStats();
         }
 
         private void BtnNavReports_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Reporting will be implemented in Phase 6.", "Module Navigation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            frmStudentPerformance frm = new frmStudentPerformance();
+            frm.ShowDialog();
+            LoadDashboardStats();
         }
     }
 }

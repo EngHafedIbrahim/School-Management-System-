@@ -17,581 +17,586 @@ namespace SchoolManagementSystem.Teachers
 
         private void InitializeComponent()
         {
-            this.pnlHeader = new System.Windows.Forms.Panel();
-            this.lblHeaderSubtitle = new System.Windows.Forms.Label();
-            this.lblHeaderTitle = new System.Windows.Forms.Label();
-            this.tabControl = new System.Windows.Forms.TabControl();
-            this.tabOverview = new System.Windows.Forms.TabPage();
-            this.pnlOverview = new System.Windows.Forms.Panel();
-            this.lblValAbout = new System.Windows.Forms.Label();
-            this.lblTAbout = new System.Windows.Forms.Label();
-            this.lblValStatus = new System.Windows.Forms.Label();
-            this.lblTStatus = new System.Windows.Forms.Label();
-            this.lblValHireDate = new System.Windows.Forms.Label();
-            this.lblTHireDate = new System.Windows.Forms.Label();
-            this.lblValQualification = new System.Windows.Forms.Label();
-            this.lblTQualification = new System.Windows.Forms.Label();
-            this.lblValSpecialization = new System.Windows.Forms.Label();
-            this.lblTSpecialization = new System.Windows.Forms.Label();
-            this.lblValGender = new System.Windows.Forms.Label();
-            this.lblTGender = new System.Windows.Forms.Label();
-            this.lblValAddress = new System.Windows.Forms.Label();
-            this.lblTAddress = new System.Windows.Forms.Label();
-            this.lblValEmail = new System.Windows.Forms.Label();
-            this.lblTEmail = new System.Windows.Forms.Label();
-            this.lblValPhone = new System.Windows.Forms.Label();
-            this.lblTPhone = new System.Windows.Forms.Label();
-            this.lblValFullName = new System.Windows.Forms.Label();
-            this.lblTFullName = new System.Windows.Forms.Label();
-            this.tabAssignments = new System.Windows.Forms.TabPage();
-            this.dgvAssignments = new System.Windows.Forms.DataGridView();
-            this.tabTimetable = new System.Windows.Forms.TabPage();
-            this.dgvTimetable = new System.Windows.Forms.DataGridView();
-            this.tabUserAccount = new System.Windows.Forms.TabPage();
-            this.pnlUserAccount = new System.Windows.Forms.Panel();
-            this.btnCreateUserAccount = new System.Windows.Forms.Button();
-            this.lblValUserStatus = new System.Windows.Forms.Label();
-            this.lblTUserStatus = new System.Windows.Forms.Label();
-            this.lblValUsername = new System.Windows.Forms.Label();
-            this.lblTUsername = new System.Windows.Forms.Label();
-            this.lblUserAccountTitle = new System.Windows.Forms.Label();
-            this.btnEditTeacher = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.pnlHeader.SuspendLayout();
-            this.tabControl.SuspendLayout();
-            this.tabOverview.SuspendLayout();
-            this.pnlOverview.SuspendLayout();
-            this.tabAssignments.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAssignments)).BeginInit();
-            this.tabTimetable.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTimetable)).BeginInit();
-            this.tabUserAccount.SuspendLayout();
-            this.pnlUserAccount.SuspendLayout();
-            this.SuspendLayout();
+            pnlHeader = new Panel();
+            lblHeaderTitle = new Label();
+            tabControl = new TabControl();
+            tabOverview = new TabPage();
+            pnlOverview = new Panel();
+            lblValAbout = new Label();
+            lblTAbout = new Label();
+            lblValStatus = new Label();
+            lblTStatus = new Label();
+            lblValHireDate = new Label();
+            lblTHireDate = new Label();
+            lblValQualification = new Label();
+            lblTQualification = new Label();
+            lblValSpecialization = new Label();
+            lblTSpecialization = new Label();
+            lblValGender = new Label();
+            lblTGender = new Label();
+            lblValAddress = new Label();
+            lblTAddress = new Label();
+            lblValEmail = new Label();
+            lblTEmail = new Label();
+            lblValPhone = new Label();
+            lblTPhone = new Label();
+            lblValFullName = new Label();
+            lblTFullName = new Label();
+            tabAssignments = new TabPage();
+            dgvAssignments = new DataGridView();
+            tabTimetable = new TabPage();
+            dgvTimetable = new DataGridView();
+            tabUserAccount = new TabPage();
+            pnlUserAccount = new Panel();
+            btnCreateUserAccount = new Button();
+            lblValUserStatus = new Label();
+            lblTUserStatus = new Label();
+            lblValUsername = new Label();
+            lblTUsername = new Label();
+            lblUserAccountTitle = new Label();
+            btnEditTeacher = new Button();
+            btnClose = new Button();
+            pnlHeader.SuspendLayout();
+            tabControl.SuspendLayout();
+            tabOverview.SuspendLayout();
+            pnlOverview.SuspendLayout();
+            tabAssignments.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvAssignments).BeginInit();
+            tabTimetable.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvTimetable).BeginInit();
+            tabUserAccount.SuspendLayout();
+            pnlUserAccount.SuspendLayout();
+            SuspendLayout();
             // 
             // pnlHeader
             // 
-            this.pnlHeader.BackColor = System.Drawing.Color.White;
-            this.pnlHeader.Controls.Add(this.lblHeaderSubtitle);
-            this.pnlHeader.Controls.Add(this.lblHeaderTitle);
-            this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlHeader.Location = new System.Drawing.Point(0, 0);
-            this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Padding = new System.Windows.Forms.Padding(20, 10, 20, 10);
-            this.pnlHeader.Size = new System.Drawing.Size(900, 70);
-            this.pnlHeader.TabIndex = 0;
-            // 
-            // lblHeaderSubtitle
-            // 
-            this.lblHeaderSubtitle.AutoSize = true;
-            this.lblHeaderSubtitle.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblHeaderSubtitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(130)))), ((int)(((byte)(140)))));
-            this.lblHeaderSubtitle.Location = new System.Drawing.Point(22, 40);
-            this.lblHeaderSubtitle.Name = "lblHeaderSubtitle";
-            this.lblHeaderSubtitle.Size = new System.Drawing.Size(519, 19);
-            this.lblHeaderSubtitle.TabIndex = 1;
-            this.lblHeaderSubtitle.Text = "Instructor profile, assigned courses, weekly schedule, and authentication credentials.";
+            pnlHeader.BackColor = Color.White;
+            pnlHeader.Controls.Add(lblHeaderTitle);
+            pnlHeader.Dock = DockStyle.Top;
+            pnlHeader.Location = new Point(0, 0);
+            pnlHeader.Margin = new Padding(3, 4, 3, 4);
+            pnlHeader.Name = "pnlHeader";
+            pnlHeader.Padding = new Padding(23, 13, 23, 13);
+            pnlHeader.Size = new Size(1029, 71);
+            pnlHeader.TabIndex = 0;
             // 
             // lblHeaderTitle
             // 
-            this.lblHeaderTitle.AutoSize = true;
-            this.lblHeaderTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.lblHeaderTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.lblHeaderTitle.Location = new System.Drawing.Point(20, 10);
-            this.lblHeaderTitle.Name = "lblHeaderTitle";
-            this.lblHeaderTitle.Size = new System.Drawing.Size(288, 30);
-            this.lblHeaderTitle.TabIndex = 0;
-            this.lblHeaderTitle.Text = "Faculty Member Profile";
+            lblHeaderTitle.AutoSize = true;
+            lblHeaderTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            lblHeaderTitle.ForeColor = Color.FromArgb(44, 62, 80);
+            lblHeaderTitle.Location = new Point(406, 13);
+            lblHeaderTitle.Name = "lblHeaderTitle";
+            lblHeaderTitle.Size = new Size(209, 37);
+            lblHeaderTitle.TabIndex = 0;
+            lblHeaderTitle.Text = "Teacher Profile";
             // 
             // tabControl
             // 
-            this.tabControl.Controls.Add(this.tabOverview);
-            this.tabControl.Controls.Add(this.tabAssignments);
-            this.tabControl.Controls.Add(this.tabTimetable);
-            this.tabControl.Controls.Add(this.tabUserAccount);
-            this.tabControl.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.tabControl.Location = new System.Drawing.Point(20, 80);
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(860, 460);
-            this.tabControl.TabIndex = 1;
+            tabControl.Controls.Add(tabOverview);
+            tabControl.Controls.Add(tabAssignments);
+            tabControl.Controls.Add(tabTimetable);
+            tabControl.Controls.Add(tabUserAccount);
+            tabControl.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            tabControl.Location = new Point(23, 107);
+            tabControl.Margin = new Padding(3, 4, 3, 4);
+            tabControl.Name = "tabControl";
+            tabControl.SelectedIndex = 0;
+            tabControl.Size = new Size(983, 613);
+            tabControl.TabIndex = 1;
             // 
             // tabOverview
             // 
-            this.tabOverview.BackColor = System.Drawing.Color.White;
-            this.tabOverview.Controls.Add(this.pnlOverview);
-            this.tabOverview.Location = new System.Drawing.Point(4, 26);
-            this.tabOverview.Name = "tabOverview";
-            this.tabOverview.Padding = new System.Windows.Forms.Padding(3);
-            this.tabOverview.Size = new System.Drawing.Size(852, 430);
-            this.tabOverview.TabIndex = 0;
-            this.tabOverview.Text = "Overview";
+            tabOverview.BackColor = Color.White;
+            tabOverview.Controls.Add(pnlOverview);
+            tabOverview.Location = new Point(4, 30);
+            tabOverview.Margin = new Padding(3, 4, 3, 4);
+            tabOverview.Name = "tabOverview";
+            tabOverview.Padding = new Padding(3, 4, 3, 4);
+            tabOverview.Size = new Size(975, 579);
+            tabOverview.TabIndex = 0;
+            tabOverview.Text = "Overview";
             // 
             // pnlOverview
             // 
-            this.pnlOverview.Controls.Add(this.lblValAbout);
-            this.pnlOverview.Controls.Add(this.lblTAbout);
-            this.pnlOverview.Controls.Add(this.lblValStatus);
-            this.pnlOverview.Controls.Add(this.lblTStatus);
-            this.pnlOverview.Controls.Add(this.lblValHireDate);
-            this.pnlOverview.Controls.Add(this.lblTHireDate);
-            this.pnlOverview.Controls.Add(this.lblValQualification);
-            this.pnlOverview.Controls.Add(this.lblTQualification);
-            this.pnlOverview.Controls.Add(this.lblValSpecialization);
-            this.pnlOverview.Controls.Add(this.lblTSpecialization);
-            this.pnlOverview.Controls.Add(this.lblValGender);
-            this.pnlOverview.Controls.Add(this.lblTGender);
-            this.pnlOverview.Controls.Add(this.lblValAddress);
-            this.pnlOverview.Controls.Add(this.lblTAddress);
-            this.pnlOverview.Controls.Add(this.lblValEmail);
-            this.pnlOverview.Controls.Add(this.lblTEmail);
-            this.pnlOverview.Controls.Add(this.lblValPhone);
-            this.pnlOverview.Controls.Add(this.lblTPhone);
-            this.pnlOverview.Controls.Add(this.lblValFullName);
-            this.pnlOverview.Controls.Add(this.lblTFullName);
-            this.pnlOverview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlOverview.Location = new System.Drawing.Point(3, 3);
-            this.pnlOverview.Name = "pnlOverview";
-            this.pnlOverview.Padding = new System.Windows.Forms.Padding(25);
-            this.pnlOverview.Size = new System.Drawing.Size(846, 424);
-            this.pnlOverview.TabIndex = 0;
+            pnlOverview.Controls.Add(lblValAbout);
+            pnlOverview.Controls.Add(lblTAbout);
+            pnlOverview.Controls.Add(lblValStatus);
+            pnlOverview.Controls.Add(lblTStatus);
+            pnlOverview.Controls.Add(lblValHireDate);
+            pnlOverview.Controls.Add(lblTHireDate);
+            pnlOverview.Controls.Add(lblValQualification);
+            pnlOverview.Controls.Add(lblTQualification);
+            pnlOverview.Controls.Add(lblValSpecialization);
+            pnlOverview.Controls.Add(lblTSpecialization);
+            pnlOverview.Controls.Add(lblValGender);
+            pnlOverview.Controls.Add(lblTGender);
+            pnlOverview.Controls.Add(lblValAddress);
+            pnlOverview.Controls.Add(lblTAddress);
+            pnlOverview.Controls.Add(lblValEmail);
+            pnlOverview.Controls.Add(lblTEmail);
+            pnlOverview.Controls.Add(lblValPhone);
+            pnlOverview.Controls.Add(lblTPhone);
+            pnlOverview.Controls.Add(lblValFullName);
+            pnlOverview.Controls.Add(lblTFullName);
+            pnlOverview.Dock = DockStyle.Fill;
+            pnlOverview.Location = new Point(3, 4);
+            pnlOverview.Margin = new Padding(3, 4, 3, 4);
+            pnlOverview.Name = "pnlOverview";
+            pnlOverview.Padding = new Padding(29, 33, 29, 33);
+            pnlOverview.Size = new Size(969, 571);
+            pnlOverview.TabIndex = 0;
             // 
             // lblValAbout
             // 
-            this.lblValAbout.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.lblValAbout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            this.lblValAbout.Location = new System.Drawing.Point(220, 340);
-            this.lblValAbout.Name = "lblValAbout";
-            this.lblValAbout.Size = new System.Drawing.Size(580, 45);
-            this.lblValAbout.TabIndex = 19;
-            this.lblValAbout.Text = "---";
+            lblValAbout.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            lblValAbout.ForeColor = Color.FromArgb(33, 37, 41);
+            lblValAbout.Location = new Point(251, 453);
+            lblValAbout.Name = "lblValAbout";
+            lblValAbout.Size = new Size(663, 60);
+            lblValAbout.TabIndex = 19;
+            lblValAbout.Text = "---";
             // 
             // lblTAbout
             // 
-            this.lblTAbout.AutoSize = true;
-            this.lblTAbout.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.lblTAbout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(130)))), ((int)(((byte)(140)))));
-            this.lblTAbout.Location = new System.Drawing.Point(25, 340);
-            this.lblTAbout.Name = "lblTAbout";
-            this.lblTAbout.Size = new System.Drawing.Size(65, 17);
-            this.lblTAbout.TabIndex = 18;
-            this.lblTAbout.Text = "Remarks:";
+            lblTAbout.AutoSize = true;
+            lblTAbout.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            lblTAbout.ForeColor = Color.FromArgb(120, 130, 140);
+            lblTAbout.Location = new Point(29, 453);
+            lblTAbout.Name = "lblTAbout";
+            lblTAbout.Size = new Size(79, 21);
+            lblTAbout.TabIndex = 18;
+            lblTAbout.Text = "Remarks:";
             // 
             // lblValStatus
             // 
-            this.lblValStatus.AutoSize = true;
-            this.lblValStatus.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.lblValStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
-            this.lblValStatus.Location = new System.Drawing.Point(220, 305);
-            this.lblValStatus.Name = "lblValStatus";
-            this.lblValStatus.Size = new System.Drawing.Size(23, 17);
-            this.lblValStatus.TabIndex = 17;
-            this.lblValStatus.Text = "---";
+            lblValStatus.AutoSize = true;
+            lblValStatus.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            lblValStatus.ForeColor = Color.FromArgb(39, 174, 96);
+            lblValStatus.Location = new Point(251, 407);
+            lblValStatus.Name = "lblValStatus";
+            lblValStatus.Size = new Size(28, 21);
+            lblValStatus.TabIndex = 17;
+            lblValStatus.Text = "---";
             // 
             // lblTStatus
             // 
-            this.lblTStatus.AutoSize = true;
-            this.lblTStatus.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.lblTStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(130)))), ((int)(((byte)(140)))));
-            this.lblTStatus.Location = new System.Drawing.Point(25, 305);
-            this.lblTStatus.Name = "lblTStatus";
-            this.lblTStatus.Size = new System.Drawing.Size(132, 17);
-            this.lblTStatus.TabIndex = 16;
-            this.lblTStatus.Text = "Employment Status:";
+            lblTStatus.AutoSize = true;
+            lblTStatus.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            lblTStatus.ForeColor = Color.FromArgb(120, 130, 140);
+            lblTStatus.Location = new Point(29, 407);
+            lblTStatus.Name = "lblTStatus";
+            lblTStatus.Size = new Size(163, 21);
+            lblTStatus.TabIndex = 16;
+            lblTStatus.Text = "Employment Status:";
             // 
             // lblValHireDate
             // 
-            this.lblValHireDate.AutoSize = true;
-            this.lblValHireDate.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.lblValHireDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            this.lblValHireDate.Location = new System.Drawing.Point(220, 270);
-            this.lblValHireDate.Name = "lblValHireDate";
-            this.lblValHireDate.Size = new System.Drawing.Size(23, 17);
-            this.lblValHireDate.TabIndex = 15;
-            this.lblValHireDate.Text = "---";
+            lblValHireDate.AutoSize = true;
+            lblValHireDate.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            lblValHireDate.ForeColor = Color.FromArgb(33, 37, 41);
+            lblValHireDate.Location = new Point(251, 360);
+            lblValHireDate.Name = "lblValHireDate";
+            lblValHireDate.Size = new Size(28, 21);
+            lblValHireDate.TabIndex = 15;
+            lblValHireDate.Text = "---";
             // 
             // lblTHireDate
             // 
-            this.lblTHireDate.AutoSize = true;
-            this.lblTHireDate.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.lblTHireDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(130)))), ((int)(((byte)(140)))));
-            this.lblTHireDate.Location = new System.Drawing.Point(25, 270);
-            this.lblTHireDate.Name = "lblTHireDate";
-            this.lblTHireDate.Size = new System.Drawing.Size(72, 17);
-            this.lblTHireDate.TabIndex = 14;
-            this.lblTHireDate.Text = "Hire Date:";
+            lblTHireDate.AutoSize = true;
+            lblTHireDate.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            lblTHireDate.ForeColor = Color.FromArgb(120, 130, 140);
+            lblTHireDate.Location = new Point(29, 360);
+            lblTHireDate.Name = "lblTHireDate";
+            lblTHireDate.Size = new Size(86, 21);
+            lblTHireDate.TabIndex = 14;
+            lblTHireDate.Text = "Hire Date:";
             // 
             // lblValQualification
             // 
-            this.lblValQualification.AutoSize = true;
-            this.lblValQualification.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.lblValQualification.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            this.lblValQualification.Location = new System.Drawing.Point(220, 235);
-            this.lblValQualification.Name = "lblValQualification";
-            this.lblValQualification.Size = new System.Drawing.Size(23, 17);
-            this.lblValQualification.TabIndex = 13;
-            this.lblValQualification.Text = "---";
+            lblValQualification.AutoSize = true;
+            lblValQualification.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            lblValQualification.ForeColor = Color.FromArgb(33, 37, 41);
+            lblValQualification.Location = new Point(251, 313);
+            lblValQualification.Name = "lblValQualification";
+            lblValQualification.Size = new Size(28, 21);
+            lblValQualification.TabIndex = 13;
+            lblValQualification.Text = "---";
             // 
             // lblTQualification
             // 
-            this.lblTQualification.AutoSize = true;
-            this.lblTQualification.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.lblTQualification.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(130)))), ((int)(((byte)(140)))));
-            this.lblTQualification.Location = new System.Drawing.Point(25, 235);
-            this.lblTQualification.Name = "lblTQualification";
-            this.lblTQualification.Size = new System.Drawing.Size(92, 17);
-            this.lblTQualification.TabIndex = 12;
-            this.lblTQualification.Text = "Qualification:";
+            lblTQualification.AutoSize = true;
+            lblTQualification.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            lblTQualification.ForeColor = Color.FromArgb(120, 130, 140);
+            lblTQualification.Location = new Point(29, 313);
+            lblTQualification.Name = "lblTQualification";
+            lblTQualification.Size = new Size(114, 21);
+            lblTQualification.TabIndex = 12;
+            lblTQualification.Text = "Qualification:";
             // 
             // lblValSpecialization
             // 
-            this.lblValSpecialization.AutoSize = true;
-            this.lblValSpecialization.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.lblValSpecialization.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            this.lblValSpecialization.Location = new System.Drawing.Point(220, 200);
-            this.lblValSpecialization.Name = "lblValSpecialization";
-            this.lblValSpecialization.Size = new System.Drawing.Size(23, 17);
-            this.lblValSpecialization.TabIndex = 11;
-            this.lblValSpecialization.Text = "---";
+            lblValSpecialization.AutoSize = true;
+            lblValSpecialization.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            lblValSpecialization.ForeColor = Color.FromArgb(33, 37, 41);
+            lblValSpecialization.Location = new Point(251, 267);
+            lblValSpecialization.Name = "lblValSpecialization";
+            lblValSpecialization.Size = new Size(28, 21);
+            lblValSpecialization.TabIndex = 11;
+            lblValSpecialization.Text = "---";
             // 
             // lblTSpecialization
             // 
-            this.lblTSpecialization.AutoSize = true;
-            this.lblTSpecialization.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.lblTSpecialization.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(130)))), ((int)(((byte)(140)))));
-            this.lblTSpecialization.Location = new System.Drawing.Point(25, 200);
-            this.lblTSpecialization.Name = "lblTSpecialization";
-            this.lblTSpecialization.Size = new System.Drawing.Size(98, 17);
-            this.lblTSpecialization.TabIndex = 10;
-            this.lblTSpecialization.Text = "Specialization:";
+            lblTSpecialization.AutoSize = true;
+            lblTSpecialization.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            lblTSpecialization.ForeColor = Color.FromArgb(120, 130, 140);
+            lblTSpecialization.Location = new Point(29, 267);
+            lblTSpecialization.Name = "lblTSpecialization";
+            lblTSpecialization.Size = new Size(122, 21);
+            lblTSpecialization.TabIndex = 10;
+            lblTSpecialization.Text = "Specialization:";
             // 
             // lblValGender
             // 
-            this.lblValGender.AutoSize = true;
-            this.lblValGender.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.lblValGender.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            this.lblValGender.Location = new System.Drawing.Point(220, 165);
-            this.lblValGender.Name = "lblValGender";
-            this.lblValGender.Size = new System.Drawing.Size(23, 17);
-            this.lblValGender.TabIndex = 9;
-            this.lblValGender.Text = "---";
+            lblValGender.AutoSize = true;
+            lblValGender.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            lblValGender.ForeColor = Color.FromArgb(33, 37, 41);
+            lblValGender.Location = new Point(251, 220);
+            lblValGender.Name = "lblValGender";
+            lblValGender.Size = new Size(28, 21);
+            lblValGender.TabIndex = 9;
+            lblValGender.Text = "---";
             // 
             // lblTGender
             // 
-            this.lblTGender.AutoSize = true;
-            this.lblTGender.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.lblTGender.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(130)))), ((int)(((byte)(140)))));
-            this.lblTGender.Location = new System.Drawing.Point(25, 165);
-            this.lblTGender.Name = "lblTGender";
-            this.lblTGender.Size = new System.Drawing.Size(58, 17);
-            this.lblTGender.TabIndex = 8;
-            this.lblTGender.Text = "Gender:";
+            lblTGender.AutoSize = true;
+            lblTGender.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            lblTGender.ForeColor = Color.FromArgb(120, 130, 140);
+            lblTGender.Location = new Point(29, 220);
+            lblTGender.Name = "lblTGender";
+            lblTGender.Size = new Size(70, 21);
+            lblTGender.TabIndex = 8;
+            lblTGender.Text = "Gender:";
             // 
             // lblValAddress
             // 
-            this.lblValAddress.AutoSize = true;
-            this.lblValAddress.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.lblValAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            this.lblValAddress.Location = new System.Drawing.Point(220, 130);
-            this.lblValAddress.Name = "lblValAddress";
-            this.lblValAddress.Size = new System.Drawing.Size(23, 17);
-            this.lblValAddress.TabIndex = 7;
-            this.lblValAddress.Text = "---";
+            lblValAddress.AutoSize = true;
+            lblValAddress.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            lblValAddress.ForeColor = Color.FromArgb(33, 37, 41);
+            lblValAddress.Location = new Point(251, 173);
+            lblValAddress.Name = "lblValAddress";
+            lblValAddress.Size = new Size(28, 21);
+            lblValAddress.TabIndex = 7;
+            lblValAddress.Text = "---";
             // 
             // lblTAddress
             // 
-            this.lblTAddress.AutoSize = true;
-            this.lblTAddress.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.lblTAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(130)))), ((int)(((byte)(140)))));
-            this.lblTAddress.Location = new System.Drawing.Point(25, 130);
-            this.lblTAddress.Name = "lblTAddress";
-            this.lblTAddress.Size = new System.Drawing.Size(61, 17);
-            this.lblTAddress.TabIndex = 6;
-            this.lblTAddress.Text = "Address:";
+            lblTAddress.AutoSize = true;
+            lblTAddress.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            lblTAddress.ForeColor = Color.FromArgb(120, 130, 140);
+            lblTAddress.Location = new Point(29, 173);
+            lblTAddress.Name = "lblTAddress";
+            lblTAddress.Size = new Size(74, 21);
+            lblTAddress.TabIndex = 6;
+            lblTAddress.Text = "Address:";
             // 
             // lblValEmail
             // 
-            this.lblValEmail.AutoSize = true;
-            this.lblValEmail.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.lblValEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            this.lblValEmail.Location = new System.Drawing.Point(220, 95);
-            this.lblValEmail.Name = "lblValEmail";
-            this.lblValEmail.Size = new System.Drawing.Size(23, 17);
-            this.lblValEmail.TabIndex = 5;
-            this.lblValEmail.Text = "---";
+            lblValEmail.AutoSize = true;
+            lblValEmail.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            lblValEmail.ForeColor = Color.FromArgb(33, 37, 41);
+            lblValEmail.Location = new Point(251, 127);
+            lblValEmail.Name = "lblValEmail";
+            lblValEmail.Size = new Size(28, 21);
+            lblValEmail.TabIndex = 5;
+            lblValEmail.Text = "---";
             // 
             // lblTEmail
             // 
-            this.lblTEmail.AutoSize = true;
-            this.lblTEmail.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.lblTEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(130)))), ((int)(((byte)(140)))));
-            this.lblTEmail.Location = new System.Drawing.Point(25, 95);
-            this.lblTEmail.Name = "lblTEmail";
-            this.lblTEmail.Size = new System.Drawing.Size(101, 17);
-            this.lblTEmail.TabIndex = 4;
-            this.lblTEmail.Text = "Email Address:";
+            lblTEmail.AutoSize = true;
+            lblTEmail.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            lblTEmail.ForeColor = Color.FromArgb(120, 130, 140);
+            lblTEmail.Location = new Point(29, 127);
+            lblTEmail.Name = "lblTEmail";
+            lblTEmail.Size = new Size(121, 21);
+            lblTEmail.TabIndex = 4;
+            lblTEmail.Text = "Email Address:";
             // 
             // lblValPhone
             // 
-            this.lblValPhone.AutoSize = true;
-            this.lblValPhone.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.lblValPhone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            this.lblValPhone.Location = new System.Drawing.Point(220, 60);
-            this.lblValPhone.Name = "lblValPhone";
-            this.lblValPhone.Size = new System.Drawing.Size(23, 17);
-            this.lblValPhone.TabIndex = 3;
-            this.lblValPhone.Text = "---";
+            lblValPhone.AutoSize = true;
+            lblValPhone.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            lblValPhone.ForeColor = Color.FromArgb(33, 37, 41);
+            lblValPhone.Location = new Point(251, 80);
+            lblValPhone.Name = "lblValPhone";
+            lblValPhone.Size = new Size(28, 21);
+            lblValPhone.TabIndex = 3;
+            lblValPhone.Text = "---";
             // 
             // lblTPhone
             // 
-            this.lblTPhone.AutoSize = true;
-            this.lblTPhone.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.lblTPhone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(130)))), ((int)(((byte)(140)))));
-            this.lblTPhone.Location = new System.Drawing.Point(25, 60);
-            this.lblTPhone.Name = "lblTPhone";
-            this.lblTPhone.Size = new System.Drawing.Size(105, 17);
-            this.lblTPhone.TabIndex = 2;
-            this.lblTPhone.Text = "Phone Number:";
+            lblTPhone.AutoSize = true;
+            lblTPhone.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            lblTPhone.ForeColor = Color.FromArgb(120, 130, 140);
+            lblTPhone.Location = new Point(29, 80);
+            lblTPhone.Name = "lblTPhone";
+            lblTPhone.Size = new Size(131, 21);
+            lblTPhone.TabIndex = 2;
+            lblTPhone.Text = "Phone Number:";
             // 
             // lblValFullName
             // 
-            this.lblValFullName.AutoSize = true;
-            this.lblValFullName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.lblValFullName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.lblValFullName.Location = new System.Drawing.Point(220, 25);
-            this.lblValFullName.Name = "lblValFullName";
-            this.lblValFullName.Size = new System.Drawing.Size(28, 21);
-            this.lblValFullName.TabIndex = 1;
-            this.lblValFullName.Text = "---";
+            lblValFullName.AutoSize = true;
+            lblValFullName.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lblValFullName.ForeColor = Color.FromArgb(44, 62, 80);
+            lblValFullName.Location = new Point(251, 33);
+            lblValFullName.Name = "lblValFullName";
+            lblValFullName.Size = new Size(36, 28);
+            lblValFullName.TabIndex = 1;
+            lblValFullName.Text = "---";
             // 
             // lblTFullName
             // 
-            this.lblTFullName.AutoSize = true;
-            this.lblTFullName.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.lblTFullName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(130)))), ((int)(((byte)(140)))));
-            this.lblTFullName.Location = new System.Drawing.Point(25, 27);
-            this.lblTFullName.Name = "lblTFullName";
-            this.lblTFullName.Size = new System.Drawing.Size(75, 17);
-            this.lblTFullName.TabIndex = 0;
-            this.lblTFullName.Text = "Full Name:";
+            lblTFullName.AutoSize = true;
+            lblTFullName.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            lblTFullName.ForeColor = Color.FromArgb(120, 130, 140);
+            lblTFullName.Location = new Point(29, 36);
+            lblTFullName.Name = "lblTFullName";
+            lblTFullName.Size = new Size(92, 21);
+            lblTFullName.TabIndex = 0;
+            lblTFullName.Text = "Full Name:";
             // 
             // tabAssignments
             // 
-            this.tabAssignments.BackColor = System.Drawing.Color.White;
-            this.tabAssignments.Controls.Add(this.dgvAssignments);
-            this.tabAssignments.Location = new System.Drawing.Point(4, 26);
-            this.tabAssignments.Name = "tabAssignments";
-            this.tabAssignments.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAssignments.Size = new System.Drawing.Size(852, 430);
-            this.tabAssignments.TabIndex = 1;
-            this.tabAssignments.Text = "Teaching Assignments";
+            tabAssignments.BackColor = Color.White;
+            tabAssignments.Controls.Add(dgvAssignments);
+            tabAssignments.Location = new Point(4, 30);
+            tabAssignments.Margin = new Padding(3, 4, 3, 4);
+            tabAssignments.Name = "tabAssignments";
+            tabAssignments.Padding = new Padding(3, 4, 3, 4);
+            tabAssignments.Size = new Size(975, 579);
+            tabAssignments.TabIndex = 1;
+            tabAssignments.Text = "Teaching Assignments";
             // 
             // dgvAssignments
             // 
-            this.dgvAssignments.AllowUserToAddRows = false;
-            this.dgvAssignments.AllowUserToDeleteRows = false;
-            this.dgvAssignments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvAssignments.BackgroundColor = System.Drawing.Color.White;
-            this.dgvAssignments.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvAssignments.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvAssignments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvAssignments.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvAssignments.Location = new System.Drawing.Point(3, 3);
-            this.dgvAssignments.MultiSelect = false;
-            this.dgvAssignments.Name = "dgvAssignments";
-            this.dgvAssignments.ReadOnly = true;
-            this.dgvAssignments.RowHeadersVisible = false;
-            this.dgvAssignments.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAssignments.Size = new System.Drawing.Size(846, 424);
-            this.dgvAssignments.TabIndex = 0;
+            dgvAssignments.AllowUserToAddRows = false;
+            dgvAssignments.AllowUserToDeleteRows = false;
+            dgvAssignments.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvAssignments.BackgroundColor = Color.White;
+            dgvAssignments.BorderStyle = BorderStyle.None;
+            dgvAssignments.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvAssignments.ColumnHeadersHeight = 29;
+            dgvAssignments.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgvAssignments.Dock = DockStyle.Fill;
+            dgvAssignments.Location = new Point(3, 4);
+            dgvAssignments.Margin = new Padding(3, 4, 3, 4);
+            dgvAssignments.MultiSelect = false;
+            dgvAssignments.Name = "dgvAssignments";
+            dgvAssignments.ReadOnly = true;
+            dgvAssignments.RowHeadersVisible = false;
+            dgvAssignments.RowHeadersWidth = 51;
+            dgvAssignments.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvAssignments.Size = new Size(969, 571);
+            dgvAssignments.TabIndex = 0;
             // 
             // tabTimetable
             // 
-            this.tabTimetable.BackColor = System.Drawing.Color.White;
-            this.tabTimetable.Controls.Add(this.dgvTimetable);
-            this.tabTimetable.Location = new System.Drawing.Point(4, 26);
-            this.tabTimetable.Name = "tabTimetable";
-            this.tabTimetable.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTimetable.Size = new System.Drawing.Size(852, 430);
-            this.tabTimetable.TabIndex = 2;
-            this.tabTimetable.Text = "Weekly Schedule";
+            tabTimetable.BackColor = Color.White;
+            tabTimetable.Controls.Add(dgvTimetable);
+            tabTimetable.Location = new Point(4, 30);
+            tabTimetable.Margin = new Padding(3, 4, 3, 4);
+            tabTimetable.Name = "tabTimetable";
+            tabTimetable.Padding = new Padding(3, 4, 3, 4);
+            tabTimetable.Size = new Size(975, 579);
+            tabTimetable.TabIndex = 2;
+            tabTimetable.Text = "Weekly Schedule";
             // 
             // dgvTimetable
             // 
-            this.dgvTimetable.AllowUserToAddRows = false;
-            this.dgvTimetable.AllowUserToDeleteRows = false;
-            this.dgvTimetable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvTimetable.BackgroundColor = System.Drawing.Color.White;
-            this.dgvTimetable.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvTimetable.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvTimetable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvTimetable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvTimetable.Location = new System.Drawing.Point(3, 3);
-            this.dgvTimetable.MultiSelect = false;
-            this.dgvTimetable.Name = "dgvTimetable";
-            this.dgvTimetable.ReadOnly = true;
-            this.dgvTimetable.RowHeadersVisible = false;
-            this.dgvTimetable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTimetable.Size = new System.Drawing.Size(846, 424);
-            this.dgvTimetable.TabIndex = 0;
+            dgvTimetable.AllowUserToAddRows = false;
+            dgvTimetable.AllowUserToDeleteRows = false;
+            dgvTimetable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvTimetable.BackgroundColor = Color.White;
+            dgvTimetable.BorderStyle = BorderStyle.None;
+            dgvTimetable.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvTimetable.ColumnHeadersHeight = 29;
+            dgvTimetable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgvTimetable.Dock = DockStyle.Fill;
+            dgvTimetable.Location = new Point(3, 4);
+            dgvTimetable.Margin = new Padding(3, 4, 3, 4);
+            dgvTimetable.MultiSelect = false;
+            dgvTimetable.Name = "dgvTimetable";
+            dgvTimetable.ReadOnly = true;
+            dgvTimetable.RowHeadersVisible = false;
+            dgvTimetable.RowHeadersWidth = 51;
+            dgvTimetable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvTimetable.Size = new Size(969, 571);
+            dgvTimetable.TabIndex = 0;
             // 
             // tabUserAccount
             // 
-            this.tabUserAccount.BackColor = System.Drawing.Color.White;
-            this.tabUserAccount.Controls.Add(this.pnlUserAccount);
-            this.tabUserAccount.Location = new System.Drawing.Point(4, 26);
-            this.tabUserAccount.Name = "tabUserAccount";
-            this.tabUserAccount.Padding = new System.Windows.Forms.Padding(3);
-            this.tabUserAccount.Size = new System.Drawing.Size(852, 430);
-            this.tabUserAccount.TabIndex = 3;
-            this.tabUserAccount.Text = "User Credentials";
+            tabUserAccount.BackColor = Color.White;
+            tabUserAccount.Controls.Add(pnlUserAccount);
+            tabUserAccount.Location = new Point(4, 30);
+            tabUserAccount.Margin = new Padding(3, 4, 3, 4);
+            tabUserAccount.Name = "tabUserAccount";
+            tabUserAccount.Padding = new Padding(3, 4, 3, 4);
+            tabUserAccount.Size = new Size(975, 579);
+            tabUserAccount.TabIndex = 3;
+            tabUserAccount.Text = "User Credentials";
             // 
             // pnlUserAccount
             // 
-            this.pnlUserAccount.Controls.Add(this.btnCreateUserAccount);
-            this.pnlUserAccount.Controls.Add(this.lblValUserStatus);
-            this.pnlUserAccount.Controls.Add(this.lblTUserStatus);
-            this.pnlUserAccount.Controls.Add(this.lblValUsername);
-            this.pnlUserAccount.Controls.Add(this.lblTUsername);
-            this.pnlUserAccount.Controls.Add(this.lblUserAccountTitle);
-            this.pnlUserAccount.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlUserAccount.Location = new System.Drawing.Point(3, 3);
-            this.pnlUserAccount.Name = "pnlUserAccount";
-            this.pnlUserAccount.Padding = new System.Windows.Forms.Padding(30);
-            this.pnlUserAccount.Size = new System.Drawing.Size(846, 424);
-            this.pnlUserAccount.TabIndex = 0;
+            pnlUserAccount.Controls.Add(btnCreateUserAccount);
+            pnlUserAccount.Controls.Add(lblValUserStatus);
+            pnlUserAccount.Controls.Add(lblTUserStatus);
+            pnlUserAccount.Controls.Add(lblValUsername);
+            pnlUserAccount.Controls.Add(lblTUsername);
+            pnlUserAccount.Controls.Add(lblUserAccountTitle);
+            pnlUserAccount.Dock = DockStyle.Fill;
+            pnlUserAccount.Location = new Point(3, 4);
+            pnlUserAccount.Margin = new Padding(3, 4, 3, 4);
+            pnlUserAccount.Name = "pnlUserAccount";
+            pnlUserAccount.Padding = new Padding(34, 40, 34, 40);
+            pnlUserAccount.Size = new Size(969, 571);
+            pnlUserAccount.TabIndex = 0;
             // 
             // btnCreateUserAccount
             // 
-            this.btnCreateUserAccount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.btnCreateUserAccount.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCreateUserAccount.FlatAppearance.BorderSize = 0;
-            this.btnCreateUserAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreateUserAccount.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.btnCreateUserAccount.ForeColor = System.Drawing.Color.White;
-            this.btnCreateUserAccount.Location = new System.Drawing.Point(30, 160);
-            this.btnCreateUserAccount.Name = "btnCreateUserAccount";
-            this.btnCreateUserAccount.Size = new System.Drawing.Size(220, 36);
-            this.btnCreateUserAccount.TabIndex = 5;
-            this.btnCreateUserAccount.Text = "Generate Teacher Login Account";
-            this.btnCreateUserAccount.UseVisualStyleBackColor = false;
-            this.btnCreateUserAccount.Click += new System.EventHandler(this.BtnCreateUserAccount_Click);
+            btnCreateUserAccount.BackColor = Color.FromArgb(41, 128, 185);
+            btnCreateUserAccount.Cursor = Cursors.Hand;
+            btnCreateUserAccount.FlatAppearance.BorderSize = 0;
+            btnCreateUserAccount.FlatStyle = FlatStyle.Popup;
+            btnCreateUserAccount.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            btnCreateUserAccount.ForeColor = Color.White;
+            btnCreateUserAccount.Location = new Point(266, 286);
+            btnCreateUserAccount.Margin = new Padding(3, 4, 3, 4);
+            btnCreateUserAccount.Name = "btnCreateUserAccount";
+            btnCreateUserAccount.Size = new Size(293, 49);
+            btnCreateUserAccount.TabIndex = 5;
+            btnCreateUserAccount.Text = "Generate Teacher Login Account";
+            btnCreateUserAccount.UseVisualStyleBackColor = false;
+            btnCreateUserAccount.Click += BtnCreateUserAccount_Click;
             // 
             // lblValUserStatus
             // 
-            this.lblValUserStatus.AutoSize = true;
-            this.lblValUserStatus.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.lblValUserStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            this.lblValUserStatus.Location = new System.Drawing.Point(180, 110);
-            this.lblValUserStatus.Name = "lblValUserStatus";
-            this.lblValUserStatus.Size = new System.Drawing.Size(23, 17);
-            this.lblValUserStatus.TabIndex = 4;
-            this.lblValUserStatus.Text = "---";
+            lblValUserStatus.AutoSize = true;
+            lblValUserStatus.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            lblValUserStatus.ForeColor = Color.FromArgb(33, 37, 41);
+            lblValUserStatus.Location = new Point(206, 147);
+            lblValUserStatus.Name = "lblValUserStatus";
+            lblValUserStatus.Size = new Size(28, 21);
+            lblValUserStatus.TabIndex = 4;
+            lblValUserStatus.Text = "---";
             // 
             // lblTUserStatus
             // 
-            this.lblTUserStatus.AutoSize = true;
-            this.lblTUserStatus.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.lblTUserStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(130)))), ((int)(((byte)(140)))));
-            this.lblTUserStatus.Location = new System.Drawing.Point(30, 110);
-            this.lblTUserStatus.Name = "lblTUserStatus";
-            this.lblTUserStatus.Size = new System.Drawing.Size(107, 17);
-            this.lblTUserStatus.TabIndex = 3;
-            this.lblTUserStatus.Text = "Account Status:";
+            lblTUserStatus.AutoSize = true;
+            lblTUserStatus.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            lblTUserStatus.ForeColor = Color.FromArgb(120, 130, 140);
+            lblTUserStatus.Location = new Point(34, 147);
+            lblTUserStatus.Name = "lblTUserStatus";
+            lblTUserStatus.Size = new Size(128, 21);
+            lblTUserStatus.TabIndex = 3;
+            lblTUserStatus.Text = "Account Status:";
             // 
             // lblValUsername
             // 
-            this.lblValUsername.AutoSize = true;
-            this.lblValUsername.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.lblValUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.lblValUsername.Location = new System.Drawing.Point(180, 75);
-            this.lblValUsername.Name = "lblValUsername";
-            this.lblValUsername.Size = new System.Drawing.Size(23, 17);
-            this.lblValUsername.TabIndex = 2;
-            this.lblValUsername.Text = "---";
+            lblValUsername.AutoSize = true;
+            lblValUsername.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            lblValUsername.ForeColor = Color.FromArgb(41, 128, 185);
+            lblValUsername.Location = new Point(206, 100);
+            lblValUsername.Name = "lblValUsername";
+            lblValUsername.Size = new Size(28, 21);
+            lblValUsername.TabIndex = 2;
+            lblValUsername.Text = "---";
             // 
             // lblTUsername
             // 
-            this.lblTUsername.AutoSize = true;
-            this.lblTUsername.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.lblTUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(130)))), ((int)(((byte)(140)))));
-            this.lblTUsername.Location = new System.Drawing.Point(30, 75);
-            this.lblTUsername.Name = "lblTUsername";
-            this.lblTUsername.Size = new System.Drawing.Size(73, 17);
-            this.lblTUsername.TabIndex = 1;
-            this.lblTUsername.Text = "Username:";
+            lblTUsername.AutoSize = true;
+            lblTUsername.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            lblTUsername.ForeColor = Color.FromArgb(120, 130, 140);
+            lblTUsername.Location = new Point(34, 100);
+            lblTUsername.Name = "lblTUsername";
+            lblTUsername.Size = new Size(91, 21);
+            lblTUsername.TabIndex = 1;
+            lblTUsername.Text = "Username:";
             // 
             // lblUserAccountTitle
             // 
-            this.lblUserAccountTitle.AutoSize = true;
-            this.lblUserAccountTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.lblUserAccountTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.lblUserAccountTitle.Location = new System.Drawing.Point(30, 30);
-            this.lblUserAccountTitle.Name = "lblUserAccountTitle";
-            this.lblUserAccountTitle.Size = new System.Drawing.Size(262, 21);
-            this.lblUserAccountTitle.TabIndex = 0;
-            this.lblUserAccountTitle.Text = "Teacher System Access Account";
+            lblUserAccountTitle.AutoSize = true;
+            lblUserAccountTitle.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lblUserAccountTitle.ForeColor = Color.FromArgb(44, 62, 80);
+            lblUserAccountTitle.Location = new Point(34, 40);
+            lblUserAccountTitle.Name = "lblUserAccountTitle";
+            lblUserAccountTitle.Size = new Size(312, 28);
+            lblUserAccountTitle.TabIndex = 0;
+            lblUserAccountTitle.Text = "Teacher System Access Account";
             // 
             // btnEditTeacher
             // 
-            this.btnEditTeacher.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.btnEditTeacher.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEditTeacher.FlatAppearance.BorderSize = 0;
-            this.btnEditTeacher.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditTeacher.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.btnEditTeacher.ForeColor = System.Drawing.Color.White;
-            this.btnEditTeacher.Location = new System.Drawing.Point(615, 555);
-            this.btnEditTeacher.Name = "btnEditTeacher";
-            this.btnEditTeacher.Size = new System.Drawing.Size(145, 36);
-            this.btnEditTeacher.TabIndex = 2;
-            this.btnEditTeacher.Text = "Edit Teacher Info";
-            this.btnEditTeacher.UseVisualStyleBackColor = false;
-            this.btnEditTeacher.Click += new System.EventHandler(this.BtnEditTeacher_Click);
+            btnEditTeacher.BackColor = Color.FromArgb(41, 128, 185);
+            btnEditTeacher.Cursor = Cursors.Hand;
+            btnEditTeacher.FlatAppearance.BorderSize = 0;
+            btnEditTeacher.FlatStyle = FlatStyle.Flat;
+            btnEditTeacher.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            btnEditTeacher.ForeColor = Color.White;
+            btnEditTeacher.Location = new Point(703, 740);
+            btnEditTeacher.Margin = new Padding(3, 4, 3, 4);
+            btnEditTeacher.Name = "btnEditTeacher";
+            btnEditTeacher.Size = new Size(166, 48);
+            btnEditTeacher.TabIndex = 2;
+            btnEditTeacher.Text = "Edit Teacher Info";
+            btnEditTeacher.UseVisualStyleBackColor = false;
+            btnEditTeacher.Click += BtnEditTeacher_Click;
             // 
             // btnClose
             // 
-            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClose.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(224)))), ((int)(((byte)(230)))));
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.btnClose.Location = new System.Drawing.Point(770, 555);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(110, 36);
-            this.btnClose.TabIndex = 3;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
+            btnClose.Cursor = Cursors.Hand;
+            btnClose.FlatAppearance.BorderColor = Color.FromArgb(220, 224, 230);
+            btnClose.FlatStyle = FlatStyle.Flat;
+            btnClose.Font = new Font("Segoe UI", 9.5F);
+            btnClose.Location = new Point(880, 740);
+            btnClose.Margin = new Padding(3, 4, 3, 4);
+            btnClose.Name = "btnClose";
+            btnClose.Size = new Size(126, 48);
+            btnClose.TabIndex = 3;
+            btnClose.Text = "Close";
+            btnClose.UseVisualStyleBackColor = true;
+            btnClose.Click += BtnClose_Click;
             // 
             // frmTeacherProfile
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(900, 605);
-            this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.btnEditTeacher);
-            this.Controls.Add(this.tabControl);
-            this.Controls.Add(this.pnlHeader);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "frmTeacherProfile";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Teacher Profile";
-            this.pnlHeader.ResumeLayout(false);
-            this.pnlHeader.PerformLayout();
-            this.tabControl.ResumeLayout(false);
-            this.tabOverview.ResumeLayout(false);
-            this.pnlOverview.ResumeLayout(false);
-            this.pnlOverview.PerformLayout();
-            this.tabAssignments.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAssignments)).EndInit();
-            this.tabTimetable.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTimetable)).EndInit();
-            this.tabUserAccount.ResumeLayout(false);
-            this.pnlUserAccount.ResumeLayout(false);
-            this.pnlUserAccount.PerformLayout();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(245, 247, 250);
+            ClientSize = new Size(1029, 807);
+            Controls.Add(btnClose);
+            Controls.Add(btnEditTeacher);
+            Controls.Add(tabControl);
+            Controls.Add(pnlHeader);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            Margin = new Padding(3, 4, 3, 4);
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "frmTeacherProfile";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "Teacher Profile";
+            pnlHeader.ResumeLayout(false);
+            pnlHeader.PerformLayout();
+            tabControl.ResumeLayout(false);
+            tabOverview.ResumeLayout(false);
+            pnlOverview.ResumeLayout(false);
+            pnlOverview.PerformLayout();
+            tabAssignments.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvAssignments).EndInit();
+            tabTimetable.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvTimetable).EndInit();
+            tabUserAccount.ResumeLayout(false);
+            pnlUserAccount.ResumeLayout(false);
+            pnlUserAccount.PerformLayout();
+            ResumeLayout(false);
 
         }
 
@@ -599,7 +604,6 @@ namespace SchoolManagementSystem.Teachers
 
         private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.Label lblHeaderTitle;
-        private System.Windows.Forms.Label lblHeaderSubtitle;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabOverview;
         private System.Windows.Forms.Panel pnlOverview;

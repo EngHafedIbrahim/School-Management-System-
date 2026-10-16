@@ -288,5 +288,30 @@ namespace SchoolManagementSystemDataAccessLayer
             return isFound;
         }
 
-    }
+    
+        public static bool IsParentOfStudent(int parentID, int studentID)
+        {
+            bool isFound = false;
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = "SELECT TOP 1 1 FROM StudentParent WHERE ParentID = @ParentID AND StudentID = @StudentID";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@ParentID", parentID);
+                        command.Parameters.AddWithValue("@StudentID", studentID);
+                        connection.Open();
+                        isFound = (command.ExecuteScalar() != null);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return isFound;
+        }
+
+}
 }

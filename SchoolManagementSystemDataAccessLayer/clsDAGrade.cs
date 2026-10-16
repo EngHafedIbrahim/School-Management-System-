@@ -272,5 +272,42 @@ namespace SchoolManagementSystemDataAccessLayer
             return dt;
         }
 
+
+        public static DataTable GetGradesByStudentAndYear(int studentID, int academicYearID)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = @"
+                        SELECT 
+                            g.GradeID, c.Name AS CourseName, et.Name AS ExamType,
+                            g.GradeValue, g.OutOfValue,
+                            CASE WHEN g.OutOfValue > 0 THEN ROUND((g.GradeValue / g.OutOfValue) * 100, 2) ELSE 0 END AS Percentage
+                        FROM Grade g
+                        INNER JOIN Course c ON g.CourseID = c.CourseID
+                        INNER JOIN ExamType et ON g.ExamTypeID = et.ExamTypeID
+                        WHERE g.StudentID = @StudentID AND g.AcademicYearID = @AcademicYearID
+                        ORDER BY c.Name, et.Name";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@StudentID", studentID);
+                        command.Parameters.AddWithValue("@AcademicYearID", academicYearID);
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            dt.Load(reader);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return dt;
+        }
+
 }
 }

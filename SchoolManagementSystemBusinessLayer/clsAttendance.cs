@@ -139,5 +139,8 @@ namespace SchoolManagementSystemBusinessLayer
 
         public static DataTable GetAttendanceByClassID(int classID) => clsDAAttendance.GetAttendanceByClassID(classID);
 
+
+        public static DataTable GetAttendanceSummaryByStudent(int studentID, int academicYearID) => clsDAAttendance.GetAttendanceSummaryByStudent(studentID, academicYearID);
+
 }
 }

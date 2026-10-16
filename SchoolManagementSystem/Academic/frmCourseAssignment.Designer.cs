@@ -19,9 +19,10 @@ namespace SchoolManagementSystem.Academic
         {
             components = new System.ComponentModel.Container();
             pnlHeader = new Panel();
-            lblHeaderSubtitle = new Label();
             lblHeaderTitle = new Label();
             pnlEditor = new Panel();
+            cbGradeLevels = new ComboBox();
+            label1 = new Label();
             btnCancelEdit = new Button();
             btnAssign = new Button();
             cbYear = new ComboBox();
@@ -58,33 +59,21 @@ namespace SchoolManagementSystem.Academic
             // pnlHeader
             // 
             pnlHeader.BackColor = Color.White;
-            pnlHeader.Controls.Add(lblHeaderSubtitle);
             pnlHeader.Controls.Add(lblHeaderTitle);
             pnlHeader.Dock = DockStyle.Top;
             pnlHeader.Location = new Point(0, 0);
             pnlHeader.Margin = new Padding(3, 4, 3, 4);
             pnlHeader.Name = "pnlHeader";
             pnlHeader.Padding = new Padding(23, 13, 23, 13);
-            pnlHeader.Size = new Size(1102, 85);
+            pnlHeader.Size = new Size(1119, 76);
             pnlHeader.TabIndex = 0;
-            // 
-            // lblHeaderSubtitle
-            // 
-            lblHeaderSubtitle.AutoSize = true;
-            lblHeaderSubtitle.Font = new Font("Segoe UI", 10F);
-            lblHeaderSubtitle.ForeColor = Color.FromArgb(120, 130, 140);
-            lblHeaderSubtitle.Location = new Point(25, 53);
-            lblHeaderSubtitle.Name = "lblHeaderSubtitle";
-            lblHeaderSubtitle.Size = new Size(731, 23);
-            lblHeaderSubtitle.TabIndex = 1;
-            lblHeaderSubtitle.Text = "Allocate instructional teaching duties: Class + Subject + Faculty Instructor + Academic Session.";
             // 
             // lblHeaderTitle
             // 
             lblHeaderTitle.AutoSize = true;
             lblHeaderTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
             lblHeaderTitle.ForeColor = Color.FromArgb(44, 62, 80);
-            lblHeaderTitle.Location = new Point(328, 9);
+            lblHeaderTitle.Location = new Point(342, 13);
             lblHeaderTitle.Name = "lblHeaderTitle";
             lblHeaderTitle.Size = new Size(428, 37);
             lblHeaderTitle.TabIndex = 0;
@@ -94,6 +83,8 @@ namespace SchoolManagementSystem.Academic
             // 
             pnlEditor.BackColor = Color.White;
             pnlEditor.BorderStyle = BorderStyle.FixedSingle;
+            pnlEditor.Controls.Add(cbGradeLevels);
+            pnlEditor.Controls.Add(label1);
             pnlEditor.Controls.Add(btnCancelEdit);
             pnlEditor.Controls.Add(btnAssign);
             pnlEditor.Controls.Add(cbYear);
@@ -106,12 +97,35 @@ namespace SchoolManagementSystem.Academic
             pnlEditor.Controls.Add(lblClass);
             pnlEditor.Controls.Add(lblFormTitle);
             pnlEditor.Dock = DockStyle.Top;
-            pnlEditor.Location = new Point(0, 85);
+            pnlEditor.Location = new Point(0, 76);
             pnlEditor.Margin = new Padding(3, 4, 3, 4);
             pnlEditor.Name = "pnlEditor";
             pnlEditor.Padding = new Padding(23, 16, 23, 16);
-            pnlEditor.Size = new Size(1102, 153);
+            pnlEditor.Size = new Size(1119, 214);
             pnlEditor.TabIndex = 1;
+            // 
+            // cbGradeLevels
+            // 
+            cbGradeLevels.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbGradeLevels.Font = new Font("Segoe UI", 9.5F);
+            cbGradeLevels.FormattingEnabled = true;
+            cbGradeLevels.Location = new Point(45, 93);
+            cbGradeLevels.Margin = new Padding(3, 4, 3, 4);
+            cbGradeLevels.Name = "cbGradeLevels";
+            cbGradeLevels.Size = new Size(225, 29);
+            cbGradeLevels.TabIndex = 12;
+            cbGradeLevels.Validating += CbGradeLevels_Validating;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            label1.ForeColor = Color.FromArgb(33, 37, 41);
+            label1.Location = new Point(51, 68);
+            label1.Name = "label1";
+            label1.Size = new Size(103, 21);
+            label1.TabIndex = 11;
+            label1.Text = "Grade Level:";
             // 
             // btnCancelEdit
             // 
@@ -119,7 +133,7 @@ namespace SchoolManagementSystem.Academic
             btnCancelEdit.FlatAppearance.BorderColor = Color.FromArgb(220, 224, 230);
             btnCancelEdit.FlatStyle = FlatStyle.Flat;
             btnCancelEdit.Font = new Font("Segoe UI", 9.5F);
-            btnCancelEdit.Location = new Point(943, 100);
+            btnCancelEdit.Location = new Point(947, 133);
             btnCancelEdit.Margin = new Padding(3, 4, 3, 4);
             btnCancelEdit.Name = "btnCancelEdit";
             btnCancelEdit.Size = new Size(131, 37);
@@ -137,7 +151,7 @@ namespace SchoolManagementSystem.Academic
             btnAssign.FlatStyle = FlatStyle.Flat;
             btnAssign.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             btnAssign.ForeColor = Color.White;
-            btnAssign.Location = new Point(943, 51);
+            btnAssign.Location = new Point(947, 84);
             btnAssign.Margin = new Padding(3, 4, 3, 4);
             btnAssign.Name = "btnAssign";
             btnAssign.Size = new Size(131, 43);
@@ -151,10 +165,10 @@ namespace SchoolManagementSystem.Academic
             cbYear.DropDownStyle = ComboBoxStyle.DropDownList;
             cbYear.Font = new Font("Segoe UI", 9.5F);
             cbYear.FormattingEnabled = true;
-            cbYear.Location = new Point(709, 56);
+            cbYear.Location = new Point(613, 92);
             cbYear.Margin = new Padding(3, 4, 3, 4);
             cbYear.Name = "cbYear";
-            cbYear.Size = new Size(211, 29);
+            cbYear.Size = new Size(228, 29);
             cbYear.TabIndex = 8;
             // 
             // lblYear
@@ -162,21 +176,21 @@ namespace SchoolManagementSystem.Academic
             lblYear.AutoSize = true;
             lblYear.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             lblYear.ForeColor = Color.FromArgb(33, 37, 41);
-            lblYear.Location = new Point(709, 29);
+            lblYear.Location = new Point(613, 67);
             lblYear.Name = "lblYear";
-            lblYear.Size = new Size(137, 21);
+            lblYear.Size = new Size(130, 21);
             lblYear.TabIndex = 7;
-            lblYear.Text = "Academic Year *:";
+            lblYear.Text = "Academic Year :";
             // 
             // cbTeacher
             // 
             cbTeacher.DropDownStyle = ComboBoxStyle.DropDownList;
             cbTeacher.Font = new Font("Segoe UI", 9.5F);
             cbTeacher.FormattingEnabled = true;
-            cbTeacher.Location = new Point(480, 56);
+            cbTeacher.Location = new Point(294, 164);
             cbTeacher.Margin = new Padding(3, 4, 3, 4);
             cbTeacher.Name = "cbTeacher";
-            cbTeacher.Size = new Size(211, 29);
+            cbTeacher.Size = new Size(398, 29);
             cbTeacher.TabIndex = 6;
             // 
             // lblTeacher
@@ -184,21 +198,21 @@ namespace SchoolManagementSystem.Academic
             lblTeacher.AutoSize = true;
             lblTeacher.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             lblTeacher.ForeColor = Color.FromArgb(33, 37, 41);
-            lblTeacher.Location = new Point(480, 29);
+            lblTeacher.Location = new Point(294, 137);
             lblTeacher.Name = "lblTeacher";
-            lblTeacher.Size = new Size(169, 21);
+            lblTeacher.Size = new Size(77, 21);
             lblTeacher.TabIndex = 5;
-            lblTeacher.Text = "Faculty / Instructor *:";
+            lblTeacher.Text = "Teacher :";
             // 
             // cbCourse
             // 
             cbCourse.DropDownStyle = ComboBoxStyle.DropDownList;
             cbCourse.Font = new Font("Segoe UI", 9.5F);
             cbCourse.FormattingEnabled = true;
-            cbCourse.Location = new Point(251, 56);
+            cbCourse.Location = new Point(46, 164);
             cbCourse.Margin = new Padding(3, 4, 3, 4);
             cbCourse.Name = "cbCourse";
-            cbCourse.Size = new Size(211, 29);
+            cbCourse.Size = new Size(242, 29);
             cbCourse.TabIndex = 4;
             // 
             // lblCourse
@@ -206,21 +220,21 @@ namespace SchoolManagementSystem.Academic
             lblCourse.AutoSize = true;
             lblCourse.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             lblCourse.ForeColor = Color.FromArgb(33, 37, 41);
-            lblCourse.Location = new Point(251, 29);
+            lblCourse.Location = new Point(46, 137);
             lblCourse.Name = "lblCourse";
-            lblCourse.Size = new Size(149, 21);
+            lblCourse.Size = new Size(129, 21);
             lblCourse.TabIndex = 3;
-            lblCourse.Text = "Subject / Course *:";
+            lblCourse.Text = "Subject Name  :";
             // 
             // cbClass
             // 
             cbClass.DropDownStyle = ComboBoxStyle.DropDownList;
             cbClass.Font = new Font("Segoe UI", 9.5F);
             cbClass.FormattingEnabled = true;
-            cbClass.Location = new Point(23, 56);
+            cbClass.Location = new Point(301, 93);
             cbClass.Margin = new Padding(3, 4, 3, 4);
             cbClass.Name = "cbClass";
-            cbClass.Size = new Size(211, 29);
+            cbClass.Size = new Size(281, 29);
             cbClass.TabIndex = 2;
             // 
             // lblClass
@@ -228,18 +242,18 @@ namespace SchoolManagementSystem.Academic
             lblClass.AutoSize = true;
             lblClass.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             lblClass.ForeColor = Color.FromArgb(33, 37, 41);
-            lblClass.Location = new Point(23, 29);
+            lblClass.Location = new Point(301, 63);
             lblClass.Name = "lblClass";
-            lblClass.Size = new Size(175, 21);
+            lblClass.Size = new Size(56, 21);
             lblClass.TabIndex = 1;
-            lblClass.Text = "Target Class / Room *:";
+            lblClass.Text = "Class :";
             // 
             // lblFormTitle
             // 
             lblFormTitle.AutoSize = true;
             lblFormTitle.Font = new Font("Segoe UI", 10.5F, FontStyle.Bold);
             lblFormTitle.ForeColor = Color.FromArgb(44, 62, 80);
-            lblFormTitle.Location = new Point(23, 3);
+            lblFormTitle.Location = new Point(470, 3);
             lblFormTitle.Name = "lblFormTitle";
             lblFormTitle.Size = new Size(201, 25);
             lblFormTitle.TabIndex = 0;
@@ -256,11 +270,11 @@ namespace SchoolManagementSystem.Academic
             pnlToolbar.Controls.Add(cbFilterYear);
             pnlToolbar.Controls.Add(lblFilterYear);
             pnlToolbar.Dock = DockStyle.Top;
-            pnlToolbar.Location = new Point(0, 238);
+            pnlToolbar.Location = new Point(0, 290);
             pnlToolbar.Margin = new Padding(3, 4, 3, 4);
             pnlToolbar.Name = "pnlToolbar";
             pnlToolbar.Padding = new Padding(23, 11, 23, 11);
-            pnlToolbar.Size = new Size(1102, 67);
+            pnlToolbar.Size = new Size(1119, 116);
             pnlToolbar.TabIndex = 2;
             // 
             // btnRefresh
@@ -270,7 +284,7 @@ namespace SchoolManagementSystem.Academic
             btnRefresh.FlatAppearance.BorderColor = Color.FromArgb(220, 224, 230);
             btnRefresh.FlatStyle = FlatStyle.Flat;
             btnRefresh.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnRefresh.Location = new Point(1033, 12);
+            btnRefresh.Location = new Point(1048, 51);
             btnRefresh.Margin = new Padding(3, 4, 3, 4);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.Size = new Size(46, 43);
@@ -288,7 +302,7 @@ namespace SchoolManagementSystem.Academic
             btnRemove.FlatStyle = FlatStyle.Flat;
             btnRemove.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             btnRemove.ForeColor = Color.White;
-            btnRemove.Location = new Point(930, 12);
+            btnRemove.Location = new Point(945, 51);
             btnRemove.Margin = new Padding(3, 4, 3, 4);
             btnRemove.Name = "btnRemove";
             btnRemove.Size = new Size(91, 43);
@@ -304,7 +318,7 @@ namespace SchoolManagementSystem.Academic
             btnEdit.FlatAppearance.BorderColor = Color.FromArgb(220, 224, 230);
             btnEdit.FlatStyle = FlatStyle.Flat;
             btnEdit.Font = new Font("Segoe UI", 9.5F);
-            btnEdit.Location = new Point(805, 12);
+            btnEdit.Location = new Point(820, 51);
             btnEdit.Margin = new Padding(3, 4, 3, 4);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(114, 43);
@@ -318,7 +332,7 @@ namespace SchoolManagementSystem.Academic
             cbFilterClass.DropDownStyle = ComboBoxStyle.DropDownList;
             cbFilterClass.Font = new Font("Segoe UI", 9.5F);
             cbFilterClass.FormattingEnabled = true;
-            cbFilterClass.Location = new Point(389, 17);
+            cbFilterClass.Location = new Point(393, 56);
             cbFilterClass.Margin = new Padding(3, 4, 3, 4);
             cbFilterClass.Name = "cbFilterClass";
             cbFilterClass.Size = new Size(205, 29);
@@ -330,7 +344,7 @@ namespace SchoolManagementSystem.Academic
             lblFilterClass.AutoSize = true;
             lblFilterClass.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             lblFilterClass.ForeColor = Color.FromArgb(33, 37, 41);
-            lblFilterClass.Location = new Point(297, 21);
+            lblFilterClass.Location = new Point(295, 60);
             lblFilterClass.Name = "lblFilterClass";
             lblFilterClass.Size = new Size(95, 21);
             lblFilterClass.TabIndex = 2;
@@ -341,7 +355,7 @@ namespace SchoolManagementSystem.Academic
             cbFilterYear.DropDownStyle = ComboBoxStyle.DropDownList;
             cbFilterYear.Font = new Font("Segoe UI", 9.5F);
             cbFilterYear.FormattingEnabled = true;
-            cbFilterYear.Location = new Point(118, 17);
+            cbFilterYear.Location = new Point(116, 56);
             cbFilterYear.Margin = new Padding(3, 4, 3, 4);
             cbFilterYear.Name = "cbFilterYear";
             cbFilterYear.Size = new Size(171, 29);
@@ -353,7 +367,7 @@ namespace SchoolManagementSystem.Academic
             lblFilterYear.AutoSize = true;
             lblFilterYear.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             lblFilterYear.ForeColor = Color.FromArgb(33, 37, 41);
-            lblFilterYear.Location = new Point(18, 21);
+            lblFilterYear.Location = new Point(16, 60);
             lblFilterYear.Name = "lblFilterYear";
             lblFilterYear.Size = new Size(91, 21);
             lblFilterYear.TabIndex = 0;
@@ -364,11 +378,11 @@ namespace SchoolManagementSystem.Academic
             pnlBottom.BackColor = Color.White;
             pnlBottom.Controls.Add(lblTotalCount);
             pnlBottom.Dock = DockStyle.Bottom;
-            pnlBottom.Location = new Point(0, 748);
+            pnlBottom.Location = new Point(0, 843);
             pnlBottom.Margin = new Padding(3, 4, 3, 4);
             pnlBottom.Name = "pnlBottom";
             pnlBottom.Padding = new Padding(23, 13, 23, 13);
-            pnlBottom.Size = new Size(1102, 53);
+            pnlBottom.Size = new Size(1119, 64);
             pnlBottom.TabIndex = 3;
             // 
             // lblTotalCount
@@ -387,11 +401,11 @@ namespace SchoolManagementSystem.Academic
             // 
             pnlGridWrapper.Controls.Add(dgvAssignments);
             pnlGridWrapper.Dock = DockStyle.Fill;
-            pnlGridWrapper.Location = new Point(0, 305);
+            pnlGridWrapper.Location = new Point(0, 406);
             pnlGridWrapper.Margin = new Padding(3, 4, 3, 4);
             pnlGridWrapper.Name = "pnlGridWrapper";
             pnlGridWrapper.Padding = new Padding(23, 27, 23, 27);
-            pnlGridWrapper.Size = new Size(1102, 443);
+            pnlGridWrapper.Size = new Size(1119, 437);
             pnlGridWrapper.TabIndex = 4;
             // 
             // dgvAssignments
@@ -414,7 +428,7 @@ namespace SchoolManagementSystem.Academic
             dgvAssignments.RowHeadersVisible = false;
             dgvAssignments.RowHeadersWidth = 51;
             dgvAssignments.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvAssignments.Size = new Size(1056, 389);
+            dgvAssignments.Size = new Size(1073, 383);
             dgvAssignments.TabIndex = 0;
             dgvAssignments.DoubleClick += DgvAssignments_DoubleClick;
             // 
@@ -428,7 +442,7 @@ namespace SchoolManagementSystem.Academic
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(245, 247, 250);
-            ClientSize = new Size(1102, 801);
+            ClientSize = new Size(1119, 907);
             Controls.Add(pnlGridWrapper);
             Controls.Add(pnlBottom);
             Controls.Add(pnlToolbar);
@@ -438,6 +452,7 @@ namespace SchoolManagementSystem.Academic
             Name = "frmCourseAssignment";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Course Assignments";
+            Load += FrmCourseAssignment_Load;
             pnlHeader.ResumeLayout(false);
             pnlHeader.PerformLayout();
             pnlEditor.ResumeLayout(false);
@@ -457,9 +472,7 @@ namespace SchoolManagementSystem.Academic
 
         private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.Label lblHeaderTitle;
-        private System.Windows.Forms.Label lblHeaderSubtitle;
         private System.Windows.Forms.Panel pnlEditor;
-        private System.Windows.Forms.Label lblFormTitle;
         private System.Windows.Forms.Label lblClass;
         private System.Windows.Forms.ComboBox cbClass;
         private System.Windows.Forms.Label lblCourse;
@@ -483,5 +496,9 @@ namespace SchoolManagementSystem.Academic
         private System.Windows.Forms.Panel pnlGridWrapper;
         private System.Windows.Forms.DataGridView dgvAssignments;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private ComboBox cbGradeLevels;
+        private Label label1;
+        private Label lblFormTitle;
+        private ComboBox comboBox2;
     }
 }

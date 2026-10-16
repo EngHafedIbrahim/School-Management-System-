@@ -88,33 +88,20 @@ namespace SchoolManagementSystemBusinessLayer
                 return false;
             }
 
-            System.Data.DataTable dt = GetAllSchedules();
-            foreach (System.Data.DataRow row in dt.Rows)
+            if(clsSchedule.CheckScheduleConflict(this.ScheduleID, this.AcademicYearID, this.DayOfWeek, this.StartTime, this.EndTime, this.RoomID, this.ClassCourseID, out string conflictReason))
             {
-                if ((int)row["ScheduleID"] != this.ScheduleID)
-                {
-                    // Check for time overlap
-                    TimeSpan existingStart = (TimeSpan)row["StartTime"];
-                    TimeSpan existingEnd = (TimeSpan)row["EndTime"];
-                    
-                    if (row["DayOfWeek"].ToString() == this.DayOfWeek && (int)row["AcademicYearID"] == this.AcademicYearID)
-                    {
-                        bool isOverlap = (this.StartTime < existingEnd && this.EndTime > existingStart);
-                        
-                        if (isOverlap && (int)row["RoomID"] == this.RoomID)
-                        {
-                            errorMessage = "Time conflict in the same room.";
-                            return false;
-                        }
-                        
-                        // To check Teacher conflict, we would need to join with ClassCourse.
-                        // For this basic validation, we handle room conflict.
-                    }
-                }
+                errorMessage = conflictReason;
+                return false;
             }
+
             return true;
         }
 
+
+        bool IsOverlap()
+        {
+            return false; 
+        }
         public bool Save()
         {
             string errorMessage;
@@ -146,7 +133,7 @@ namespace SchoolManagementSystemBusinessLayer
         public static DataTable GetSchedulesByTeacherID(int teacherID) => clsDASchedule.GetSchedulesByTeacherID(teacherID);
         public static DataTable GetAllSchedulesDetailed() => clsDASchedule.GetAllSchedulesDetailed();
         public static bool CheckScheduleConflict(int? currentScheduleID, int academicYearID, string dayOfWeek, TimeSpan startTime, TimeSpan endTime, int roomID, int classCourseID, out string conflictReason) =>
-            clsDASchedule.CheckScheduleConflict(currentScheduleID, academicYearID, dayOfWeek, startTime, endTime, roomID, classCourseID, out conflictReason);
+            clsDASchedule.CheckScheduleConflictNew(currentScheduleID, academicYearID, dayOfWeek, startTime, endTime, roomID, classCourseID, out conflictReason);
 
 }
 }

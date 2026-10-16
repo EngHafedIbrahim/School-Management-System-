@@ -88,6 +88,11 @@ namespace SchoolManagementSystem.Teachers
 
         private void BtnCreateUserAccount_Click(object sender, EventArgs e)
         {
+
+            MessageBox.Show($"Create system user account for this Teacher, will be here ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            return;
+
             string username = _Teacher.Email.Split('@')[0].ToLower();
             string tempPass = "Teacher@123";
 

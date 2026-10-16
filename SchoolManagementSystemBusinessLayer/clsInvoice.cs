@@ -172,5 +172,11 @@ namespace SchoolManagementSystemBusinessLayer
     
         public static DataTable GetInvoicesByStudentID(int studentID) => clsDAInvoice.GetInvoicesByStudentID(studentID);
 
+
+        public static DataTable GetInvoiceDetailed(int invoiceID) => clsDAInvoice.GetInvoiceDetailed(invoiceID);
+        public static DataTable GetAllInvoicesDetailed() => clsDAInvoice.GetAllInvoicesDetailed();
+        public static decimal GetTotalPaidByInvoiceID(int invoiceID) => clsDAInvoice.GetTotalPaidByInvoiceID(invoiceID);
+        public static bool UpdateInvoiceStatus(int invoiceID, string status) => clsDAInvoice.UpdateInvoiceStatus(invoiceID, status);
+
 }
 }

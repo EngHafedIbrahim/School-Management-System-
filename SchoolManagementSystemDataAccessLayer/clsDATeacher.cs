@@ -294,7 +294,7 @@ namespace SchoolManagementSystemDataAccessLayer
                             Address,
                             About
                         FROM [Teacher] 
-                        ORDER BY FirstName, LastName";
+                        ORDER BY FullName";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         connection.Open();
