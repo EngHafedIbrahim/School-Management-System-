@@ -29,8 +29,8 @@ namespace SchoolManagementSystem.Users
 
             if (_userID != -1)
             {
-                lblTitle.Text = $"Edit User Account [ID: {_userID}]";
-                btnSave.Text = "Update User";
+                lblTitle.Text = $"تعديل حساب المستخدم [رقم: {_userID}]";
+                btnSave.Text = "💾 تحديث البيانات";
                 txtPassword.Enabled = false;
                 txtConfirmPassword.Enabled = false;
                 txtPassword.Text = "********";
@@ -44,7 +44,7 @@ namespace SchoolManagementSystem.Users
             _user = clsUser.Find(_userID);
             if (_user == null)
             {
-                MessageBox.Show("User account not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                clsUITheme.ShowArabicMessage("لم يتم العثور على حساب المستخدم.", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
                 return;
             }
@@ -52,9 +52,8 @@ namespace SchoolManagementSystem.Users
             txtUsername.Text = _user.Username;
             txtEmail.Text = _user.Email;
             cbUserType.SelectedItem = _user.UserType;
-            cbStatus.SelectedItem = _user.Status;
+            cbStatus.SelectedItem = _user.IsActive;
 
-            // Trigger dynamic dropdown loading
             CbUserType_SelectedIndexChanged(null, null);
 
             if (_user.ReferenceID.HasValue && cbLinkedEntity.Visible)
@@ -71,19 +70,19 @@ namespace SchoolManagementSystem.Users
             {
                 case "Teacher":
                     gbLinkedEntity.Visible = true;
-                    lblLinkedEntity.Text = "Select Teacher: *";
+                    lblLinkedEntity.Text = "اختر المعلم المرتبط: *";
                     LoadTeachers();
                     break;
 
                 case "Parent":
                     gbLinkedEntity.Visible = true;
-                    lblLinkedEntity.Text = "Select Parent: *";
+                    lblLinkedEntity.Text = "اختر ولي الأمر المرتبط: *";
                     LoadParents();
                     break;
 
                 case "Student":
                     gbLinkedEntity.Visible = true;
-                    lblLinkedEntity.Text = "Select Student: *";
+                    lblLinkedEntity.Text = "اختر الطالب المرتبط: *";
                     LoadStudents();
                     break;
 
@@ -121,7 +120,7 @@ namespace SchoolManagementSystem.Users
         {
             DataTable dt = clsStudent.GetAllStudents();
             if (!dt.Columns.Contains("DisplayName"))
-                dt.Columns.Add("DisplayName", typeof(string), "FirstName + ' ' + LastName + ' (Adm: ' + AdmissionNumber + ')'");
+                dt.Columns.Add("DisplayName", typeof(string), "FirstName + ' ' + LastName + ' (رقم القبول: ' + AdmissionNumber + ')'");
 
             cbLinkedEntity.DataSource = dt;
             cbLinkedEntity.DisplayMember = "DisplayName";
@@ -136,12 +135,12 @@ namespace SchoolManagementSystem.Users
             // Username validation
             if (string.IsNullOrWhiteSpace(txtUsername.Text))
             {
-                errorProvider1.SetError(txtUsername, "Username is required.");
+                errorProvider1.SetError(txtUsername, "اسم المستخدم مطلوب.");
                 isValid = false;
             }
             else if (clsUser.IsUsernameExist(txtUsername.Text.Trim(), _userID))
             {
-                errorProvider1.SetError(txtUsername, "Username is already taken by another user.");
+                errorProvider1.SetError(txtUsername, "اسم المستخدم مسجل مسبقاً لمستخدم آخر.");
                 isValid = false;
             }
 
@@ -150,18 +149,18 @@ namespace SchoolManagementSystem.Users
             {
                 if (string.IsNullOrWhiteSpace(txtPassword.Text))
                 {
-                    errorProvider1.SetError(txtPassword, "Password is required.");
+                    errorProvider1.SetError(txtPassword, "كلمة المرور مطلوبة.");
                     isValid = false;
                 }
                 else if (txtPassword.Text.Length < 6)
                 {
-                    errorProvider1.SetError(txtPassword, "Password must be at least 6 characters long.");
+                    errorProvider1.SetError(txtPassword, "يجب أن تكون كلمة المرور 6 أحرف/أرقام على الأقل.");
                     isValid = false;
                 }
 
                 if (txtPassword.Text != txtConfirmPassword.Text)
                 {
-                    errorProvider1.SetError(txtConfirmPassword, "Password confirmation does not match.");
+                    errorProvider1.SetError(txtConfirmPassword, "تأكيد كلمة المرور غير متطابق.");
                     isValid = false;
                 }
             }
@@ -169,17 +168,17 @@ namespace SchoolManagementSystem.Users
             // Email validation
             if (string.IsNullOrWhiteSpace(txtEmail.Text))
             {
-                errorProvider1.SetError(txtEmail, "Email address is required.");
+                errorProvider1.SetError(txtEmail, "البريد الإلكتروني مطلوب.");
                 isValid = false;
             }
             else if (!Regex.IsMatch(txtEmail.Text.Trim(), @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
             {
-                errorProvider1.SetError(txtEmail, "Please enter a valid email address format.");
+                errorProvider1.SetError(txtEmail, "صيغة البريد الإلكتروني غير صحيحة.");
                 isValid = false;
             }
             else if (clsUser.IsEmailExist(txtEmail.Text.Trim(), _userID))
             {
-                errorProvider1.SetError(txtEmail, "Email address is already in use by another user.");
+                errorProvider1.SetError(txtEmail, "البريد الإلكتروني مسجل مسبقاً لمستخدم آخر.");
                 isValid = false;
             }
 
@@ -189,16 +188,15 @@ namespace SchoolManagementSystem.Users
             {
                 if (cbLinkedEntity.SelectedValue == null)
                 {
-                    errorProvider1.SetError(cbLinkedEntity, $"Please select a linked {userType}.");
+                    errorProvider1.SetError(cbLinkedEntity, $"يرجى اختيار {userType} المرتبط بالحساب.");
                     isValid = false;
                 }
                 else
                 {
                     int refID = Convert.ToInt32(cbLinkedEntity.SelectedValue);
-                    // Business rule: Each Teacher/Parent/Student can only have ONE user account
                     if (clsUser.IsReferenceAlreadyLinked(userType, refID, _userID))
                     {
-                        errorProvider1.SetError(cbLinkedEntity, $"A user account already exists for this {userType}.");
+                        errorProvider1.SetError(cbLinkedEntity, $"يوجد بالفعل حساب مستخدم مرتبط بهذا الـ {userType}.");
                         isValid = false;
                     }
                 }
@@ -228,25 +226,25 @@ namespace SchoolManagementSystem.Users
             _user.Username = txtUsername.Text.Trim();
             _user.Email = txtEmail.Text.Trim();
             _user.UserType = userType;
-            _user.Status = cbStatus.SelectedItem.ToString();
+            _user.IsActive = true;//cbStatus.SelectedItem.ToString();
             _user.ReferenceID = referenceID;
 
             try
             {
                 if (_user.Save())
                 {
-                    MessageBox.Show("User account saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    clsUITheme.ShowArabicMessage("تم حفظ بيانات المستخدم بنجاح.", "تمت العملية", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Failed to save user account.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    clsUITheme.ShowArabicMessage("فشل حفظ بيانات المستخدم.", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error saving user account: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                clsUITheme.ShowArabicMessage("حدث خطأ أثناء حفظ المستخدم: " + ex.Message, "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

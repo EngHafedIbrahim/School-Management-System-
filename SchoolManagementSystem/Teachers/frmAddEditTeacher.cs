@@ -21,36 +21,32 @@ namespace SchoolManagementSystem.Teachers
             _TeacherID = teacherID;
             _Mode = (_TeacherID == -1) ? enMode.AddNew : enMode.Update;
 
-            this.Text = _Mode == enMode.AddNew ? "Register New Teacher" : "Edit Teacher Information";
-            lblHeaderTitle.Text = _Mode == enMode.AddNew ? "Register Teacher" : "Edit Teacher Details";
-
+            clsUITheme.ApplyRTL(this);
             clsUITheme.StylePrimaryButton(btnSave);
             clsUITheme.StyleSecondaryButton(btnCancel);
+
+            this.Text = _Mode == enMode.AddNew ? "تسجيل معلم جديد" : "تعديل بيانات المعلم";
+            lblHeaderTitle.Text = _Mode == enMode.AddNew ? "تسجيل معلم جديد" : $"تعديل بيانات المعلم [رقم: {_TeacherID}]";
+            btnSave.Text = _Mode == enMode.AddNew ? "حفظ البيانات" : "تحديث البيانات";
 
             LoadData();
         }
 
         private void LoadData()
         {
-            //DataTable dtGenders = clsGender.GetAllGenders();
-            //cbGender.DataSource = dtGenders;
-            //cbGender.DisplayMember = "Name";
-            //cbGender.ValueMember = "GenderID";
-
             if (_Mode == enMode.AddNew)
             {
                 _Teacher = new clsTeacher();
                 cbEmploymentStatus.SelectedIndex = 0;
                 cbGender.SelectedIndex = 0;
                 dtpHireDate.Value = DateTime.Now;
-
                 return;
             }
 
             _Teacher = clsTeacher.Find(_TeacherID);
             if (_Teacher == null)
             {
-                MessageBox.Show("Teacher record not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                clsUITheme.ShowArabicMessage("لم يتم العثور على سجل المعلم المطلوب.", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
                 return;
             }
@@ -60,17 +56,24 @@ namespace SchoolManagementSystem.Teachers
             txtPhoneNumber.Text = _Teacher.PhoneNumber;
             txtEmail.Text = _Teacher.Email;
             txtAddress.Text = _Teacher.Address;
-            
-            //cbGender.SelectedValue = _Teacher.GenderID;
-            cbGender.SelectedIndex = _Teacher.GenderID-1;
-            
+
+            cbGender.SelectedIndex = (_Teacher.GenderID == 1) ? 0 : 1;
+
             txtSpecialization.Text = _Teacher.Specialization;
             txtQualification.Text = _Teacher.Qualification;
             dtpHireDate.Value = _Teacher.HireDate;
-            cbEmploymentStatus.Text = string.IsNullOrEmpty(_Teacher.EmploymentStatus) ? "Active" : _Teacher.EmploymentStatus;
-            txtAbout.Text = _Teacher.About;
-            
 
+            cbEmploymentStatus.SelectedIndex = _Teacher.EmploymentStatus switch
+            {
+                "Active" or "نشط" => 0,
+                "On Leave" or "في إجازة" => 1,
+                "Probation" or "تحت التجربة" => 2,
+                "Suspended" or "موقوف" => 3,
+                "Resigned" or "مستقيل" => 4,
+                _ => 0
+            };
+
+            txtAbout.Text = _Teacher.About;
         }
 
         private bool ValidateForm()
@@ -80,37 +83,37 @@ namespace SchoolManagementSystem.Teachers
 
             if (string.IsNullOrWhiteSpace(txtFirstName.Text))
             {
-                errorProvider1.SetError(txtFirstName, "First name is required.");
+                errorProvider1.SetError(txtFirstName, "الاسم الأول للمعلم مطلوب.");
                 isValid = false;
             }
 
             if (string.IsNullOrWhiteSpace(txtLastName.Text))
             {
-                errorProvider1.SetError(txtLastName, "Last name is required.");
+                errorProvider1.SetError(txtLastName, "اسم العائلة / اللقب مطلوب.");
                 isValid = false;
             }
 
             if (string.IsNullOrWhiteSpace(txtEmail.Text) || !txtEmail.Text.Contains("@"))
             {
-                errorProvider1.SetError(txtEmail, "Valid unique email is required.");
+                errorProvider1.SetError(txtEmail, "يرجى إدخال بريد إلكتروني صحيح ومعتمد.");
                 isValid = false;
             }
 
             if (string.IsNullOrWhiteSpace(txtPhoneNumber.Text))
             {
-                errorProvider1.SetError(txtPhoneNumber, "Phone number is required.");
+                errorProvider1.SetError(txtPhoneNumber, "رقم الهاتف مطلوب.");
                 isValid = false;
             }
 
-            if (cbGender.Text == null)
+            if (cbGender.SelectedIndex == -1)
             {
-                errorProvider1.SetError(cbGender, "Please select a gender.");
+                errorProvider1.SetError(cbGender, "يرجى تحديد الجنس.");
                 isValid = false;
             }
 
             if (dtpHireDate.Value > DateTime.Now)
             {
-                errorProvider1.SetError(dtpHireDate, "Hire date cannot be in the future.");
+                errorProvider1.SetError(dtpHireDate, "تاريخ التعيين لا يمكن أن يكون تاريخاً مستقبلياً.");
                 isValid = false;
             }
 
@@ -127,14 +130,24 @@ namespace SchoolManagementSystem.Teachers
             _Teacher.PhoneNumber = txtPhoneNumber.Text.Trim();
             _Teacher.Email = txtEmail.Text.Trim();
             _Teacher.Address = txtAddress.Text.Trim();
-            _Teacher.GenderID = cbGender.Text == "Male"? 1: 2;
+            _Teacher.GenderID = (cbGender.SelectedIndex == 0) ? 1 : 2;
             _Teacher.Specialization = txtSpecialization.Text.Trim();
             _Teacher.Qualification = txtQualification.Text.Trim();
             _Teacher.HireDate = dtpHireDate.Value;
-            _Teacher.EmploymentStatus = cbEmploymentStatus.Text;
+
+            string empStatus = cbEmploymentStatus.SelectedIndex switch
+            {
+                0 => "Active",
+                1 => "On Leave",
+                2 => "Probation",
+                3 => "Suspended",
+                4 => "Resigned",
+                _ => "Active"
+            };
+            _Teacher.EmploymentStatus = empStatus;
+
             _Teacher.About = txtAbout.Text.Trim();
             _Teacher.CreatedBy = clsGloble.CurrentUser?.UserID ?? 1;
-            
             _Teacher.UpdatedBy = clsGloble.CurrentUser?.UserID ?? 1;
 
             try
@@ -143,18 +156,18 @@ namespace SchoolManagementSystem.Teachers
                 {
                     _TeacherID = _Teacher.TeacherID;
                     _Mode = enMode.Update;
-                    MessageBox.Show("Teacher saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    clsUITheme.ShowArabicMessage("تم حفظ بيانات المعلم بنجاح.", "نجاح العملية", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Failed to save teacher.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    clsUITheme.ShowArabicMessage("فشل حفظ بيانات المعلم.", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Validation Error:\n" + ex.Message, "Constraint Violation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                clsUITheme.ShowArabicMessage("خطأ في التحقق من البيانات:\n" + ex.Message, "مخالفة قواعد النظام", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

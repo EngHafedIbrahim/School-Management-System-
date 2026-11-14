@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Data;
 using SchoolManagementSystemDataAccessLayer;
 
@@ -12,6 +12,7 @@ namespace SchoolManagementSystemBusinessLayer
         public int StudentID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string FullName { get{ return $"{FirstName} {LastName}"; }    }
         public string NationalID { get; set; }
         public DateTime DateOfBirth { get; set; }
         public int GenderID { get; set; }
@@ -129,45 +130,65 @@ namespace SchoolManagementSystemBusinessLayer
             
             if (string.IsNullOrWhiteSpace(NationalID))
             {
-                errorMessage = "National ID is required.";
+                errorMessage = "الرقم الوطني مطلوب.";
                 
                 return false;
             }
             if (string.IsNullOrWhiteSpace(AdmissionNo))
             {
-                errorMessage = "Admission No is required.";
+                errorMessage = "رقم القبول مطلوب.";
                 return false;
             }
             if (string.IsNullOrWhiteSpace(Email) || !Email.Contains("@"))
             {
-                errorMessage = "A valid Email is required.";
+                errorMessage = "يرجى إدخال بريد إلكتروني صالح (يحتوي @).";
                 return false;
             }
             
             // Check minimum age (e.g. 4 years)
             if (DateTime.Now.Year - DateOfBirth.Year < 4)
             {
-                errorMessage = "Student must be at least 4 years old.";
+                errorMessage = "يجب أن يكون عمر الطالب 4 سنوات على الأقل.";
                 return false;
             }
 
             // Uniqueness checks (Using GetAll for simplicity in prototype, ideally use DAL methods)
             //System.Data.DataTable dt = GetAllStudents();
 
-            
+            if (Mode == enMode.Update)
+            {
+                if (clsStudent.DoesNationalIDAlreadyExist(this.NationalID,this.StudentID))
+                {
+                    errorMessage = "الرقم الوطني مسجل مسبقاً لطالب آخر.";
+                    return false;
+                }
+                if (clsStudent.DoesAdmissionNoAlreadyExist(this.AdmissionNo, this.StudentID))
+                {
+                    errorMessage = "رقم القبول مسجل مسبقاً لطالب آخر.";
+                    return false;
+                }
+                if (clsStudent.DoesEmailAlreadyExist(this.Email, this.StudentID))
+                {
+                    errorMessage = "البريد الإلكتروني مسجل مسبقاً لطالب آخر.";
+                    return false;
+                }
+
+                return true;
+            }
+
             if (clsStudent.DoesNationalIDAlreadyExist(this.NationalID) )
             {
-                errorMessage = "National ID already exists.";
+                errorMessage = "الرقم الوطني مسجل مسبقاً لطالب آخر.";
                 return false;
             }
             if (clsStudent.DoesAdmissionNoAlreadyExist(this.AdmissionNo))
             {
-                errorMessage = "Admission No already exists.";
+                errorMessage = "رقم القبول مسجل مسبقاً لطالب آخر.";
                 return false;
             }
             if (clsStudent.DoesEmailAlreadyExist( this.Email))
             {
-                errorMessage = "Email already exists.";
+                errorMessage = "البريد الإلكتروني مسجل مسبقاً لطالب آخر.";
                 return false;
             }
          
@@ -216,6 +237,21 @@ namespace SchoolManagementSystemBusinessLayer
             return clsDAStudent.DoesAdmissionNoAlreadyExist(AdmissionNo);
         }
 
+
+        public static bool DoesNationalIDAlreadyExist(string NationalID, int StudentID)
+        {
+            return clsDAStudent.DoesNationalIDAlreadyExist(NationalID, StudentID);
+        }
+        public static bool DoesEmailAlreadyExist(string Email, int StudentID)
+        {
+            return clsDAStudent.DoesEmailAlreadyExist(Email, StudentID);
+        }
+        public static bool DoesAdmissionNoAlreadyExist(string AdmissionNo, int StudentID)
+        {
+            return clsDAStudent.DoesAdmissionNoAlreadyExist(AdmissionNo, StudentID);
+        }
+        public static DataTable GetUnEnrolledStudents() => clsDAStudent.GetUnEnrolledStudents();
+        public static DataTable GetStudentsForComboBox() => clsDAStudent.GetStudentsForComboBox();
 
     }
 }

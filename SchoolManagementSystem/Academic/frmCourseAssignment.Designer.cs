@@ -62,22 +62,21 @@ namespace SchoolManagementSystem.Academic
             pnlHeader.Controls.Add(lblHeaderTitle);
             pnlHeader.Dock = DockStyle.Top;
             pnlHeader.Location = new Point(0, 0);
-            pnlHeader.Margin = new Padding(3, 4, 3, 4);
             pnlHeader.Name = "pnlHeader";
-            pnlHeader.Padding = new Padding(23, 13, 23, 13);
-            pnlHeader.Size = new Size(1119, 76);
+            pnlHeader.Size = new Size(1119, 75);
             pnlHeader.TabIndex = 0;
             // 
             // lblHeaderTitle
             // 
+            lblHeaderTitle.Anchor = AnchorStyles.Top;
             lblHeaderTitle.AutoSize = true;
             lblHeaderTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            lblHeaderTitle.ForeColor = Color.FromArgb(44, 62, 80);
-            lblHeaderTitle.Location = new Point(342, 13);
+            lblHeaderTitle.ForeColor = Color.FromArgb(30, 41, 59);
+            lblHeaderTitle.Location = new Point(340, 18);
             lblHeaderTitle.Name = "lblHeaderTitle";
-            lblHeaderTitle.Size = new Size(428, 37);
+            lblHeaderTitle.Size = new Size(440, 37);
             lblHeaderTitle.TabIndex = 0;
-            lblHeaderTitle.Text = "Teaching Assignment Allocation";
+            lblHeaderTitle.Text = "إسناد وتوزيع المواد على الفصول والمعلمين";
             // 
             // pnlEditor
             // 
@@ -97,167 +96,170 @@ namespace SchoolManagementSystem.Academic
             pnlEditor.Controls.Add(lblClass);
             pnlEditor.Controls.Add(lblFormTitle);
             pnlEditor.Dock = DockStyle.Top;
-            pnlEditor.Location = new Point(0, 76);
-            pnlEditor.Margin = new Padding(3, 4, 3, 4);
+            pnlEditor.Location = new Point(0, 75);
             pnlEditor.Name = "pnlEditor";
-            pnlEditor.Padding = new Padding(23, 16, 23, 16);
-            pnlEditor.Size = new Size(1119, 214);
+            pnlEditor.Padding = new Padding(20);
+            pnlEditor.Size = new Size(1119, 215);
             pnlEditor.TabIndex = 1;
             // 
-            // cbGradeLevels
+            // lblFormTitle
             // 
-            cbGradeLevels.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbGradeLevels.Font = new Font("Segoe UI", 9.5F);
-            cbGradeLevels.FormattingEnabled = true;
-            cbGradeLevels.Location = new Point(45, 93);
-            cbGradeLevels.Margin = new Padding(3, 4, 3, 4);
-            cbGradeLevels.Name = "cbGradeLevels";
-            cbGradeLevels.Size = new Size(225, 29);
-            cbGradeLevels.TabIndex = 12;
-            cbGradeLevels.Validating += CbGradeLevels_Validating;
+            lblFormTitle.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblFormTitle.AutoSize = true;
+            lblFormTitle.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            lblFormTitle.ForeColor = Color.FromArgb(30, 41, 59);
+            lblFormTitle.Location = new Point(870, 10);
+            lblFormTitle.Name = "lblFormTitle";
+            lblFormTitle.Size = new Size(220, 25);
+            lblFormTitle.TabIndex = 0;
+            lblFormTitle.Text = "إسناد مادة دراسية لفصل جديد";
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            label1.ForeColor = Color.FromArgb(33, 37, 41);
-            label1.Location = new Point(51, 68);
+            label1.ForeColor = Color.FromArgb(30, 41, 59);
+            label1.Location = new Point(940, 48);
             label1.Name = "label1";
-            label1.Size = new Size(103, 21);
-            label1.TabIndex = 11;
-            label1.Text = "Grade Level:";
+            label1.Size = new Size(150, 21);
+            label1.TabIndex = 1;
+            label1.Text = "المرحلة / الصف الدراسي:";
             // 
-            // btnCancelEdit
+            // cbGradeLevels
             // 
-            btnCancelEdit.Cursor = Cursors.Hand;
-            btnCancelEdit.FlatAppearance.BorderColor = Color.FromArgb(220, 224, 230);
-            btnCancelEdit.FlatStyle = FlatStyle.Flat;
-            btnCancelEdit.Font = new Font("Segoe UI", 9.5F);
-            btnCancelEdit.Location = new Point(947, 133);
-            btnCancelEdit.Margin = new Padding(3, 4, 3, 4);
-            btnCancelEdit.Name = "btnCancelEdit";
-            btnCancelEdit.Size = new Size(131, 37);
-            btnCancelEdit.TabIndex = 10;
-            btnCancelEdit.Text = "Cancel";
-            btnCancelEdit.UseVisualStyleBackColor = true;
-            btnCancelEdit.Visible = false;
-            btnCancelEdit.Click += BtnCancelEdit_Click;
+            cbGradeLevels.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            cbGradeLevels.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbGradeLevels.Font = new Font("Segoe UI", 9.5F);
+            cbGradeLevels.FormattingEnabled = true;
+            cbGradeLevels.Location = new Point(855, 75);
+            cbGradeLevels.Name = "cbGradeLevels";
+            cbGradeLevels.Size = new Size(235, 29);
+            cbGradeLevels.TabIndex = 2;
+            cbGradeLevels.Validating += CbGradeLevels_Validating;
+            // 
+            // lblClass
+            // 
+            lblClass.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblClass.AutoSize = true;
+            lblClass.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            lblClass.ForeColor = Color.FromArgb(30, 41, 59);
+            lblClass.Location = new Point(720, 48);
+            lblClass.Name = "lblClass";
+            lblClass.Size = new Size(107, 21);
+            lblClass.TabIndex = 3;
+            lblClass.Text = "الشعبة / الفصل:";
+            // 
+            // cbClass
+            // 
+            cbClass.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            cbClass.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbClass.Font = new Font("Segoe UI", 9.5F);
+            cbClass.FormattingEnabled = true;
+            cbClass.Location = new Point(590, 75);
+            cbClass.Name = "cbClass";
+            cbClass.Size = new Size(237, 29);
+            cbClass.TabIndex = 4;
+            // 
+            // lblYear
+            // 
+            lblYear.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblYear.AutoSize = true;
+            lblYear.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            lblYear.ForeColor = Color.FromArgb(30, 41, 59);
+            lblYear.Location = new Point(460, 48);
+            lblYear.Name = "lblYear";
+            lblYear.Size = new Size(106, 21);
+            lblYear.TabIndex = 5;
+            lblYear.Text = "السنة الدراسية:";
+            // 
+            // cbYear
+            // 
+            cbYear.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            cbYear.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbYear.Font = new Font("Segoe UI", 9.5F);
+            cbYear.FormattingEnabled = true;
+            cbYear.Location = new Point(345, 75);
+            cbYear.Name = "cbYear";
+            cbYear.Size = new Size(220, 29);
+            cbYear.TabIndex = 6;
+            // 
+            // lblCourse
+            // 
+            lblCourse.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblCourse.AutoSize = true;
+            lblCourse.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            lblCourse.ForeColor = Color.FromArgb(30, 41, 59);
+            lblCourse.Location = new Point(980, 122);
+            lblCourse.Name = "lblCourse";
+            lblCourse.Size = new Size(110, 21);
+            lblCourse.TabIndex = 7;
+            lblCourse.Text = "المادة / المقرر:";
+            // 
+            // cbCourse
+            // 
+            cbCourse.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            cbCourse.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbCourse.Font = new Font("Segoe UI", 9.5F);
+            cbCourse.FormattingEnabled = true;
+            cbCourse.Location = new Point(780, 150);
+            cbCourse.Name = "cbCourse";
+            cbCourse.Size = new Size(310, 29);
+            cbCourse.TabIndex = 8;
+            // 
+            // lblTeacher
+            // 
+            lblTeacher.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblTeacher.AutoSize = true;
+            lblTeacher.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            lblTeacher.ForeColor = Color.FromArgb(30, 41, 59);
+            lblTeacher.Location = new Point(640, 122);
+            lblTeacher.Name = "lblTeacher";
+            lblTeacher.Size = new Size(100, 21);
+            lblTeacher.TabIndex = 9;
+            lblTeacher.Text = "المعلم المكلف:";
+            // 
+            // cbTeacher
+            // 
+            cbTeacher.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            cbTeacher.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbTeacher.Font = new Font("Segoe UI", 9.5F);
+            cbTeacher.FormattingEnabled = true;
+            cbTeacher.Location = new Point(345, 150);
+            cbTeacher.Name = "cbTeacher";
+            cbTeacher.Size = new Size(395, 29);
+            cbTeacher.TabIndex = 10;
             // 
             // btnAssign
             // 
-            btnAssign.BackColor = Color.FromArgb(41, 128, 185);
+            btnAssign.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            btnAssign.BackColor = Color.FromArgb(37, 99, 235);
             btnAssign.Cursor = Cursors.Hand;
             btnAssign.FlatAppearance.BorderSize = 0;
             btnAssign.FlatStyle = FlatStyle.Flat;
             btnAssign.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             btnAssign.ForeColor = Color.White;
-            btnAssign.Location = new Point(947, 84);
-            btnAssign.Margin = new Padding(3, 4, 3, 4);
+            btnAssign.Location = new Point(30, 68);
             btnAssign.Name = "btnAssign";
-            btnAssign.Size = new Size(131, 43);
-            btnAssign.TabIndex = 9;
-            btnAssign.Text = "Assign Course";
+            btnAssign.Size = new Size(150, 42);
+            btnAssign.TabIndex = 11;
+            btnAssign.Text = "إسناد المقرر";
             btnAssign.UseVisualStyleBackColor = false;
             btnAssign.Click += BtnAssign_Click;
             // 
-            // cbYear
+            // btnCancelEdit
             // 
-            cbYear.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbYear.Font = new Font("Segoe UI", 9.5F);
-            cbYear.FormattingEnabled = true;
-            cbYear.Location = new Point(613, 92);
-            cbYear.Margin = new Padding(3, 4, 3, 4);
-            cbYear.Name = "cbYear";
-            cbYear.Size = new Size(228, 29);
-            cbYear.TabIndex = 8;
-            // 
-            // lblYear
-            // 
-            lblYear.AutoSize = true;
-            lblYear.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            lblYear.ForeColor = Color.FromArgb(33, 37, 41);
-            lblYear.Location = new Point(613, 67);
-            lblYear.Name = "lblYear";
-            lblYear.Size = new Size(130, 21);
-            lblYear.TabIndex = 7;
-            lblYear.Text = "Academic Year :";
-            // 
-            // cbTeacher
-            // 
-            cbTeacher.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbTeacher.Font = new Font("Segoe UI", 9.5F);
-            cbTeacher.FormattingEnabled = true;
-            cbTeacher.Location = new Point(294, 164);
-            cbTeacher.Margin = new Padding(3, 4, 3, 4);
-            cbTeacher.Name = "cbTeacher";
-            cbTeacher.Size = new Size(398, 29);
-            cbTeacher.TabIndex = 6;
-            // 
-            // lblTeacher
-            // 
-            lblTeacher.AutoSize = true;
-            lblTeacher.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            lblTeacher.ForeColor = Color.FromArgb(33, 37, 41);
-            lblTeacher.Location = new Point(294, 137);
-            lblTeacher.Name = "lblTeacher";
-            lblTeacher.Size = new Size(77, 21);
-            lblTeacher.TabIndex = 5;
-            lblTeacher.Text = "Teacher :";
-            // 
-            // cbCourse
-            // 
-            cbCourse.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbCourse.Font = new Font("Segoe UI", 9.5F);
-            cbCourse.FormattingEnabled = true;
-            cbCourse.Location = new Point(46, 164);
-            cbCourse.Margin = new Padding(3, 4, 3, 4);
-            cbCourse.Name = "cbCourse";
-            cbCourse.Size = new Size(242, 29);
-            cbCourse.TabIndex = 4;
-            // 
-            // lblCourse
-            // 
-            lblCourse.AutoSize = true;
-            lblCourse.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            lblCourse.ForeColor = Color.FromArgb(33, 37, 41);
-            lblCourse.Location = new Point(46, 137);
-            lblCourse.Name = "lblCourse";
-            lblCourse.Size = new Size(129, 21);
-            lblCourse.TabIndex = 3;
-            lblCourse.Text = "Subject Name  :";
-            // 
-            // cbClass
-            // 
-            cbClass.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbClass.Font = new Font("Segoe UI", 9.5F);
-            cbClass.FormattingEnabled = true;
-            cbClass.Location = new Point(301, 93);
-            cbClass.Margin = new Padding(3, 4, 3, 4);
-            cbClass.Name = "cbClass";
-            cbClass.Size = new Size(281, 29);
-            cbClass.TabIndex = 2;
-            // 
-            // lblClass
-            // 
-            lblClass.AutoSize = true;
-            lblClass.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            lblClass.ForeColor = Color.FromArgb(33, 37, 41);
-            lblClass.Location = new Point(301, 63);
-            lblClass.Name = "lblClass";
-            lblClass.Size = new Size(56, 21);
-            lblClass.TabIndex = 1;
-            lblClass.Text = "Class :";
-            // 
-            // lblFormTitle
-            // 
-            lblFormTitle.AutoSize = true;
-            lblFormTitle.Font = new Font("Segoe UI", 10.5F, FontStyle.Bold);
-            lblFormTitle.ForeColor = Color.FromArgb(44, 62, 80);
-            lblFormTitle.Location = new Point(470, 3);
-            lblFormTitle.Name = "lblFormTitle";
-            lblFormTitle.Size = new Size(201, 25);
-            lblFormTitle.TabIndex = 0;
-            lblFormTitle.Text = "Assign Course to Class";
+            btnCancelEdit.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            btnCancelEdit.Cursor = Cursors.Hand;
+            btnCancelEdit.Font = new Font("Segoe UI", 9F);
+            btnCancelEdit.Location = new Point(30, 116);
+            btnCancelEdit.Name = "btnCancelEdit";
+            btnCancelEdit.Size = new Size(150, 38);
+            btnCancelEdit.TabIndex = 12;
+            btnCancelEdit.Text = "إلغاء التعديل";
+            btnCancelEdit.UseVisualStyleBackColor = true;
+            btnCancelEdit.Visible = false;
+            btnCancelEdit.Click += BtnCancelEdit_Click;
             // 
             // pnlToolbar
             // 
@@ -271,107 +273,101 @@ namespace SchoolManagementSystem.Academic
             pnlToolbar.Controls.Add(lblFilterYear);
             pnlToolbar.Dock = DockStyle.Top;
             pnlToolbar.Location = new Point(0, 290);
-            pnlToolbar.Margin = new Padding(3, 4, 3, 4);
             pnlToolbar.Name = "pnlToolbar";
-            pnlToolbar.Padding = new Padding(23, 11, 23, 11);
-            pnlToolbar.Size = new Size(1119, 116);
+            pnlToolbar.Padding = new Padding(20, 10, 20, 10);
+            pnlToolbar.Size = new Size(1119, 70);
             pnlToolbar.TabIndex = 2;
-            // 
-            // btnRefresh
-            // 
-            btnRefresh.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnRefresh.Cursor = Cursors.Hand;
-            btnRefresh.FlatAppearance.BorderColor = Color.FromArgb(220, 224, 230);
-            btnRefresh.FlatStyle = FlatStyle.Flat;
-            btnRefresh.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnRefresh.Location = new Point(1048, 51);
-            btnRefresh.Margin = new Padding(3, 4, 3, 4);
-            btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new Size(46, 43);
-            btnRefresh.TabIndex = 6;
-            btnRefresh.Text = "↻";
-            btnRefresh.UseVisualStyleBackColor = true;
-            btnRefresh.Click += BtnRefresh_Click;
-            // 
-            // btnRemove
-            // 
-            btnRemove.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnRemove.BackColor = Color.FromArgb(192, 57, 43);
-            btnRemove.Cursor = Cursors.Hand;
-            btnRemove.FlatAppearance.BorderSize = 0;
-            btnRemove.FlatStyle = FlatStyle.Flat;
-            btnRemove.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            btnRemove.ForeColor = Color.White;
-            btnRemove.Location = new Point(945, 51);
-            btnRemove.Margin = new Padding(3, 4, 3, 4);
-            btnRemove.Name = "btnRemove";
-            btnRemove.Size = new Size(91, 43);
-            btnRemove.TabIndex = 5;
-            btnRemove.Text = "Remove";
-            btnRemove.UseVisualStyleBackColor = false;
-            btnRemove.Click += BtnRemove_Click;
-            // 
-            // btnEdit
-            // 
-            btnEdit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnEdit.Cursor = Cursors.Hand;
-            btnEdit.FlatAppearance.BorderColor = Color.FromArgb(220, 224, 230);
-            btnEdit.FlatStyle = FlatStyle.Flat;
-            btnEdit.Font = new Font("Segoe UI", 9.5F);
-            btnEdit.Location = new Point(820, 51);
-            btnEdit.Margin = new Padding(3, 4, 3, 4);
-            btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(114, 43);
-            btnEdit.TabIndex = 4;
-            btnEdit.Text = "Edit Selected";
-            btnEdit.UseVisualStyleBackColor = true;
-            btnEdit.Click += BtnEdit_Click;
-            // 
-            // cbFilterClass
-            // 
-            cbFilterClass.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbFilterClass.Font = new Font("Segoe UI", 9.5F);
-            cbFilterClass.FormattingEnabled = true;
-            cbFilterClass.Location = new Point(393, 56);
-            cbFilterClass.Margin = new Padding(3, 4, 3, 4);
-            cbFilterClass.Name = "cbFilterClass";
-            cbFilterClass.Size = new Size(205, 29);
-            cbFilterClass.TabIndex = 3;
-            cbFilterClass.SelectedIndexChanged += CbFilterClass_SelectedIndexChanged;
-            // 
-            // lblFilterClass
-            // 
-            lblFilterClass.AutoSize = true;
-            lblFilterClass.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            lblFilterClass.ForeColor = Color.FromArgb(33, 37, 41);
-            lblFilterClass.Location = new Point(295, 60);
-            lblFilterClass.Name = "lblFilterClass";
-            lblFilterClass.Size = new Size(95, 21);
-            lblFilterClass.TabIndex = 2;
-            lblFilterClass.Text = "Filter Class:";
-            // 
-            // cbFilterYear
-            // 
-            cbFilterYear.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbFilterYear.Font = new Font("Segoe UI", 9.5F);
-            cbFilterYear.FormattingEnabled = true;
-            cbFilterYear.Location = new Point(116, 56);
-            cbFilterYear.Margin = new Padding(3, 4, 3, 4);
-            cbFilterYear.Name = "cbFilterYear";
-            cbFilterYear.Size = new Size(171, 29);
-            cbFilterYear.TabIndex = 1;
-            cbFilterYear.SelectedIndexChanged += CbFilterYear_SelectedIndexChanged;
             // 
             // lblFilterYear
             // 
+            lblFilterYear.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblFilterYear.AutoSize = true;
             lblFilterYear.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            lblFilterYear.ForeColor = Color.FromArgb(33, 37, 41);
-            lblFilterYear.Location = new Point(16, 60);
+            lblFilterYear.ForeColor = Color.FromArgb(30, 41, 59);
+            lblFilterYear.Location = new Point(995, 23);
             lblFilterYear.Name = "lblFilterYear";
-            lblFilterYear.Size = new Size(91, 21);
+            lblFilterYear.Size = new Size(106, 21);
             lblFilterYear.TabIndex = 0;
-            lblFilterYear.Text = "Filter Year:";
+            lblFilterYear.Text = "السنة الدراسية:";
+            // 
+            // cbFilterYear
+            // 
+            cbFilterYear.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            cbFilterYear.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbFilterYear.Font = new Font("Segoe UI", 9.5F);
+            cbFilterYear.FormattingEnabled = true;
+            cbFilterYear.Location = new Point(810, 20);
+            cbFilterYear.Name = "cbFilterYear";
+            cbFilterYear.Size = new Size(180, 29);
+            cbFilterYear.TabIndex = 1;
+            cbFilterYear.SelectedIndexChanged += CbFilterYear_SelectedIndexChanged;
+            // 
+            // lblFilterClass
+            // 
+            lblFilterClass.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblFilterClass.AutoSize = true;
+            lblFilterClass.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            lblFilterClass.ForeColor = Color.FromArgb(30, 41, 59);
+            lblFilterClass.Location = new Point(680, 23);
+            lblFilterClass.Name = "lblFilterClass";
+            lblFilterClass.Size = new Size(113, 21);
+            lblFilterClass.TabIndex = 2;
+            lblFilterClass.Text = "المرحلة / الصف:";
+            // 
+            // cbFilterClass
+            // 
+            cbFilterClass.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            cbFilterClass.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbFilterClass.Font = new Font("Segoe UI", 9.5F);
+            cbFilterClass.FormattingEnabled = true;
+            cbFilterClass.Location = new Point(480, 20);
+            cbFilterClass.Name = "cbFilterClass";
+            cbFilterClass.Size = new Size(195, 29);
+            cbFilterClass.TabIndex = 3;
+            cbFilterClass.SelectedIndexChanged += CbFilterClass_SelectedIndexChanged;
+            // 
+            // btnEdit
+            // 
+            btnEdit.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            btnEdit.Cursor = Cursors.Hand;
+            btnEdit.Font = new Font("Segoe UI", 9F);
+            btnEdit.Location = new Point(220, 15);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Size = new Size(120, 40);
+            btnEdit.TabIndex = 4;
+            btnEdit.Text = "تعديل المحدد";
+            btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += BtnEdit_Click;
+            // 
+            // btnRemove
+            // 
+            btnRemove.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            btnRemove.BackColor = Color.FromArgb(220, 38, 38);
+            btnRemove.Cursor = Cursors.Hand;
+            btnRemove.FlatAppearance.BorderSize = 0;
+            btnRemove.FlatStyle = FlatStyle.Flat;
+            btnRemove.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnRemove.ForeColor = Color.White;
+            btnRemove.Location = new Point(105, 15);
+            btnRemove.Name = "btnRemove";
+            btnRemove.Size = new Size(105, 40);
+            btnRemove.TabIndex = 5;
+            btnRemove.Text = "إلغاء الإسناد";
+            btnRemove.UseVisualStyleBackColor = false;
+            btnRemove.Click += BtnRemove_Click;
+            // 
+            // btnRefresh
+            // 
+            btnRefresh.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            btnRefresh.Cursor = Cursors.Hand;
+            btnRefresh.Font = new Font("Segoe UI", 9F);
+            btnRefresh.Location = new Point(20, 15);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(75, 40);
+            btnRefresh.TabIndex = 6;
+            btnRefresh.Text = "تحديث";
+            btnRefresh.UseVisualStyleBackColor = true;
+            btnRefresh.Click += BtnRefresh_Click;
             // 
             // pnlBottom
             // 
@@ -379,33 +375,31 @@ namespace SchoolManagementSystem.Academic
             pnlBottom.Controls.Add(lblTotalCount);
             pnlBottom.Dock = DockStyle.Bottom;
             pnlBottom.Location = new Point(0, 843);
-            pnlBottom.Margin = new Padding(3, 4, 3, 4);
             pnlBottom.Name = "pnlBottom";
-            pnlBottom.Padding = new Padding(23, 13, 23, 13);
-            pnlBottom.Size = new Size(1119, 64);
+            pnlBottom.Padding = new Padding(20, 12, 20, 12);
+            pnlBottom.Size = new Size(1119, 46);
             pnlBottom.TabIndex = 3;
             // 
             // lblTotalCount
             // 
+            lblTotalCount.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             lblTotalCount.AutoSize = true;
-            lblTotalCount.Dock = DockStyle.Left;
             lblTotalCount.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            lblTotalCount.ForeColor = Color.FromArgb(120, 130, 140);
-            lblTotalCount.Location = new Point(23, 13);
+            lblTotalCount.ForeColor = Color.FromArgb(100, 116, 139);
+            lblTotalCount.Location = new Point(880, 12);
             lblTotalCount.Name = "lblTotalCount";
-            lblTotalCount.Size = new Size(166, 21);
+            lblTotalCount.Size = new Size(215, 21);
             lblTotalCount.TabIndex = 0;
-            lblTotalCount.Text = "Total Assignments: 0";
+            lblTotalCount.Text = "إجمالي التكليفات والإسنادات: 0";
             // 
             // pnlGridWrapper
             // 
             pnlGridWrapper.Controls.Add(dgvAssignments);
             pnlGridWrapper.Dock = DockStyle.Fill;
-            pnlGridWrapper.Location = new Point(0, 406);
-            pnlGridWrapper.Margin = new Padding(3, 4, 3, 4);
+            pnlGridWrapper.Location = new Point(0, 360);
             pnlGridWrapper.Name = "pnlGridWrapper";
-            pnlGridWrapper.Padding = new Padding(23, 27, 23, 27);
-            pnlGridWrapper.Size = new Size(1119, 437);
+            pnlGridWrapper.Padding = new Padding(20);
+            pnlGridWrapper.Size = new Size(1119, 483);
             pnlGridWrapper.TabIndex = 4;
             // 
             // dgvAssignments
@@ -417,18 +411,14 @@ namespace SchoolManagementSystem.Academic
             dgvAssignments.BackgroundColor = Color.White;
             dgvAssignments.BorderStyle = BorderStyle.None;
             dgvAssignments.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dgvAssignments.ColumnHeadersHeight = 29;
-            dgvAssignments.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgvAssignments.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvAssignments.Dock = DockStyle.Fill;
-            dgvAssignments.Location = new Point(23, 27);
-            dgvAssignments.Margin = new Padding(3, 4, 3, 4);
             dgvAssignments.MultiSelect = false;
             dgvAssignments.Name = "dgvAssignments";
             dgvAssignments.ReadOnly = true;
             dgvAssignments.RowHeadersVisible = false;
-            dgvAssignments.RowHeadersWidth = 51;
             dgvAssignments.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvAssignments.Size = new Size(1073, 383);
+            dgvAssignments.Size = new Size(1079, 443);
             dgvAssignments.TabIndex = 0;
             dgvAssignments.DoubleClick += DgvAssignments_DoubleClick;
             // 
@@ -436,22 +426,26 @@ namespace SchoolManagementSystem.Academic
             // 
             errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
             errorProvider1.ContainerControl = this;
+            errorProvider1.RightToLeft = true;
             // 
             // frmCourseAssignment
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(245, 247, 250);
-            ClientSize = new Size(1119, 907);
+            BackColor = Color.FromArgb(248, 250, 252);
+            ClientSize = new Size(1119, 889);
             Controls.Add(pnlGridWrapper);
             Controls.Add(pnlBottom);
             Controls.Add(pnlToolbar);
             Controls.Add(pnlEditor);
             Controls.Add(pnlHeader);
-            Margin = new Padding(3, 4, 3, 4);
+            Font = new Font("Segoe UI", 9F);
+            MinimumSize = new Size(1000, 600);
             Name = "frmCourseAssignment";
+            RightToLeft = RightToLeft.Yes;
+            RightToLeftLayout = true;
             StartPosition = FormStartPosition.CenterParent;
-            Text = "Course Assignments";
+            Text = "توزيع وإسناد المواد الدراسية";
             Load += FrmCourseAssignment_Load;
             pnlHeader.ResumeLayout(false);
             pnlHeader.PerformLayout();
@@ -465,7 +459,6 @@ namespace SchoolManagementSystem.Academic
             ((System.ComponentModel.ISupportInitialize)dgvAssignments).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
-
         }
 
         #endregion
@@ -499,6 +492,5 @@ namespace SchoolManagementSystem.Academic
         private ComboBox cbGradeLevels;
         private Label label1;
         private Label lblFormTitle;
-        private ComboBox comboBox2;
     }
 }

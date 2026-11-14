@@ -84,8 +84,7 @@ namespace SchoolManagementSystemBusinessLayer
             return clsDAPayment.UpdatePayment(this.PaymentID, this.InvoiceID, this.PaymentDate, this.Amount, this.PaymentMethod, this.PaymentTypeID, this.TransactionID, this.ReceiptNumber, this.Notes, this.CreatedBy, this.CreatedAt);
         }
 
-        
-                public bool Validate(out string errorMessage)
+        public bool Validate(out string errorMessage)
         {
             errorMessage = "";
             
@@ -100,8 +99,8 @@ namespace SchoolManagementSystemBusinessLayer
             if (invoice != null)
             {
                 decimal totalPaid = 0;
-                System.Data.DataTable payments = GetAllPayments();
-                foreach (System.Data.DataRow row in payments.Rows)
+                DataTable payments = GetAllPayments();
+                foreach (DataRow row in payments.Rows)
                 {
                     if ((int)row["InvoiceID"] == this.InvoiceID && (int)row["PaymentID"] != this.PaymentID)
                     {
@@ -130,7 +129,7 @@ namespace SchoolManagementSystemBusinessLayer
             string errorMessage;
             if (!Validate(out errorMessage))
             {
-                throw new Exception(errorMessage); // Throw exception to be handled by Presentation Layer
+                throw new Exception(errorMessage);
             }
 
             switch (Mode)
@@ -153,6 +152,10 @@ namespace SchoolManagementSystemBusinessLayer
         public static bool DeletePayment(int PaymentID) => clsDAPayment.DeletePayment(PaymentID);
     
         public static DataTable GetPaymentsByInvoiceID(int invoiceID) => clsDAPayment.GetPaymentsByInvoiceID(invoiceID);
+        public static DataTable GetAllPaymentsDetailed() => clsDAPayment.GetAllPaymentsDetailed();
+        public static bool GetPaymentStatistics(ref decimal totalCollected, ref decimal todayCollected, ref decimal monthCollected, ref int paymentCount)
+            => clsDAPayment.GetPaymentStatistics(ref totalCollected, ref todayCollected, ref monthCollected, ref paymentCount);
+        public static DataTable GetPaymentReceiptDetails(int paymentID) => clsDAPayment.GetPaymentReceiptDetails(paymentID);
         
         public static int RecordPaymentWithTransaction(int invoiceID, DateTime paymentDate, decimal amount,
             string paymentMethod, int paymentTypeID, string transactionID, string receiptNumber,
@@ -162,5 +165,7 @@ namespace SchoolManagementSystemBusinessLayer
                 paymentMethod, paymentTypeID, transactionID, receiptNumber, notes, createdBy, out errorMessage);
         }
 
-}
+        // New: Sequential receipt number generation
+        public static string GetNextReceiptNumber() => clsDAPayment.GetNextReceiptNumber();
+    }
 }

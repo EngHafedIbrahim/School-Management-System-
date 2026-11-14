@@ -109,6 +109,7 @@ namespace SchoolManagementSystemBusinessLayer
             return false;
         }
         public static DataTable GetAllAcademicYears() => clsDAAcademicYear.GetAllAcademicYears();
+        public static DataTable GetCurrentAcademicYear() => clsDAAcademicYear.GetCurrentAcademicYear();
         public static bool IsAcademicYearExist(int AcademicYearID) => clsDAAcademicYear.IsAcademicYearExist(AcademicYearID);
         public static bool DeleteAcademicYear(int AcademicYearID) => clsDAAcademicYear.DeleteAcademicYear(AcademicYearID);
         public static bool SetCurrentAcademicYear(int academicYearID) => clsDAAcademicYear.SetCurrentAcademicYear(academicYearID);

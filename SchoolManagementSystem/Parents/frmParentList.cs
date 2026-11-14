@@ -21,8 +21,6 @@ namespace SchoolManagementSystem.Parents
             clsUITheme.StyleSecondaryButton(btnEdit);
             clsUITheme.StyleDangerButton(btnDelete);
             clsUITheme.StyleSecondaryButton(btnRefresh);
-
-           // LoadParentsList();
         }
 
         private void LoadParentsList()
@@ -34,35 +32,36 @@ namespace SchoolManagementSystem.Parents
 
             if (dgvParents.ColumnCount > 0)
             {
-                // ParentID
-                dgvParents.Columns[0].HeaderText = "ParentID";
-                dgvParents.Columns[0].Width = 120;
-
-                // FirstName
-                dgvParents.Columns[1].HeaderText = "Full Name";
-                dgvParents.Columns[1].Width = 150;
-
-                // PhoneNumber
-                dgvParents.Columns[2].HeaderText = "PhoneNumber";
-                dgvParents.Columns[2].Width = 150;
-
-                // Email
-                dgvParents.Columns[3].HeaderText = "Email";
-                dgvParents.Columns[3].Width = 220;
-
-                // Address
-                dgvParents.Columns[4].HeaderText = "Address";
-                dgvParents.Columns[4].Width = 250;
-
-                // RelationshipType
-                dgvParents.Columns[5].HeaderText = "StudentsCount";
-                dgvParents.Columns[5].Width = 160;
-
-                //// CreatedAt
-                //dgvParents.Columns[6].HeaderText = "CreatedAt";
-                //dgvParents.Columns[6].Width = 140;
-
-
+                if (dgvParents.Columns.Contains("ParentID"))
+                {
+                    dgvParents.Columns["ParentID"].HeaderText = "رقم المعرف";
+                    dgvParents.Columns["ParentID"].Width = 100;
+                }
+                if (dgvParents.Columns.Contains("FullName"))
+                {
+                    dgvParents.Columns["FullName"].HeaderText = "الاسم الكامل";
+                    dgvParents.Columns["FullName"].Width = 200;
+                }
+                if (dgvParents.Columns.Contains("PhoneNumber"))
+                {
+                    dgvParents.Columns["PhoneNumber"].HeaderText = "رقم الهاتف";
+                    dgvParents.Columns["PhoneNumber"].Width = 150;
+                }
+                if (dgvParents.Columns.Contains("Email"))
+                {
+                    dgvParents.Columns["Email"].HeaderText = "البريد الإلكتروني";
+                    dgvParents.Columns["Email"].Width = 220;
+                }
+                if (dgvParents.Columns.Contains("Address"))
+                {
+                    dgvParents.Columns["Address"].HeaderText = "العنوان";
+                    dgvParents.Columns["Address"].Width = 220;
+                }
+                if (dgvParents.Columns.Contains("NumberOfChildren"))
+                {
+                    dgvParents.Columns["NumberOfChildren"].HeaderText = "عدد الأبناء المسجلين";
+                    dgvParents.Columns["NumberOfChildren"].Width = 160;
+                }
             }
 
             UpdateCount();
@@ -88,7 +87,7 @@ namespace SchoolManagementSystem.Parents
 
         private void UpdateCount()
         {
-            lblTotalCount.Text = $"Total Displayed Parents: {_dvParents?.Count ?? 0}";
+            lblTotalCount.Text = $"إجمالي أولياء الأمور المعروضين: {_dvParents?.Count ?? 0}";
         }
 
         private int GetSelectedParentID()
@@ -104,6 +103,7 @@ namespace SchoolManagementSystem.Parents
 
         private void BtnRefresh_Click(object sender, EventArgs e)
         {
+            txtSearch.Text = "";
             LoadParentsList();
         }
 
@@ -121,7 +121,7 @@ namespace SchoolManagementSystem.Parents
             int parentID = GetSelectedParentID();
             if (parentID == -1)
             {
-                MessageBox.Show("Please select a parent from the list.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clsUITheme.ShowArabicMessage("يرجى تحديد ولي أمر من القائمة أولاً.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -140,7 +140,7 @@ namespace SchoolManagementSystem.Parents
             int parentID = GetSelectedParentID();
             if (parentID == -1)
             {
-                MessageBox.Show("Please select a parent to edit.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clsUITheme.ShowArabicMessage("يرجى تحديد ولي أمر من القائمة لتعديله.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -156,36 +156,40 @@ namespace SchoolManagementSystem.Parents
             int parentID = GetSelectedParentID();
             if (parentID == -1)
             {
-                MessageBox.Show("Please select a parent to delete.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clsUITheme.ShowArabicMessage("يرجى تحديد ولي أمر من القائمة للحذف.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
-            string parentName = dgvParents.CurrentRow.Cells["FullName"].Value.ToString();
-            int childrenCount = Convert.ToInt32(dgvParents.CurrentRow.Cells["NumberOfChildren"].Value);
+            string parentName = dgvParents.CurrentRow.Cells["FullName"].Value?.ToString() ?? "";
+            int childrenCount = 0;
+            if (dgvParents.Columns.Contains("NumberOfChildren"))
+            {
+                childrenCount = Convert.ToInt32(dgvParents.CurrentRow.Cells["NumberOfChildren"].Value);
+            }
 
             if (childrenCount > 0)
             {
-                MessageBox.Show($"Cannot delete parent '{parentName}' because they have {childrenCount} linked student(s).\nPlease unlink all students first.", "Action Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                clsUITheme.ShowArabicMessage($"لا يمكن حذف ولي الأمر '{parentName}' لأن لديه ({childrenCount}) طالب/طلاب مرتبطين به.\nيرجى فك ارتباط الأبناء أولاً.", "إجراء غير مسموح", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (MessageBox.Show($"Are you sure you want to delete parent '{parentName}' (ID: {parentID})?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (clsUITheme.ShowArabicMessage($"هل أنت متأكد من رغبتك في حذف ولي الأمر '{parentName}' (رقم المعرف: {parentID})؟", "تأكيد الحذف", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 try
                 {
                     if (clsParent.DeleteParent(parentID))
                     {
-                        MessageBox.Show("Parent deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        clsUITheme.ShowArabicMessage("تم حذف سجل ولي الأمر بنجاح.", "تمت العملية", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadParentsList();
                     }
                     else
                     {
-                        MessageBox.Show("Failed to delete parent.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        clsUITheme.ShowArabicMessage("فشل حذف ولي الأمر لوجود سجلات مرتبطة.", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error deleting parent: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    clsUITheme.ShowArabicMessage("حدث خطأ أثناء حذف ولي الأمر: " + ex.Message, "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

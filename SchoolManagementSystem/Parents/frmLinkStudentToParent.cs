@@ -3,7 +3,6 @@ using SchoolManagementSystemBusinessLayer;
 using System;
 using System.Data;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace SchoolManagementSystem.Parents
 {
@@ -18,8 +17,6 @@ namespace SchoolManagementSystem.Parents
 
             clsUITheme.StylePrimaryButton(btnSave);
             clsUITheme.StyleSecondaryButton(btnCancel);
-
-            //LoadData();
         }
 
         private void LoadData()
@@ -40,7 +37,7 @@ namespace SchoolManagementSystem.Parents
         {
             if (cbStudents.SelectedValue == null)
             {
-                MessageBox.Show("Please select a student.", "Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                clsUITheme.ShowArabicMessage("يرجى اختيار الطالب من القائمة.", "حقل مطلوب", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -54,35 +51,29 @@ namespace SchoolManagementSystem.Parents
             sp.Relationship = relationship;
             sp.IsPrimaryContact = isPrimary;
 
-
-            //Ignore this try catch block...
             try
             {
                 if (sp.IsThisStudentAlreadyLinkedToThisParent())
                 {
-                    MessageBox.Show("Validation error: This student is already linked to this parent "," Constraint Violation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    clsUITheme.ShowArabicMessage("تنبيه: هذا الطالب مرتبط بالفعل بولي الأمر هذا مسبقاً.", "ارتباط مكرر", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
                 if (sp.Save())
                 {
-                    MessageBox.Show("Student linked successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    clsUITheme.ShowArabicMessage("تم ربط الطالب بولي الأمر بنجاح.", "تمت العملية", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Failed to link student.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    clsUITheme.ShowArabicMessage("فشل ربط الطالب بولي الأمر.", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Validation error: " + ex.Message, "Constraint Violation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                clsUITheme.ShowArabicMessage("خطأ في التحقق من صحة الربط: " + ex.Message, "قيد النظام", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
-
-
-
         }
 
         private void BtnCancel_Click(object sender, EventArgs e)

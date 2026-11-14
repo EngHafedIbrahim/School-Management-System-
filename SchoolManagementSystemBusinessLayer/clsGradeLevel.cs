@@ -68,10 +68,14 @@ namespace SchoolManagementSystemBusinessLayer
                 return false;
             }
 
-            if (clsGradeLevel.IsGradeLevelExist(this.Name))
+            if(Mode == enMode.AddNew)
             {
-                errorMessage = "A Grade Level with this name already exists.";
-                return false;
+                if (clsGradeLevel.IsGradeLevelExist(this.Name))
+                {
+                    errorMessage = "A Grade Level with this name already exists.";
+                    return false;
+                }
+
             }
 
 

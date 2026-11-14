@@ -1,6 +1,7 @@
 using System;
 using System.Data;
 using SchoolManagementSystemDataAccessLayer;
+using UtilityLib;
 
 namespace SchoolManagementSystemBusinessLayer
 {
@@ -13,7 +14,7 @@ namespace SchoolManagementSystemBusinessLayer
         public string Username { get; set; }
         public string PasswordHash { get; set; }
         public string Email { get; set; }
-        public string Status { get; set; }
+        public bool IsActive { get; set; }
         public string UserType { get; set; }
         public int? ReferenceID { get; set; }
         public DateTime CreatedAt { get; set; }
@@ -26,7 +27,7 @@ namespace SchoolManagementSystemBusinessLayer
             this.Username = "";
             this.PasswordHash = "";
             this.Email = "";
-            this.Status = "";
+            this.IsActive = false;
             this.UserType = "";
             this.ReferenceID = null;
             this.CreatedAt = DateTime.Now;
@@ -34,13 +35,13 @@ namespace SchoolManagementSystemBusinessLayer
             Mode = enMode.AddNew;
         }
 
-        private clsUser(int UserID, string Username, string PasswordHash, string Email, string Status, string UserType, int? ReferenceID, DateTime CreatedAt, DateTime UpdatedAt)
+        private clsUser(int UserID, string Username, string PasswordHash, string Email, bool IsActive, string UserType, int? ReferenceID, DateTime CreatedAt, DateTime UpdatedAt)
         {
             this.UserID = UserID;
             this.Username = Username;
             this.PasswordHash = PasswordHash;
             this.Email = Email;
-            this.Status = Status;
+            this.IsActive = IsActive;
             this.UserType = UserType;
             this.ReferenceID = ReferenceID;
             this.CreatedAt = CreatedAt;
@@ -53,25 +54,25 @@ namespace SchoolManagementSystemBusinessLayer
             string Username = "";
             string PasswordHash = "";
             string Email = "";
-            string Status = "";
+            bool IsActive = false ;// false;
             string UserType = "";
             int? ReferenceID = null;
             DateTime CreatedAt = DateTime.Now;
             DateTime UpdatedAt = DateTime.Now;
-            if (clsDAUser.Find(UserID, ref Username, ref PasswordHash, ref Email, ref Status, ref UserType, ref ReferenceID, ref CreatedAt, ref UpdatedAt))
-                return new clsUser(UserID, Username, PasswordHash, Email, Status, UserType, ReferenceID, CreatedAt, UpdatedAt);
+            if (clsDAUser.Find(UserID, ref Username, ref PasswordHash, ref Email, ref IsActive, ref UserType, ref ReferenceID, ref CreatedAt, ref UpdatedAt))
+                return new clsUser(UserID, Username, PasswordHash, Email, IsActive, UserType, ReferenceID, CreatedAt, UpdatedAt);
             return null;
         }
 
         private bool _AddNewUser()
         {
-            this.UserID = clsDAUser.AddNewUser(this.Username, this.PasswordHash, this.Email, this.Status, this.UserType, this.ReferenceID, this.CreatedAt, this.UpdatedAt);
+            this.UserID = clsDAUser.AddNewUser(this.Username, this.PasswordHash, this.Email, this.IsActive, this.UserType, this.ReferenceID, this.CreatedAt, this.UpdatedAt);
             return (this.UserID != -1);
         }
 
         private bool _UpdateUser()
         {
-            return clsDAUser.UpdateUser(this.UserID, this.Username, this.PasswordHash, this.Email, this.Status, this.UserType, this.ReferenceID, this.CreatedAt, this.UpdatedAt);
+            return clsDAUser.UpdateUser(this.UserID, this.Username, this.PasswordHash, this.Email, this.IsActive, this.UserType, this.ReferenceID, this.CreatedAt, this.UpdatedAt);
         }
 
         
@@ -153,21 +154,21 @@ namespace SchoolManagementSystemBusinessLayer
         
         public static clsUser Login(string username, string passwordHash)
         {
-            System.Data.DataTable dt = GetAllUsers();
-
+            passwordHash = clsSecurity.ComputeHash(passwordHash); 
             
+            int UserID = -1;
+            string Username = "";
+            string PasswordHash = "";
+            string Email = "";
+            bool IsActive = false ;// "";
+            string UserType = "";
+            int? ReferenceID = null;
+            DateTime CreatedAt = DateTime.Now;
+            DateTime UpdatedAt = DateTime.Now;
 
-            foreach (System.Data.DataRow row in dt.Rows)
-            {
-                if (row["Username"].ToString() == username && row["PasswordHash"].ToString() == passwordHash)
-                {
-                    if (row["Status"].ToString() != "Active")
-                    {
-                        throw new Exception("Account is inactive.");
-                    }
-                    return Find((int)row["UserID"]);
-                }
-            }
+            if ((UserID = clsDAUser.GetUserInfoByUserNameAndPass( username,  passwordHash, ref Email, ref IsActive, ref UserType, ref ReferenceID, ref CreatedAt, ref UpdatedAt)) != -1)
+                return new clsUser(UserID, username, passwordHash, Email, IsActive, UserType, ReferenceID, CreatedAt, UpdatedAt);
+            
             return null;
         }
 
@@ -176,7 +177,7 @@ namespace SchoolManagementSystemBusinessLayer
         public static DataTable GetAllUsersDetailed() => clsDAUser.GetAllUsersDetailed();
         public static bool IsUsernameExist(string username, int excludeUserID = -1) => clsDAUser.IsUsernameExist(username, excludeUserID);
         public static bool IsEmailExist(string email, int excludeUserID = -1) => clsDAUser.IsEmailExist(email, excludeUserID);
-        public static bool UpdateUserStatus(int userID, string status) => clsDAUser.UpdateUserStatus(userID, status);
+        public static bool UpdateUserStatus(int userID, bool IsActive) => clsDAUser.UpdateUserIsActive(userID, IsActive);
         public static bool ResetPassword(int userID, string newPasswordHash) => clsDAUser.ResetPassword(userID, newPasswordHash);
         public static bool IsReferenceAlreadyLinked(string userType, int referenceID, int excludeUserID = -1) => clsDAUser.IsReferenceAlreadyLinked(userType, referenceID, excludeUserID);
 

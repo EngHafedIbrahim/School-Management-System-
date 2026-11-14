@@ -17,8 +17,8 @@ namespace SchoolManagementSystemBusinessLayer
         public DateTime? WithdrawalDate { get; set; }
         public string Status { get; set; }
         public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
-
+        public DateTime? UpdatedAt { get; set; }
+        public int GradeLevelID { get; set; }
         public clsStudent StudentInfo => clsStudent.Find(this.StudentID);
         public clsClass ClassInfo => clsClass.Find(this.ClassID);
         public clsAcademicYear AcademicYearInfo => clsAcademicYear.Find(this.AcademicYearID);
@@ -37,7 +37,7 @@ namespace SchoolManagementSystemBusinessLayer
             Mode = enMode.AddNew;
         }
 
-        private clsStudentEnrollment(int StudentEnrollmentID, int StudentID, int ClassID, int AcademicYearID, DateTime EnrollmentDate, DateTime? WithdrawalDate, string Status, DateTime CreatedAt, DateTime UpdatedAt)
+        private clsStudentEnrollment(int StudentEnrollmentID, int StudentID,int GradeLevelID, int ClassID, int AcademicYearID, DateTime EnrollmentDate, DateTime? WithdrawalDate, string Status, DateTime CreatedAt, DateTime? UpdatedAt)
         {
             this.StudentEnrollmentID = StudentEnrollmentID;
             this.StudentID = StudentID;
@@ -46,6 +46,7 @@ namespace SchoolManagementSystemBusinessLayer
             this.EnrollmentDate = EnrollmentDate;
             this.WithdrawalDate = WithdrawalDate;
             this.Status = Status;
+            this.GradeLevelID = GradeLevelID;
             this.CreatedAt = CreatedAt;
             this.UpdatedAt = UpdatedAt;
             Mode = enMode.Update;
@@ -56,25 +57,26 @@ namespace SchoolManagementSystemBusinessLayer
             int StudentID = -1;
             int ClassID = -1;
             int AcademicYearID = -1;
+            int GradeLevelID = -1;
             DateTime EnrollmentDate = DateTime.Now;
             DateTime? WithdrawalDate = null;
             string Status = "";
             DateTime CreatedAt = DateTime.Now;
-            DateTime UpdatedAt = DateTime.Now;
-            if (clsDAStudentEnrollment.Find(StudentEnrollmentID, ref StudentID, ref ClassID, ref AcademicYearID, ref EnrollmentDate, ref WithdrawalDate, ref Status, ref CreatedAt, ref UpdatedAt))
-                return new clsStudentEnrollment(StudentEnrollmentID, StudentID, ClassID, AcademicYearID, EnrollmentDate, WithdrawalDate, Status, CreatedAt, UpdatedAt);
+            DateTime? UpdatedAt = DateTime.Now;
+            if (clsDAStudentEnrollment.Find(StudentEnrollmentID, ref StudentID,ref GradeLevelID , ref ClassID, ref AcademicYearID, ref EnrollmentDate, ref WithdrawalDate, ref Status, ref CreatedAt, ref UpdatedAt))
+                return new clsStudentEnrollment(StudentEnrollmentID, StudentID, GradeLevelID, ClassID, AcademicYearID, EnrollmentDate, WithdrawalDate, Status, CreatedAt, UpdatedAt);
             return null;
         }
 
         private bool _AddNewStudentEnrollment()
         {
-            this.StudentEnrollmentID = clsDAStudentEnrollment.AddNewStudentEnrollment(this.StudentID, this.ClassID, this.AcademicYearID, this.EnrollmentDate, this.WithdrawalDate, this.Status, this.CreatedAt, this.UpdatedAt);
+            this.StudentEnrollmentID = clsDAStudentEnrollment.AddNewStudentEnrollment(this.StudentID,this.GradeLevelID, this.ClassID, this.AcademicYearID, this.EnrollmentDate, this.WithdrawalDate, this.Status, this.CreatedAt, this.UpdatedAt);
             return (this.StudentEnrollmentID != -1);
         }
 
         private bool _UpdateStudentEnrollment()
         {
-            return clsDAStudentEnrollment.UpdateStudentEnrollment(this.StudentEnrollmentID, this.StudentID, this.ClassID, this.AcademicYearID, this.EnrollmentDate, this.WithdrawalDate, this.Status, this.CreatedAt, this.UpdatedAt);
+            return clsDAStudentEnrollment.UpdateStudentEnrollment(this.StudentEnrollmentID, this.StudentID,this .GradeLevelID , this.ClassID, this.AcademicYearID, this.EnrollmentDate, this.WithdrawalDate, this.Status, this.CreatedAt, this.UpdatedAt);
         }
 
         
@@ -84,22 +86,17 @@ namespace SchoolManagementSystemBusinessLayer
             
             if (EnrollmentDate > DateTime.Now)
             {
-                errorMessage = "Enrollment date cannot be in the future.";
+                errorMessage = "لا يمكن أن يكون تاريخ القيد في المستقبل.";
                 return false;
             }
 
-            System.Data.DataTable dt = GetAllStudentEnrollments();
-            foreach (System.Data.DataRow row in dt.Rows)
+            if (clsDAStudentEnrollment.IsStudentEnrolledInYear(
+                this.StudentID, this.AcademicYearID, this.StudentEnrollmentID))
             {
-                if ((int)row["StudentEnrollmentID"] != this.StudentEnrollmentID)
-                {
-                    if ((int)row["StudentID"] == this.StudentID && (int)row["AcademicYearID"] == this.AcademicYearID)
-                    {
-                        errorMessage = "Student is already enrolled in a class for this academic year.";
-                        return false;
-                    }
-                }
+                errorMessage = "الطالب مقيد بالفعل في فصل دراسي لهذه السنة الأكاديمية.";
+                return false;
             }
+
             return true;
         }
 
@@ -137,6 +134,8 @@ namespace SchoolManagementSystemBusinessLayer
 
 
         public static DataTable GetEnrollmentsByStudentID(int studentID) => clsDAStudentEnrollment.GetEnrollmentsByStudentID(studentID);
-
-}
+        public static DataTable GetAllEnrollmentsDetailed() => clsDAStudentEnrollment.GetAllEnrollmentsDetailed();
+        public static bool IsStudentEnrolledInYear(int studentID, int academicYearID, int excludeEnrollmentID = -1) => clsDAStudentEnrollment.IsStudentEnrolledInYear(studentID, academicYearID, excludeEnrollmentID);
+        public static bool UpdateEnrollmentStatus(int studentEnrollmentID, string newStatus, DateTime? withdrawalDate) => clsDAStudentEnrollment.UpdateEnrollmentStatus(studentEnrollmentID, newStatus, withdrawalDate);
+    }
 }

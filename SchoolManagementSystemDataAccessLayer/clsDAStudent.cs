@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
 using UtilityLib;
@@ -244,6 +244,7 @@ namespace SchoolManagementSystemDataAccessLayer
             return isFound;
         }
 
+        #region this methods run when Adding student data
         public static bool DoesEmailAlreadyExist(string Email)
         {
             bool isFound = false;
@@ -251,7 +252,7 @@ namespace SchoolManagementSystemDataAccessLayer
             {
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
                 {
-                    string query = "SELECT TOP 1  FROM Student WHERE Email = @Email";
+                    string query = "SELECT TOP 1 1 FROM Student WHERE Email = @Email";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@Email", Email);
@@ -278,7 +279,7 @@ namespace SchoolManagementSystemDataAccessLayer
             {
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
                 {
-                    string query = "SELECT TOP 1  FROM Student WHERE AdmissionNo = @AdmissionNo";
+                    string query = "SELECT TOP 1 1 FROM Student WHERE AdmissionNo = @AdmissionNo";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@AdmissionNo", AdmissionNo);
@@ -305,7 +306,7 @@ namespace SchoolManagementSystemDataAccessLayer
             {
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
                 {
-                    string query = "SELECT TOP 1  FROM Student WHERE NationalID = @NationalID";
+                    string query = "SELECT TOP 1 1 FROM Student WHERE NationalID = @NationalID";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@NationalID", NationalID);
@@ -325,6 +326,96 @@ namespace SchoolManagementSystemDataAccessLayer
             }
             return isFound;
         }
+
+        #endregion
+
+        #region this methods run when Update data
+        public static bool DoesEmailAlreadyExist(string Email, int StudentID)
+        {
+            bool isFound = false;
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = "SELECT TOP 1 1 FROM Student WHERE Email = @Email and StudentID !=@StudentID";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@Email", Email);
+                        command.Parameters.AddWithValue("@StudentID", StudentID);
+                        connection.Open();
+                        object result = command.ExecuteScalar();
+
+                        if (result != null)
+                        {
+                            isFound = Convert.ToInt32(result) > 0;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return isFound;
+        }
+        public static bool DoesAdmissionNoAlreadyExist(string AdmissionNo, int StudentID)
+        {
+            bool isFound = false;
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = "SELECT TOP 1 1 FROM Student WHERE AdmissionNo = @AdmissionNo and StudentID !=@StudentID";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@AdmissionNo", AdmissionNo);
+                        command.Parameters.AddWithValue("@StudentID", StudentID);
+                        connection.Open();
+                        object result = command.ExecuteScalar();
+
+                        if (result != null)
+                        {
+                            isFound = Convert.ToInt32(result) > 0;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return isFound;
+        }
+        public static bool DoesNationalIDAlreadyExist(string NationalID, int StudentID)
+        {
+            bool isFound = false;
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = "SELECT TOP 1 1 FROM Student WHERE NationalID = @NationalID and StudentID !=@StudentID";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@NationalID", NationalID);
+                        command.Parameters.AddWithValue("@StudentID", StudentID);
+                        connection.Open();
+                        object result = command.ExecuteScalar();
+
+                        if (result != null)
+                        {
+                            isFound = Convert.ToInt32(result) > 0;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return isFound;
+        }
+
+        #endregion
 
         /*
             Does NationalID already exist?
@@ -353,6 +444,89 @@ namespace SchoolManagementSystemDataAccessLayer
                         LEFT JOIN [StudentEnrollment] se ON s.StudentID = se.StudentID 
                             AND se.AcademicYearID = (SELECT TOP 1 AcademicYearID FROM AcademicYear WHERE IsCurrent = 1)
                         LEFT JOIN [Class] c ON se.ClassID = c.ClassID";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                                dt.Load(reader);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return dt;
+        }
+
+
+        public static DataTable GetUnEnrolledStudents()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = @"
+                        SELECT 
+                            s.StudentID,
+                            CASE
+                                WHEN s.LastName IS NULL OR LTRIM(RTRIM(s.LastName)) = ''
+                                    THEN s.FirstName
+                                ELSE CONCAT(s.FirstName, ' ', s.LastName)
+                            END AS FullName,
+                            s.NationalID,
+                            s.AdmissionNo,
+                            s.PhoneNumber,
+                            CASE WHEN s.GenderID = 1 THEN 'Male' ELSE 'Female' END AS Gender
+                        FROM Student s
+                        WHERE NOT EXISTS (
+                            SELECT 1 FROM StudentEnrollment se 
+                            WHERE se.StudentID = s.StudentID 
+                            AND se.AcademicYearID = (
+                                SELECT TOP 1 AcademicYearID FROM AcademicYear WHERE IsCurrent = 1
+                            )
+                            AND se.Status IN ('Active', 'Transferred', 'Graduated')
+                        )
+                        ORDER BY s.FirstName, s.LastName";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                                dt.Load(reader);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return dt;
+        }
+
+        public static DataTable GetStudentsForComboBox()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = @"
+                        SELECT 
+                            StudentID,
+                            CASE
+                                WHEN LastName IS NULL OR LTRIM(RTRIM(LastName)) = ''
+                                    THEN FirstName + ' (' + AdmissionNo + ')'
+                                ELSE FirstName + ' ' + LastName + ' (' + AdmissionNo + ')'
+                            END AS DisplayName
+                        FROM Student
+                        ORDER BY FirstName, LastName";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         connection.Open();

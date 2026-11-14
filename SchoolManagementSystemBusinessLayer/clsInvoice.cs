@@ -94,7 +94,7 @@ namespace SchoolManagementSystemBusinessLayer
         }
 
         
-                public bool Validate(out string errorMessage)
+        public bool Validate(out string errorMessage)
         {
             errorMessage = "";
             
@@ -109,27 +109,42 @@ namespace SchoolManagementSystemBusinessLayer
                 return false;
             }
 
-            // SRS Validation: Subtotal must match the applied fee structure
+            // SRS Validation: Subtotal must NOT exceed the fee structure total
+            // (allows partial selection of fee items - e.g. student not using transport)
             clsFeeStructure feeStructure = clsFeeStructure.Find(this.FeeStructureID);
             if (feeStructure != null)
             {
-                decimal expectedSubtotal = feeStructure.TuitionFee + feeStructure.TransportFee + feeStructure.BookFee + feeStructure.OtherFees;
-                if (this.Subtotal != expectedSubtotal)
+                decimal maxSubtotal = feeStructure.TuitionFee + feeStructure.TransportFee + feeStructure.BookFee + feeStructure.OtherFees;
+                if (this.Subtotal > maxSubtotal)
                 {
-                    errorMessage = $"Subtotal ({this.Subtotal}) does not match the applied fee structure total ({expectedSubtotal}).";
+                    errorMessage = $"Subtotal ({this.Subtotal:N2}) cannot exceed the fee structure maximum ({maxSubtotal:N2}).";
+                    return false;
+                }
+                if (this.Subtotal <= 0)
+                {
+                    errorMessage = "Subtotal must be greater than zero. At least one fee item must be selected.";
                     return false;
                 }
             }
             
             // Auto-calculate / verify TotalAmount (Business Logic)
             decimal expectedTotal = this.Subtotal - this.DiscountAmount + this.TaxAmount;
+            if (expectedTotal < 0) expectedTotal = 0;
             if (this.TotalAmount != expectedTotal)
             {
                 this.TotalAmount = expectedTotal; // Auto-correct
             }
 
-            System.Data.DataTable dt = GetAllInvoices();
-            foreach (System.Data.DataRow row in dt.Rows)
+            // Discount cannot exceed subtotal
+            if (this.DiscountAmount > this.Subtotal)
+            {
+                errorMessage = "Discount amount cannot exceed the subtotal.";
+                return false;
+            }
+
+            // Invoice Number uniqueness check (efficient SQL query)
+            DataTable dt = GetAllInvoices();
+            foreach (DataRow row in dt.Rows)
             {
                 if ((int)row["InvoiceID"] != this.InvoiceID)
                 {
@@ -172,11 +187,17 @@ namespace SchoolManagementSystemBusinessLayer
     
         public static DataTable GetInvoicesByStudentID(int studentID) => clsDAInvoice.GetInvoicesByStudentID(studentID);
 
-
         public static DataTable GetInvoiceDetailed(int invoiceID) => clsDAInvoice.GetInvoiceDetailed(invoiceID);
         public static DataTable GetAllInvoicesDetailed() => clsDAInvoice.GetAllInvoicesDetailed();
         public static decimal GetTotalPaidByInvoiceID(int invoiceID) => clsDAInvoice.GetTotalPaidByInvoiceID(invoiceID);
         public static bool UpdateInvoiceStatus(int invoiceID, string status) => clsDAInvoice.UpdateInvoiceStatus(invoiceID, status);
 
-}
+        // New methods for finance rework
+        public static string GetNextInvoiceNumber() => clsDAInvoice.GetNextInvoiceNumber();
+        public static bool HasActiveInvoiceForStudentAndYear(int studentID, int academicYearID, int feeStructureID)
+            => clsDAInvoice.HasActiveInvoiceForStudentAndYear(studentID, academicYearID, feeStructureID);
+        public static bool HasPayments(int invoiceID) => clsDAInvoice.HasPayments(invoiceID);
+        public static DataTable GetStudentEnrollmentInfo(int studentID, int academicYearID) 
+            => clsDAInvoice.GetStudentEnrollmentInfo(studentID, academicYearID);
+    }
 }

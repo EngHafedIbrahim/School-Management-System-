@@ -24,7 +24,7 @@ namespace SchoolManagementSystemDataAccessLayer
                             if (reader.Read())
                             {
                                 isFound = true;
-                                                                InvoiceID = (int)reader["InvoiceID"];
+                                InvoiceID = (int)reader["InvoiceID"];
                                 PaymentDate = (DateTime)reader["PaymentDate"];
                                 Amount = (decimal)reader["Amount"];
                                 PaymentMethod = reader["PaymentMethod"] != DBNull.Value ? (string)reader["PaymentMethod"] : "";
@@ -58,7 +58,7 @@ namespace SchoolManagementSystemDataAccessLayer
                                      SELECT SCOPE_IDENTITY();";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                                                command.Parameters.AddWithValue("@InvoiceID", InvoiceID);
+                        command.Parameters.AddWithValue("@InvoiceID", InvoiceID);
                         command.Parameters.AddWithValue("@PaymentDate", PaymentDate);
                         command.Parameters.AddWithValue("@Amount", Amount);
                         command.Parameters.AddWithValue("@PaymentMethod", (object)PaymentMethod ?? DBNull.Value);
@@ -97,7 +97,7 @@ namespace SchoolManagementSystemDataAccessLayer
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@PaymentID", PaymentID);
-                                                command.Parameters.AddWithValue("@InvoiceID", InvoiceID);
+                        command.Parameters.AddWithValue("@InvoiceID", InvoiceID);
                         command.Parameters.AddWithValue("@PaymentDate", PaymentDate);
                         command.Parameters.AddWithValue("@Amount", Amount);
                         command.Parameters.AddWithValue("@PaymentMethod", (object)PaymentMethod ?? DBNull.Value);
@@ -202,15 +202,26 @@ namespace SchoolManagementSystemDataAccessLayer
             {
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
                 {
+                    //string query = @"
+                    //    SELECT 
+                    //        p.PaymentID, p.ReceiptNumber, p.PaymentDate, p.Amount,
+                    //        pt.Name AS PaymentTypeName,
+                    //        p.Notes,
+                    //        u.Username AS RecordedBy
+                    //    FROM Payment p
+                    //    INNER JOIN PaymentType pt ON p.PaymentTypeID = pt.PaymentTypeID
+                    //    LEFT JOIN [User] u ON p.CreatedBy = u.UserID
+                    //    WHERE p.InvoiceID = @InvoiceID
+                    //    ORDER BY p.PaymentDate DESC";
                     string query = @"
                         SELECT 
                             p.PaymentID, p.ReceiptNumber, p.PaymentDate, p.Amount,
                             pt.Name AS PaymentTypeName,
-                            p.Notes,
-                            u.Username AS RecordedBy
+                            p.Notes
+                           
                         FROM Payment p
                         INNER JOIN PaymentType pt ON p.PaymentTypeID = pt.PaymentTypeID
-                        LEFT JOIN [User] u ON p.CreatedBy = u.UserID
+                        
                         WHERE p.InvoiceID = @InvoiceID
                         ORDER BY p.PaymentDate DESC";
                     using (SqlCommand command = new SqlCommand(query, connection))
@@ -346,6 +357,200 @@ namespace SchoolManagementSystemDataAccessLayer
                 paymentID = -1;
             }
             return paymentID;
+        }
+
+        public static DataTable GetAllPaymentsDetailed()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                   /* string query = @"
+                        SELECT 
+                            p.PaymentID,
+                            p.ReceiptNumber,
+                            p.PaymentDate,
+                            p.Amount,
+                            p.PaymentMethod as PaymentMethod,
+                            ISNULL(pt.Name, p.PaymentMethod) AS PaymentTypeName,
+                            p.TransactionID,
+                            p.Notes,
+                            i.InvoiceID,
+                            i.InvoiceNumber,
+                            i.TotalAmount AS InvoiceTotal,
+                            s.StudentID,
+                            (s.FirstName + ' ' + s.LastName) AS StudentName,
+                            s.AdmissionNo,
+                            ISNULL(u.Username, 'Admin') AS ReceivedBy
+                        FROM Payment p
+                        INNER JOIN Invoice i ON p.InvoiceID = i.InvoiceID
+                        INNER JOIN Student s ON i.StudentID = s.StudentID
+                        LEFT JOIN PaymentType pt ON p.PaymentTypeID = pt.PaymentTypeID
+                        LEFT JOIN [User] u ON p.CreatedBy = u.UserID
+                        ORDER BY p.PaymentDate DESC";*/
+                    string query = @"
+                         SELECT 
+                            p.PaymentID,
+                            p.ReceiptNumber,
+                            p.PaymentDate,
+                            p.Amount,
+                            p.PaymentMethod as PaymentMethod,
+                            ISNULL(pt.Name, p.PaymentMethod) AS PaymentTypeName,
+                            p.TransactionID,
+                            p.Notes,
+                            i.InvoiceID,
+                            i.InvoiceNumber,
+                            i.TotalAmount AS InvoiceTotal,
+                            s.StudentID,
+                            (s.FirstName + ' ' + s.LastName) AS StudentName,
+                            s.AdmissionNo
+                        FROM Payment p
+                        INNER JOIN Invoice i ON p.InvoiceID = i.InvoiceID
+                        INNER JOIN Student s ON i.StudentID = s.StudentID
+                        LEFT JOIN PaymentType pt ON p.PaymentTypeID = pt.PaymentTypeID
+                       
+                        ORDER BY p.PaymentDate DESC";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            dt.Load(reader);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return dt;
+        }
+
+        public static bool GetPaymentStatistics(ref decimal totalCollected, ref decimal todayCollected, ref decimal monthCollected, ref int paymentCount)
+        {
+            bool isSuccess = false;
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = @"
+                        SELECT 
+                            ISNULL(SUM(Amount), 0) AS TotalCollected,
+                            ISNULL(SUM(CASE WHEN CAST(PaymentDate AS DATE) = CAST(GETDATE() AS DATE) THEN Amount ELSE 0 END), 0) AS TodayCollected,
+                            ISNULL(SUM(CASE WHEN MONTH(PaymentDate) = MONTH(GETDATE()) AND YEAR(PaymentDate) = YEAR(GETDATE()) THEN Amount ELSE 0 END), 0) AS MonthCollected,
+                            COUNT(*) AS PaymentCount
+                        FROM Payment";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                totalCollected = Convert.ToDecimal(reader["TotalCollected"]);
+                                todayCollected = Convert.ToDecimal(reader["TodayCollected"]);
+                                monthCollected = Convert.ToDecimal(reader["MonthCollected"]);
+                                paymentCount = Convert.ToInt32(reader["PaymentCount"]);
+                                isSuccess = true;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return isSuccess;
+        }
+
+        public static DataTable GetPaymentReceiptDetails(int paymentID)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = @"
+                        SELECT 
+                            p.PaymentID,
+                            p.ReceiptNumber,
+                            p.PaymentDate,
+                            p.Amount,
+                            p.PaymentMethod,
+                            ISNULL(pt.Name, p.PaymentMethod) AS PaymentTypeName,
+                            p.TransactionID,
+                            p.Notes,
+                            i.InvoiceID,
+                            i.InvoiceNumber,
+                            i.TotalAmount AS InvoiceTotal,
+                            ISNULL((SELECT SUM(p2.Amount) FROM Payment p2 WHERE p2.InvoiceID = i.InvoiceID), 0) AS TotalPaidOnInvoice,
+                            i.TotalAmount - ISNULL((SELECT SUM(p2.Amount) FROM Payment p2 WHERE p2.InvoiceID = i.InvoiceID), 0) AS BalanceRemaining,
+                            s.StudentID,
+                            (s.FirstName + ' ' + s.LastName) AS StudentName,
+                            s.AdmissionNo,
+                            ay.YearName AS AcademicYear,
+                            ISNULL(u.Username, 'Admin') AS ReceivedBy
+                        FROM Payment p
+                        INNER JOIN Invoice i ON p.InvoiceID = i.InvoiceID
+                        INNER JOIN Student s ON i.StudentID = s.StudentID
+                        INNER JOIN AcademicYear ay ON i.AcademicYearID = ay.AcademicYearID
+                        LEFT JOIN PaymentType pt ON p.PaymentTypeID = pt.PaymentTypeID
+                        LEFT JOIN [User] u ON p.CreatedBy = u.UserID
+                        WHERE p.PaymentID = @PaymentID";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@PaymentID", paymentID);
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            dt.Load(reader);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return dt;
+        }
+    
+        // Get next sequential receipt number (concurrency-safe)
+        public static string GetNextReceiptNumber()
+        {
+            string receiptNumber = "";
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = @"
+                        DECLARE @NextNum INT;
+                        SELECT @NextNum = ISNULL(MAX(
+                            CASE WHEN ISNUMERIC(RIGHT(ReceiptNumber, 4)) = 1 
+                                 THEN CAST(RIGHT(ReceiptNumber, 4) AS INT) 
+                                 ELSE 0 END
+                        ), 0) + 1
+                        FROM Payment
+                        WHERE ReceiptNumber LIKE 'REC-' + FORMAT(GETDATE(), 'yyyyMM') + '-%';
+                        SELECT 'REC-' + FORMAT(GETDATE(), 'yyyyMM') + '-' + RIGHT('0000' + CAST(@NextNum AS VARCHAR(10)), 4)";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        connection.Open();
+                        object result = command.ExecuteScalar();
+                        if (result != null)
+                            receiptNumber = result.ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+                receiptNumber = $"REC-{DateTime.Now:yyyyMM}-{new Random().Next(1000,9999):D4}";
+            }
+            return receiptNumber;
         }
 
 }

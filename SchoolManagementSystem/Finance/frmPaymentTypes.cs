@@ -37,20 +37,20 @@ namespace SchoolManagementSystem.Finance
 
             if (dgvPaymentTypes.Columns.Contains("PaymentTypeID"))
             {
-                dgvPaymentTypes.Columns["PaymentTypeID"].HeaderText = "ID";
-                dgvPaymentTypes.Columns["PaymentTypeID"].Width = 60;
+                dgvPaymentTypes.Columns["PaymentTypeID"].HeaderText = "المعرف";
+                dgvPaymentTypes.Columns["PaymentTypeID"].Width = 70;
             }
             if (dgvPaymentTypes.Columns.Contains("Name"))
             {
-                dgvPaymentTypes.Columns["Name"].HeaderText = "Payment Type";
-                dgvPaymentTypes.Columns["Name"].Width = 150;
+                dgvPaymentTypes.Columns["Name"].HeaderText = "طريقة / نوع الدفع";
+                dgvPaymentTypes.Columns["Name"].Width = 160;
             }
             if (dgvPaymentTypes.Columns.Contains("Description"))
             {
-                dgvPaymentTypes.Columns["Description"].HeaderText = "Description";
+                dgvPaymentTypes.Columns["Description"].HeaderText = "الوصف / البيان";
             }
 
-            lblTotalCount.Text = $"Total Types: {dgvPaymentTypes.Rows.Count}";
+            lblTotalCount.Text = $"إجمالي الأنواع: {dgvPaymentTypes.Rows.Count}";
         }
 
         private void ResetForm()
@@ -58,8 +58,8 @@ namespace SchoolManagementSystem.Finance
             _editingPaymentTypeID = -1;
             txtName.Text = string.Empty;
             txtDescription.Text = string.Empty;
-            gbPaymentType.Text = "Add New Payment Type";
-            btnSave.Text = "Save Type";
+            gbPaymentType.Text = "إضافة طريقة دفع جديدة";
+            btnSave.Text = "حفظ نوع الدفع";
             btnCancelEdit.Visible = false;
             errorProvider1.Clear();
             txtName.Focus();
@@ -72,7 +72,7 @@ namespace SchoolManagementSystem.Finance
 
             if (string.IsNullOrWhiteSpace(txtName.Text))
             {
-                errorProvider1.SetError(txtName, "Payment Type Name is required.");
+                errorProvider1.SetError(txtName, "اسم نوع الدفع مطلوب.");
                 isValid = false;
             }
             else
@@ -86,7 +86,7 @@ namespace SchoolManagementSystem.Finance
                         int id = Convert.ToInt32(row["PaymentTypeID"]);
                         if (id != _editingPaymentTypeID && row["Name"].ToString().Equals(name, StringComparison.OrdinalIgnoreCase))
                         {
-                            errorProvider1.SetError(txtName, "A payment type with this name already exists.");
+                            errorProvider1.SetError(txtName, "يوجد نوع دفع آخر مسجل بهذا الاسم مسبقاً.");
                             isValid = false;
                             break;
                         }
@@ -112,7 +112,7 @@ namespace SchoolManagementSystem.Finance
                 paymentType = clsPaymentType.Find(_editingPaymentTypeID);
                 if (paymentType == null)
                 {
-                    MessageBox.Show("Payment type record was not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    clsUITheme.ShowArabicMessage("لم يتم العثور على سجل نوع الدفع المطلوب.", "خطأ", MessageBoxIcon.Error);
                     ResetForm();
                     return;
                 }
@@ -125,18 +125,18 @@ namespace SchoolManagementSystem.Finance
             {
                 if (paymentType.Save())
                 {
-                    MessageBox.Show("Payment type saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    clsUITheme.ShowArabicMessage("تم حفظ نوع الدفع بنجاح.", "تم الحفظ", MessageBoxIcon.Information);
                     ResetForm();
                     LoadPaymentTypes();
                 }
                 else
                 {
-                    MessageBox.Show("Failed to save payment type.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    clsUITheme.ShowArabicMessage("فشل حفظ نوع الدفع.", "خطأ", MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error saving payment type: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                clsUITheme.ShowArabicMessage("حدث خطأ أثناء حفظ نوع الدفع: " + ex.Message, "خطأ", MessageBoxIcon.Error);
             }
         }
 
@@ -144,7 +144,7 @@ namespace SchoolManagementSystem.Finance
         {
             if (dgvPaymentTypes.CurrentRow == null)
             {
-                MessageBox.Show("Please select a payment type to edit.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clsUITheme.ShowArabicMessage("يرجى تحديد نوع دفع من القائمة أولاً.", "تحديد مطلوب", MessageBoxIcon.Information);
                 return;
             }
 
@@ -155,8 +155,8 @@ namespace SchoolManagementSystem.Finance
                 _editingPaymentTypeID = pt.PaymentTypeID;
                 txtName.Text = pt.Name;
                 txtDescription.Text = pt.Description;
-                gbPaymentType.Text = $"Edit Payment Type [ID: {pt.PaymentTypeID}]";
-                btnSave.Text = "Update Type";
+                gbPaymentType.Text = $"تعديل نوع الدفع [رقم: {pt.PaymentTypeID}]";
+                btnSave.Text = "تحديث نوع الدفع";
                 btnCancelEdit.Visible = true;
                 errorProvider1.Clear();
                 txtName.Focus();
@@ -172,7 +172,7 @@ namespace SchoolManagementSystem.Finance
         {
             if (dgvPaymentTypes.CurrentRow == null)
             {
-                MessageBox.Show("Please select a payment type to delete.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clsUITheme.ShowArabicMessage("يرجى تحديد نوع دفع من القائمة أولاً.", "تحديد مطلوب", MessageBoxIcon.Information);
                 return;
             }
 
@@ -182,24 +182,24 @@ namespace SchoolManagementSystem.Finance
             // Business Rule: Check if PaymentType is used in Payments
             if (clsPaymentType.IsPaymentTypeUsed(id))
             {
-                MessageBox.Show($"Cannot delete payment type '{name}' because it is linked to existing student payment records.\nTo preserve financial data integrity, deletion is prevented.",
-                    "Referential Integrity Restriction", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                clsUITheme.ShowArabicMessage($"لا يمكن حذف نوع الدفع '{name}' لأنه مرتبط بسجلات مدفوعات وسندات مالية موجودة للطلاب.\nللحفاظ على سلامة التدقيق المالي، تم منع الحذف.",
+                    "قيد التكامل المرجعي", MessageBoxIcon.Stop);
                 return;
             }
 
-            if (MessageBox.Show($"Are you sure you want to delete payment type '{name}' (ID: {id})?",
-                "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (MessageBox.Show($"هل أنت متأكد من رغبتك في حذف نوع الدفع '{name}' (رقم: {id})؟",
+                "تأكيد الحذف", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2, MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign) == DialogResult.Yes)
             {
                 if (clsPaymentType.DeletePaymentType(id))
                 {
-                    MessageBox.Show("Payment type deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    clsUITheme.ShowArabicMessage("تم حذف نوع الدفع بنجاح.", "تم الحذف", MessageBoxIcon.Information);
                     if (_editingPaymentTypeID == id)
                         ResetForm();
                     LoadPaymentTypes();
                 }
                 else
                 {
-                    MessageBox.Show("Failed to delete payment type.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    clsUITheme.ShowArabicMessage("فشل حذف نوع الدفع.", "خطأ", MessageBoxIcon.Error);
                 }
             }
         }

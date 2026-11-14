@@ -16,13 +16,13 @@ namespace SchoolManagementSystem.Academic
         {
             InitializeComponent();
 
+            clsUITheme.ApplyRTL(this);
             clsUITheme.StylePrimaryButton(btnSave);
             clsUITheme.StyleSecondaryButton(btnCancelEdit);
             clsUITheme.StyleSecondaryButton(btnEdit);
             clsUITheme.StyleDangerButton(btnDelete);
             clsUITheme.StyleSecondaryButton(btnRefresh);
-
-
+            clsUITheme.StyleDataGridView(dgvGradeLevels);
         }
 
         private void LoadGradeLevels()
@@ -34,37 +34,38 @@ namespace SchoolManagementSystem.Academic
                 _dvGradeLevels.Sort = "OrderNo ASC";
                 dgvGradeLevels.DataSource = _dvGradeLevels;
 
-                if (dgvGradeLevels.Rows.Count > 0)
+                if (dgvGradeLevels.Columns.Contains("GradeLevelID"))
                 {
-                    dgvGradeLevels.Columns["GradeLevelID"].HeaderText = "ID";
-                    dgvGradeLevels.Columns["GradeLevelID"].Width = 80;
-                
-                
-                    dgvGradeLevels.Columns["Name"].HeaderText = "Grade Level Name";
-                    dgvGradeLevels.Columns["Name"].Width = 200;
-                
-                    dgvGradeLevels.Columns["OrderNo"].HeaderText = "Order No";
-                    dgvGradeLevels.Columns["OrderNo"].Width = 100;
-               
-                    dgvGradeLevels.Columns["Description"].HeaderText = "Description";
-                    dgvGradeLevels.Columns["Description"].Width = 200;
+                    dgvGradeLevels.Columns["GradeLevelID"].HeaderText = "الرقم";
+                    dgvGradeLevels.Columns["GradeLevelID"].Width = 150;
                 }
-
-
+                if (dgvGradeLevels.Columns.Contains("Name"))
+                {
+                    dgvGradeLevels.Columns["Name"].HeaderText = "اسم المرحلة / الصف الدراسي";
+                    dgvGradeLevels.Columns["Name"].Width = 300;
+                }
+                if (dgvGradeLevels.Columns.Contains("OrderNo"))
+                {
+                    dgvGradeLevels.Columns["OrderNo"].HeaderText = "ترتيب العرض";
+                    dgvGradeLevels.Columns["OrderNo"].Width = 150;
+                }
+                if (dgvGradeLevels.Columns.Contains("Description"))
+                {
+                    dgvGradeLevels.Columns["Description"].HeaderText = "الوصف والملاحظات";
+                    dgvGradeLevels.Columns["Description"].Width = 350;
+                }
             }
             catch (Exception ex)
             {
-
+                clsUITheme.ShowArabicMessage("خطأ أثناء تحميل المراحل الدراسية: " + ex.Message, "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
             UpdateCount();
-        
-        
         }
 
         private void UpdateCount()
         {
-            lblTotalCount.Text = $"Total Grade Levels: {_dvGradeLevels?.Count ?? 0}";
+            lblTotalCount.Text = $"إجمالي الصفوف الدراسية: {_dvGradeLevels?.Count ?? 0}";
         }
 
         private void ApplyFilter()
@@ -86,12 +87,12 @@ namespace SchoolManagementSystem.Academic
         private void ResetEditor()
         {
             _EditingGradeLevelID = -1;
-            lblFormTitle.Text = "Add New Grade Level";
+            lblFormTitle.Text = "إضافة مرحلة / صف دراسي جديد";
             txtName.Text = "";
             numOrderNo.Value = (_dtGradeLevels != null && _dtGradeLevels.Rows.Count > 0) ? _dtGradeLevels.Rows.Count + 1 : 1;
             txtDescription.Text = "";
             btnCancelEdit.Visible = false;
-            btnSave.Text = "Save Level";
+            btnSave.Text = "حفظ المرحلة";
             errorProvider1.Clear();
         }
 
@@ -102,13 +103,13 @@ namespace SchoolManagementSystem.Academic
 
             if (string.IsNullOrWhiteSpace(txtName.Text))
             {
-                errorProvider1.SetError(txtName, "Grade level name is required.");
+                errorProvider1.SetError(txtName, "اسم المرحلة أو الصف الدراسي مطلوب.");
                 isValid = false;
             }
 
             if (numOrderNo.Value <= 0)
             {
-                errorProvider1.SetError(numOrderNo, "Order number must be greater than zero.");
+                errorProvider1.SetError(numOrderNo, "رقم الترتيب يجب أن يكون أكبر من الصفر.");
                 isValid = false;
             }
 
@@ -121,7 +122,7 @@ namespace SchoolManagementSystem.Academic
                 return;
 
             clsGradeLevel gradeLevel;
-            
+
             if (_EditingGradeLevelID == -1)
             {
                 gradeLevel = new clsGradeLevel();
@@ -131,7 +132,7 @@ namespace SchoolManagementSystem.Academic
                 gradeLevel = clsGradeLevel.Find(_EditingGradeLevelID);
                 if (gradeLevel == null)
                 {
-                    MessageBox.Show("Grade level not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    clsUITheme.ShowArabicMessage("لم يتم العثور على المرحلة الدراسية.", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     ResetEditor();
                     return;
                 }
@@ -145,18 +146,18 @@ namespace SchoolManagementSystem.Academic
             {
                 if (gradeLevel.Save())
                 {
-                    MessageBox.Show("Grade level saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    clsUITheme.ShowArabicMessage("تم حفظ بيانات المرحلة الدراسية بنجاح.", "نجاح العملية", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ResetEditor();
                     LoadGradeLevels();
                 }
                 else
                 {
-                    MessageBox.Show("Failed to save grade level.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    clsUITheme.ShowArabicMessage("فشل حفظ المرحلة الدراسية.", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Validation Error:\n" + ex.Message, "Constraint Violation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                clsUITheme.ShowArabicMessage("خطأ في التحقق من البيانات:\n" + ex.Message, "مخالفة قواعد النظام", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -169,21 +170,21 @@ namespace SchoolManagementSystem.Academic
         {
             if (dgvGradeLevels.CurrentRow == null)
             {
-                MessageBox.Show("Please select a grade level to edit.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clsUITheme.ShowArabicMessage("يرجى تحديد مرحلة دراسية للتعديل أولاً.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
             _EditingGradeLevelID = GetCurrentGradeLevelID();
-            
+
             clsGradeLevel gradeLevel = clsGradeLevel.Find(_EditingGradeLevelID);
             if (gradeLevel != null)
             {
-                lblFormTitle.Text = $"Edit Grade Level [ID: {_EditingGradeLevelID}]";
+                lblFormTitle.Text = $"تعديل بيانات المرحلة [رقم: {_EditingGradeLevelID}]";
                 txtName.Text = gradeLevel.Name;
                 numOrderNo.Value = gradeLevel.OrderNo > 0 ? gradeLevel.OrderNo : 1;
                 txtDescription.Text = gradeLevel.Description;
                 btnCancelEdit.Visible = true;
-                btnSave.Text = "Update Level";
+                btnSave.Text = "تحديث المرحلة";
             }
         }
 
@@ -191,6 +192,7 @@ namespace SchoolManagementSystem.Academic
         {
             return Convert.ToInt32(dgvGradeLevels.CurrentRow.Cells["GradeLevelID"].Value);
         }
+
         private void DgvGradeLevels_DoubleClick(object sender, EventArgs e)
         {
             BtnEdit_Click(sender, e);
@@ -200,32 +202,36 @@ namespace SchoolManagementSystem.Academic
         {
             if (dgvGradeLevels.CurrentRow == null)
             {
-                MessageBox.Show("Please select a grade level to delete.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clsUITheme.ShowArabicMessage("يرجى تحديد مرحلة دراسية للحذف أولاً.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
             int gradeLevelID = GetCurrentGradeLevelID();
             string name = dgvGradeLevels.CurrentRow.Cells["Name"].Value.ToString();
 
-            if (MessageBox.Show($"Are you sure you want to delete Grade Level '{name}' (ID: {gradeLevelID})?\nThis action will verify that no classes or fee structures depend on it.", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (clsUITheme.ShowArabicMessage(
+                $"هل أنت متأكد من رغبتك في حذف المرحلة الدراسية '{name}' (رقم: {gradeLevelID})؟\nسيتم التحقق من عدم وجود شعب دراسية أو هياكل رسوم مرتبطة بها.",
+                "تأكيد الحذف",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 try
                 {
                     if (clsGradeLevel.DeleteGradeLevel(gradeLevelID))
                     {
-                        MessageBox.Show("Grade level deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        clsUITheme.ShowArabicMessage("تم حذف المرحلة الدراسية بنجاح.", "نجاح العملية", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         if (_EditingGradeLevelID == gradeLevelID)
-                        ResetEditor();
+                            ResetEditor();
                         LoadGradeLevels();
                     }
                     else
                     {
-                        MessageBox.Show("Cannot delete grade level. Classes or Fee Structures are linked to this grade level.", "Referential Integrity Restriction", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        clsUITheme.ShowArabicMessage("لا يمكن حذف هذه المرحلة الدراسية لوجود شعب دراسية أو هياكل رسوم مرتبطة بها.", "قيد تكامل البيانات", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error deleting grade level: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    clsUITheme.ShowArabicMessage("حدث خطأ أثناء حذف المرحلة: " + ex.Message, "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -245,9 +251,5 @@ namespace SchoolManagementSystem.Academic
             LoadGradeLevels();
             ResetEditor();
         }
-
-
-
-
     }
 }

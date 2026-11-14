@@ -48,22 +48,21 @@ namespace SchoolManagementSystem.Teachers
             pnlHeader.Controls.Add(lblHeaderTitle);
             pnlHeader.Dock = DockStyle.Top;
             pnlHeader.Location = new Point(0, 0);
-            pnlHeader.Margin = new Padding(3, 4, 3, 4);
             pnlHeader.Name = "pnlHeader";
-            pnlHeader.Padding = new Padding(23, 13, 23, 13);
-            pnlHeader.Size = new Size(1170, 93);
+            pnlHeader.Size = new Size(1170, 75);
             pnlHeader.TabIndex = 0;
             // 
             // lblHeaderTitle
             // 
+            lblHeaderTitle.Anchor = AnchorStyles.Top;
             lblHeaderTitle.AutoSize = true;
             lblHeaderTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            lblHeaderTitle.ForeColor = Color.FromArgb(44, 62, 80);
-            lblHeaderTitle.Location = new Point(526, 9);
+            lblHeaderTitle.ForeColor = Color.FromArgb(30, 41, 59);
+            lblHeaderTitle.Location = new Point(400, 18);
             lblHeaderTitle.Name = "lblHeaderTitle";
-            lblHeaderTitle.Size = new Size(180, 37);
+            lblHeaderTitle.Size = new Size(380, 37);
             lblHeaderTitle.TabIndex = 0;
-            lblHeaderTitle.Text = "Teachers List";
+            lblHeaderTitle.Text = "دليل وسجل المعلمين والكادر التدريسي";
             // 
             // pnlFilter
             // 
@@ -80,201 +79,191 @@ namespace SchoolManagementSystem.Teachers
             pnlFilter.Controls.Add(txtSearch);
             pnlFilter.Controls.Add(lblSearch);
             pnlFilter.Dock = DockStyle.Top;
-            pnlFilter.Location = new Point(0, 93);
-            pnlFilter.Margin = new Padding(3, 4, 3, 4);
+            pnlFilter.Location = new Point(0, 75);
             pnlFilter.Name = "pnlFilter";
-            pnlFilter.Padding = new Padding(23, 20, 23, 13);
-            pnlFilter.Size = new Size(1170, 87);
+            pnlFilter.Size = new Size(1170, 80);
             pnlFilter.TabIndex = 1;
-            // 
-            // cbFilterStatus
-            // 
-            cbFilterStatus.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbFilterStatus.Font = new Font("Segoe UI", 9.5F);
-            cbFilterStatus.FormattingEnabled = true;
-            cbFilterStatus.Items.AddRange(new object[] { "All", "Active", "On Leave", "Resigned" });
-            cbFilterStatus.Location = new Point(434, 37);
-            cbFilterStatus.Margin = new Padding(3, 4, 3, 4);
-            cbFilterStatus.Name = "cbFilterStatus";
-            cbFilterStatus.Size = new Size(125, 29);
-            cbFilterStatus.TabIndex = 5;
-            cbFilterStatus.SelectedIndexChanged += CbFilterStatus_SelectedIndexChanged;
-            // 
-            // lblFilterStatus
-            // 
-            lblFilterStatus.AutoSize = true;
-            lblFilterStatus.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            lblFilterStatus.ForeColor = Color.FromArgb(33, 37, 41);
-            lblFilterStatus.Location = new Point(434, 11);
-            lblFilterStatus.Name = "lblFilterStatus";
-            lblFilterStatus.Size = new Size(61, 21);
-            lblFilterStatus.TabIndex = 4;
-            lblFilterStatus.Text = "Status:";
-            // 
-            // cbFilterGender
-            // 
-            cbFilterGender.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbFilterGender.Font = new Font("Segoe UI", 9.5F);
-            cbFilterGender.FormattingEnabled = true;
-            cbFilterGender.Items.AddRange(new object[] { "All", "Male", "Female" });
-            cbFilterGender.Location = new Point(297, 37);
-            cbFilterGender.Margin = new Padding(3, 4, 3, 4);
-            cbFilterGender.Name = "cbFilterGender";
-            cbFilterGender.Size = new Size(119, 29);
-            cbFilterGender.TabIndex = 3;
-            cbFilterGender.SelectedIndexChanged += CbFilterGender_SelectedIndexChanged;
-            // 
-            // lblFilterGender
-            // 
-            lblFilterGender.AutoSize = true;
-            lblFilterGender.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            lblFilterGender.ForeColor = Color.FromArgb(33, 37, 41);
-            lblFilterGender.Location = new Point(297, 11);
-            lblFilterGender.Name = "lblFilterGender";
-            lblFilterGender.Size = new Size(70, 21);
-            lblFilterGender.TabIndex = 2;
-            lblFilterGender.Text = "Gender:";
             // 
             // btnRefresh
             // 
-            btnRefresh.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnRefresh.Anchor = AnchorStyles.Top | AnchorStyles.Left;
             btnRefresh.Cursor = Cursors.Hand;
-            btnRefresh.FlatAppearance.BorderColor = Color.FromArgb(220, 224, 230);
-            btnRefresh.FlatStyle = FlatStyle.Flat;
-            btnRefresh.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnRefresh.Location = new Point(1102, 32);
-            btnRefresh.Margin = new Padding(3, 4, 3, 4);
+            btnRefresh.Font = new Font("Segoe UI", 9F);
+            btnRefresh.Location = new Point(15, 22);
             btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new Size(46, 43);
+            btnRefresh.Size = new Size(75, 40);
             btnRefresh.TabIndex = 10;
-            btnRefresh.Text = "↻";
+            btnRefresh.Text = "تحديث";
             btnRefresh.UseVisualStyleBackColor = true;
             btnRefresh.Click += BtnRefresh_Click;
             // 
             // btnDelete
             // 
-            btnDelete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnDelete.BackColor = Color.FromArgb(192, 57, 43);
+            btnDelete.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            btnDelete.BackColor = Color.FromArgb(220, 38, 38);
             btnDelete.Cursor = Cursors.Hand;
             btnDelete.FlatAppearance.BorderSize = 0;
             btnDelete.FlatStyle = FlatStyle.Flat;
-            btnDelete.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            btnDelete.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnDelete.ForeColor = Color.White;
-            btnDelete.Location = new Point(999, 32);
-            btnDelete.Margin = new Padding(3, 4, 3, 4);
+            btnDelete.Location = new Point(96, 22);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(91, 43);
+            btnDelete.Size = new Size(75, 40);
             btnDelete.TabIndex = 9;
-            btnDelete.Text = "Delete";
+            btnDelete.Text = "حذف";
             btnDelete.UseVisualStyleBackColor = false;
             btnDelete.Click += BtnDelete_Click;
             // 
             // btnEdit
             // 
-            btnEdit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnEdit.Anchor = AnchorStyles.Top | AnchorStyles.Left;
             btnEdit.Cursor = Cursors.Hand;
-            btnEdit.FlatAppearance.BorderColor = Color.FromArgb(220, 224, 230);
-            btnEdit.FlatStyle = FlatStyle.Flat;
-            btnEdit.Font = new Font("Segoe UI", 9.5F);
-            btnEdit.Location = new Point(896, 32);
-            btnEdit.Margin = new Padding(3, 4, 3, 4);
+            btnEdit.Font = new Font("Segoe UI", 9F);
+            btnEdit.Location = new Point(177, 22);
             btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(91, 43);
+            btnEdit.Size = new Size(75, 40);
             btnEdit.TabIndex = 8;
-            btnEdit.Text = "Edit";
+            btnEdit.Text = "تعديل";
             btnEdit.UseVisualStyleBackColor = true;
             btnEdit.Click += BtnEdit_Click;
             // 
             // btnViewProfile
             // 
-            btnViewProfile.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnViewProfile.BackColor = Color.FromArgb(41, 128, 185);
+            btnViewProfile.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            btnViewProfile.BackColor = Color.FromArgb(37, 99, 235);
             btnViewProfile.Cursor = Cursors.Hand;
             btnViewProfile.FlatAppearance.BorderSize = 0;
             btnViewProfile.FlatStyle = FlatStyle.Flat;
-            btnViewProfile.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            btnViewProfile.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnViewProfile.ForeColor = Color.White;
-            btnViewProfile.Location = new Point(747, 32);
-            btnViewProfile.Margin = new Padding(3, 4, 3, 4);
+            btnViewProfile.Location = new Point(258, 22);
             btnViewProfile.Name = "btnViewProfile";
-            btnViewProfile.Size = new Size(137, 43);
+            btnViewProfile.Size = new Size(110, 40);
             btnViewProfile.TabIndex = 7;
-            btnViewProfile.Text = "Teacher Profile";
+            btnViewProfile.Text = "ملف المعلم";
             btnViewProfile.UseVisualStyleBackColor = false;
             btnViewProfile.Click += BtnViewProfile_Click;
             // 
             // btnAddTeacher
             // 
-            btnAddTeacher.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnAddTeacher.BackColor = Color.FromArgb(39, 174, 96);
+            btnAddTeacher.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            btnAddTeacher.BackColor = Color.FromArgb(16, 185, 129);
             btnAddTeacher.Cursor = Cursors.Hand;
             btnAddTeacher.FlatAppearance.BorderSize = 0;
             btnAddTeacher.FlatStyle = FlatStyle.Flat;
-            btnAddTeacher.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            btnAddTeacher.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnAddTeacher.ForeColor = Color.White;
-            btnAddTeacher.Location = new Point(587, 32);
-            btnAddTeacher.Margin = new Padding(3, 4, 3, 4);
+            btnAddTeacher.Location = new Point(374, 22);
             btnAddTeacher.Name = "btnAddTeacher";
-            btnAddTeacher.Size = new Size(149, 43);
+            btnAddTeacher.Size = new Size(140, 40);
             btnAddTeacher.TabIndex = 6;
-            btnAddTeacher.Text = "+ New Teacher";
+            btnAddTeacher.Text = "+ إضافة معلم جديد";
             btnAddTeacher.UseVisualStyleBackColor = false;
             btnAddTeacher.Click += BtnAddTeacher_Click;
             // 
+            // cbFilterStatus
+            // 
+            cbFilterStatus.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            cbFilterStatus.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbFilterStatus.Font = new Font("Segoe UI", 9.5F);
+            cbFilterStatus.FormattingEnabled = true;
+            cbFilterStatus.Items.AddRange(new object[] { "الكل", "نشط", "في إجازة", "مستقيل" });
+            cbFilterStatus.Location = new Point(530, 27);
+            cbFilterStatus.Name = "cbFilterStatus";
+            cbFilterStatus.Size = new Size(115, 29);
+            cbFilterStatus.TabIndex = 5;
+            cbFilterStatus.SelectedIndexChanged += CbFilterStatus_SelectedIndexChanged;
+            // 
+            // lblFilterStatus
+            // 
+            lblFilterStatus.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblFilterStatus.AutoSize = true;
+            lblFilterStatus.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            lblFilterStatus.ForeColor = Color.FromArgb(30, 41, 59);
+            lblFilterStatus.Location = new Point(648, 30);
+            lblFilterStatus.Name = "lblFilterStatus";
+            lblFilterStatus.Size = new Size(52, 21);
+            lblFilterStatus.TabIndex = 4;
+            lblFilterStatus.Text = "الحالة:";
+            // 
+            // cbFilterGender
+            // 
+            cbFilterGender.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            cbFilterGender.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbFilterGender.Font = new Font("Segoe UI", 9.5F);
+            cbFilterGender.FormattingEnabled = true;
+            cbFilterGender.Items.AddRange(new object[] { "الكل", "ذكر", "أنثى" });
+            cbFilterGender.Location = new Point(710, 27);
+            cbFilterGender.Name = "cbFilterGender";
+            cbFilterGender.Size = new Size(100, 29);
+            cbFilterGender.TabIndex = 3;
+            cbFilterGender.SelectedIndexChanged += CbFilterGender_SelectedIndexChanged;
+            // 
+            // lblFilterGender
+            // 
+            lblFilterGender.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblFilterGender.AutoSize = true;
+            lblFilterGender.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            lblFilterGender.ForeColor = Color.FromArgb(30, 41, 59);
+            lblFilterGender.Location = new Point(813, 30);
+            lblFilterGender.Name = "lblFilterGender";
+            lblFilterGender.Size = new Size(56, 21);
+            lblFilterGender.TabIndex = 2;
+            lblFilterGender.Text = "الجنس:";
+            // 
             // txtSearch
             // 
+            txtSearch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             txtSearch.Font = new Font("Segoe UI", 9.5F);
-            txtSearch.Location = new Point(23, 37);
-            txtSearch.Margin = new Padding(3, 4, 3, 4);
+            txtSearch.Location = new Point(880, 27);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(251, 29);
+            txtSearch.Size = new Size(200, 29);
             txtSearch.TabIndex = 1;
             txtSearch.TextChanged += TxtSearch_TextChanged;
             // 
             // lblSearch
             // 
+            lblSearch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblSearch.AutoSize = true;
             lblSearch.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            lblSearch.ForeColor = Color.FromArgb(33, 37, 41);
-            lblSearch.Location = new Point(23, 11);
+            lblSearch.ForeColor = Color.FromArgb(30, 41, 59);
+            lblSearch.Location = new Point(1085, 30);
             lblSearch.Name = "lblSearch";
-            lblSearch.Size = new Size(249, 21);
+            lblSearch.Size = new Size(69, 21);
             lblSearch.TabIndex = 0;
-            lblSearch.Text = "Search Name / Email / Subject :";
+            lblSearch.Text = "بحث عام:";
             // 
             // pnlBottom
             // 
             pnlBottom.BackColor = Color.White;
             pnlBottom.Controls.Add(lblTotalCount);
             pnlBottom.Dock = DockStyle.Bottom;
-            pnlBottom.Location = new Point(0, 775);
-            pnlBottom.Margin = new Padding(3, 4, 3, 4);
+            pnlBottom.Location = new Point(0, 782);
             pnlBottom.Name = "pnlBottom";
-            pnlBottom.Padding = new Padding(23, 13, 23, 13);
-            pnlBottom.Size = new Size(1170, 53);
+            pnlBottom.Padding = new Padding(20, 12, 20, 12);
+            pnlBottom.Size = new Size(1170, 46);
             pnlBottom.TabIndex = 2;
             // 
             // lblTotalCount
             // 
+            lblTotalCount.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             lblTotalCount.AutoSize = true;
-            lblTotalCount.Dock = DockStyle.Left;
             lblTotalCount.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            lblTotalCount.ForeColor = Color.FromArgb(120, 130, 140);
-            lblTotalCount.Location = new Point(23, 13);
+            lblTotalCount.ForeColor = Color.FromArgb(100, 116, 139);
+            lblTotalCount.Location = new Point(980, 12);
             lblTotalCount.Name = "lblTotalCount";
-            lblTotalCount.Size = new Size(135, 21);
+            lblTotalCount.Size = new Size(167, 21);
             lblTotalCount.TabIndex = 0;
-            lblTotalCount.Text = "Total Teachers: 0";
+            lblTotalCount.Text = "إجمالي المعلمين: 0";
             // 
             // pnlGridWrapper
             // 
             pnlGridWrapper.Controls.Add(dgvTeachers);
             pnlGridWrapper.Dock = DockStyle.Fill;
-            pnlGridWrapper.Location = new Point(0, 180);
-            pnlGridWrapper.Margin = new Padding(3, 4, 3, 4);
+            pnlGridWrapper.Location = new Point(0, 155);
             pnlGridWrapper.Name = "pnlGridWrapper";
-            pnlGridWrapper.Padding = new Padding(23, 27, 23, 27);
-            pnlGridWrapper.Size = new Size(1170, 595);
+            pnlGridWrapper.Padding = new Padding(20);
+            pnlGridWrapper.Size = new Size(1170, 627);
             pnlGridWrapper.TabIndex = 3;
             // 
             // dgvTeachers
@@ -286,18 +275,14 @@ namespace SchoolManagementSystem.Teachers
             dgvTeachers.BackgroundColor = Color.White;
             dgvTeachers.BorderStyle = BorderStyle.None;
             dgvTeachers.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dgvTeachers.ColumnHeadersHeight = 29;
-            dgvTeachers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgvTeachers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvTeachers.Dock = DockStyle.Fill;
-            dgvTeachers.Location = new Point(23, 27);
-            dgvTeachers.Margin = new Padding(3, 4, 3, 4);
             dgvTeachers.MultiSelect = false;
             dgvTeachers.Name = "dgvTeachers";
             dgvTeachers.ReadOnly = true;
             dgvTeachers.RowHeadersVisible = false;
-            dgvTeachers.RowHeadersWidth = 51;
             dgvTeachers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvTeachers.Size = new Size(1124, 541);
+            dgvTeachers.Size = new Size(1130, 587);
             dgvTeachers.TabIndex = 0;
             dgvTeachers.DoubleClick += DgvTeachers_DoubleClick;
             // 
@@ -305,16 +290,19 @@ namespace SchoolManagementSystem.Teachers
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(245, 247, 250);
+            BackColor = Color.FromArgb(248, 250, 252);
             ClientSize = new Size(1170, 828);
             Controls.Add(pnlGridWrapper);
             Controls.Add(pnlBottom);
             Controls.Add(pnlFilter);
             Controls.Add(pnlHeader);
-            Margin = new Padding(3, 4, 3, 4);
+            Font = new Font("Segoe UI", 9F);
+            MinimumSize = new Size(1000, 600);
             Name = "frmTeacherList";
+            RightToLeft = RightToLeft.Yes;
+            RightToLeftLayout = true;
             StartPosition = FormStartPosition.CenterParent;
-            Text = "Teachers Directory";
+            Text = "دليل المعلمين";
             Load += FrmTeacherList_Load;
             pnlHeader.ResumeLayout(false);
             pnlHeader.PerformLayout();
@@ -325,7 +313,6 @@ namespace SchoolManagementSystem.Teachers
             pnlGridWrapper.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvTeachers).EndInit();
             ResumeLayout(false);
-
         }
 
         #endregion

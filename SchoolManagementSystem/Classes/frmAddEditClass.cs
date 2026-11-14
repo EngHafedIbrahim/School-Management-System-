@@ -21,10 +21,13 @@ namespace SchoolManagementSystem.Classes
             _ClassID = classID;
             _Mode = (_ClassID == -1) ? enMode.AddNew : enMode.Update;
 
-            this.Text = _Mode == enMode.AddNew ? " اضافة الشُعب الدراسية " : "تعديل شُعبة دراسية";
-            lblHeaderTitle.Text = _Mode == enMode.AddNew ? " اضافة الشُعب الدراسية " : "تعديل شُعبة دراسية";
-            this.RightToLeft = RightToLeft.Yes;
+            clsUITheme.ApplyRTL(this);
+            clsUITheme.StylePrimaryButton(btnSave);
+            clsUITheme.StyleSecondaryButton(btnCancel);
 
+            this.Text = _Mode == enMode.AddNew ? "إضافة شعبة دراسية جديدة" : "تعديل بيانات الشعبة الدراسية";
+            lblHeaderTitle.Text = _Mode == enMode.AddNew ? "إضافة شعبة دراسية جديدة" : $"تعديل بيانات الشعبة [رقم: {_ClassID}]";
+            btnSave.Text = _Mode == enMode.AddNew ? "حفظ البيانات" : "تحديث البيانات";
         }
 
         private void LoadData()
@@ -43,7 +46,7 @@ namespace SchoolManagementSystem.Classes
             _Class = clsClass.Find(_ClassID);
             if (_Class == null)
             {
-                MessageBox.Show("Class record not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                clsUITheme.ShowArabicMessage("لم يتم العثور على سجل الشعبة المطلوبة.", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
                 return;
             }
@@ -60,13 +63,13 @@ namespace SchoolManagementSystem.Classes
 
             if (string.IsNullOrWhiteSpace(txtName.Text))
             {
-                errorProvider1.SetError(txtName, "Class name is required.");
+                errorProvider1.SetError(txtName, "اسم الشعبة / الفصل مطلوب.");
                 isValid = false;
             }
 
             if (cbGradeLevels.SelectedValue == null)
             {
-                errorProvider1.SetError(cbGradeLevels, "Please select a grade level.");
+                errorProvider1.SetError(cbGradeLevels, "يرجى تحديد المرحلة / الصف الدراسي.");
                 isValid = false;
             }
 
@@ -91,18 +94,18 @@ namespace SchoolManagementSystem.Classes
                 {
                     _ClassID = _Class.ClassID;
                     _Mode = enMode.Update;
-                    MessageBox.Show("Class saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    clsUITheme.ShowArabicMessage("تم حفظ بيانات الشعبة الدراسية بنجاح.", "نجاح العملية", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Failed to save class.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    clsUITheme.ShowArabicMessage("فشل حفظ بيانات الشعبة الدراسية.", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Validation Error:\n" + ex.Message, "Constraint Violation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                clsUITheme.ShowArabicMessage("خطأ في التحقق من البيانات:\n" + ex.Message, "مخالفة قواعد النظام", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

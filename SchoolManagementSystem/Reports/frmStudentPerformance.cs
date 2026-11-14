@@ -20,6 +20,8 @@ namespace SchoolManagementSystem.Reports
             clsUITheme.StylePrimaryButton(btnGenerate);
             clsUITheme.StyleSecondaryButton(btnPrint);
             clsUITheme.StyleSecondaryButton(btnClose);
+
+            dgvEnrollments.CellFormatting += DgvEnrollments_CellFormatting;
         }
 
         private void FrmStudentPerformance_Load(object sender, EventArgs e)
@@ -72,7 +74,7 @@ namespace SchoolManagementSystem.Reports
         {
             if (cbStudent.SelectedValue == null || cbYear.SelectedValue == null)
             {
-                MessageBox.Show("Please select both a student and an academic year.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clsUITheme.ShowArabicMessage("يرجى اختيار كل من الطالب والعام الدراسي أولاً.", "تحديد مطلوب", MessageBoxIcon.Information);
                 return;
             }
 
@@ -85,7 +87,7 @@ namespace SchoolManagementSystem.Reports
                 int parentID = clsGloble.CurrentUser.ReferenceID.Value;
                 if (!clsStudentParent.IsParentOfStudent(parentID, studentID))
                 {
-                    MessageBox.Show("Access Denied: You are not authorized to view this student's performance report.", "Authorization Violation", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    clsUITheme.ShowArabicMessage("تم رفض الوصول: غير مصرح لك باستعراض التقرير الأكاديمي لهذا الطالب.", "انتهاك صلاحيات الوصول", MessageBoxIcon.Stop);
                     return;
                 }
             }
@@ -93,7 +95,7 @@ namespace SchoolManagementSystem.Reports
             clsStudent student = clsStudent.Find(studentID);
             if (student == null)
             {
-                MessageBox.Show("Student record was not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                clsUITheme.ShowArabicMessage("لم يتم العثور على سجل الطالب المحدد في النظام.", "خطأ", MessageBoxIcon.Error);
                 return;
             }
 
@@ -119,28 +121,29 @@ namespace SchoolManagementSystem.Reports
 
             if (dgvEnrollments.Columns.Contains("EnrollmentID"))
             {
-                dgvEnrollments.Columns["EnrollmentID"].HeaderText = "ID";
-                dgvEnrollments.Columns["EnrollmentID"].Width = 60;
+                dgvEnrollments.Columns["EnrollmentID"].HeaderText = "المعرف";
+                dgvEnrollments.Columns["EnrollmentID"].Width = 70;
             }
             if (dgvEnrollments.Columns.Contains("AcademicYear"))
             {
-                dgvEnrollments.Columns["AcademicYear"].HeaderText = "Academic Year";
-                dgvEnrollments.Columns["AcademicYear"].Width = 150;
+                dgvEnrollments.Columns["AcademicYear"].HeaderText = "العام الدراسي";
+                dgvEnrollments.Columns["AcademicYear"].Width = 160;
             }
             if (dgvEnrollments.Columns.Contains("ClassName"))
             {
-                dgvEnrollments.Columns["ClassName"].HeaderText = "Class";
-                dgvEnrollments.Columns["ClassName"].Width = 150;
+                dgvEnrollments.Columns["ClassName"].HeaderText = "الصف والشعبة";
+                dgvEnrollments.Columns["ClassName"].Width = 160;
             }
             if (dgvEnrollments.Columns.Contains("EnrollmentDate"))
             {
-                dgvEnrollments.Columns["EnrollmentDate"].HeaderText = "Enrollment Date";
+                dgvEnrollments.Columns["EnrollmentDate"].HeaderText = "تاريخ القيد";
                 dgvEnrollments.Columns["EnrollmentDate"].Width = 130;
+                dgvEnrollments.Columns["EnrollmentDate"].DefaultCellStyle.Format = "dd/MM/yyyy";
             }
             if (dgvEnrollments.Columns.Contains("Status"))
             {
-                dgvEnrollments.Columns["Status"].HeaderText = "Status";
-                dgvEnrollments.Columns["Status"].Width = 110;
+                dgvEnrollments.Columns["Status"].HeaderText = "حالة القيد";
+                dgvEnrollments.Columns["Status"].Width = 120;
             }
 
             // Update Class in summary header with current/latest class
@@ -150,7 +153,33 @@ namespace SchoolManagementSystem.Reports
             }
             else
             {
-                lblClassVal.Text = "Not Enrolled";
+                lblClassVal.Text = "غير مسجل حالياً";
+            }
+        }
+
+        private void DgvEnrollments_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.Value == null) return;
+
+            string colName = dgvEnrollments.Columns[e.ColumnIndex].DataPropertyName;
+            if (colName == "Status")
+            {
+                string status = e.Value.ToString();
+                switch (status.ToLowerInvariant())
+                {
+                    case "active":
+                        e.Value = "نشط";
+                        break;
+                    case "completed":
+                        e.Value = "مكتمل";
+                        break;
+                    case "withdrawn":
+                        e.Value = "منسحب";
+                        break;
+                    case "transferred":
+                        e.Value = "منقول";
+                        break;
+                }
             }
         }
 
@@ -161,33 +190,33 @@ namespace SchoolManagementSystem.Reports
 
             if (dgvGrades.Columns.Contains("GradeID"))
             {
-                dgvGrades.Columns["GradeID"].HeaderText = "ID";
-                dgvGrades.Columns["GradeID"].Width = 60;
+                dgvGrades.Columns["GradeID"].HeaderText = "المعرف";
+                dgvGrades.Columns["GradeID"].Width = 70;
             }
             if (dgvGrades.Columns.Contains("CourseName"))
             {
-                dgvGrades.Columns["CourseName"].HeaderText = "Subject / Course";
+                dgvGrades.Columns["CourseName"].HeaderText = "المادة / المقرر";
                 dgvGrades.Columns["CourseName"].Width = 200;
             }
             if (dgvGrades.Columns.Contains("ExamType"))
             {
-                dgvGrades.Columns["ExamType"].HeaderText = "Exam Type";
-                dgvGrades.Columns["ExamType"].Width = 150;
+                dgvGrades.Columns["ExamType"].HeaderText = "نوع الامتحان / التقييم";
+                dgvGrades.Columns["ExamType"].Width = 160;
             }
             if (dgvGrades.Columns.Contains("GradeValue"))
             {
-                dgvGrades.Columns["GradeValue"].HeaderText = "Score";
-                dgvGrades.Columns["GradeValue"].Width = 100;
+                dgvGrades.Columns["GradeValue"].HeaderText = "الدرجة المحرزة";
+                dgvGrades.Columns["GradeValue"].Width = 110;
             }
             if (dgvGrades.Columns.Contains("OutOfValue"))
             {
-                dgvGrades.Columns["OutOfValue"].HeaderText = "Out Of";
-                dgvGrades.Columns["OutOfValue"].Width = 100;
+                dgvGrades.Columns["OutOfValue"].HeaderText = "الدرجة العظمى";
+                dgvGrades.Columns["OutOfValue"].Width = 110;
             }
             if (dgvGrades.Columns.Contains("Percentage"))
             {
-                dgvGrades.Columns["Percentage"].HeaderText = "Percentage (%)";
-                dgvGrades.Columns["Percentage"].Width = 120;
+                dgvGrades.Columns["Percentage"].HeaderText = "النسبة المئوية (%)";
+                dgvGrades.Columns["Percentage"].Width = 130;
                 dgvGrades.Columns["Percentage"].DefaultCellStyle.Format = "0.0'%'";
             }
         }
@@ -220,11 +249,20 @@ namespace SchoolManagementSystem.Reports
         {
             if (string.IsNullOrEmpty(lblStudentNameVal.Text) || lblStudentNameVal.Text == "---")
             {
-                MessageBox.Show("Please load a student performance report first before printing.", "Report Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clsUITheme.ShowArabicMessage("يرجى تحميل تقرير الطالب أولاً قبل إجراء الطباعة.", "تنبيه", MessageBoxIcon.Information);
                 return;
             }
 
-            MessageBox.Show($"[Student Performance Statement]\n\nStudent: {lblStudentNameVal.Text} (Adm: {lblAdmissionNoVal.Text})\nAcademic Year: {lblAcademicYearVal.Text}\nClass: {lblClassVal.Text}\nAttendance Rate: {lblAttendanceRateVal.Text}\nTotal Exam Records: {dgvGrades.Rows.Count}\n\nThe complete academic performance statement is compiled and ready for printing.", "Performance Report Print Preview", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            clsUITheme.ShowArabicMessage(
+                $"[كشف الأداء الأكاديمي الشامل]\n\n" +
+                $"الطالب: {lblStudentNameVal.Text} (رقم القبول: {lblAdmissionNoVal.Text})\n" +
+                $"العام الدراسي: {lblAcademicYearVal.Text}\n" +
+                $"الصف: {lblClassVal.Text}\n" +
+                $"نسبة الالتزام بالحضور: {lblAttendanceRateVal.Text}\n" +
+                $"إجمالي سجلات التقييم: {dgvGrades.Rows.Count}\n\n" +
+                $"تم إعداد كشف الأداء بنجاح وجاهز لأمر الطباعة.",
+                "معاينة طباعة التقرير الأكاديمي",
+                MessageBoxIcon.Information);
         }
 
         private void BtnClose_Click(object sender, EventArgs e)

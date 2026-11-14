@@ -50,9 +50,9 @@ namespace SchoolManagementSystem.Users
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
             this.lblTitle.Location = new System.Drawing.Point(24, 20);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(225, 30);
+            this.lblTitle.Size = new System.Drawing.Size(240, 30);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Create User Account";
+            this.lblTitle.Text = "إضافة حساب مستخدم جديد";
             // 
             // gbAccountInfo
             // 
@@ -74,35 +74,106 @@ namespace SchoolManagementSystem.Users
             this.gbAccountInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
             this.gbAccountInfo.Location = new System.Drawing.Point(29, 65);
             this.gbAccountInfo.Name = "gbAccountInfo";
-            this.gbAccountInfo.Size = new System.Drawing.Size(540, 260);
+            this.gbAccountInfo.Size = new System.Drawing.Size(540, 275);
             this.gbAccountInfo.TabIndex = 1;
             this.gbAccountInfo.TabStop = false;
-            this.gbAccountInfo.Text = "Account Credentials";
+            this.gbAccountInfo.Text = "بيانات وبيانات اعتماد الحساب";
             // 
-            // cbStatus
+            // lblUsername
             // 
-            this.cbStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            this.lblUsername.Location = new System.Drawing.Point(405, 35);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(105, 17);
+            this.lblUsername.TabIndex = 0;
+            this.lblUsername.Text = "اسم المستخدم: *";
+            // 
+            // txtUsername
+            // 
+            this.txtUsername.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbStatus.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.cbStatus.FormattingEnabled = true;
-            this.cbStatus.Items.AddRange(new object[] {
-            "Active",
-            "Inactive"});
-            this.cbStatus.Location = new System.Drawing.Point(155, 215);
-            this.cbStatus.Name = "cbStatus";
-            this.cbStatus.Size = new System.Drawing.Size(350, 24);
-            this.cbStatus.TabIndex = 11;
+            this.txtUsername.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            this.txtUsername.Location = new System.Drawing.Point(35, 32);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(350, 24);
+            this.txtUsername.TabIndex = 1;
+            this.txtUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // lblStatus
+            // lblPassword
             // 
-            this.lblStatus.AutoSize = true;
-            this.lblStatus.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.lblStatus.Location = new System.Drawing.Point(25, 218);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(46, 17);
-            this.lblStatus.TabIndex = 10;
-            this.lblStatus.Text = "Status:";
+            this.lblPassword.AutoSize = true;
+            this.lblPassword.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            this.lblPassword.Location = new System.Drawing.Point(405, 75);
+            this.lblPassword.Name = "lblPassword";
+            this.lblPassword.Size = new System.Drawing.Size(89, 17);
+            this.lblPassword.TabIndex = 2;
+            this.lblPassword.Text = "كلمة المرور: *";
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            this.txtPassword.Location = new System.Drawing.Point(35, 72);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '●';
+            this.txtPassword.Size = new System.Drawing.Size(350, 24);
+            this.txtPassword.TabIndex = 3;
+            this.txtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // lblConfirmPassword
+            // 
+            this.lblConfirmPassword.AutoSize = true;
+            this.lblConfirmPassword.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            this.lblConfirmPassword.Location = new System.Drawing.Point(405, 115);
+            this.lblConfirmPassword.Name = "lblConfirmPassword";
+            this.lblConfirmPassword.Size = new System.Drawing.Size(117, 17);
+            this.lblConfirmPassword.TabIndex = 4;
+            this.lblConfirmPassword.Text = "تأكيد كلمة المرور: *";
+            // 
+            // txtConfirmPassword
+            // 
+            this.txtConfirmPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtConfirmPassword.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            this.txtConfirmPassword.Location = new System.Drawing.Point(35, 112);
+            this.txtConfirmPassword.Name = "txtConfirmPassword";
+            this.txtConfirmPassword.PasswordChar = '●';
+            this.txtConfirmPassword.Size = new System.Drawing.Size(350, 24);
+            this.txtConfirmPassword.TabIndex = 5;
+            this.txtConfirmPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // lblEmail
+            // 
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            this.lblEmail.Location = new System.Drawing.Point(405, 155);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(112, 17);
+            this.lblEmail.TabIndex = 6;
+            this.lblEmail.Text = "البريد الإلكتروني: *";
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            this.txtEmail.Location = new System.Drawing.Point(35, 152);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(350, 24);
+            this.txtEmail.TabIndex = 7;
+            this.txtEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // lblUserType
+            // 
+            this.lblUserType.AutoSize = true;
+            this.lblUserType.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            this.lblUserType.Location = new System.Drawing.Point(405, 195);
+            this.lblUserType.Name = "lblUserType";
+            this.lblUserType.Size = new System.Drawing.Size(89, 17);
+            this.lblUserType.TabIndex = 8;
+            this.lblUserType.Text = "نوع الحساب: *";
             // 
             // cbUserType
             // 
@@ -116,103 +187,36 @@ namespace SchoolManagementSystem.Users
             "Teacher",
             "Parent",
             "Student"});
-            this.cbUserType.Location = new System.Drawing.Point(155, 178);
+            this.cbUserType.Location = new System.Drawing.Point(35, 192);
             this.cbUserType.Name = "cbUserType";
             this.cbUserType.Size = new System.Drawing.Size(350, 24);
             this.cbUserType.TabIndex = 9;
             this.cbUserType.SelectedIndexChanged += new System.EventHandler(this.CbUserType_SelectedIndexChanged);
             // 
-            // lblUserType
+            // lblStatus
             // 
-            this.lblUserType.AutoSize = true;
-            this.lblUserType.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.lblUserType.Location = new System.Drawing.Point(25, 181);
-            this.lblUserType.Name = "lblUserType";
-            this.lblUserType.Size = new System.Drawing.Size(81, 17);
-            this.lblUserType.TabIndex = 8;
-            this.lblUserType.Text = "User Type: *";
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            this.lblStatus.Location = new System.Drawing.Point(405, 235);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(43, 17);
+            this.lblStatus.TabIndex = 10;
+            this.lblStatus.Text = "الحالة:";
             // 
-            // txtEmail
+            // cbStatus
             // 
-            this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.cbStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.txtEmail.Location = new System.Drawing.Point(155, 142);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(350, 24);
-            this.txtEmail.TabIndex = 7;
-            // 
-            // lblEmail
-            // 
-            this.lblEmail.AutoSize = true;
-            this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.lblEmail.Location = new System.Drawing.Point(25, 145);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(53, 17);
-            this.lblEmail.TabIndex = 6;
-            this.lblEmail.Text = "Email: *";
-            // 
-            // txtConfirmPassword
-            // 
-            this.txtConfirmPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtConfirmPassword.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.txtConfirmPassword.Location = new System.Drawing.Point(155, 105);
-            this.txtConfirmPassword.Name = "txtConfirmPassword";
-            this.txtConfirmPassword.PasswordChar = '●';
-            this.txtConfirmPassword.Size = new System.Drawing.Size(350, 24);
-            this.txtConfirmPassword.TabIndex = 5;
-            // 
-            // lblConfirmPassword
-            // 
-            this.lblConfirmPassword.AutoSize = true;
-            this.lblConfirmPassword.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.lblConfirmPassword.Location = new System.Drawing.Point(25, 108);
-            this.lblConfirmPassword.Name = "lblConfirmPassword";
-            this.lblConfirmPassword.Size = new System.Drawing.Size(126, 17);
-            this.lblConfirmPassword.TabIndex = 4;
-            this.lblConfirmPassword.Text = "Confirm Password: *";
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.txtPassword.Location = new System.Drawing.Point(155, 68);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '●';
-            this.txtPassword.Size = new System.Drawing.Size(350, 24);
-            this.txtPassword.TabIndex = 3;
-            // 
-            // lblPassword
-            // 
-            this.lblPassword.AutoSize = true;
-            this.lblPassword.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.lblPassword.Location = new System.Drawing.Point(25, 71);
-            this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(78, 17);
-            this.lblPassword.TabIndex = 2;
-            this.lblPassword.Text = "Password: *";
-            // 
-            // txtUsername
-            // 
-            this.txtUsername.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtUsername.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.txtUsername.Location = new System.Drawing.Point(155, 32);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(350, 24);
-            this.txtUsername.TabIndex = 1;
-            // 
-            // lblUsername
-            // 
-            this.lblUsername.AutoSize = true;
-            this.lblUsername.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.lblUsername.Location = new System.Drawing.Point(25, 35);
-            this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(81, 17);
-            this.lblUsername.TabIndex = 0;
-            this.lblUsername.Text = "Username: *";
+            this.cbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStatus.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            this.cbStatus.FormattingEnabled = true;
+            this.cbStatus.Items.AddRange(new object[] {
+            "Active",
+            "Inactive"});
+            this.cbStatus.Location = new System.Drawing.Point(35, 232);
+            this.cbStatus.Name = "cbStatus";
+            this.cbStatus.Size = new System.Drawing.Size(350, 24);
+            this.cbStatus.TabIndex = 11;
             // 
             // gbLinkedEntity
             // 
@@ -222,13 +226,23 @@ namespace SchoolManagementSystem.Users
             this.gbLinkedEntity.Controls.Add(this.lblLinkedEntity);
             this.gbLinkedEntity.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.gbLinkedEntity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
-            this.gbLinkedEntity.Location = new System.Drawing.Point(29, 335);
+            this.gbLinkedEntity.Location = new System.Drawing.Point(29, 350);
             this.gbLinkedEntity.Name = "gbLinkedEntity";
             this.gbLinkedEntity.Size = new System.Drawing.Size(540, 85);
             this.gbLinkedEntity.TabIndex = 2;
             this.gbLinkedEntity.TabStop = false;
-            this.gbLinkedEntity.Text = "Linked Entity Association";
+            this.gbLinkedEntity.Text = "ربط الحساب بملف في النظام";
             this.gbLinkedEntity.Visible = false;
+            // 
+            // lblLinkedEntity
+            // 
+            this.lblLinkedEntity.AutoSize = true;
+            this.lblLinkedEntity.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            this.lblLinkedEntity.Location = new System.Drawing.Point(405, 38);
+            this.lblLinkedEntity.Name = "lblLinkedEntity";
+            this.lblLinkedEntity.Size = new System.Drawing.Size(95, 17);
+            this.lblLinkedEntity.TabIndex = 0;
+            this.lblLinkedEntity.Text = "اختر المعلم:";
             // 
             // cbLinkedEntity
             // 
@@ -237,55 +251,46 @@ namespace SchoolManagementSystem.Users
             this.cbLinkedEntity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLinkedEntity.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.cbLinkedEntity.FormattingEnabled = true;
-            this.cbLinkedEntity.Location = new System.Drawing.Point(155, 35);
+            this.cbLinkedEntity.Location = new System.Drawing.Point(35, 35);
             this.cbLinkedEntity.Name = "cbLinkedEntity";
             this.cbLinkedEntity.Size = new System.Drawing.Size(350, 24);
             this.cbLinkedEntity.TabIndex = 1;
             // 
-            // lblLinkedEntity
-            // 
-            this.lblLinkedEntity.AutoSize = true;
-            this.lblLinkedEntity.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.lblLinkedEntity.Location = new System.Drawing.Point(25, 38);
-            this.lblLinkedEntity.Name = "lblLinkedEntity";
-            this.lblLinkedEntity.Size = new System.Drawing.Size(95, 17);
-            this.lblLinkedEntity.TabIndex = 0;
-            this.lblLinkedEntity.Text = "Select Teacher:";
-            // 
             // btnSave
             // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.btnSave.Location = new System.Drawing.Point(320, 440);
+            this.btnSave.Location = new System.Drawing.Point(170, 450);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(125, 36);
+            this.btnSave.Size = new System.Drawing.Size(140, 38);
             this.btnSave.TabIndex = 3;
-            this.btnSave.Text = "Create User";
+            this.btnSave.Text = "💾 حفظ البيانات";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.btnCancel.Location = new System.Drawing.Point(455, 440);
+            this.btnCancel.Location = new System.Drawing.Point(29, 450);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(114, 36);
+            this.btnCancel.Size = new System.Drawing.Size(125, 38);
             this.btnCancel.TabIndex = 4;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Text = "إلغاء";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            this.errorProvider1.RightToLeft = true;
             // 
             // frmCreateUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
-            this.ClientSize = new System.Drawing.Size(599, 495);
+            this.ClientSize = new System.Drawing.Size(599, 505);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.gbLinkedEntity);
@@ -296,8 +301,10 @@ namespace SchoolManagementSystem.Users
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmCreateUser";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.RightToLeftLayout = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Create User Account";
+            this.Text = "حساب المستخدم";
             this.Load += new System.EventHandler(this.FrmCreateUser_Load);
             this.gbAccountInfo.ResumeLayout(false);
             this.gbAccountInfo.PerformLayout();

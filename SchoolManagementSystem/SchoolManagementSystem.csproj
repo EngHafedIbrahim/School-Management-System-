@@ -1,8 +1,24 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="7.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.14" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.14" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.14">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\SchoolManagementSystemBusinessLayer\SchoolManagementSystemBusinessLayer.csproj" />
     <ProjectReference Include="..\UtilityLib\UtilityLib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.WinForms">
+      <HintPath>bin\Debug\net10.0-windows\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
@@ -11,6 +27,95 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <!-- Finance Forms -->
+    <Compile Update="Finance\frmPaymentTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Finance\frmPaymentTypes.Designer.cs">
+      <DependentUpon>frmPaymentTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Finance\frmRecordPayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Finance\frmRecordPayment.Designer.cs">
+      <DependentUpon>frmRecordPayment.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Finance\frmInvoiceDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Finance\frmInvoiceDetails.Designer.cs">
+      <DependentUpon>frmInvoiceDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Finance\frmPaymentsList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Finance\frmPaymentsList.Designer.cs">
+      <DependentUpon>frmPaymentsList.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Finance\frmPaymentReceipt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Finance\frmPaymentReceipt.Designer.cs">
+      <DependentUpon>frmPaymentReceipt.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Finance\frmInvoicesList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Finance\frmInvoicesList.Designer.cs">
+      <DependentUpon>frmInvoicesList.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Finance\frmFeeStructures.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Finance\frmFeeStructures.Designer.cs">
+      <DependentUpon>frmFeeStructures.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Finance\frmCreateInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Finance\frmCreateInvoice.Designer.cs">
+      <DependentUpon>frmCreateInvoice.cs</DependentUpon>
+    </Compile>
+    <!-- Users Forms -->
+    <Compile Update="Users\frmCreateUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Users\frmCreateUser.Designer.cs">
+      <DependentUpon>frmCreateUser.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Users\frmUserList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Users\frmUserList.Designer.cs">
+      <DependentUpon>frmUserList.cs</DependentUpon>
+    </Compile>
+    <!-- Reports Forms -->
+    <Compile Update="Reports\frmStudentPerformance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Reports\frmStudentPerformance.Designer.cs">
+      <DependentUpon>frmStudentPerformance.cs</DependentUpon>
+    </Compile>
+    <!-- Attendance Forms -->
+    <Compile Update="Attendance\frmAttendanceManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Attendance\frmAttendanceManagement.Designer.cs">
+      <DependentUpon>frmAttendanceManagement.cs</DependentUpon>
+    </Compile>
+    <!-- Enrollment Forms -->
+    <Compile Update="Enrollment\frmStudentEnrollmentList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Enrollment\frmStudentEnrollmentList.Designer.cs">
+      <DependentUpon>frmStudentEnrollmentList.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Enrollment\frmEnrollStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Enrollment\frmEnrollStudent.Designer.cs">
+      <DependentUpon>frmEnrollStudent.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -18,14 +123,57 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="Finance\frmPaymentTypes.resx">
+      <DependentUpon>frmPaymentTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Finance\frmRecordPayment.resx">
+      <DependentUpon>frmRecordPayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Finance\frmInvoiceDetails.resx">
+      <DependentUpon>frmInvoiceDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Finance\frmPaymentsList.resx">
+      <DependentUpon>frmPaymentsList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Finance\frmPaymentReceipt.resx">
+      <DependentUpon>frmPaymentReceipt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Finance\frmInvoicesList.resx">
+      <DependentUpon>frmInvoicesList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Finance\frmFeeStructures.resx">
+      <DependentUpon>frmFeeStructures.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Finance\frmCreateInvoice.resx">
+      <DependentUpon>frmCreateInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Users\frmCreateUser.resx">
+      <DependentUpon>frmCreateUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Users\frmUserList.resx">
+      <DependentUpon>frmUserList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Reports\frmStudentPerformance.resx">
+      <DependentUpon>frmStudentPerformance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Attendance\frmAttendanceManagement.resx">
+      <DependentUpon>frmAttendanceManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Enrollment\frmStudentEnrollmentList.resx">
+      <DependentUpon>frmStudentEnrollmentList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Enrollment\frmEnrollStudent.resx">
+      <DependentUpon>frmEnrollStudent.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net10.0-windows</TargetFramework>
+    <TargetFramework>net10.0-windows7.0</TargetFramework>
     <Nullable>disable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>True</UseWPF>
   </PropertyGroup>
 
 </Project>

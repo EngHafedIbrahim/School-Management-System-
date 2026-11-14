@@ -14,27 +14,21 @@ namespace SchoolManagementSystem.Classes
         public frmClassList()
         {
             InitializeComponent();
+
+            clsUITheme.ApplyRTL(this);
             clsUITheme.StyleDataGridView(dgvClasses);
             clsUITheme.StyleSuccessButton(btnAddClass);
             clsUITheme.StylePrimaryButton(btnViewProfile);
             clsUITheme.StyleSecondaryButton(btnEdit);
             clsUITheme.StyleDangerButton(btnDelete);
             clsUITheme.StyleSecondaryButton(btnRefresh);
-            Text = "قائمة ادارة الشُعب الدراسية";
-            btnEdit.Text = "تعديل";
-            btnViewProfile.Text = "عرض";
-            btnDelete.Text = "حذف";
-            btnAddClass.Text = "+إضافة شُعبة";
-
-
         }
-
 
         private void LoadGradeLevelsFilter()
         {
             DataTable dtGrades = clsGradeLevel.GetAllGradeLevels();
             cbFilterGrade.Items.Clear();
-            cbFilterGrade.Items.Add("All");
+            cbFilterGrade.Items.Add("الكل");
 
             foreach (DataRow row in dtGrades.Rows)
             {
@@ -51,18 +45,18 @@ namespace SchoolManagementSystem.Classes
 
             if (dgvClasses.Columns.Contains("ClassID"))
             {
-                dgvClasses.Columns["ClassID"].HeaderText = "ID";
-                dgvClasses.Columns["ClassID"].Width = 80;
+                dgvClasses.Columns["ClassID"].HeaderText = "رقم الشعبة";
+                dgvClasses.Columns["ClassID"].Width = 90;
             }
             if (dgvClasses.Columns.Contains("ClassName"))
             {
-                dgvClasses.Columns["ClassName"].HeaderText = "اسم الشعبة";
-                dgvClasses.Columns["ClassName"].Width = 180;
+                dgvClasses.Columns["ClassName"].HeaderText = "اسم الشعبة / الفصل";
+                dgvClasses.Columns["ClassName"].Width = 200;
             }
             if (dgvClasses.Columns.Contains("GradeLevelName"))
             {
-                dgvClasses.Columns["GradeLevelName"].HeaderText = "المستوى الدراسي";
-                dgvClasses.Columns["GradeLevelName"].Width = 180;
+                dgvClasses.Columns["GradeLevelName"].HeaderText = "المستوى / الصف الدراسي";
+                dgvClasses.Columns["GradeLevelName"].Width = 200;
             }
             if (dgvClasses.Columns.Contains("GradeLevelID"))
             {
@@ -74,7 +68,8 @@ namespace SchoolManagementSystem.Classes
             }
             if (dgvClasses.Columns.Contains("Details"))
             {
-                dgvClasses.Columns["Details"].HeaderText = "ملاحظة";
+                dgvClasses.Columns["Details"].HeaderText = "ملاحظات";
+                dgvClasses.Columns["Details"].Width = 220;
             }
 
             UpdateCount();
@@ -94,7 +89,7 @@ namespace SchoolManagementSystem.Classes
                 filter = $"ClassName LIKE '%{search}%'";
             }
 
-            if (!string.IsNullOrEmpty(selectedGrade) && selectedGrade != "All")
+            if (!string.IsNullOrEmpty(selectedGrade) && selectedGrade != "الكل")
             {
                 if (!string.IsNullOrEmpty(filter)) filter += " AND ";
                 filter += $"GradeLevelName = '{selectedGrade.Replace("'", "''")}'";
@@ -106,7 +101,7 @@ namespace SchoolManagementSystem.Classes
 
         private void UpdateCount()
         {
-            lblTotalCount.Text = $"Total Displayed Classes: {_dvClasses?.Count ?? 0}";
+            lblTotalCount.Text = $"إجمالي الشُعب المعروضة: {_dvClasses?.Count ?? 0}";
         }
 
         private int GetSelectedClassID()
@@ -127,6 +122,7 @@ namespace SchoolManagementSystem.Classes
 
         private void BtnRefresh_Click(object sender, EventArgs e)
         {
+            txtSearch.Text = string.Empty;
             LoadGradeLevelsFilter();
             LoadClasses();
         }
@@ -145,7 +141,7 @@ namespace SchoolManagementSystem.Classes
             int classID = GetSelectedClassID();
             if (classID == -1)
             {
-                MessageBox.Show("Please select a class to edit.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clsUITheme.ShowArabicMessage("يرجى تحديد شعبة دراسية للتعديل أولاً.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -161,7 +157,7 @@ namespace SchoolManagementSystem.Classes
             int classID = GetSelectedClassID();
             if (classID == -1)
             {
-                MessageBox.Show("Please select a class from the list.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clsUITheme.ShowArabicMessage("يرجى تحديد شعبة دراسية من القائمة لعرض ملفها.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -180,29 +176,33 @@ namespace SchoolManagementSystem.Classes
             int classID = GetSelectedClassID();
             if (classID == -1)
             {
-                MessageBox.Show("Please select a class to delete.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clsUITheme.ShowArabicMessage("يرجى تحديد شعبة دراسية للحذف أولاً.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
             string className = dgvClasses.CurrentRow.Cells["ClassName"].Value.ToString();
 
-            if (MessageBox.Show($"Are you sure you want to delete class '{className}' (ID: {classID})?\nThis action verifies that no enrolled students or course assignments depend on it.", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (clsUITheme.ShowArabicMessage(
+                $"هل أنت متأكد من رغبتك في حذف الشعبة الدراسية '{className}' (رقم: {classID})؟\nسيتم التحقق من عدم وجود طلاب مقيدين أو مقررات مجدولة مرتبطة بها.",
+                "تأكيد الحذف",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 try
                 {
                     if (clsClass.DeleteClass(classID))
                     {
-                        MessageBox.Show("Class deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        clsUITheme.ShowArabicMessage("تم حذف الشعبة الدراسية بنجاح.", "نجاح العملية", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadClasses();
                     }
                     else
                     {
-                        MessageBox.Show("Cannot delete class. Enrolled students or active course schedules are assigned to this class.", "Constraint Restriction", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        clsUITheme.ShowArabicMessage("تعذر حذف الشعبة الدراسية، نظراً لوجود طلاب مقيدين بها أو مقررات وجداول دراسية مرتبطة بها.", "قيد تكامل البيانات", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error deleting class: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    clsUITheme.ShowArabicMessage("حدث خطأ أثناء حذف الشعبة: " + ex.Message, "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

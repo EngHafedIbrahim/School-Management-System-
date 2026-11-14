@@ -130,6 +130,31 @@ namespace SchoolManagementSystemDataAccessLayer
             return (rowsAffected > 0);
         }
 
+        public static DataTable GetCurrentAcademicYear()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = "SELECT top 1 *FROM AcademicYear where IsCurrent = 1";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                                dt.Load(reader);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return dt;
+        }
         public static DataTable GetAllAcademicYears()
         {
             DataTable dt = new DataTable();

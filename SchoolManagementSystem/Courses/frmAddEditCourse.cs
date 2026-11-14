@@ -20,11 +20,13 @@ namespace SchoolManagementSystem.Courses
             _CourseID = courseID;
             _Mode = (_CourseID == -1) ? enMode.AddNew : enMode.Update;
 
-            this.Text = _Mode == enMode.AddNew ? "Create New Subject / Course" : "Edit Course Information";
-            lblHeaderTitle.Text = _Mode == enMode.AddNew ? "Create New Subject" : "Edit Subject Details";
-
+            clsUITheme.ApplyRTL(this);
             clsUITheme.StylePrimaryButton(btnSave);
             clsUITheme.StyleSecondaryButton(btnCancel);
+
+            this.Text = _Mode == enMode.AddNew ? "إضافة مادة دراسية جديدة" : "تعديل بيانات المادة الدراسية";
+            lblHeaderTitle.Text = _Mode == enMode.AddNew ? "إضافة مادة دراسية جديدة" : $"تعديل بيانات المادة [رقم: {_CourseID}]";
+            btnSave.Text = _Mode == enMode.AddNew ? "حفظ المادة" : "تحديث البيانات";
 
             LoadData();
         }
@@ -41,7 +43,7 @@ namespace SchoolManagementSystem.Courses
             _Course = clsCourse.Find(_CourseID);
             if (_Course == null)
             {
-                MessageBox.Show("Course record not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                clsUITheme.ShowArabicMessage("لم يتم العثور على سجل المادة الدراسية.", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
                 return;
             }
@@ -58,13 +60,13 @@ namespace SchoolManagementSystem.Courses
 
             if (string.IsNullOrWhiteSpace(txtName.Text))
             {
-                errorProvider1.SetError(txtName, "Course name is required.");
+                errorProvider1.SetError(txtName, "اسم المادة الدراسية مطلوب.");
                 isValid = false;
             }
 
             if (numCreditHours.Value <= 0)
             {
-                errorProvider1.SetError(numCreditHours, "Credit hours must be greater than zero.");
+                errorProvider1.SetError(numCreditHours, "عدد الساعات المعتمدة يجب أن يكون أكبر من الصفر.");
                 isValid = false;
             }
 
@@ -89,18 +91,18 @@ namespace SchoolManagementSystem.Courses
                 {
                     _CourseID = _Course.CourseID;
                     _Mode = enMode.Update;
-                    MessageBox.Show("Course saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    clsUITheme.ShowArabicMessage("تم حفظ بيانات المادة الدراسية بنجاح.", "نجاح العملية", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Failed to save course.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    clsUITheme.ShowArabicMessage("فشل حفظ بيانات المادة الدراسية.", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Validation Error:\n" + ex.Message, "Constraint Violation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                clsUITheme.ShowArabicMessage("خطأ في التحقق من البيانات:\n" + ex.Message, "مخالفة قواعد النظام", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

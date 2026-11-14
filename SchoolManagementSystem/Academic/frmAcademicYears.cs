@@ -14,6 +14,7 @@ namespace SchoolManagementSystem.Academic
         {
             InitializeComponent();
 
+            clsUITheme.ApplyRTL(this);
             clsUITheme.StyleDataGridView(dgvYears);
             clsUITheme.StylePrimaryButton(btnSave);
             clsUITheme.StyleSecondaryButton(btnCancelEdit);
@@ -31,11 +32,30 @@ namespace SchoolManagementSystem.Academic
             dgvYears.DataSource = dt;
 
             if (dgvYears.Columns.Contains("AcademicYearID"))
-                dgvYears.Columns["AcademicYearID"].Width = 90;
+            {
+                dgvYears.Columns["AcademicYearID"].HeaderText = "الرقم";
+                dgvYears.Columns["AcademicYearID"].Width = 80;
+            }
+            if (dgvYears.Columns.Contains("YearName"))
+            {
+                dgvYears.Columns["YearName"].HeaderText = "اسم السنة الأكاديمية";
+                dgvYears.Columns["YearName"].Width = 200;
+            }
             if (dgvYears.Columns.Contains("StartDate"))
+            {
+                dgvYears.Columns["StartDate"].HeaderText = "تاريخ البداية";
                 dgvYears.Columns["StartDate"].DefaultCellStyle.Format = "yyyy-MM-dd";
+            }
             if (dgvYears.Columns.Contains("EndDate"))
+            {
+                dgvYears.Columns["EndDate"].HeaderText = "تاريخ الانتهاء";
                 dgvYears.Columns["EndDate"].DefaultCellStyle.Format = "yyyy-MM-dd";
+            }
+            if (dgvYears.Columns.Contains("IsCurrent"))
+            {
+                dgvYears.Columns["IsCurrent"].HeaderText = "السنة الحالية؟";
+                dgvYears.Columns["IsCurrent"].Width = 110;
+            }
             if (dgvYears.Columns.Contains("CreatedAt"))
                 dgvYears.Columns["CreatedAt"].Visible = false;
             if (dgvYears.Columns.Contains("UpdatedAt"))
@@ -45,26 +65,26 @@ namespace SchoolManagementSystem.Academic
         private void ResetEditor()
         {
             _EditingYearID = -1;
-            lblFormTitle.Text = "Add New Academic Year";
+            lblFormTitle.Text = "إضافة سنة أكاديمية جديدة";
             txtYearName.Text = "";
             dtpStartDate.Value = DateTime.Now;
             dtpEndDate.Value = DateTime.Now.AddMonths(9);
             chkIsCurrent.Checked = false;
             btnCancelEdit.Visible = false;
-            btnSave.Text = "Save Year";
+            btnSave.Text = "حفظ السنة الأكاديمية";
         }
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtYearName.Text))
             {
-                MessageBox.Show("Year Name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                clsUITheme.ShowArabicMessage("اسم السنة الأكاديمية مطلوب.", "خطأ في التحقق", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (dtpStartDate.Value >= dtpEndDate.Value)
             {
-                MessageBox.Show("Start date must be before end date.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                clsUITheme.ShowArabicMessage("يجب أن يكون تاريخ البداية قبل تاريخ الانتهاء.", "خطأ في التحقق", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -78,7 +98,7 @@ namespace SchoolManagementSystem.Academic
                 year = clsAcademicYear.Find(_EditingYearID);
                 if (year == null)
                 {
-                    MessageBox.Show("Academic year not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    clsUITheme.ShowArabicMessage("لم يتم العثور على السنة الأكاديمية.", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     ResetEditor();
                     return;
                 }
@@ -98,18 +118,18 @@ namespace SchoolManagementSystem.Academic
                         clsAcademicYear.SetCurrentAcademicYear(year.AcademicYearID);
                     }
 
-                    MessageBox.Show("Academic Year saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    clsUITheme.ShowArabicMessage("تم حفظ بيانات السنة الأكاديمية بنجاح.", "نجاح العملية", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ResetEditor();
                     LoadYears();
                 }
                 else
                 {
-                    MessageBox.Show("Failed to save Academic Year.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    clsUITheme.ShowArabicMessage("فشل حفظ السنة الأكاديمية.", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Validation Error:\n" + ex.Message, "Constraint Violation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                clsUITheme.ShowArabicMessage("خطأ في التحقق:\n" + ex.Message, "مخالفة قواعد النظام", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -122,7 +142,7 @@ namespace SchoolManagementSystem.Academic
         {
             if (dgvYears.CurrentRow == null)
             {
-                MessageBox.Show("Please select an academic year to edit.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clsUITheme.ShowArabicMessage("يرجى تحديد سنة أكاديمية للتعديل أولاً.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -130,13 +150,13 @@ namespace SchoolManagementSystem.Academic
             clsAcademicYear year = clsAcademicYear.Find(_EditingYearID);
             if (year != null)
             {
-                lblFormTitle.Text = $"Edit Academic Year [ID: {_EditingYearID}]";
+                lblFormTitle.Text = $"تعديل السنة الأكاديمية [رقم: {_EditingYearID}]";
                 txtYearName.Text = year.YearName;
                 dtpStartDate.Value = year.StartDate;
                 dtpEndDate.Value = year.EndDate;
                 chkIsCurrent.Checked = year.IsCurrent;
                 btnCancelEdit.Visible = true;
-                btnSave.Text = "Update Year";
+                btnSave.Text = "تحديث البيانات";
             }
         }
 
@@ -144,26 +164,30 @@ namespace SchoolManagementSystem.Academic
         {
             if (dgvYears.CurrentRow == null)
             {
-                MessageBox.Show("Please select an academic year.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clsUITheme.ShowArabicMessage("يرجى تحديد سنة أكاديمية أولاً.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
             int yearID = Convert.ToInt32(dgvYears.CurrentRow.Cells["AcademicYearID"].Value);
             string yearName = dgvYears.CurrentRow.Cells["YearName"].Value.ToString();
 
-            if (MessageBox.Show($"Are you sure you want to designate '{yearName}' as the Current Academic Year?\nAll other years will be set to inactive.", "Atomic Transaction Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (clsUITheme.ShowArabicMessage(
+                $"هل أنت متأكد من رغبتك في تعيين السنة '{yearName}' كسنة أكاديمية حالية؟\nسيتم تعطيل جميع السنوات الأخرى تلقائياً.",
+                "تأكيد التعيين",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 try
                 {
                     if (clsAcademicYear.SetCurrentAcademicYear(yearID))
                     {
-                        MessageBox.Show($"Academic Year '{yearName}' is now set as the Current active session.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        clsUITheme.ShowArabicMessage($"تم تعيين السنة '{yearName}' كسنة أكاديمية حالية نشطة بنجاح.", "نجاح العملية", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadYears();
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Transaction failed: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    clsUITheme.ShowArabicMessage("فشلت العملية: " + ex.Message, "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -172,30 +196,34 @@ namespace SchoolManagementSystem.Academic
         {
             if (dgvYears.CurrentRow == null)
             {
-                MessageBox.Show("Please select an academic year to delete.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clsUITheme.ShowArabicMessage("يرجى تحديد سنة أكاديمية للحذف أولاً.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
             int yearID = Convert.ToInt32(dgvYears.CurrentRow.Cells["AcademicYearID"].Value);
             string yearName = dgvYears.CurrentRow.Cells["YearName"].Value.ToString();
 
-            if (MessageBox.Show($"Are you sure you want to delete academic year '{yearName}' (ID: {yearID})?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (clsUITheme.ShowArabicMessage(
+                $"هل أنت متأكد من رغبتك في حذف السنة الأكاديمية '{yearName}' (رقم: {yearID})؟",
+                "تأكيد الحذف",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 try
                 {
                     if (clsAcademicYear.DeleteAcademicYear(yearID))
                     {
-                        MessageBox.Show("Academic year deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        clsUITheme.ShowArabicMessage("تم حذف السنة الأكاديمية بنجاح.", "نجاح العملية", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadYears();
                     }
                     else
                     {
-                        MessageBox.Show("Cannot delete this academic year because it is linked to enrollments, schedules, grades, or fee structures.", "Referential Integrity Restriction", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        clsUITheme.ShowArabicMessage("لا يمكن حذف هذه السنة الأكاديمية لأنها مرتبطة بقيود طلاب أو جداول دراسية أو درجات أو هياكل رسوم.", "قيد تكامل البيانات", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error deleting academic year: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    clsUITheme.ShowArabicMessage("خطأ أثناء حذف السنة الأكاديمية: " + ex.Message, "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

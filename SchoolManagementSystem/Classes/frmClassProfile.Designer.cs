@@ -69,22 +69,24 @@ namespace SchoolManagementSystem.Classes
             pnlHeader.Margin = new Padding(3, 4, 3, 4);
             pnlHeader.Name = "pnlHeader";
             pnlHeader.Padding = new Padding(23, 13, 23, 13);
-            pnlHeader.Size = new Size(1021, 93);
+            pnlHeader.Size = new Size(1021, 80);
             pnlHeader.TabIndex = 0;
             // 
             // lblHeaderTitle
             // 
+            lblHeaderTitle.Anchor = AnchorStyles.Top;
             lblHeaderTitle.AutoSize = true;
             lblHeaderTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            lblHeaderTitle.ForeColor = Color.FromArgb(44, 62, 80);
-            lblHeaderTitle.Location = new Point(331, 9);
+            lblHeaderTitle.ForeColor = Color.FromArgb(30, 41, 59);
+            lblHeaderTitle.Location = new Point(340, 20);
             lblHeaderTitle.Name = "lblHeaderTitle";
-            lblHeaderTitle.Size = new Size(320, 37);
+            lblHeaderTitle.Size = new Size(340, 37);
             lblHeaderTitle.TabIndex = 0;
-            lblHeaderTitle.Text = "Class Management Hub";
+            lblHeaderTitle.Text = "الملف التعريفي للشعبة الدراسية";
             // 
             // tabControl
             // 
+            tabControl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tabControl.Controls.Add(tabOverview);
             tabControl.Controls.Add(tabStudents);
             tabControl.Controls.Add(tabCourses);
@@ -92,11 +94,11 @@ namespace SchoolManagementSystem.Classes
             tabControl.Controls.Add(tabAttendance);
             tabControl.Controls.Add(tabGrades);
             tabControl.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            tabControl.Location = new Point(23, 107);
+            tabControl.Location = new Point(23, 95);
             tabControl.Margin = new Padding(3, 4, 3, 4);
             tabControl.Name = "tabControl";
             tabControl.SelectedIndex = 0;
-            tabControl.Size = new Size(983, 613);
+            tabControl.Size = new Size(975, 625);
             tabControl.TabIndex = 1;
             // 
             // tabOverview
@@ -107,9 +109,9 @@ namespace SchoolManagementSystem.Classes
             tabOverview.Margin = new Padding(3, 4, 3, 4);
             tabOverview.Name = "tabOverview";
             tabOverview.Padding = new Padding(3, 4, 3, 4);
-            tabOverview.Size = new Size(975, 579);
+            tabOverview.Size = new Size(967, 591);
             tabOverview.TabIndex = 0;
-            tabOverview.Text = "Overview";
+            tabOverview.Text = "نظرة عامة";
             // 
             // pnlOverview
             // 
@@ -128,118 +130,128 @@ namespace SchoolManagementSystem.Classes
             pnlOverview.Margin = new Padding(3, 4, 3, 4);
             pnlOverview.Name = "pnlOverview";
             pnlOverview.Padding = new Padding(29, 33, 29, 33);
-            pnlOverview.Size = new Size(969, 571);
+            pnlOverview.Size = new Size(961, 583);
             pnlOverview.TabIndex = 0;
-            // 
-            // lblValTotalCourses
-            // 
-            lblValTotalCourses.AutoSize = true;
-            lblValTotalCourses.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            lblValTotalCourses.ForeColor = Color.FromArgb(41, 128, 185);
-            lblValTotalCourses.Location = new Point(497, 318);
-            lblValTotalCourses.Name = "lblValTotalCourses";
-            lblValTotalCourses.Size = new Size(24, 28);
-            lblValTotalCourses.TabIndex = 9;
-            lblValTotalCourses.Text = "0";
-            // 
-            // lblTTotalCourses
-            // 
-            lblTTotalCourses.AutoSize = true;
-            lblTTotalCourses.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            lblTTotalCourses.ForeColor = Color.FromArgb(120, 130, 140);
-            lblTTotalCourses.Location = new Point(656, 324);
-            lblTTotalCourses.Name = "lblTTotalCourses";
-            lblTTotalCourses.Size = new Size(85, 21);
-            lblTTotalCourses.TabIndex = 8;
-            lblTTotalCourses.Text = "عدد المواد :";
-            // 
-            // lblValTotalStudents
-            // 
-            lblValTotalStudents.AutoSize = true;
-            lblValTotalStudents.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            lblValTotalStudents.ForeColor = Color.FromArgb(39, 174, 96);
-            lblValTotalStudents.Location = new Point(497, 258);
-            lblValTotalStudents.Name = "lblValTotalStudents";
-            lblValTotalStudents.Size = new Size(24, 28);
-            lblValTotalStudents.TabIndex = 7;
-            lblValTotalStudents.Text = "0";
-            // 
-            // lblTTotalStudents
-            // 
-            lblTTotalStudents.AutoSize = true;
-            lblTTotalStudents.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            lblTTotalStudents.ForeColor = Color.FromArgb(120, 130, 140);
-            lblTTotalStudents.Location = new Point(656, 264);
-            lblTTotalStudents.Name = "lblTTotalStudents";
-            lblTTotalStudents.Size = new Size(93, 21);
-            lblTTotalStudents.TabIndex = 6;
-            lblTTotalStudents.Text = "عدد الطلاب :";
-            // 
-            // lblValDetails
-            // 
-            lblValDetails.AutoSize = true;
-            lblValDetails.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            lblValDetails.ForeColor = Color.FromArgb(33, 37, 41);
-            lblValDetails.Location = new Point(497, 198);
-            lblValDetails.Name = "lblValDetails";
-            lblValDetails.Size = new Size(28, 21);
-            lblValDetails.TabIndex = 5;
-            lblValDetails.Text = "---";
-            // 
-            // lblTDetails
-            // 
-            lblTDetails.AutoSize = true;
-            lblTDetails.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            lblTDetails.ForeColor = Color.FromArgb(120, 130, 140);
-            lblTDetails.Location = new Point(656, 201);
-            lblTDetails.Name = "lblTDetails";
-            lblTDetails.Size = new Size(77, 21);
-            lblTDetails.TabIndex = 4;
-            lblTDetails.Text = "ملاحظات :";
-            // 
-            // lblValGradeLevel
-            // 
-            lblValGradeLevel.AutoSize = true;
-            lblValGradeLevel.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            lblValGradeLevel.ForeColor = Color.FromArgb(33, 37, 41);
-            lblValGradeLevel.Location = new Point(497, 138);
-            lblValGradeLevel.Name = "lblValGradeLevel";
-            lblValGradeLevel.Size = new Size(28, 21);
-            lblValGradeLevel.TabIndex = 3;
-            lblValGradeLevel.Text = "---";
-            // 
-            // lblTGradeLevel
-            // 
-            lblTGradeLevel.AutoSize = true;
-            lblTGradeLevel.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            lblTGradeLevel.ForeColor = Color.FromArgb(120, 130, 140);
-            lblTGradeLevel.Location = new Point(656, 141);
-            lblTGradeLevel.Name = "lblTGradeLevel";
-            lblTGradeLevel.Size = new Size(128, 21);
-            lblTGradeLevel.TabIndex = 2;
-            lblTGradeLevel.Text = "المستوى الدراسي :";
-            // 
-            // lblValClassName
-            // 
-            lblValClassName.AutoSize = true;
-            lblValClassName.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            lblValClassName.ForeColor = Color.FromArgb(44, 62, 80);
-            lblValClassName.Location = new Point(497, 78);
-            lblValClassName.Name = "lblValClassName";
-            lblValClassName.Size = new Size(36, 28);
-            lblValClassName.TabIndex = 1;
-            lblValClassName.Text = "---";
             // 
             // lblTClassName
             // 
+            lblTClassName.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblTClassName.AutoSize = true;
-            lblTClassName.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            lblTClassName.ForeColor = Color.FromArgb(120, 130, 140);
-            lblTClassName.Location = new Point(656, 84);
+            lblTClassName.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblTClassName.ForeColor = Color.FromArgb(100, 116, 139);
+            lblTClassName.Location = new Point(780, 50);
             lblTClassName.Name = "lblTClassName";
-            lblTClassName.Size = new Size(92, 21);
+            lblTClassName.Size = new Size(153, 23);
             lblTClassName.TabIndex = 0;
-            lblTClassName.Text = "اسم الشعبة :";
+            lblTClassName.Text = "اسم الشعبة / الفصل:";
+            // 
+            // lblValClassName
+            // 
+            lblValClassName.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblValClassName.AutoSize = true;
+            lblValClassName.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            lblValClassName.ForeColor = Color.FromArgb(30, 41, 59);
+            lblValClassName.Location = new Point(500, 46);
+            lblValClassName.Name = "lblValClassName";
+            lblValClassName.Size = new Size(40, 30);
+            lblValClassName.TabIndex = 1;
+            lblValClassName.Text = "---";
+            // 
+            // lblTGradeLevel
+            // 
+            lblTGradeLevel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblTGradeLevel.AutoSize = true;
+            lblTGradeLevel.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblTGradeLevel.ForeColor = Color.FromArgb(100, 116, 139);
+            lblTGradeLevel.Location = new Point(758, 115);
+            lblTGradeLevel.Name = "lblTGradeLevel";
+            lblTGradeLevel.Size = new Size(175, 23);
+            lblTGradeLevel.TabIndex = 2;
+            lblTGradeLevel.Text = "المستوى / الصف الدراسي:";
+            // 
+            // lblValGradeLevel
+            // 
+            lblValGradeLevel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblValGradeLevel.AutoSize = true;
+            lblValGradeLevel.Font = new Font("Segoe UI", 10.5F, FontStyle.Bold);
+            lblValGradeLevel.ForeColor = Color.FromArgb(30, 41, 59);
+            lblValGradeLevel.Location = new Point(500, 114);
+            lblValGradeLevel.Name = "lblValGradeLevel";
+            lblValGradeLevel.Size = new Size(32, 25);
+            lblValGradeLevel.TabIndex = 3;
+            lblValGradeLevel.Text = "---";
+            // 
+            // lblTDetails
+            // 
+            lblTDetails.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblTDetails.AutoSize = true;
+            lblTDetails.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblTDetails.ForeColor = Color.FromArgb(100, 116, 139);
+            lblTDetails.Location = new Point(804, 180);
+            lblTDetails.Name = "lblTDetails";
+            lblTDetails.Size = new Size(129, 23);
+            lblTDetails.TabIndex = 4;
+            lblTDetails.Text = "ملاحظات وتفاصيل:";
+            // 
+            // lblValDetails
+            // 
+            lblValDetails.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblValDetails.AutoSize = true;
+            lblValDetails.Font = new Font("Segoe UI", 10F);
+            lblValDetails.ForeColor = Color.FromArgb(30, 41, 59);
+            lblValDetails.Location = new Point(500, 180);
+            lblValDetails.Name = "lblValDetails";
+            lblValDetails.Size = new Size(31, 23);
+            lblValDetails.TabIndex = 5;
+            lblValDetails.Text = "---";
+            // 
+            // lblTTotalStudents
+            // 
+            lblTTotalStudents.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblTTotalStudents.AutoSize = true;
+            lblTTotalStudents.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblTTotalStudents.ForeColor = Color.FromArgb(100, 116, 139);
+            lblTTotalStudents.Location = new Point(765, 245);
+            lblTTotalStudents.Name = "lblTTotalStudents";
+            lblTTotalStudents.Size = new Size(168, 23);
+            lblTTotalStudents.TabIndex = 6;
+            lblTTotalStudents.Text = "إجمالي الطلاب المقيدين:";
+            // 
+            // lblValTotalStudents
+            // 
+            lblValTotalStudents.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblValTotalStudents.AutoSize = true;
+            lblValTotalStudents.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            lblValTotalStudents.ForeColor = Color.FromArgb(16, 185, 129);
+            lblValTotalStudents.Location = new Point(500, 241);
+            lblValTotalStudents.Name = "lblValTotalStudents";
+            lblValTotalStudents.Size = new Size(26, 30);
+            lblValTotalStudents.TabIndex = 7;
+            lblValTotalStudents.Text = "0";
+            // 
+            // lblTTotalCourses
+            // 
+            lblTTotalCourses.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblTTotalCourses.AutoSize = true;
+            lblTTotalCourses.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblTTotalCourses.ForeColor = Color.FromArgb(100, 116, 139);
+            lblTTotalCourses.Location = new Point(782, 310);
+            lblTTotalCourses.Name = "lblTTotalCourses";
+            lblTTotalCourses.Size = new Size(151, 23);
+            lblTTotalCourses.TabIndex = 8;
+            lblTTotalCourses.Text = "عدد المواد والمقررات:";
+            // 
+            // lblValTotalCourses
+            // 
+            lblValTotalCourses.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblValTotalCourses.AutoSize = true;
+            lblValTotalCourses.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            lblValTotalCourses.ForeColor = Color.FromArgb(37, 99, 235);
+            lblValTotalCourses.Location = new Point(500, 306);
+            lblValTotalCourses.Name = "lblValTotalCourses";
+            lblValTotalCourses.Size = new Size(26, 30);
+            lblValTotalCourses.TabIndex = 9;
+            lblValTotalCourses.Text = "0";
             // 
             // tabStudents
             // 
@@ -248,10 +260,10 @@ namespace SchoolManagementSystem.Classes
             tabStudents.Location = new Point(4, 30);
             tabStudents.Margin = new Padding(3, 4, 3, 4);
             tabStudents.Name = "tabStudents";
-            tabStudents.Padding = new Padding(3, 4, 3, 4);
-            tabStudents.Size = new Size(975, 579);
+            tabStudents.Padding = new Padding(10);
+            tabStudents.Size = new Size(967, 591);
             tabStudents.TabIndex = 1;
-            tabStudents.Text = "Enrolled Students";
+            tabStudents.Text = "الطلاب المقيدون";
             // 
             // dgvStudents
             // 
@@ -261,18 +273,15 @@ namespace SchoolManagementSystem.Classes
             dgvStudents.BackgroundColor = Color.White;
             dgvStudents.BorderStyle = BorderStyle.None;
             dgvStudents.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dgvStudents.ColumnHeadersHeight = 29;
-            dgvStudents.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgvStudents.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvStudents.Dock = DockStyle.Fill;
-            dgvStudents.Location = new Point(3, 4);
-            dgvStudents.Margin = new Padding(3, 4, 3, 4);
+            dgvStudents.Location = new Point(10, 10);
             dgvStudents.MultiSelect = false;
             dgvStudents.Name = "dgvStudents";
             dgvStudents.ReadOnly = true;
             dgvStudents.RowHeadersVisible = false;
-            dgvStudents.RowHeadersWidth = 51;
             dgvStudents.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvStudents.Size = new Size(969, 571);
+            dgvStudents.Size = new Size(947, 571);
             dgvStudents.TabIndex = 0;
             // 
             // tabCourses
@@ -282,10 +291,10 @@ namespace SchoolManagementSystem.Classes
             tabCourses.Location = new Point(4, 30);
             tabCourses.Margin = new Padding(3, 4, 3, 4);
             tabCourses.Name = "tabCourses";
-            tabCourses.Padding = new Padding(3, 4, 3, 4);
-            tabCourses.Size = new Size(975, 579);
+            tabCourses.Padding = new Padding(10);
+            tabCourses.Size = new Size(967, 591);
             tabCourses.TabIndex = 2;
-            tabCourses.Text = "Courses & Instructors";
+            tabCourses.Text = "المقررات والمعلمون";
             // 
             // dgvCourses
             // 
@@ -295,18 +304,15 @@ namespace SchoolManagementSystem.Classes
             dgvCourses.BackgroundColor = Color.White;
             dgvCourses.BorderStyle = BorderStyle.None;
             dgvCourses.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dgvCourses.ColumnHeadersHeight = 29;
-            dgvCourses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgvCourses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCourses.Dock = DockStyle.Fill;
-            dgvCourses.Location = new Point(3, 4);
-            dgvCourses.Margin = new Padding(3, 4, 3, 4);
+            dgvCourses.Location = new Point(10, 10);
             dgvCourses.MultiSelect = false;
             dgvCourses.Name = "dgvCourses";
             dgvCourses.ReadOnly = true;
             dgvCourses.RowHeadersVisible = false;
-            dgvCourses.RowHeadersWidth = 51;
             dgvCourses.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvCourses.Size = new Size(969, 571);
+            dgvCourses.Size = new Size(947, 571);
             dgvCourses.TabIndex = 0;
             // 
             // tabTimetable
@@ -316,10 +322,10 @@ namespace SchoolManagementSystem.Classes
             tabTimetable.Location = new Point(4, 30);
             tabTimetable.Margin = new Padding(3, 4, 3, 4);
             tabTimetable.Name = "tabTimetable";
-            tabTimetable.Padding = new Padding(3, 4, 3, 4);
-            tabTimetable.Size = new Size(975, 579);
+            tabTimetable.Padding = new Padding(10);
+            tabTimetable.Size = new Size(967, 591);
             tabTimetable.TabIndex = 3;
-            tabTimetable.Text = "Timetable";
+            tabTimetable.Text = "الجدول والحصص";
             // 
             // dgvTimetable
             // 
@@ -329,18 +335,15 @@ namespace SchoolManagementSystem.Classes
             dgvTimetable.BackgroundColor = Color.White;
             dgvTimetable.BorderStyle = BorderStyle.None;
             dgvTimetable.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dgvTimetable.ColumnHeadersHeight = 29;
-            dgvTimetable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgvTimetable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvTimetable.Dock = DockStyle.Fill;
-            dgvTimetable.Location = new Point(3, 4);
-            dgvTimetable.Margin = new Padding(3, 4, 3, 4);
+            dgvTimetable.Location = new Point(10, 10);
             dgvTimetable.MultiSelect = false;
             dgvTimetable.Name = "dgvTimetable";
             dgvTimetable.ReadOnly = true;
             dgvTimetable.RowHeadersVisible = false;
-            dgvTimetable.RowHeadersWidth = 51;
             dgvTimetable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvTimetable.Size = new Size(969, 571);
+            dgvTimetable.Size = new Size(947, 571);
             dgvTimetable.TabIndex = 0;
             // 
             // tabAttendance
@@ -350,10 +353,10 @@ namespace SchoolManagementSystem.Classes
             tabAttendance.Location = new Point(4, 30);
             tabAttendance.Margin = new Padding(3, 4, 3, 4);
             tabAttendance.Name = "tabAttendance";
-            tabAttendance.Padding = new Padding(3, 4, 3, 4);
-            tabAttendance.Size = new Size(975, 579);
+            tabAttendance.Padding = new Padding(10);
+            tabAttendance.Size = new Size(967, 591);
             tabAttendance.TabIndex = 4;
-            tabAttendance.Text = "Attendance";
+            tabAttendance.Text = "سجل الحضور";
             // 
             // dgvAttendance
             // 
@@ -363,18 +366,15 @@ namespace SchoolManagementSystem.Classes
             dgvAttendance.BackgroundColor = Color.White;
             dgvAttendance.BorderStyle = BorderStyle.None;
             dgvAttendance.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dgvAttendance.ColumnHeadersHeight = 29;
-            dgvAttendance.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgvAttendance.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvAttendance.Dock = DockStyle.Fill;
-            dgvAttendance.Location = new Point(3, 4);
-            dgvAttendance.Margin = new Padding(3, 4, 3, 4);
+            dgvAttendance.Location = new Point(10, 10);
             dgvAttendance.MultiSelect = false;
             dgvAttendance.Name = "dgvAttendance";
             dgvAttendance.ReadOnly = true;
             dgvAttendance.RowHeadersVisible = false;
-            dgvAttendance.RowHeadersWidth = 51;
             dgvAttendance.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvAttendance.Size = new Size(969, 571);
+            dgvAttendance.Size = new Size(947, 571);
             dgvAttendance.TabIndex = 0;
             // 
             // tabGrades
@@ -384,10 +384,10 @@ namespace SchoolManagementSystem.Classes
             tabGrades.Location = new Point(4, 30);
             tabGrades.Margin = new Padding(3, 4, 3, 4);
             tabGrades.Name = "tabGrades";
-            tabGrades.Padding = new Padding(3, 4, 3, 4);
-            tabGrades.Size = new Size(975, 579);
+            tabGrades.Padding = new Padding(10);
+            tabGrades.Size = new Size(967, 591);
             tabGrades.TabIndex = 5;
-            tabGrades.Text = "Grades & Evaluations";
+            tabGrades.Text = "الدرجات والتقييمات";
             // 
             // dgvGrades
             // 
@@ -397,49 +397,46 @@ namespace SchoolManagementSystem.Classes
             dgvGrades.BackgroundColor = Color.White;
             dgvGrades.BorderStyle = BorderStyle.None;
             dgvGrades.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dgvGrades.ColumnHeadersHeight = 29;
-            dgvGrades.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgvGrades.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvGrades.Dock = DockStyle.Fill;
-            dgvGrades.Location = new Point(3, 4);
-            dgvGrades.Margin = new Padding(3, 4, 3, 4);
+            dgvGrades.Location = new Point(10, 10);
             dgvGrades.MultiSelect = false;
             dgvGrades.Name = "dgvGrades";
             dgvGrades.ReadOnly = true;
             dgvGrades.RowHeadersVisible = false;
-            dgvGrades.RowHeadersWidth = 51;
             dgvGrades.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvGrades.Size = new Size(969, 571);
+            dgvGrades.Size = new Size(947, 571);
             dgvGrades.TabIndex = 0;
             // 
             // btnEditClass
             // 
-            btnEditClass.BackColor = Color.FromArgb(41, 128, 185);
+            btnEditClass.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnEditClass.BackColor = Color.FromArgb(37, 99, 235);
             btnEditClass.Cursor = Cursors.Hand;
             btnEditClass.FlatAppearance.BorderSize = 0;
             btnEditClass.FlatStyle = FlatStyle.Flat;
             btnEditClass.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             btnEditClass.ForeColor = Color.White;
-            btnEditClass.Location = new Point(40, 746);
+            btnEditClass.Location = new Point(140, 740);
             btnEditClass.Margin = new Padding(3, 4, 3, 4);
             btnEditClass.Name = "btnEditClass";
-            btnEditClass.Size = new Size(149, 48);
+            btnEditClass.Size = new Size(130, 44);
             btnEditClass.TabIndex = 2;
-            btnEditClass.Text = "Edit Class Info";
+            btnEditClass.Text = "تعديل الشعبة";
             btnEditClass.UseVisualStyleBackColor = false;
             btnEditClass.Click += BtnEditClass_Click;
             // 
             // btnClose
             // 
+            btnClose.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnClose.Cursor = Cursors.Hand;
-            btnClose.FlatAppearance.BorderColor = Color.FromArgb(220, 224, 230);
-            btnClose.FlatStyle = FlatStyle.Flat;
             btnClose.Font = new Font("Segoe UI", 9.5F);
-            btnClose.Location = new Point(200, 746);
+            btnClose.Location = new Point(25, 740);
             btnClose.Margin = new Padding(3, 4, 3, 4);
             btnClose.Name = "btnClose";
-            btnClose.Size = new Size(126, 48);
+            btnClose.Size = new Size(100, 44);
             btnClose.TabIndex = 3;
-            btnClose.Text = "Close";
+            btnClose.Text = "إغلاق";
             btnClose.UseVisualStyleBackColor = true;
             btnClose.Click += BtnClose_Click;
             // 
@@ -447,12 +444,13 @@ namespace SchoolManagementSystem.Classes
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(245, 247, 250);
+            BackColor = Color.FromArgb(248, 250, 252);
             ClientSize = new Size(1021, 807);
             Controls.Add(btnClose);
             Controls.Add(btnEditClass);
             Controls.Add(tabControl);
             Controls.Add(pnlHeader);
+            Font = new Font("Segoe UI", 9F);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Margin = new Padding(3, 4, 3, 4);
             MaximizeBox = false;
@@ -461,7 +459,7 @@ namespace SchoolManagementSystem.Classes
             RightToLeft = RightToLeft.Yes;
             RightToLeftLayout = true;
             StartPosition = FormStartPosition.CenterParent;
-            Text = "Class Profile Hub";
+            Text = "الملف التعريفي للشعبة الدراسية";
             pnlHeader.ResumeLayout(false);
             pnlHeader.PerformLayout();
             tabControl.ResumeLayout(false);
@@ -479,7 +477,6 @@ namespace SchoolManagementSystem.Classes
             tabGrades.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvGrades).EndInit();
             ResumeLayout(false);
-
         }
 
         #endregion

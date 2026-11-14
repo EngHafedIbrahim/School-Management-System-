@@ -15,6 +15,7 @@ namespace SchoolManagementSystem.Teachers
         {
             InitializeComponent();
 
+            clsUITheme.ApplyRTL(this);
             clsUITheme.StyleDataGridView(dgvTeachers);
             clsUITheme.StyleSuccessButton(btnAddTeacher);
             clsUITheme.StylePrimaryButton(btnViewProfile);
@@ -24,8 +25,6 @@ namespace SchoolManagementSystem.Teachers
 
             cbFilterGender.SelectedIndex = 0;
             cbFilterStatus.SelectedIndex = 0;
-
-
         }
 
         private void LoadTeachers()
@@ -36,37 +35,53 @@ namespace SchoolManagementSystem.Teachers
 
             if (dgvTeachers.Rows.Count > 0)
             {
-                dgvTeachers.Columns["TeacherID"].HeaderText = "ID";
-                dgvTeachers.Columns["TeacherID"].Width = 70;
-
-                dgvTeachers.Columns["FullName"].HeaderText = "Teacher Name";
-                dgvTeachers.Columns["FullName"].Width = 180;
-
-                dgvTeachers.Columns["PhoneNumber"].HeaderText = "Phone";
-                dgvTeachers.Columns["PhoneNumber"].Width = 120;
-
-
-                dgvTeachers.Columns["Email"].HeaderText = "Email Address";
-                dgvTeachers.Columns["Email"].Width = 180;
-
-                dgvTeachers.Columns["Specialization"].HeaderText = "Subject Name";
-                dgvTeachers.Columns["Specialization"].Width = 140;
-
-                dgvTeachers.Columns["Qualification"].HeaderText = "Qualification";
-                dgvTeachers.Columns["Qualification"].Width = 130;
-
-                dgvTeachers.Columns["HireDate"].HeaderText = "Hire Date";
-                dgvTeachers.Columns["HireDate"].Width = 100;
-                dgvTeachers.Columns["HireDate"].DefaultCellStyle.Format = "yyyy-MM-dd";
-
-
-                dgvTeachers.Columns["EmploymentStatus"].HeaderText = "Status";
-                dgvTeachers.Columns["EmploymentStatus"].Width = 90;
-
-                dgvTeachers.Columns["Gender"].HeaderText = "Gender";
-                dgvTeachers.Columns["Gender"].Width = 80;
+                if (dgvTeachers.Columns.Contains("TeacherID"))
+                {
+                    dgvTeachers.Columns["TeacherID"].HeaderText = "الرقم";
+                    dgvTeachers.Columns["TeacherID"].Width = 70;
+                }
+                if (dgvTeachers.Columns.Contains("FullName"))
+                {
+                    dgvTeachers.Columns["FullName"].HeaderText = "اسم المعلم";
+                    dgvTeachers.Columns["FullName"].Width = 180;
+                }
+                if (dgvTeachers.Columns.Contains("PhoneNumber"))
+                {
+                    dgvTeachers.Columns["PhoneNumber"].HeaderText = "رقم الهاتف";
+                    dgvTeachers.Columns["PhoneNumber"].Width = 120;
+                }
+                if (dgvTeachers.Columns.Contains("Email"))
+                {
+                    dgvTeachers.Columns["Email"].HeaderText = "البريد الإلكتروني";
+                    dgvTeachers.Columns["Email"].Width = 180;
+                }
+                if (dgvTeachers.Columns.Contains("Specialization"))
+                {
+                    dgvTeachers.Columns["Specialization"].HeaderText = "المادة / التخصص";
+                    dgvTeachers.Columns["Specialization"].Width = 140;
+                }
+                if (dgvTeachers.Columns.Contains("Qualification"))
+                {
+                    dgvTeachers.Columns["Qualification"].HeaderText = "المؤهل العلمي";
+                    dgvTeachers.Columns["Qualification"].Width = 130;
+                }
+                if (dgvTeachers.Columns.Contains("HireDate"))
+                {
+                    dgvTeachers.Columns["HireDate"].HeaderText = "تاريخ التعيين";
+                    dgvTeachers.Columns["HireDate"].Width = 100;
+                    dgvTeachers.Columns["HireDate"].DefaultCellStyle.Format = "yyyy-MM-dd";
+                }
+                if (dgvTeachers.Columns.Contains("EmploymentStatus"))
+                {
+                    dgvTeachers.Columns["EmploymentStatus"].HeaderText = "الحالة الوظيفية";
+                    dgvTeachers.Columns["EmploymentStatus"].Width = 100;
+                }
+                if (dgvTeachers.Columns.Contains("Gender"))
+                {
+                    dgvTeachers.Columns["Gender"].HeaderText = "الجنس";
+                    dgvTeachers.Columns["Gender"].Width = 80;
+                }
             }
-
 
             UpdateCount();
         }
@@ -76,9 +91,6 @@ namespace SchoolManagementSystem.Teachers
             if (_dvTeachers == null) return;
 
             string search = txtSearch.Text.Trim().Replace("'", "''");
-            string gender = cbFilterGender.SelectedItem?.ToString();
-            string status = cbFilterStatus.SelectedItem?.ToString();
-
             string filter = "";
 
             if (!string.IsNullOrEmpty(search))
@@ -86,16 +98,31 @@ namespace SchoolManagementSystem.Teachers
                 filter = $"(FullName LIKE '%{search}%' OR Email LIKE '%{search}%' OR Specialization LIKE '%{search}%' OR PhoneNumber LIKE '%{search}%')";
             }
 
-            if (!string.IsNullOrEmpty(gender) && gender != "All")
+            if (cbFilterGender.SelectedIndex == 1) // ذكر
             {
                 if (!string.IsNullOrEmpty(filter)) filter += " AND ";
-                filter += $"Gender = '{gender}'";
+                filter += "(Gender = 'Male' OR Gender = 'ذكر')";
+            }
+            else if (cbFilterGender.SelectedIndex == 2) // أنثى
+            {
+                if (!string.IsNullOrEmpty(filter)) filter += " AND ";
+                filter += "(Gender = 'Female' OR Gender = 'Femal' OR Gender = 'أنثى')";
             }
 
-            if (!string.IsNullOrEmpty(status) && status != "All")
+            if (cbFilterStatus.SelectedIndex == 1) // نشط
             {
                 if (!string.IsNullOrEmpty(filter)) filter += " AND ";
-                filter += $"EmploymentStatus = '{status}'";
+                filter += "(EmploymentStatus = 'Active' OR EmploymentStatus = 'نشط')";
+            }
+            else if (cbFilterStatus.SelectedIndex == 2) // في إجازة
+            {
+                if (!string.IsNullOrEmpty(filter)) filter += " AND ";
+                filter += "(EmploymentStatus = 'On Leave' OR EmploymentStatus = 'في إجازة')";
+            }
+            else if (cbFilterStatus.SelectedIndex == 3) // مستقيل
+            {
+                if (!string.IsNullOrEmpty(filter)) filter += " AND ";
+                filter += "(EmploymentStatus = 'Resigned' OR EmploymentStatus = 'مستقيل')";
             }
 
             _dvTeachers.RowFilter = filter;
@@ -104,14 +131,13 @@ namespace SchoolManagementSystem.Teachers
 
         private void UpdateCount()
         {
-            lblTotalCount.Text = $"Total Displayed Teachers: {_dvTeachers?.Count ?? 0}";
+            lblTotalCount.Text = $"إجمالي المعلمين: {_dvTeachers?.Count ?? 0}";
         }
 
         private int GetSelectedTeacherID()
         {
             if (dgvTeachers.CurrentRow == null) return -1;
-                return Convert.ToInt32(dgvTeachers.CurrentRow.Cells["TeacherID"].Value);
-        
+            return Convert.ToInt32(dgvTeachers.CurrentRow.Cells["TeacherID"].Value);
         }
 
         private void TxtSearch_TextChanged(object sender, EventArgs e)
@@ -131,6 +157,9 @@ namespace SchoolManagementSystem.Teachers
 
         private void BtnRefresh_Click(object sender, EventArgs e)
         {
+            txtSearch.Text = string.Empty;
+            cbFilterGender.SelectedIndex = 0;
+            cbFilterStatus.SelectedIndex = 0;
             LoadTeachers();
         }
 
@@ -148,7 +177,7 @@ namespace SchoolManagementSystem.Teachers
             int teacherID = GetSelectedTeacherID();
             if (teacherID == -1)
             {
-                MessageBox.Show("Please select a teacher to edit.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clsUITheme.ShowArabicMessage("يرجى تحديد معلم للتعديل أولاً.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -164,7 +193,7 @@ namespace SchoolManagementSystem.Teachers
             int teacherID = GetSelectedTeacherID();
             if (teacherID == -1)
             {
-                MessageBox.Show("Please select a teacher to view profile.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clsUITheme.ShowArabicMessage("يرجى تحديد معلم لعرض ملفه أولاً.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -183,29 +212,33 @@ namespace SchoolManagementSystem.Teachers
             int teacherID = GetSelectedTeacherID();
             if (teacherID == -1)
             {
-                MessageBox.Show("Please select a teacher to delete.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clsUITheme.ShowArabicMessage("يرجى تحديد معلم للحذف أولاً.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
             string teacherName = dgvTeachers.CurrentRow.Cells["FullName"].Value.ToString();
 
-            if (MessageBox.Show($"Are you sure you want to delete teacher '{teacherName}' (ID: {teacherID})?\nThis action verifies that no course assignments or schedules are assigned to this teacher.", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (clsUITheme.ShowArabicMessage(
+                $"هل أنت متأكد من رغبتك في حذف المعلم '{teacherName}' (رقم: {teacherID})؟\nسيتم التحقق من عدم وجود جداول أو مقررات مسندة إليه.",
+                "تأكيد الحذف",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 try
                 {
                     if (clsTeacher.DeleteTeacher(teacherID))
                     {
-                        MessageBox.Show("Teacher deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        clsUITheme.ShowArabicMessage("تم حذف بيانات المعلم بنجاح.", "نجاح العملية", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadTeachers();
                     }
                     else
                     {
-                        MessageBox.Show("Cannot delete teacher. Active course assignments, schedules, or user accounts are linked to this teacher.", "Constraint Restriction", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        clsUITheme.ShowArabicMessage("تعذر حذف المعلم لوجود جداول حصص أو إسنادات مقررات دراسية أو حساب مستخدم مرتبط به.", "قيد تكامل البيانات", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error deleting teacher: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    clsUITheme.ShowArabicMessage("حدث خطأ أثناء حذف المعلم: " + ex.Message, "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

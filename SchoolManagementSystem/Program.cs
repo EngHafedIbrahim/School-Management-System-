@@ -1,10 +1,5 @@
-using SchoolManagementSystem.Academic;
-using SchoolManagementSystem.Classes;
-using SchoolManagementSystem.Courses;
+using SchoolManagementSystem.Enrollment;
 using SchoolManagementSystem.Login;
-using SchoolManagementSystem.Parents;
-using SchoolManagementSystem.Students;
-using SchoolManagementSystem.Teachers;
 using System;
 using System.Windows.Forms;
 
@@ -17,24 +12,18 @@ namespace SchoolManagementSystem
         {
             ApplicationConfiguration.Initialize();
 
-            //Application.Run(new frmStudentList()); 
-            //Application.Run(new frmAcademicYears());
-            //Application.Run(new frmLogin ());
-            //Application.Run(new frmTeacherList());
-            //application.run(new frmcourselist());
-            //Application.Run(new frmGradeLevels());
-            Application.Run(new frmTimetableManagement());
-
+            // ── Production: Login → Main Screen ──
+            
+            Application.Run(new frmLogin());
+               
+            //Application.Run(new frmStudentEnrollmentList());
             //frmLogin login = new frmLogin();
-
             //if (login.ShowDialog() == DialogResult.OK)
             //{
-            //    Application.Run(new frmMainScreen());
             //}
-            //else
-            //{
-            //    Application.Exit();
-            //}
+
+            // ── Development: Skip login (uncomment to use) ──
+            // Application.Run(new frmMainScreen());
         }
     }
 }

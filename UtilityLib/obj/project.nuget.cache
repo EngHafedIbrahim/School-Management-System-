@@ -1,20 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "iipjDF7vwcg=",
+  "dgSpecHash": "1MNqzAkrejk=",
   "success": true,
   "projectFilePath": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\UtilityLib\\UtilityLib.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Eng.Hafed\\.nuget\\packages\\system.diagnostics.eventlog\\10.0.12\\system.diagnostics.eventlog.10.0.12.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1900",
-      "level": "Warning",
-      "message": "Error occurred while getting package vulnerability data: Unable to load the service index for source https://api.nuget.org/v3/index.json.",
-      "projectPath": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\UtilityLib\\UtilityLib.csproj",
-      "warningLevel": 1,
-      "filePath": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\UtilityLib\\UtilityLib.csproj",
-      "targetGraphs": []
-    }
-  ]
+  "logs": []
 }

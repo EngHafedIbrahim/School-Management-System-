@@ -24,7 +24,7 @@ namespace SchoolManagementSystemDataAccessLayer
                             if (reader.Read())
                             {
                                 isFound = true;
-                                                                Name = reader["Name"] != DBNull.Value ? (string)reader["Name"] : "";
+                                Name = reader["Name"] != DBNull.Value ? (string)reader["Name"] : "";
                                 GradeLevelID = (int)reader["GradeLevelID"];
                                 AcademicYearID = (int)reader["AcademicYearID"];
                                 TuitionFee = (decimal)reader["TuitionFee"];
@@ -57,7 +57,7 @@ namespace SchoolManagementSystemDataAccessLayer
                                      SELECT SCOPE_IDENTITY();";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                                                command.Parameters.AddWithValue("@Name", (object)Name ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@Name", (object)Name ?? DBNull.Value);
                         command.Parameters.AddWithValue("@GradeLevelID", GradeLevelID);
                         command.Parameters.AddWithValue("@AcademicYearID", AcademicYearID);
                         command.Parameters.AddWithValue("@TuitionFee", TuitionFee);
@@ -95,7 +95,7 @@ namespace SchoolManagementSystemDataAccessLayer
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@FeeStructureID", FeeStructureID);
-                                                command.Parameters.AddWithValue("@Name", (object)Name ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@Name", (object)Name ?? DBNull.Value);
                         command.Parameters.AddWithValue("@GradeLevelID", GradeLevelID);
                         command.Parameters.AddWithValue("@AcademicYearID", AcademicYearID);
                         command.Parameters.AddWithValue("@TuitionFee", TuitionFee);
@@ -163,6 +163,97 @@ namespace SchoolManagementSystemDataAccessLayer
                 clsLogger.Error(ex.Message);
             }
             return dt;
+        }
+
+        // Get fee structure by grade level and academic year (auto-detection for invoice creation)
+        public static DataTable GetFeeStructureByGradeLevelAndYear(int gradeLevelID, int academicYearID)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = @"SELECT * FROM FeeStructure 
+                                     WHERE GradeLevelID = @GradeLevelID AND AcademicYearID = @AcademicYearID";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@GradeLevelID", gradeLevelID);
+                        command.Parameters.AddWithValue("@AcademicYearID", academicYearID);
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            dt.Load(reader);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return dt;
+        }
+
+        // Get all fee structures with grade level and academic year names (for management screen)
+        public static DataTable GetAllFeeStructuresDetailed()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = @"
+                        SELECT 
+                            fs.FeeStructureID, fs.Name,
+                            fs.GradeLevelID, gl.Name AS GradeLevelName,
+                            fs.AcademicYearID, ay.YearName AS AcademicYear,
+                            fs.TuitionFee, fs.TransportFee, fs.BookFee, fs.OtherFees,
+                            (fs.TuitionFee + fs.TransportFee + fs.BookFee + fs.OtherFees) AS TotalFees,
+                            fs.CreatedAt, fs.UpdatedAt
+                        FROM FeeStructure fs
+                        INNER JOIN GradeLevel gl ON fs.GradeLevelID = gl.GradeLevelID
+                        INNER JOIN AcademicYear ay ON fs.AcademicYearID = ay.AcademicYearID
+                        ORDER BY ay.YearName DESC, gl.OrderNo ASC";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            dt.Load(reader);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return dt;
+        }
+
+        // Check if a fee structure is referenced by any invoice (referential integrity)
+        public static bool IsFeeStructureUsed(int feeStructureID)
+        {
+            bool isUsed = false;
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = "SELECT TOP 1 1 FROM Invoice WHERE FeeStructureID = @FeeStructureID";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@FeeStructureID", feeStructureID);
+                        connection.Open();
+                        object result = command.ExecuteScalar();
+                        isUsed = (result != null);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsLogger.Error(ex.Message);
+            }
+            return isUsed;
         }
 
         public static bool IsFeeStructureExist(int FeeStructureID)

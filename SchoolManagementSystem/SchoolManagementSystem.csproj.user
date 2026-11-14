@@ -49,6 +49,9 @@
     <Compile Update="Parents\frmRegisterParent.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="REPORT_VIEW.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Students\frmLinkParentToStudent.cs">
       <SubType>Form</SubType>
     </Compile>

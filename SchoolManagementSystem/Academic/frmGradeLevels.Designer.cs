@@ -57,22 +57,21 @@ namespace SchoolManagementSystem.Academic
             pnlHeader.Controls.Add(lblHeaderTitle);
             pnlHeader.Dock = DockStyle.Top;
             pnlHeader.Location = new Point(0, 0);
-            pnlHeader.Margin = new Padding(3, 4, 3, 4);
             pnlHeader.Name = "pnlHeader";
-            pnlHeader.Padding = new Padding(23, 13, 23, 13);
-            pnlHeader.Size = new Size(1029, 93);
+            pnlHeader.Size = new Size(1060, 75);
             pnlHeader.TabIndex = 0;
             // 
             // lblHeaderTitle
             // 
+            lblHeaderTitle.Anchor = AnchorStyles.Top;
             lblHeaderTitle.AutoSize = true;
             lblHeaderTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            lblHeaderTitle.ForeColor = Color.FromArgb(44, 62, 80);
-            lblHeaderTitle.Location = new Point(345, 8);
+            lblHeaderTitle.ForeColor = Color.FromArgb(30, 41, 59);
+            lblHeaderTitle.Location = new Point(381, 18);
             lblHeaderTitle.Name = "lblHeaderTitle";
-            lblHeaderTitle.Size = new Size(358, 37);
+            lblHeaderTitle.Size = new Size(375, 37);
             lblHeaderTitle.TabIndex = 0;
-            lblHeaderTitle.Text = "Grade Levels Management";
+            lblHeaderTitle.Text = "إدارة المراحل والصفوف الدراسية";
             // 
             // pnlEditor
             // 
@@ -88,119 +87,118 @@ namespace SchoolManagementSystem.Academic
             pnlEditor.Controls.Add(lblName);
             pnlEditor.Controls.Add(lblFormTitle);
             pnlEditor.Dock = DockStyle.Top;
-            pnlEditor.Location = new Point(0, 93);
-            pnlEditor.Margin = new Padding(3, 4, 3, 4);
+            pnlEditor.Location = new Point(0, 75);
             pnlEditor.Name = "pnlEditor";
-            pnlEditor.Padding = new Padding(23, 20, 23, 20);
-            pnlEditor.Size = new Size(1029, 173);
+            pnlEditor.Padding = new Padding(20);
+            pnlEditor.Size = new Size(1060, 175);
             pnlEditor.TabIndex = 1;
             // 
             // btnCancelEdit
             // 
             btnCancelEdit.Cursor = Cursors.Hand;
-            btnCancelEdit.FlatAppearance.BorderColor = Color.FromArgb(220, 224, 230);
-            btnCancelEdit.FlatStyle = FlatStyle.Flat;
-            btnCancelEdit.Font = new Font("Segoe UI", 9.5F);
-            btnCancelEdit.Location = new Point(846, 113);
-            btnCancelEdit.Margin = new Padding(3, 4, 3, 4);
+            btnCancelEdit.Font = new Font("Segoe UI", 9F);
+            btnCancelEdit.Location = new Point(30, 112);
             btnCancelEdit.Name = "btnCancelEdit";
-            btnCancelEdit.Size = new Size(149, 37);
+            btnCancelEdit.Size = new Size(140, 38);
             btnCancelEdit.TabIndex = 8;
-            btnCancelEdit.Text = "Cancel";
+            btnCancelEdit.Text = "إلغاء التعديل";
             btnCancelEdit.UseVisualStyleBackColor = true;
             btnCancelEdit.Visible = false;
             btnCancelEdit.Click += BtnCancelEdit_Click;
             // 
             // btnSave
             // 
-            btnSave.BackColor = Color.FromArgb(41, 128, 185);
+            btnSave.BackColor = Color.FromArgb(37, 99, 235);
             btnSave.Cursor = Cursors.Hand;
             btnSave.FlatAppearance.BorderSize = 0;
             btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             btnSave.ForeColor = Color.White;
-            btnSave.Location = new Point(846, 64);
-            btnSave.Margin = new Padding(3, 4, 3, 4);
+            btnSave.Location = new Point(30, 65);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(149, 43);
+            btnSave.Size = new Size(140, 42);
             btnSave.TabIndex = 7;
-            btnSave.Text = "Save Level";
+            btnSave.Text = "حفظ المرحلة";
             btnSave.UseVisualStyleBackColor = false;
             btnSave.Click += BtnSave_Click;
             // 
             // txtDescription
             // 
+            txtDescription.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtDescription.Font = new Font("Segoe UI", 9.5F);
-            txtDescription.Location = new Point(411, 69);
-            txtDescription.Margin = new Padding(3, 4, 3, 4);
+            txtDescription.Location = new Point(190, 72);
             txtDescription.Multiline = true;
             txtDescription.Name = "txtDescription";
-            txtDescription.Size = new Size(399, 79);
+            txtDescription.Size = new Size(471, 78);
             txtDescription.TabIndex = 6;
             // 
             // lblDescription
             // 
+            lblDescription.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblDescription.AutoSize = true;
             lblDescription.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            lblDescription.ForeColor = Color.FromArgb(33, 37, 41);
-            lblDescription.Location = new Point(411, 43);
+            lblDescription.ForeColor = Color.FromArgb(30, 41, 59);
+            lblDescription.Location = new Point(536, 45);
             lblDescription.Name = "lblDescription";
-            lblDescription.Size = new Size(102, 21);
+            lblDescription.Size = new Size(143, 21);
             lblDescription.TabIndex = 5;
-            lblDescription.Text = "Description:";
+            lblDescription.Text = "الوصف والملاحظات:";
             // 
             // numOrderNo
             // 
+            numOrderNo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             numOrderNo.Font = new Font("Segoe UI", 9.5F);
-            numOrderNo.Location = new Point(263, 69);
-            numOrderNo.Margin = new Padding(3, 4, 3, 4);
+            numOrderNo.Location = new Point(681, 72);
             numOrderNo.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numOrderNo.Name = "numOrderNo";
-            numOrderNo.Size = new Size(114, 29);
+            numOrderNo.Size = new Size(110, 29);
             numOrderNo.TabIndex = 4;
             numOrderNo.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // lblOrderNo
             // 
+            lblOrderNo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblOrderNo.AutoSize = true;
             lblOrderNo.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            lblOrderNo.ForeColor = Color.FromArgb(33, 37, 41);
-            lblOrderNo.Location = new Point(263, 43);
+            lblOrderNo.ForeColor = Color.FromArgb(30, 41, 59);
+            lblOrderNo.Location = new Point(691, 45);
             lblOrderNo.Name = "lblOrderNo";
-            lblOrderNo.Size = new Size(95, 21);
+            lblOrderNo.Size = new Size(97, 21);
             lblOrderNo.TabIndex = 3;
-            lblOrderNo.Text = "Order No *:";
+            lblOrderNo.Text = "رقم الترتيب *:";
             // 
             // txtName
             // 
+            txtName.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             txtName.Font = new Font("Segoe UI", 9.5F);
-            txtName.Location = new Point(23, 69);
-            txtName.Margin = new Padding(3, 4, 3, 4);
+            txtName.Location = new Point(811, 72);
             txtName.Name = "txtName";
-            txtName.Size = new Size(217, 29);
+            txtName.Size = new Size(225, 29);
             txtName.TabIndex = 2;
             // 
             // lblName
             // 
+            lblName.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblName.AutoSize = true;
             lblName.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            lblName.ForeColor = Color.FromArgb(33, 37, 41);
-            lblName.Location = new Point(23, 43);
+            lblName.ForeColor = Color.FromArgb(30, 41, 59);
+            lblName.Location = new Point(896, 45);
             lblName.Name = "lblName";
-            lblName.Size = new Size(115, 21);
+            lblName.Size = new Size(158, 21);
             lblName.TabIndex = 1;
-            lblName.Text = "Level Name *:";
+            lblName.Text = "اسم المرحلة / الصف *:";
             // 
             // lblFormTitle
             // 
+            lblFormTitle.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblFormTitle.AutoSize = true;
             lblFormTitle.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            lblFormTitle.ForeColor = Color.FromArgb(44, 62, 80);
-            lblFormTitle.Location = new Point(23, 11);
+            lblFormTitle.ForeColor = Color.FromArgb(30, 41, 59);
+            lblFormTitle.Location = new Point(811, 10);
             lblFormTitle.Name = "lblFormTitle";
-            lblFormTitle.Size = new Size(203, 25);
+            lblFormTitle.Size = new Size(263, 25);
             lblFormTitle.TabIndex = 0;
-            lblFormTitle.Text = "Add New Grade Level";
+            lblFormTitle.Text = "إضافة مرحلة / صف دراسي جديد";
             // 
             // pnlToolbar
             // 
@@ -211,117 +209,105 @@ namespace SchoolManagementSystem.Academic
             pnlToolbar.Controls.Add(txtSearch);
             pnlToolbar.Controls.Add(lblSearch);
             pnlToolbar.Dock = DockStyle.Top;
-            pnlToolbar.Location = new Point(0, 266);
-            pnlToolbar.Margin = new Padding(3, 4, 3, 4);
+            pnlToolbar.Location = new Point(0, 250);
             pnlToolbar.Name = "pnlToolbar";
-            pnlToolbar.Padding = new Padding(23, 11, 23, 11);
-            pnlToolbar.Size = new Size(1029, 67);
+            pnlToolbar.Padding = new Padding(20, 10, 20, 10);
+            pnlToolbar.Size = new Size(1060, 65);
             pnlToolbar.TabIndex = 2;
             // 
             // btnRefresh
             // 
-            btnRefresh.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnRefresh.Cursor = Cursors.Hand;
-            btnRefresh.FlatAppearance.BorderColor = Color.FromArgb(220, 224, 230);
-            btnRefresh.FlatStyle = FlatStyle.Flat;
-            btnRefresh.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnRefresh.Location = new Point(960, 12);
-            btnRefresh.Margin = new Padding(3, 4, 3, 4);
+            btnRefresh.Font = new Font("Segoe UI", 9F);
+            btnRefresh.Location = new Point(20, 14);
             btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new Size(46, 43);
+            btnRefresh.Size = new Size(80, 38);
             btnRefresh.TabIndex = 4;
-            btnRefresh.Text = "↻";
+            btnRefresh.Text = "تحديث";
             btnRefresh.UseVisualStyleBackColor = true;
             btnRefresh.Click += BtnRefresh_Click;
             // 
             // btnDelete
             // 
-            btnDelete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnDelete.BackColor = Color.FromArgb(192, 57, 43);
+            btnDelete.BackColor = Color.FromArgb(220, 38, 38);
             btnDelete.Cursor = Cursors.Hand;
             btnDelete.FlatAppearance.BorderSize = 0;
             btnDelete.FlatStyle = FlatStyle.Flat;
-            btnDelete.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            btnDelete.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnDelete.ForeColor = Color.White;
-            btnDelete.Location = new Point(846, 12);
-            btnDelete.Margin = new Padding(3, 4, 3, 4);
+            btnDelete.Location = new Point(106, 14);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(103, 43);
+            btnDelete.Size = new Size(85, 38);
             btnDelete.TabIndex = 3;
-            btnDelete.Text = "Delete";
+            btnDelete.Text = "حذف";
             btnDelete.UseVisualStyleBackColor = false;
             btnDelete.Click += BtnDelete_Click;
             // 
             // btnEdit
             // 
-            btnEdit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnEdit.Cursor = Cursors.Hand;
-            btnEdit.FlatAppearance.BorderColor = Color.FromArgb(220, 224, 230);
-            btnEdit.FlatStyle = FlatStyle.Flat;
-            btnEdit.Font = new Font("Segoe UI", 9.5F);
-            btnEdit.Location = new Point(709, 12);
-            btnEdit.Margin = new Padding(3, 4, 3, 4);
+            btnEdit.Font = new Font("Segoe UI", 9F);
+            btnEdit.Location = new Point(197, 14);
             btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(126, 43);
+            btnEdit.Size = new Size(115, 38);
             btnEdit.TabIndex = 2;
-            btnEdit.Text = "Edit Selected";
+            btnEdit.Text = "تعديل المحدد";
             btnEdit.UseVisualStyleBackColor = true;
             btnEdit.Click += BtnEdit_Click;
             // 
             // txtSearch
             // 
+            txtSearch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             txtSearch.Font = new Font("Segoe UI", 9.5F);
-            txtSearch.Location = new Point(137, 17);
-            txtSearch.Margin = new Padding(3, 4, 3, 4);
+            txtSearch.Location = new Point(691, 18);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(251, 29);
+            txtSearch.Size = new Size(250, 29);
             txtSearch.TabIndex = 1;
             txtSearch.TextChanged += TxtSearch_TextChanged;
             // 
             // lblSearch
             // 
+            lblSearch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblSearch.AutoSize = true;
             lblSearch.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            lblSearch.ForeColor = Color.FromArgb(33, 37, 41);
-            lblSearch.Location = new Point(23, 21);
+            lblSearch.ForeColor = Color.FromArgb(30, 41, 59);
+            lblSearch.Location = new Point(946, 21);
             lblSearch.Name = "lblSearch";
-            lblSearch.Size = new Size(111, 21);
+            lblSearch.Size = new Size(97, 21);
             lblSearch.TabIndex = 0;
-            lblSearch.Text = "Filter/Search:";
+            lblSearch.Text = "بحث وتصفية:";
             // 
             // pnlBottom
             // 
             pnlBottom.BackColor = Color.White;
             pnlBottom.Controls.Add(lblTotalCount);
             pnlBottom.Dock = DockStyle.Bottom;
-            pnlBottom.Location = new Point(0, 748);
-            pnlBottom.Margin = new Padding(3, 4, 3, 4);
+            pnlBottom.Location = new Point(0, 755);
             pnlBottom.Name = "pnlBottom";
-            pnlBottom.Padding = new Padding(23, 13, 23, 13);
-            pnlBottom.Size = new Size(1029, 53);
+            pnlBottom.Padding = new Padding(20, 12, 20, 12);
+            pnlBottom.Size = new Size(1060, 46);
             pnlBottom.TabIndex = 3;
             // 
             // lblTotalCount
             // 
+            lblTotalCount.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             lblTotalCount.AutoSize = true;
-            lblTotalCount.Dock = DockStyle.Left;
             lblTotalCount.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            lblTotalCount.ForeColor = Color.FromArgb(120, 130, 140);
-            lblTotalCount.Location = new Point(23, 13);
+            lblTotalCount.ForeColor = Color.FromArgb(100, 116, 139);
+            lblTotalCount.Location = new Point(841, 13);
             lblTotalCount.Name = "lblTotalCount";
-            lblTotalCount.Size = new Size(165, 21);
+            lblTotalCount.Size = new Size(189, 21);
             lblTotalCount.TabIndex = 0;
-            lblTotalCount.Text = "Total Grade Levels: 0";
+            lblTotalCount.Text = "إجمالي الصفوف الدراسية: 0";
             // 
             // pnlGridWrapper
             // 
             pnlGridWrapper.Controls.Add(dgvGradeLevels);
             pnlGridWrapper.Dock = DockStyle.Fill;
-            pnlGridWrapper.Location = new Point(0, 333);
-            pnlGridWrapper.Margin = new Padding(3, 4, 3, 4);
+            pnlGridWrapper.Location = new Point(0, 315);
             pnlGridWrapper.Name = "pnlGridWrapper";
-            pnlGridWrapper.Padding = new Padding(23, 27, 23, 27);
-            pnlGridWrapper.Size = new Size(1029, 415);
+            pnlGridWrapper.Padding = new Padding(20);
+            pnlGridWrapper.Size = new Size(1060, 440);
             pnlGridWrapper.TabIndex = 4;
             // 
             // dgvGradeLevels
@@ -333,18 +319,16 @@ namespace SchoolManagementSystem.Academic
             dgvGradeLevels.BackgroundColor = Color.White;
             dgvGradeLevels.BorderStyle = BorderStyle.None;
             dgvGradeLevels.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dgvGradeLevels.ColumnHeadersHeight = 29;
-            dgvGradeLevels.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgvGradeLevels.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvGradeLevels.Dock = DockStyle.Fill;
-            dgvGradeLevels.Location = new Point(23, 27);
-            dgvGradeLevels.Margin = new Padding(3, 4, 3, 4);
+            dgvGradeLevels.Location = new Point(20, 20);
             dgvGradeLevels.MultiSelect = false;
             dgvGradeLevels.Name = "dgvGradeLevels";
             dgvGradeLevels.ReadOnly = true;
             dgvGradeLevels.RowHeadersVisible = false;
             dgvGradeLevels.RowHeadersWidth = 51;
             dgvGradeLevels.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvGradeLevels.Size = new Size(983, 361);
+            dgvGradeLevels.Size = new Size(1020, 400);
             dgvGradeLevels.TabIndex = 0;
             dgvGradeLevels.DoubleClick += DgvGradeLevels_DoubleClick;
             // 
@@ -352,22 +336,26 @@ namespace SchoolManagementSystem.Academic
             // 
             errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
             errorProvider1.ContainerControl = this;
+            errorProvider1.RightToLeft = true;
             // 
             // frmGradeLevels
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(245, 247, 250);
-            ClientSize = new Size(1029, 801);
+            BackColor = Color.FromArgb(248, 250, 252);
+            ClientSize = new Size(1060, 801);
             Controls.Add(pnlGridWrapper);
             Controls.Add(pnlBottom);
             Controls.Add(pnlToolbar);
             Controls.Add(pnlEditor);
             Controls.Add(pnlHeader);
-            Margin = new Padding(3, 4, 3, 4);
+            Font = new Font("Segoe UI", 9F);
+            MinimumSize = new Size(950, 600);
             Name = "frmGradeLevels";
+            RightToLeft = RightToLeft.Yes;
+            RightToLeftLayout = true;
             StartPosition = FormStartPosition.CenterParent;
-            Text = "Grade Levels Management";
+            Text = "إدارة المراحل والصفوف الدراسية";
             Load += FrmGradeLevels_Load;
             pnlHeader.ResumeLayout(false);
             pnlHeader.PerformLayout();
@@ -382,7 +370,6 @@ namespace SchoolManagementSystem.Academic
             ((System.ComponentModel.ISupportInitialize)dgvGradeLevels).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
-
         }
 
         #endregion

@@ -16,6 +16,7 @@ namespace SchoolManagementSystem.Academic
         {
             InitializeComponent();
 
+            clsUITheme.ApplyRTL(this);
             clsUITheme.StyleDataGridView(dgvAssignments);
             clsUITheme.StylePrimaryButton(btnAssign);
             clsUITheme.StyleSecondaryButton(btnCancelEdit);
@@ -23,7 +24,7 @@ namespace SchoolManagementSystem.Academic
             clsUITheme.StyleDangerButton(btnRemove);
             clsUITheme.StyleSecondaryButton(btnRefresh);
 
-
+            cbGradeLevels.SelectedIndexChanged += CbGradeLevels_SelectedIndexChanged;
         }
 
         private void LoadDropdowns()
@@ -33,13 +34,11 @@ namespace SchoolManagementSystem.Academic
             cbGradeLevels.DisplayMember = "Name";
             cbGradeLevels.ValueMember = "GradeLevelID";
 
-
             // Courses
             DataTable dtCourses = clsCourse.GetAllCourses();
             cbCourse.DataSource = dtCourses;
             cbCourse.DisplayMember = "Name";
             cbCourse.ValueMember = "CourseID";
-
 
             // Teachers
             DataTable dtTeachers = clsTeacher.GetAllTeachers();
@@ -59,7 +58,7 @@ namespace SchoolManagementSystem.Academic
 
             // Filter Dropdowns
             cbFilterYear.Items.Clear();
-            cbFilterYear.Items.Add("All Years");
+            cbFilterYear.Items.Add("جميع السنوات");
             foreach (DataRow r in dtYears.Rows)
             {
                 cbFilterYear.Items.Add(r["YearName"].ToString());
@@ -67,15 +66,13 @@ namespace SchoolManagementSystem.Academic
             cbFilterYear.SelectedIndex = 0;
 
             cbFilterClass.Items.Clear();
-            cbFilterClass.Items.Add("All Classes");
+            cbFilterClass.Items.Add("جميع المراحل");
             foreach (DataRow r in dtGradeLevels.Rows)
             {
                 cbFilterClass.Items.Add(r["Name"].ToString());
             }
             cbFilterClass.SelectedIndex = 0;
             cbGradeLevels.SelectedIndex = -1;
-
-
         }
 
         private void LoadAssignments()
@@ -86,34 +83,35 @@ namespace SchoolManagementSystem.Academic
 
             if (dgvAssignments.Columns.Contains("ClassCourseID"))
             {
-                dgvAssignments.Columns["ClassCourseID"].HeaderText = "ID";
+                dgvAssignments.Columns["ClassCourseID"].HeaderText = "الرقم";
                 dgvAssignments.Columns["ClassCourseID"].Width = 70;
+            }
+            if (dgvAssignments.Columns.Contains("GradeLevel"))
+            {
+                dgvAssignments.Columns["GradeLevel"].HeaderText = "المرحلة / الصف";
+                dgvAssignments.Columns["GradeLevel"].Width = 180;
             }
             if (dgvAssignments.Columns.Contains("ClassName"))
             {
-                dgvAssignments.Columns["ClassName"].HeaderText = "Class";
+                dgvAssignments.Columns["ClassName"].HeaderText = "الشعبة / الفصل";
                 dgvAssignments.Columns["ClassName"].Width = 160;
             }
             if (dgvAssignments.Columns.Contains("CourseName"))
             {
-                dgvAssignments.Columns["CourseName"].HeaderText = "Subject / Course";
+                dgvAssignments.Columns["CourseName"].HeaderText = "المادة الدراسية";
                 dgvAssignments.Columns["CourseName"].Width = 200;
             }
             if (dgvAssignments.Columns.Contains("TeacherName"))
             {
-                dgvAssignments.Columns["TeacherName"].HeaderText = "Assigned Instructor";
+                dgvAssignments.Columns["TeacherName"].HeaderText = "المعلم المكلف";
                 dgvAssignments.Columns["TeacherName"].Width = 220;
-            }
-            if (dgvAssignments.Columns.Contains("GradeLevel"))
-            {
-                dgvAssignments.Columns["GradeLevel"].HeaderText = "Grade Level";
-                dgvAssignments.Columns["GradeLevel"].Width = 260;
             }
             if (dgvAssignments.Columns.Contains("AcademicYear"))
             {
-                dgvAssignments.Columns["AcademicYear"].HeaderText = "Academic Year";
-                dgvAssignments.Columns["AcademicYear"].Width = 160;
+                dgvAssignments.Columns["AcademicYear"].HeaderText = "السنة الدراسية";
+                dgvAssignments.Columns["AcademicYear"].Width = 140;
             }
+
             if (dgvAssignments.Columns.Contains("ClassID")) dgvAssignments.Columns["ClassID"].Visible = false;
             if (dgvAssignments.Columns.Contains("CourseID")) dgvAssignments.Columns["CourseID"].Visible = false;
             if (dgvAssignments.Columns.Contains("TeacherID")) dgvAssignments.Columns["TeacherID"].Visible = false;
@@ -131,12 +129,12 @@ namespace SchoolManagementSystem.Academic
 
             string filter = "";
 
-            if (!string.IsNullOrEmpty(selectedYear) && selectedYear != "All Years")
+            if (!string.IsNullOrEmpty(selectedYear) && selectedYear != "جميع السنوات")
             {
                 filter = $"AcademicYear = '{selectedYear.Replace("'", "''")}'";
             }
 
-            if (!string.IsNullOrEmpty(selectedClass) && selectedClass != "All Classes")
+            if (!string.IsNullOrEmpty(selectedClass) && selectedClass != "جميع المراحل")
             {
                 if (!string.IsNullOrEmpty(filter)) filter += " AND ";
                 filter += $"GradeLevel = '{selectedClass.Replace("'", "''")}'";
@@ -148,15 +146,15 @@ namespace SchoolManagementSystem.Academic
 
         private void UpdateCount()
         {
-            lblTotalCount.Text = $"Total Displayed Assignments: {_dvAssignments?.Count ?? 0}";
+            lblTotalCount.Text = $"إجمالي التكليفات والإسنادات: {_dvAssignments?.Count ?? 0}";
         }
 
         private void ResetEditor()
         {
             _EditingClassCourseID = -1;
-            lblFormTitle.Text = "Assign Course to Class";
+            lblFormTitle.Text = "إسناد مادة دراسية لفصل جديد";
             btnCancelEdit.Visible = false;
-            btnAssign.Text = "Assign Course";
+            btnAssign.Text = "إسناد المقرر";
             errorProvider1.Clear();
         }
 
@@ -165,29 +163,29 @@ namespace SchoolManagementSystem.Academic
             errorProvider1.Clear();
             bool isValid = true;
 
+            if (cbGradeLevels.SelectedValue == null)
+            {
+                errorProvider1.SetError(cbGradeLevels, "يرجى تحديد المرحلة / الصف الدراسي أولاً.");
+                isValid = false;
+            }
             if (cbClass.SelectedValue == null)
             {
-                errorProvider1.SetError(cbClass, "Target class is required.");
+                errorProvider1.SetError(cbClass, "يرجى تحديد الشعبة / الفصل الدراسي.");
                 isValid = false;
             }
             if (cbCourse.SelectedValue == null)
             {
-                errorProvider1.SetError(cbCourse, "Course subject is required.");
+                errorProvider1.SetError(cbCourse, "يرجى اختيار المادة / المقرر الدراسي.");
                 isValid = false;
             }
             if (cbTeacher.SelectedValue == null)
             {
-                errorProvider1.SetError(cbTeacher, "Faculty instructor is required.");
+                errorProvider1.SetError(cbTeacher, "يرجى تحديد المعلم المكلف.");
                 isValid = false;
             }
             if (cbYear.SelectedValue == null)
             {
-                errorProvider1.SetError(cbYear, "Academic year is required.");
-                isValid = false;
-            }
-            if (cbGradeLevels.SelectedValue == null)
-            {
-                errorProvider1.SetError(cbGradeLevels, "Grade Levels year is required.");
+                errorProvider1.SetError(cbYear, "يرجى تحديد السنة الأكاديمية.");
                 isValid = false;
             }
 
@@ -209,7 +207,7 @@ namespace SchoolManagementSystem.Academic
                 assignment = clsClassCourse.Find(_EditingClassCourseID);
                 if (assignment == null)
                 {
-                    MessageBox.Show("Assignment record not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    clsUITheme.ShowArabicMessage("لم يتم العثور على سجل الإسناد المطلوب.", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     ResetEditor();
                     return;
                 }
@@ -226,18 +224,18 @@ namespace SchoolManagementSystem.Academic
             {
                 if (assignment.Save())
                 {
-                    MessageBox.Show("Course assigned successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    clsUITheme.ShowArabicMessage("تم حفظ وتوزيع إسناد المقرر بنجاح.", "نجاح العملية", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ResetEditor();
                     LoadAssignments();
                 }
                 else
                 {
-                    MessageBox.Show("Failed to save assignment.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    clsUITheme.ShowArabicMessage("فشل حفظ إسناد المقرر.", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Validation Error:\n" + ex.Message, "Conflict Restriction", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                clsUITheme.ShowArabicMessage("خطأ في التحقق من البيانات:\n" + ex.Message, "مخالفة قواعد النظام", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -250,7 +248,7 @@ namespace SchoolManagementSystem.Academic
         {
             if (dgvAssignments.CurrentRow == null)
             {
-                MessageBox.Show("Please select an assignment to edit.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clsUITheme.ShowArabicMessage("يرجى تحديد تكليف دراسي للتعديل أولاً.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -258,13 +256,15 @@ namespace SchoolManagementSystem.Academic
             clsClassCourse cc = clsClassCourse.Find(_EditingClassCourseID);
             if (cc != null)
             {
-                lblFormTitle.Text = $"Edit Course Assignment [ID: {_EditingClassCourseID}]";
+                lblFormTitle.Text = $"تعديل إسناد المادة [رقم: {_EditingClassCourseID}]";
+                cbGradeLevels.SelectedValue = cc.GradeLevelID;
+                LoadClassesForGrade(cc.GradeLevelID);
                 cbClass.SelectedValue = cc.ClassID;
                 cbCourse.SelectedValue = cc.CourseID;
                 cbTeacher.SelectedValue = cc.TeacherID;
                 cbYear.SelectedValue = cc.AcademicYearID;
                 btnCancelEdit.Visible = true;
-                btnAssign.Text = "Update Assignment";
+                btnAssign.Text = "تحديث الإسناد";
             }
         }
 
@@ -277,7 +277,7 @@ namespace SchoolManagementSystem.Academic
         {
             if (dgvAssignments.CurrentRow == null)
             {
-                MessageBox.Show("Please select an assignment to remove.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clsUITheme.ShowArabicMessage("يرجى تحديد تكليف دراسي لإلغائه أولاً.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -285,25 +285,29 @@ namespace SchoolManagementSystem.Academic
             string clsName = dgvAssignments.CurrentRow.Cells["ClassName"].Value.ToString();
             string crsName = dgvAssignments.CurrentRow.Cells["CourseName"].Value.ToString();
 
-            if (MessageBox.Show($"Are you sure you want to remove assignment for {clsName} - {crsName} (ID: {classCourseID})?\nThis action verifies that no schedules or student attendance records depend on it.", "Confirm Remove", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (clsUITheme.ShowArabicMessage(
+                $"هل أنت متأكد من رغبتك في إلغاء إسناد مادة '{crsName}' لفصل '{clsName}' (رقم: {classCourseID})؟\nسيتم التحقق من عدم وجود جداول حصص أو جلسات حضور تعتمد عليه.",
+                "تأكيد الإلغاء",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 try
                 {
                     if (clsClassCourse.DeleteClassCourse(classCourseID))
                     {
-                        MessageBox.Show("Assignment removed successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        clsUITheme.ShowArabicMessage("تم إلغاء إسناد المقرر بنجاح.", "نجاح العملية", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         if (_EditingClassCourseID == classCourseID)
                             ResetEditor();
                         LoadAssignments();
                     }
                     else
                     {
-                        MessageBox.Show("Cannot remove assignment. Active timetable schedules or attendance sessions are linked to this teaching relationship.", "Constraint Restriction", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        clsUITheme.ShowArabicMessage("تعذر إلغاء الإسناد لوجود جداول حصص أسبوعية أو جلسات حضور مسجلة تعتمد على هذا التكليف.", "قيد تكامل البيانات", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error removing assignment: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    clsUITheme.ShowArabicMessage("حدث خطأ أثناء إلغاء الإسناد: " + ex.Message, "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -331,30 +335,34 @@ namespace SchoolManagementSystem.Academic
                 LoadDropdowns();
                 LoadAssignments();
             }
-
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "");
+                clsUITheme.ShowArabicMessage(ex.Message, "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-
-
-        private void CbGradeLevels_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        private void LoadClassesForGrade(int gradeLevelID)
         {
-            
-            if (cbGradeLevels.Items.Count <= 0)
-            {
-                return;
-            }
-            int i = (int)(cbGradeLevels.SelectedValue);
-            // Classes
-            DataTable dtClasses = clsClass.GetAllClasss(i);
+            DataTable dtClasses = clsClass.GetAllClasss(gradeLevelID);
             cbClass.DataSource = dtClasses;
             cbClass.DisplayMember = "Name";
             cbClass.ValueMember = "ClassID";
-            
-            //cbClass.Refresh();
+        }
+
+        private void CbGradeLevels_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbGradeLevels.SelectedValue != null && int.TryParse(cbGradeLevels.SelectedValue.ToString(), out int levelID))
+            {
+                LoadClassesForGrade(levelID);
+            }
+        }
+
+        private void CbGradeLevels_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (cbGradeLevels.SelectedValue != null && int.TryParse(cbGradeLevels.SelectedValue.ToString(), out int levelID))
+            {
+                LoadClassesForGrade(levelID);
+            }
         }
     }
 }

@@ -50,22 +50,21 @@ namespace SchoolManagementSystem.Academic
             pnlHeader.Controls.Add(lblHeaderTitle);
             pnlHeader.Dock = DockStyle.Top;
             pnlHeader.Location = new Point(0, 0);
-            pnlHeader.Margin = new Padding(3, 4, 3, 4);
             pnlHeader.Name = "pnlHeader";
-            pnlHeader.Padding = new Padding(23, 13, 23, 13);
-            pnlHeader.Size = new Size(987, 93);
+            pnlHeader.Size = new Size(987, 75);
             pnlHeader.TabIndex = 0;
             // 
             // lblHeaderTitle
             // 
+            lblHeaderTitle.Anchor = AnchorStyles.Top;
             lblHeaderTitle.AutoSize = true;
             lblHeaderTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            lblHeaderTitle.ForeColor = Color.FromArgb(44, 62, 80);
-            lblHeaderTitle.Location = new Point(309, 26);
+            lblHeaderTitle.ForeColor = Color.FromArgb(30, 41, 59);
+            lblHeaderTitle.Location = new Point(320, 18);
             lblHeaderTitle.Name = "lblHeaderTitle";
-            lblHeaderTitle.Size = new Size(337, 37);
+            lblHeaderTitle.Size = new Size(350, 37);
             lblHeaderTitle.TabIndex = 0;
-            lblHeaderTitle.Text = "Academic Years Calendar";
+            lblHeaderTitle.Text = "إدارة السنوات الأكاديمية والدراسية";
             // 
             // pnlEditor
             // 
@@ -82,131 +81,132 @@ namespace SchoolManagementSystem.Academic
             pnlEditor.Controls.Add(lblName);
             pnlEditor.Controls.Add(lblFormTitle);
             pnlEditor.Dock = DockStyle.Top;
-            pnlEditor.Location = new Point(0, 93);
-            pnlEditor.Margin = new Padding(3, 4, 3, 4);
+            pnlEditor.Location = new Point(0, 75);
             pnlEditor.Name = "pnlEditor";
-            pnlEditor.Padding = new Padding(23, 20, 23, 20);
-            pnlEditor.Size = new Size(987, 173);
+            pnlEditor.Padding = new Padding(20);
+            pnlEditor.Size = new Size(987, 175);
             pnlEditor.TabIndex = 1;
             // 
-            // btnCancelEdit
+            // lblFormTitle
             // 
-            btnCancelEdit.Cursor = Cursors.Hand;
-            btnCancelEdit.FlatAppearance.BorderColor = Color.FromArgb(220, 224, 230);
-            btnCancelEdit.FlatStyle = FlatStyle.Flat;
-            btnCancelEdit.Font = new Font("Segoe UI", 9.5F);
-            btnCancelEdit.Location = new Point(811, 125);
-            btnCancelEdit.Margin = new Padding(3, 4, 3, 4);
-            btnCancelEdit.Name = "btnCancelEdit";
-            btnCancelEdit.Size = new Size(149, 37);
-            btnCancelEdit.TabIndex = 9;
-            btnCancelEdit.Text = "Cancel";
-            btnCancelEdit.UseVisualStyleBackColor = true;
-            btnCancelEdit.Visible = false;
-            btnCancelEdit.Click += BtnCancelEdit_Click;
+            lblFormTitle.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblFormTitle.AutoSize = true;
+            lblFormTitle.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            lblFormTitle.ForeColor = Color.FromArgb(30, 41, 59);
+            lblFormTitle.Location = new Point(740, 12);
+            lblFormTitle.Name = "lblFormTitle";
+            lblFormTitle.Size = new Size(220, 25);
+            lblFormTitle.TabIndex = 0;
+            lblFormTitle.Text = "إضافة سنة أكاديمية جديدة";
+            // 
+            // lblName
+            // 
+            lblName.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblName.AutoSize = true;
+            lblName.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            lblName.ForeColor = Color.FromArgb(30, 41, 59);
+            lblName.Location = new Point(800, 50);
+            lblName.Name = "lblName";
+            lblName.Size = new Size(158, 21);
+            lblName.TabIndex = 1;
+            lblName.Text = "اسم السنة الأكاديمية *:";
+            // 
+            // txtYearName
+            // 
+            txtYearName.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            txtYearName.Font = new Font("Segoe UI", 9.5F);
+            txtYearName.Location = new Point(750, 78);
+            txtYearName.Name = "txtYearName";
+            txtYearName.Size = new Size(210, 29);
+            txtYearName.TabIndex = 2;
+            // 
+            // lblStart
+            // 
+            lblStart.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblStart.AutoSize = true;
+            lblStart.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            lblStart.ForeColor = Color.FromArgb(30, 41, 59);
+            lblStart.Location = new Point(605, 50);
+            lblStart.Name = "lblStart";
+            lblStart.Size = new Size(118, 21);
+            lblStart.TabIndex = 3;
+            lblStart.Text = "تاريخ البداية *:";
+            // 
+            // dtpStartDate
+            // 
+            dtpStartDate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            dtpStartDate.Font = new Font("Segoe UI", 9.5F);
+            dtpStartDate.Format = DateTimePickerFormat.Short;
+            dtpStartDate.Location = new Point(560, 78);
+            dtpStartDate.Name = "dtpStartDate";
+            dtpStartDate.Size = new Size(165, 29);
+            dtpStartDate.TabIndex = 4;
+            // 
+            // lblEnd
+            // 
+            lblEnd.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblEnd.AutoSize = true;
+            lblEnd.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            lblEnd.ForeColor = Color.FromArgb(30, 41, 59);
+            lblEnd.Location = new Point(415, 50);
+            lblEnd.Name = "lblEnd";
+            lblEnd.Size = new Size(122, 21);
+            lblEnd.TabIndex = 5;
+            lblEnd.Text = "تاريخ الانتهاء *:";
+            // 
+            // dtpEndDate
+            // 
+            dtpEndDate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            dtpEndDate.Font = new Font("Segoe UI", 9.5F);
+            dtpEndDate.Format = DateTimePickerFormat.Short;
+            dtpEndDate.Location = new Point(370, 78);
+            dtpEndDate.Name = "dtpEndDate";
+            dtpEndDate.Size = new Size(165, 29);
+            dtpEndDate.TabIndex = 6;
+            // 
+            // chkIsCurrent
+            // 
+            chkIsCurrent.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            chkIsCurrent.AutoSize = true;
+            chkIsCurrent.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            chkIsCurrent.ForeColor = Color.FromArgb(30, 41, 59);
+            chkIsCurrent.Location = new Point(220, 82);
+            chkIsCurrent.Name = "chkIsCurrent";
+            chkIsCurrent.Size = new Size(131, 25);
+            chkIsCurrent.TabIndex = 7;
+            chkIsCurrent.Text = "السنة الحالية النشطة";
+            chkIsCurrent.UseVisualStyleBackColor = true;
             // 
             // btnSave
             // 
-            btnSave.BackColor = Color.FromArgb(41, 128, 185);
+            btnSave.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            btnSave.BackColor = Color.FromArgb(37, 99, 235);
             btnSave.Cursor = Cursors.Hand;
             btnSave.FlatAppearance.BorderSize = 0;
             btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             btnSave.ForeColor = Color.White;
-            btnSave.Location = new Point(811, 77);
-            btnSave.Margin = new Padding(3, 4, 3, 4);
+            btnSave.Location = new Point(25, 68);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(149, 43);
+            btnSave.Size = new Size(160, 42);
             btnSave.TabIndex = 8;
-            btnSave.Text = "Save Year";
+            btnSave.Text = "حفظ السنة الأكاديمية";
             btnSave.UseVisualStyleBackColor = false;
             btnSave.Click += BtnSave_Click;
             // 
-            // chkIsCurrent
+            // btnCancelEdit
             // 
-            chkIsCurrent.AutoSize = true;
-            chkIsCurrent.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            chkIsCurrent.ForeColor = Color.FromArgb(33, 37, 41);
-            chkIsCurrent.Location = new Point(617, 85);
-            chkIsCurrent.Margin = new Padding(3, 4, 3, 4);
-            chkIsCurrent.Name = "chkIsCurrent";
-            chkIsCurrent.Size = new Size(176, 25);
-            chkIsCurrent.TabIndex = 7;
-            chkIsCurrent.Text = "Set As Current Year";
-            chkIsCurrent.UseVisualStyleBackColor = true;
-            // 
-            // dtpEndDate
-            // 
-            dtpEndDate.Font = new Font("Segoe UI", 9.5F);
-            dtpEndDate.Format = DateTimePickerFormat.Short;
-            dtpEndDate.Location = new Point(434, 83);
-            dtpEndDate.Margin = new Padding(3, 4, 3, 4);
-            dtpEndDate.Name = "dtpEndDate";
-            dtpEndDate.Size = new Size(159, 29);
-            dtpEndDate.TabIndex = 6;
-            // 
-            // lblEnd
-            // 
-            lblEnd.AutoSize = true;
-            lblEnd.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            lblEnd.ForeColor = Color.FromArgb(33, 37, 41);
-            lblEnd.Location = new Point(434, 53);
-            lblEnd.Name = "lblEnd";
-            lblEnd.Size = new Size(94, 21);
-            lblEnd.TabIndex = 5;
-            lblEnd.Text = "End Date *:";
-            // 
-            // dtpStartDate
-            // 
-            dtpStartDate.Font = new Font("Segoe UI", 9.5F);
-            dtpStartDate.Format = DateTimePickerFormat.Short;
-            dtpStartDate.Location = new Point(251, 83);
-            dtpStartDate.Margin = new Padding(3, 4, 3, 4);
-            dtpStartDate.Name = "dtpStartDate";
-            dtpStartDate.Size = new Size(159, 29);
-            dtpStartDate.TabIndex = 4;
-            // 
-            // lblStart
-            // 
-            lblStart.AutoSize = true;
-            lblStart.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            lblStart.ForeColor = Color.FromArgb(33, 37, 41);
-            lblStart.Location = new Point(251, 53);
-            lblStart.Name = "lblStart";
-            lblStart.Size = new Size(101, 21);
-            lblStart.TabIndex = 3;
-            lblStart.Text = "Start Date *:";
-            // 
-            // txtYearName
-            // 
-            txtYearName.Font = new Font("Segoe UI", 9.5F);
-            txtYearName.Location = new Point(23, 83);
-            txtYearName.Margin = new Padding(3, 4, 3, 4);
-            txtYearName.Name = "txtYearName";
-            txtYearName.Size = new Size(205, 29);
-            txtYearName.TabIndex = 2;
-            // 
-            // lblName
-            // 
-            lblName.AutoSize = true;
-            lblName.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            lblName.ForeColor = Color.FromArgb(33, 37, 41);
-            lblName.Location = new Point(23, 53);
-            lblName.Name = "lblName";
-            lblName.Size = new Size(108, 21);
-            lblName.TabIndex = 1;
-            lblName.Text = "Year Name *:";
-            // 
-            // lblFormTitle
-            // 
-            lblFormTitle.AutoSize = true;
-            lblFormTitle.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            lblFormTitle.ForeColor = Color.FromArgb(44, 62, 80);
-            lblFormTitle.Location = new Point(23, 13);
-            lblFormTitle.Name = "lblFormTitle";
-            lblFormTitle.Size = new Size(243, 28);
-            lblFormTitle.TabIndex = 0;
-            lblFormTitle.Text = "Add New Academic Year";
+            btnCancelEdit.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            btnCancelEdit.Cursor = Cursors.Hand;
+            btnCancelEdit.Font = new Font("Segoe UI", 9F);
+            btnCancelEdit.Location = new Point(25, 116);
+            btnCancelEdit.Name = "btnCancelEdit";
+            btnCancelEdit.Size = new Size(160, 38);
+            btnCancelEdit.TabIndex = 9;
+            btnCancelEdit.Text = "إلغاء التعديل";
+            btnCancelEdit.UseVisualStyleBackColor = true;
+            btnCancelEdit.Visible = false;
+            btnCancelEdit.Click += BtnCancelEdit_Click;
             // 
             // pnlToolbar
             // 
@@ -216,86 +216,80 @@ namespace SchoolManagementSystem.Academic
             pnlToolbar.Controls.Add(btnEdit);
             pnlToolbar.Controls.Add(btnSetCurrent);
             pnlToolbar.Dock = DockStyle.Top;
-            pnlToolbar.Location = new Point(0, 266);
-            pnlToolbar.Margin = new Padding(3, 4, 3, 4);
+            pnlToolbar.Location = new Point(0, 250);
             pnlToolbar.Name = "pnlToolbar";
-            pnlToolbar.Padding = new Padding(23, 11, 23, 11);
-            pnlToolbar.Size = new Size(987, 67);
+            pnlToolbar.Padding = new Padding(20, 10, 20, 10);
+            pnlToolbar.Size = new Size(987, 65);
             pnlToolbar.TabIndex = 2;
-            // 
-            // btnRefresh
-            // 
-            btnRefresh.Cursor = Cursors.Hand;
-            btnRefresh.FlatAppearance.BorderColor = Color.FromArgb(220, 224, 230);
-            btnRefresh.FlatStyle = FlatStyle.Flat;
-            btnRefresh.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnRefresh.Location = new Point(491, 11);
-            btnRefresh.Margin = new Padding(3, 4, 3, 4);
-            btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new Size(46, 43);
-            btnRefresh.TabIndex = 3;
-            btnRefresh.Text = "↻";
-            btnRefresh.UseVisualStyleBackColor = true;
-            btnRefresh.Click += BtnRefresh_Click;
-            // 
-            // btnDelete
-            // 
-            btnDelete.BackColor = Color.FromArgb(192, 57, 43);
-            btnDelete.Cursor = Cursors.Hand;
-            btnDelete.FlatAppearance.BorderSize = 0;
-            btnDelete.FlatStyle = FlatStyle.Flat;
-            btnDelete.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            btnDelete.ForeColor = Color.White;
-            btnDelete.Location = new Point(377, 11);
-            btnDelete.Margin = new Padding(3, 4, 3, 4);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(103, 43);
-            btnDelete.TabIndex = 2;
-            btnDelete.Text = "Delete";
-            btnDelete.UseVisualStyleBackColor = false;
-            btnDelete.Click += BtnDelete_Click;
-            // 
-            // btnEdit
-            // 
-            btnEdit.Cursor = Cursors.Hand;
-            btnEdit.FlatAppearance.BorderColor = Color.FromArgb(220, 224, 230);
-            btnEdit.FlatStyle = FlatStyle.Flat;
-            btnEdit.Font = new Font("Segoe UI", 9.5F);
-            btnEdit.Location = new Point(229, 11);
-            btnEdit.Margin = new Padding(3, 4, 3, 4);
-            btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(137, 43);
-            btnEdit.TabIndex = 1;
-            btnEdit.Text = "Edit Selected";
-            btnEdit.UseVisualStyleBackColor = true;
-            btnEdit.Click += BtnEdit_Click;
             // 
             // btnSetCurrent
             // 
-            btnSetCurrent.BackColor = Color.FromArgb(39, 174, 96);
+            btnSetCurrent.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnSetCurrent.BackColor = Color.FromArgb(16, 185, 129);
             btnSetCurrent.Cursor = Cursors.Hand;
             btnSetCurrent.FlatAppearance.BorderSize = 0;
             btnSetCurrent.FlatStyle = FlatStyle.Flat;
             btnSetCurrent.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             btnSetCurrent.ForeColor = Color.White;
-            btnSetCurrent.Location = new Point(23, 11);
-            btnSetCurrent.Margin = new Padding(3, 4, 3, 4);
+            btnSetCurrent.Location = new Point(760, 12);
             btnSetCurrent.Name = "btnSetCurrent";
-            btnSetCurrent.Size = new Size(194, 43);
+            btnSetCurrent.Size = new Size(200, 42);
             btnSetCurrent.TabIndex = 0;
-            btnSetCurrent.Text = "★ Make Current Year";
+            btnSetCurrent.Text = "★ تعيين كسنة حالية";
             btnSetCurrent.UseVisualStyleBackColor = false;
             btnSetCurrent.Click += BtnSetCurrent_Click;
+            // 
+            // btnEdit
+            // 
+            btnEdit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnEdit.Cursor = Cursors.Hand;
+            btnEdit.Font = new Font("Segoe UI", 9F);
+            btnEdit.Location = new Point(640, 12);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Size = new Size(110, 42);
+            btnEdit.TabIndex = 1;
+            btnEdit.Text = "تعديل المحدد";
+            btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += BtnEdit_Click;
+            // 
+            // btnDelete
+            // 
+            btnDelete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnDelete.BackColor = Color.FromArgb(220, 38, 38);
+            btnDelete.Cursor = Cursors.Hand;
+            btnDelete.FlatAppearance.BorderSize = 0;
+            btnDelete.FlatStyle = FlatStyle.Flat;
+            btnDelete.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnDelete.ForeColor = Color.White;
+            btnDelete.Location = new Point(540, 12);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(90, 42);
+            btnDelete.TabIndex = 2;
+            btnDelete.Text = "حذف";
+            btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += BtnDelete_Click;
+            // 
+            // btnRefresh
+            // 
+            btnRefresh.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnRefresh.Cursor = Cursors.Hand;
+            btnRefresh.Font = new Font("Segoe UI", 9F);
+            btnRefresh.Location = new Point(460, 12);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(70, 42);
+            btnRefresh.TabIndex = 3;
+            btnRefresh.Text = "تحديث";
+            btnRefresh.UseVisualStyleBackColor = true;
+            btnRefresh.Click += BtnRefresh_Click;
             // 
             // pnlGridWrapper
             // 
             pnlGridWrapper.Controls.Add(dgvYears);
             pnlGridWrapper.Dock = DockStyle.Fill;
-            pnlGridWrapper.Location = new Point(0, 333);
-            pnlGridWrapper.Margin = new Padding(3, 4, 3, 4);
+            pnlGridWrapper.Location = new Point(0, 315);
             pnlGridWrapper.Name = "pnlGridWrapper";
-            pnlGridWrapper.Padding = new Padding(23, 27, 23, 27);
-            pnlGridWrapper.Size = new Size(987, 415);
+            pnlGridWrapper.Padding = new Padding(20);
+            pnlGridWrapper.Size = new Size(987, 433);
             pnlGridWrapper.TabIndex = 3;
             // 
             // dgvYears
@@ -307,34 +301,33 @@ namespace SchoolManagementSystem.Academic
             dgvYears.BackgroundColor = Color.White;
             dgvYears.BorderStyle = BorderStyle.None;
             dgvYears.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dgvYears.ColumnHeadersHeight = 29;
-            dgvYears.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgvYears.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvYears.Dock = DockStyle.Fill;
-            dgvYears.Location = new Point(23, 27);
-            dgvYears.Margin = new Padding(3, 4, 3, 4);
             dgvYears.MultiSelect = false;
             dgvYears.Name = "dgvYears";
             dgvYears.ReadOnly = true;
             dgvYears.RowHeadersVisible = false;
-            dgvYears.RowHeadersWidth = 51;
             dgvYears.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvYears.Size = new Size(941, 361);
+            dgvYears.Size = new Size(947, 393);
             dgvYears.TabIndex = 0;
             // 
             // frmAcademicYears
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(245, 247, 250);
+            BackColor = Color.FromArgb(248, 250, 252);
             ClientSize = new Size(987, 748);
             Controls.Add(pnlGridWrapper);
             Controls.Add(pnlToolbar);
             Controls.Add(pnlEditor);
             Controls.Add(pnlHeader);
-            Margin = new Padding(3, 4, 3, 4);
+            Font = new Font("Segoe UI", 9F);
+            MinimumSize = new Size(900, 600);
             Name = "frmAcademicYears";
+            RightToLeft = RightToLeft.Yes;
+            RightToLeftLayout = true;
             StartPosition = FormStartPosition.CenterParent;
-            Text = "Academic Years Management";
+            Text = "إدارة السنوات الأكاديمية";
             pnlHeader.ResumeLayout(false);
             pnlHeader.PerformLayout();
             pnlEditor.ResumeLayout(false);
@@ -343,7 +336,6 @@ namespace SchoolManagementSystem.Academic
             pnlGridWrapper.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvYears).EndInit();
             ResumeLayout(false);
-
         }
 
         #endregion

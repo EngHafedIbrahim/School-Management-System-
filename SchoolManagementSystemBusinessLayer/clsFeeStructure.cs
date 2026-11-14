@@ -91,8 +91,8 @@ namespace SchoolManagementSystemBusinessLayer
                 return false;
             }
 
-            System.Data.DataTable dt = GetAllFeeStructures();
-            foreach (System.Data.DataRow row in dt.Rows)
+            DataTable dt = GetAllFeeStructures();
+            foreach (DataRow row in dt.Rows)
             {
                 if ((int)row["FeeStructureID"] != this.FeeStructureID)
                 {
@@ -132,5 +132,11 @@ namespace SchoolManagementSystemBusinessLayer
         public static DataTable GetAllFeeStructures() => clsDAFeeStructure.GetAllFeeStructures();
         public static bool IsFeeStructureExist(int FeeStructureID) => clsDAFeeStructure.IsFeeStructureExist(FeeStructureID);
         public static bool DeleteFeeStructure(int FeeStructureID) => clsDAFeeStructure.DeleteFeeStructure(FeeStructureID);
+
+        // New methods for finance rework
+        public static DataTable GetFeeStructureByGradeLevelAndYear(int gradeLevelID, int academicYearID)
+            => clsDAFeeStructure.GetFeeStructureByGradeLevelAndYear(gradeLevelID, academicYearID);
+        public static DataTable GetAllFeeStructuresDetailed() => clsDAFeeStructure.GetAllFeeStructuresDetailed();
+        public static bool IsFeeStructureUsed(int feeStructureID) => clsDAFeeStructure.IsFeeStructureUsed(feeStructureID);
     }
 }

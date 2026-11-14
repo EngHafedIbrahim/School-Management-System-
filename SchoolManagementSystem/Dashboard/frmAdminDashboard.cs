@@ -12,6 +12,7 @@ using SchoolManagementSystem.Courses;
 using SchoolManagementSystem.Finance;
 using SchoolManagementSystem.Users;
 using SchoolManagementSystem.Reports;
+using SchoolManagementSystem.Attendance;
 
 namespace SchoolManagementSystem.Dashboard
 {
@@ -77,17 +78,19 @@ namespace SchoolManagementSystem.Dashboard
 
         private void BtnNavAttendance_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Attendance management will be implemented in Phase 4.", "Module Navigation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            frmAttendanceManagement frm = new frmAttendanceManagement();
+            frm.ShowDialog();
+            LoadDashboardStats();
         }
 
         private void BtnNavGrades_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Grades management will be implemented in Phase 4.", "Module Navigation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            clsUITheme.ShowArabicMessage("وحدة إدارة الدرجات والامتحانات ستكون متاحة في المرحلة القادمة.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void BtnNavFinance_Click(object sender, EventArgs e)
         {
-            frmPaymentTypes frm = new frmPaymentTypes();
+            frmPaymentsList frm = new frmPaymentsList();
             frm.ShowDialog();
             LoadDashboardStats();
         }

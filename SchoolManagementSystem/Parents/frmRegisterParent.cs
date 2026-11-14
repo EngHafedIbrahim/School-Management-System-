@@ -20,8 +20,8 @@ namespace SchoolManagementSystem.Parents
             _ParentID = parentID;
             _Mode = (_ParentID == -1) ? enMode.AddNew : enMode.Update;
 
-            this.Text = _Mode == enMode.AddNew ? "Register New Parent" : "Edit Parent Details";
-            lblHeaderTitle.Text = _Mode == enMode.AddNew ? "Register Parent / Guardian" : "Edit Parent Information";
+            this.Text = _Mode == enMode.AddNew ? "تسجيل ولي أمر جديد" : "تعديل بيانات ولي الأمر";
+            lblHeaderTitle.Text = _Mode == enMode.AddNew ? "تسجيل بيانات ولي أمر جديد" : "تعديل بيانات ولي الأمر";
 
             clsUITheme.StylePrimaryButton(btnSave);
             clsUITheme.StyleSecondaryButton(btnCancel);
@@ -34,17 +34,19 @@ namespace SchoolManagementSystem.Parents
             if (_Mode == enMode.AddNew)
             {
                 _Parent = new clsParent();
+                lblID.Text = "تلقائي";
                 return;
             }
 
             _Parent = clsParent.Find(_ParentID);
             if (_Parent == null)
             {
-                MessageBox.Show("Parent record not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                clsUITheme.ShowArabicMessage("لم يتم العثور على سجل ولي الأمر.", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
                 return;
             }
 
+            lblID.Text = _Parent.ParentID.ToString();
             txtFirstName.Text = _Parent.FirstName;
             txtLastName.Text = _Parent.LastName;
             txtPhoneNumber.Text = _Parent.PhoneNumber;
@@ -59,22 +61,22 @@ namespace SchoolManagementSystem.Parents
 
             if (string.IsNullOrWhiteSpace(txtFirstName.Text))
             {
-                errorProvider1.SetError(txtFirstName, "First name is required.");
+                errorProvider1.SetError(txtFirstName, "الاسم الأول مطلوب.");
                 isValid = false;
             }
             if (string.IsNullOrWhiteSpace(txtLastName.Text))
             {
-                errorProvider1.SetError(txtLastName, "Last name is required.");
+                errorProvider1.SetError(txtLastName, "اسم العائلة / اللقب مطلوب.");
                 isValid = false;
             }
             if (string.IsNullOrWhiteSpace(txtPhoneNumber.Text))
             {
-                errorProvider1.SetError(txtPhoneNumber, "Phone number is required.");
+                errorProvider1.SetError(txtPhoneNumber, "رقم الهاتف مطلوب.");
                 isValid = false;
             }
             if (string.IsNullOrWhiteSpace(txtEmail.Text) || !txtEmail.Text.Contains("@"))
             {
-                errorProvider1.SetError(txtEmail, "Valid email address is required.");
+                errorProvider1.SetError(txtEmail, "يرجى إدخال بريد إلكتروني صحيح.");
                 isValid = false;
             }
 
@@ -99,18 +101,18 @@ namespace SchoolManagementSystem.Parents
                 {
                     _ParentID = _Parent.ParentID;
                     _Mode = enMode.Update;
-                    MessageBox.Show("Parent saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    clsUITheme.ShowArabicMessage("تم حفظ بيانات ولي الأمر بنجاح.", "تمت العملية", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Failed to save parent.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    clsUITheme.ShowArabicMessage("فشل حفظ بيانات ولي الأمر.", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Validation error:\n" + ex.Message, "Constraint Violation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                clsUITheme.ShowArabicMessage("خطأ في التحقق من البيانات:\n" + ex.Message, "قيد النظام", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

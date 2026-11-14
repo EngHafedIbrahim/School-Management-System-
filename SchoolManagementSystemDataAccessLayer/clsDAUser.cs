@@ -7,7 +7,7 @@ namespace SchoolManagementSystemDataAccessLayer
 {
     public static class clsDAUser
     {
-        public static bool Find(int UserID, ref string Username, ref string PasswordHash, ref string Email, ref string Status, ref string UserType, ref int? ReferenceID, ref DateTime CreatedAt, ref DateTime UpdatedAt)
+        public static bool Find(int UserID, ref string Username, ref string PasswordHash, ref string Email, ref bool IsActive, ref string UserType, ref int? ReferenceID, ref DateTime CreatedAt, ref DateTime UpdatedAt)
         {
             bool isFound = false;
             try
@@ -27,7 +27,7 @@ namespace SchoolManagementSystemDataAccessLayer
                                                                 Username = reader["Username"] != DBNull.Value ? (string)reader["Username"] : "";
                                 PasswordHash = reader["PasswordHash"] != DBNull.Value ? (string)reader["PasswordHash"] : "";
                                 Email = reader["Email"] != DBNull.Value ? (string)reader["Email"] : "";
-                                Status = reader["Status"] != DBNull.Value ? (string)reader["Status"] : "";
+                                IsActive = reader["IsActive"] != DBNull.Value ? (bool)reader["IsActive"] : false;
                                 UserType = reader["UserType"] != DBNull.Value ? (string)reader["UserType"] : "";
                                 ReferenceID = reader["ReferenceID"] != DBNull.Value ? (int?)reader["ReferenceID"] : null;
                                 CreatedAt = (DateTime)reader["CreatedAt"];
@@ -44,7 +44,7 @@ namespace SchoolManagementSystemDataAccessLayer
             return isFound;
         }
 
-        public static int GetUserInfoByUserNameAndPass( string Username, string PasswordHash, ref string Email, ref string Status, ref string UserType, ref int? ReferenceID, ref DateTime CreatedAt, ref DateTime UpdatedAt)
+        public static int GetUserInfoByUserNameAndPass( string Username, string PasswordHash, ref string Email, ref bool IsActive, ref string UserType, ref int? ReferenceID, ref DateTime CreatedAt, ref DateTime UpdatedAt)
         {
             bool isFound = false;
 
@@ -68,7 +68,7 @@ namespace SchoolManagementSystemDataAccessLayer
                                 //Username = reader["Username"] != DBNull.Value ? (string)reader["Username"] : "";
                                 //PasswordHash = reader["PasswordHash"] != DBNull.Value ? (string)reader["PasswordHash"] : "";
                                 Email = reader["Email"] != DBNull.Value ? (string)reader["Email"] : "";
-                                Status = reader["Status"] != DBNull.Value ? (string)reader["Status"] : "";
+                                IsActive = reader["IsActive"] != DBNull.Value ? (bool)reader["IsActive"] : false;
                                 UserType = reader["UserType"] != DBNull.Value ? (string)reader["UserType"] : "";
                                 ReferenceID = reader["ReferenceID"] != DBNull.Value ? (int?)reader["ReferenceID"] : null;
                                 CreatedAt = (DateTime)reader["CreatedAt"];
@@ -85,22 +85,22 @@ namespace SchoolManagementSystemDataAccessLayer
             return UserID;
         }
 
-        public static int AddNewUser(string Username, string PasswordHash, string Email, string Status, string UserType, int? ReferenceID, DateTime CreatedAt, DateTime UpdatedAt)
+        public static int AddNewUser(string Username, string PasswordHash, string Email, bool IsActive, string UserType, int? ReferenceID, DateTime CreatedAt, DateTime UpdatedAt)
         {
             int UserID = -1;
             try
             {
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
                 {
-                    string query = @"INSERT INTO [User] (Username, PasswordHash, Email, Status, UserType, ReferenceID, CreatedAt, UpdatedAt) 
-                                     VALUES (@Username, @PasswordHash, @Email, @Status, @UserType, @ReferenceID, @CreatedAt, @UpdatedAt);
+                    string query = @"INSERT INTO [User] (Username, PasswordHash, Email, IsActive, UserType, ReferenceID, CreatedAt, UpdatedAt) 
+                                     VALUES (@Username, @PasswordHash, @Email, @IsActive, @UserType, @ReferenceID, @CreatedAt, @UpdatedAt);
                                      SELECT SCOPE_IDENTITY();";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                                                 command.Parameters.AddWithValue("@Username", (object)Username ?? DBNull.Value);
                         command.Parameters.AddWithValue("@PasswordHash", (object)PasswordHash ?? DBNull.Value);
                         command.Parameters.AddWithValue("@Email", (object)Email ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@Status", (object)Status ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@IsActive", (object)IsActive ?? DBNull.Value);
                         command.Parameters.AddWithValue("@UserType", (object)UserType ?? DBNull.Value);
                         command.Parameters.AddWithValue("@ReferenceID", (object)ReferenceID ?? DBNull.Value);
                         command.Parameters.AddWithValue("@CreatedAt", CreatedAt);
@@ -121,7 +121,7 @@ namespace SchoolManagementSystemDataAccessLayer
             return UserID;
         }
 
-        public static bool UpdateUser(int UserID, string Username, string PasswordHash, string Email, string Status, string UserType, int? ReferenceID, DateTime CreatedAt, DateTime UpdatedAt)
+        public static bool UpdateUser(int UserID, string Username, string PasswordHash, string Email, bool IsActive, string UserType, int? ReferenceID, DateTime CreatedAt, DateTime UpdatedAt)
         {
             int rowsAffected = 0;
             try
@@ -129,7 +129,7 @@ namespace SchoolManagementSystemDataAccessLayer
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
                 {
                     string query = @"UPDATE [User] 
-                                     SET Username = @Username, PasswordHash = @PasswordHash, Email = @Email, Status = @Status, UserType = @UserType, ReferenceID = @ReferenceID, CreatedAt = @CreatedAt, UpdatedAt = @UpdatedAt
+                                     SET Username = @Username, PasswordHash = @PasswordHash, Email = @Email, IsActive = @IsActive, UserType = @UserType, ReferenceID = @ReferenceID, CreatedAt = @CreatedAt, UpdatedAt = @UpdatedAt
                                      WHERE UserID = @UserID";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -137,7 +137,7 @@ namespace SchoolManagementSystemDataAccessLayer
                                                 command.Parameters.AddWithValue("@Username", (object)Username ?? DBNull.Value);
                         command.Parameters.AddWithValue("@PasswordHash", (object)PasswordHash ?? DBNull.Value);
                         command.Parameters.AddWithValue("@Email", (object)Email ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@Status", (object)Status ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@IsActive", (object)IsActive ?? DBNull.Value);
                         command.Parameters.AddWithValue("@UserType", (object)UserType ?? DBNull.Value);
                         command.Parameters.AddWithValue("@ReferenceID", (object)ReferenceID ?? DBNull.Value);
                         command.Parameters.AddWithValue("@CreatedAt", CreatedAt);
@@ -239,7 +239,7 @@ namespace SchoolManagementSystemDataAccessLayer
                 {
                     string query = @"
                         SELECT 
-                            u.UserID, u.Username, u.Email, u.UserType, u.Status,
+                            u.UserID, u.Username, u.Email, u.UserType, u.IsActive,
                             u.ReferenceID, u.CreatedAt,
                             CASE 
                                 WHEN u.UserType = 'Teacher' THEN (SELECT t.FirstName + ' ' + t.LastName FROM Teacher t WHERE t.TeacherID = u.ReferenceID)
@@ -315,18 +315,18 @@ namespace SchoolManagementSystemDataAccessLayer
             return isFound;
         }
 
-        public static bool UpdateUserStatus(int userID, string status)
+        public static bool UpdateUserIsActive(int userID, bool IsActive)
         {
             int rowsAffected = 0;
             try
             {
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
                 {
-                    string query = "UPDATE [User] SET Status = @Status, UpdatedAt = GETDATE() WHERE UserID = @UserID";
+                    string query = "UPDATE [User] SET IsActive = @IsActive, UpdatedAt = GETDATE() WHERE UserID = @UserID";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@UserID", userID);
-                        command.Parameters.AddWithValue("@Status", status);
+                        command.Parameters.AddWithValue("@IsActive", IsActive);
                         connection.Open();
                         rowsAffected = command.ExecuteNonQuery();
                     }

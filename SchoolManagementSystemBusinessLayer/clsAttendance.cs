@@ -76,7 +76,8 @@ namespace SchoolManagementSystemBusinessLayer
             return clsDAAttendance.UpdateAttendance(this.AttendanceID, this.StudentID, this.ClassID, this.SessionID, this.Date, this.Status, this.Note, this.CreatedBy, this.CreatedAt);
         }
 
-        
+        // FIXED: Added 'Excused' as valid status
+        // FIXED: Replaced expensive full-table scan with targeted SQL query
         public bool Validate(out string errorMessage)
         {
             errorMessage = "";
@@ -86,24 +87,18 @@ namespace SchoolManagementSystemBusinessLayer
                 errorMessage = "Cannot record attendance for a future date.";
                 return false;
             }
-            if (Status != "Present" && Status != "Absent" && Status != "Late")
+            if (Status != "Present" && Status != "Absent" && Status != "Late" && Status != "Excused")
             {
-                errorMessage = "Status must be Present, Absent, or Late.";
+                errorMessage = "Status must be Present, Absent, Late, or Excused.";
                 return false;
             }
 
-            System.Data.DataTable dt = GetAllAttendances();
-            foreach (System.Data.DataRow row in dt.Rows)
+            if (IsDuplicateAttendance(this.StudentID, this.SessionID, this.Date, this.AttendanceID))
             {
-                if ((int)row["AttendanceID"] != this.AttendanceID)
-                {
-                    if ((int)row["StudentID"] == this.StudentID && (int)row["SessionID"] == this.SessionID && ((DateTime)row["Date"]).Date == this.Date.Date)
-                    {
-                        errorMessage = "Duplicate attendance record for this student on the same session and date.";
-                        return false;
-                    }
-                }
+                errorMessage = "Duplicate attendance record for this student on the same session and date.";
+                return false;
             }
+
             return true;
         }
 
@@ -136,11 +131,14 @@ namespace SchoolManagementSystemBusinessLayer
     
         public static DataTable GetAttendanceByStudentID(int studentID) => clsDAAttendance.GetAttendanceByStudentID(studentID);
 
-
         public static DataTable GetAttendanceByClassID(int classID) => clsDAAttendance.GetAttendanceByClassID(classID);
-
 
         public static DataTable GetAttendanceSummaryByStudent(int studentID, int academicYearID) => clsDAAttendance.GetAttendanceSummaryByStudent(studentID, academicYearID);
 
-}
+        public static DataTable GetClassAttendanceByDateAndSession(int classID, DateTime date, int sessionID) => clsDAAttendance.GetClassAttendanceByDateAndSession(classID, date, sessionID);
+        public static bool SaveBulkAttendance(DataTable dtAttendanceRecords, int createdBy) => clsDAAttendance.SaveBulkAttendance(dtAttendanceRecords, createdBy);
+
+        // NEW: Targeted duplicate check — delegates to DAL
+        public static bool IsDuplicateAttendance(int studentID, int sessionID, DateTime date, int excludeAttendanceID) => clsDAAttendance.IsDuplicateAttendance(studentID, sessionID, date, excludeAttendanceID);
+    }
 }

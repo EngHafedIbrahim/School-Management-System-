@@ -23,8 +23,6 @@ namespace SchoolManagementSystem.Parents
             clsUITheme.StyleSecondaryButton(btnViewStudent);
             clsUITheme.StyleDangerButton(btnUnlinkStudent);
             clsUITheme.StyleSecondaryButton(btnClose);
-
-            //LoadParentData();
         }
 
         public void LoadParentData()
@@ -32,7 +30,7 @@ namespace SchoolManagementSystem.Parents
             _Parent = clsParent.Find(_ParentID);
             if (_Parent == null)
             {
-                MessageBox.Show("Parent record not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                clsUITheme.ShowArabicMessage("لم يتم العثور على سجل ولي الأمر.", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
                 return;
             }
@@ -40,22 +38,38 @@ namespace SchoolManagementSystem.Parents
             lblValParentID.Text = _Parent.ParentID.ToString();
             lblValFullName.Text = $"{_Parent.FirstName} {_Parent.LastName}";
             lblValPhone.Text = _Parent.PhoneNumber;
-            lblValEmail.Text = _Parent.Email;
-            lblValAddress.Text = string.IsNullOrEmpty(_Parent.Address) ? "N/A" : _Parent.Address;
+            lblValEmail.Text = string.IsNullOrEmpty(_Parent.Email) ? "غير متوفر" : _Parent.Email;
+            lblValAddress.Text = string.IsNullOrEmpty(_Parent.Address) ? "غير متوفر" : _Parent.Address;
 
             RefreshChildren();
         }
 
         private void RefreshChildren()
         {
-
             dgvChildren.DataSource = clsStudentParent.GetStudentsByParentID(_ParentID);
 
-
             if (dgvChildren.Columns.Contains("StudentParentID"))
-                dgvChildren.Columns["StudentParentID"].Visible = true;
+                dgvChildren.Columns["StudentParentID"].Visible = false;
             if (dgvChildren.Columns.Contains("StudentID"))
-                dgvChildren.Columns["StudentID"].Width = 80;
+            {
+                dgvChildren.Columns["StudentID"].HeaderText = "رقم الطالب";
+                dgvChildren.Columns["StudentID"].Width = 90;
+            }
+            if (dgvChildren.Columns.Contains("StudentName"))
+            {
+                dgvChildren.Columns["StudentName"].HeaderText = "اسم الطالب";
+                dgvChildren.Columns["StudentName"].Width = 200;
+            }
+            if (dgvChildren.Columns.Contains("Relationship"))
+            {
+                dgvChildren.Columns["Relationship"].HeaderText = "صلة القرابة";
+                dgvChildren.Columns["Relationship"].Width = 120;
+            }
+            if (dgvChildren.Columns.Contains("IsPrimaryContact"))
+            {
+                dgvChildren.Columns["IsPrimaryContact"].HeaderText = "جهة اتصال رئيسية";
+                dgvChildren.Columns["IsPrimaryContact"].Width = 140;
+            }
             
             if (dgvChildren.Rows.Count > 0)
                 dgvChildren.Rows[0].Selected = true;
@@ -79,27 +93,24 @@ namespace SchoolManagementSystem.Parents
             }
         }
 
-        private int GetSelectedParentID()
+        private int GetSelectedStudentID()
         {
             if (dgvChildren.CurrentRow == null) return -1;
-
             return Convert.ToInt32(dgvChildren.CurrentRow.Cells["StudentID"].Value);
         }
 
         private void BtnViewStudent_Click(object sender, EventArgs e)
         {
-            int StudentID = GetSelectedParentID();
-            if (StudentID == -1)
+            int studentID = GetSelectedStudentID();
+            if (studentID == -1)
             {
-                MessageBox.Show("Please select a student to view.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clsUITheme.ShowArabicMessage("يرجى تحديد طالب من القائمة أولاً.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
-            int studentID = Convert.ToInt32(dgvChildren.CurrentRow.Cells["StudentID"].Value);
             frmStudentProfile frm = new frmStudentProfile(studentID);
             frm.ShowDialog();
             RefreshChildren();
-
         }
 
         private void DgvChildren_DoubleClick(object sender, EventArgs e)
@@ -111,27 +122,25 @@ namespace SchoolManagementSystem.Parents
         {
             if (dgvChildren.CurrentRow == null)
             {
-                MessageBox.Show("Please select a student link to remove.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clsUITheme.ShowArabicMessage("يرجى تحديد طالب لفك ارتباطه.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
             int studentParentID = Convert.ToInt32(dgvChildren.CurrentRow.Cells["StudentParentID"].Value);
-            string studentName = dgvChildren.CurrentRow.Cells["StudentName"].Value.ToString();
+            string studentName = dgvChildren.CurrentRow.Cells["StudentName"].Value?.ToString() ?? "";
 
-            if (MessageBox.Show($"Are you sure you want to remove the link between this parent and student '{studentName}'?", "Confirm Unlink", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (clsUITheme.ShowArabicMessage($"هل أنت متأكد من فك ارتباط الطالب '{studentName}' بولي الأمر هذا؟", "تأكيد فك الارتباط", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 if (clsStudentParent.DeleteStudentParent(studentParentID))
                 {
-                    MessageBox.Show("Student link removed successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    clsUITheme.ShowArabicMessage("تم فك ارتباط الطالب بنجاح.", "تمت العملية", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RefreshChildren();
                 }
                 else
                 {
-                    MessageBox.Show("Failed to remove link.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    clsUITheme.ShowArabicMessage("فشل فك ارتباط الطالب.", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
-
         }
 
         private void BtnClose_Click(object sender, EventArgs e)

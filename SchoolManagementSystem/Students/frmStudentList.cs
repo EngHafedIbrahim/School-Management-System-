@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using SchoolManagementSystemBusinessLayer;
 using SchoolManagementSystem.Globle_Classes;
+using SchoolManagementSystem.Enrollment;
 
 namespace SchoolManagementSystem.Students
 {
@@ -11,112 +12,134 @@ namespace SchoolManagementSystem.Students
     {
         private DataTable _dtStudents;
         private DataView _dvStudents;
+        private bool _showingUnEnrolled = false;
 
         public frmStudentList()
         {
             InitializeComponent();
             clsUITheme.StyleDataGridView(dgvStudents);
-            clsUITheme.StyleSuccessButton(btnAddStudent);
-            clsUITheme.StylePrimaryButton(btnViewProfile);
-            clsUITheme.StyleSecondaryButton(btnEdit);
-            clsUITheme.StyleDangerButton(btnDelete);
-            clsUITheme.StyleSecondaryButton(btnRefresh);
+            clsUITheme.AddHeaderBottomLine(pnlHeader);
+
+            clsUITheme.AddHoverEffect(btnAddStudent);
+            clsUITheme.AddHoverEffect(btnViewProfile);
+            clsUITheme.AddHoverEffect(btnDelete);
+            clsUITheme.AddHoverEffectOutline(btnEdit);
+            clsUITheme.AddHoverEffectOutline(btnRefresh);
+            clsUITheme.AddHoverEffectOutline(btnShowUnEnrolled);
+
+            clsUITheme.StyleTextBox(txtSearch);
+
             cbFilterGender.SelectedIndex = 0;
-           // LoadStudentsList();
+
+            this.KeyPreview = true;
+            this.KeyDown += FrmStudentList_KeyDown;
+            this.Resize += (s, e) => { if (_dtStudents != null) UpdateStatCards(); };
         }
 
         private void LoadStudentsList()
         {
             _dtStudents = clsStudent.GetAllStudents();
-
             _dvStudents = _dtStudents.DefaultView;
-
             dgvStudents.DataSource = _dvStudents;
 
             if (dgvStudents.Rows.Count > 0)
             {
-                // dgvStudents.Columns[0]
-                dgvStudents.Columns[0].HeaderText = "StudentID";
-                dgvStudents.Columns[0].Width = 120;
-
-                // dgvStudents.Columns[1]
-                dgvStudents.Columns[1].HeaderText = "FullName";
-                dgvStudents.Columns[1].Width = 200;
-
-                // dgvStudents.Columns[2]
-                dgvStudents.Columns[2].HeaderText = "NationalID";
-                dgvStudents.Columns[2].Width = 120;
-
-                // dgvStudents.Columns[3]
-                dgvStudents.Columns[3].HeaderText = "DateOfBirth";
-                dgvStudents.Columns[3].Width = 120;
-
-                // dgvStudents.Columns[4]
-                dgvStudents.Columns[4].HeaderText = "GenderID";
-                dgvStudents.Columns[4].Width = 80;
-
-                // dgvStudents.Columns[5]
-                dgvStudents.Columns[5].HeaderText = "Nationality";
-                dgvStudents.Columns[5].Width = 120;
-
-                // dgvStudents.Columns[6]
-                dgvStudents.Columns[6].HeaderText = "BloodType";
-                dgvStudents.Columns[6].Width = 90;
-
-                // dgvStudents.Columns[7]
-                dgvStudents.Columns[7].HeaderText = "Address";
-                dgvStudents.Columns[7].Width = 200;
-
-                // dgvStudents.Columns[8]
-                dgvStudents.Columns[8].HeaderText = "PhoneNumber";
-                dgvStudents.Columns[8].Width = 130;
-
-                // dgvStudents.Columns[9]
-                dgvStudents.Columns[9].HeaderText = "Email";
-                dgvStudents.Columns[9].Width = 200;
-
-                // dgvStudents.Columns[10]
-                dgvStudents.Columns[10].HeaderText = "AdmissionNo";
-                dgvStudents.Columns[10].Width = 120;
-
-                // dgvStudents.Columns[11]
-                dgvStudents.Columns[11].HeaderText = "AdmissionDate";
-                dgvStudents.Columns[11].Width = 120;
-
-                // dgvStudents.Columns[12]
-                dgvStudents.Columns[12].HeaderText = "PreviousSchool";
-                dgvStudents.Columns[12].Width = 160;
-
-                // dgvStudents.Columns[13]
-                dgvStudents.Columns[13].HeaderText = "HealthStatus";
-                dgvStudents.Columns[13].Width = 140;
-
-                // dgvStudents.Columns[14]
-                dgvStudents.Columns[14].HeaderText = "ProfileImageURL";
-                dgvStudents.Columns[14].Width = 160;
-
-                // dgvStudents.Columns[15]
-                dgvStudents.Columns[15].HeaderText = "CreatedBy";
-                dgvStudents.Columns[15].Width = 100;
-
-                // dgvStudents.Columns[16]
-                dgvStudents.Columns[16].HeaderText = "CreatedAt";
-                dgvStudents.Columns[16].Width = 120;
-
-
-
+                if (dgvStudents.Columns.Contains("StudentID"))
+                {
+                    dgvStudents.Columns["StudentID"].HeaderText = "رقم الطالب";
+                    dgvStudents.Columns["StudentID"].Width = 110;
+                }
+                if (dgvStudents.Columns.Contains("FullName"))
+                {
+                    dgvStudents.Columns["FullName"].HeaderText = "الاسم الكامل";
+                    dgvStudents.Columns["FullName"].Width = 210;
+                }
+                if (dgvStudents.Columns.Contains("NationalID"))
+                {
+                    dgvStudents.Columns["NationalID"].HeaderText = "الرقم الوطني";
+                    dgvStudents.Columns["NationalID"].Width = 130;
+                }
+                if (dgvStudents.Columns.Contains("DateOfBirth"))
+                {
+                    dgvStudents.Columns["DateOfBirth"].HeaderText = "تاريخ الميلاد";
+                    dgvStudents.Columns["DateOfBirth"].Width = 120;
+                    dgvStudents.Columns["DateOfBirth"].DefaultCellStyle.Format = "yyyy-MM-dd";
+                }
+                if (dgvStudents.Columns.Contains("GenderID"))
+                {
+                    dgvStudents.Columns["GenderID"].HeaderText = "الجنس";
+                    dgvStudents.Columns["GenderID"].Width = 80;
+                }
+                if (dgvStudents.Columns.Contains("Gender"))
+                {
+                    dgvStudents.Columns["Gender"].HeaderText = "الجنس";
+                    dgvStudents.Columns["Gender"].Width = 80;
+                }
+                if (dgvStudents.Columns.Contains("Nationality"))
+                {
+                    dgvStudents.Columns["Nationality"].HeaderText = "الجنسية";
+                    dgvStudents.Columns["Nationality"].Width = 120;
+                }
+                if (dgvStudents.Columns.Contains("BloodType"))
+                {
+                    dgvStudents.Columns["BloodType"].HeaderText = "فصيلة الدم";
+                    dgvStudents.Columns["BloodType"].Width = 110;
+                }
+                if (dgvStudents.Columns.Contains("Address"))
+                {
+                    dgvStudents.Columns["Address"].HeaderText = "العنوان";
+                    dgvStudents.Columns["Address"].Width = 180;
+                }
+                if (dgvStudents.Columns.Contains("PhoneNumber"))
+                {
+                    dgvStudents.Columns["PhoneNumber"].HeaderText = "رقم الهاتف";
+                    dgvStudents.Columns["PhoneNumber"].Width = 130;
+                }
+                if (dgvStudents.Columns.Contains("Email"))
+                {
+                    dgvStudents.Columns["Email"].HeaderText = "البريد الإلكتروني";
+                    dgvStudents.Columns["Email"].Width = 180;
+                }
+                if (dgvStudents.Columns.Contains("AdmissionNo"))
+                {
+                    dgvStudents.Columns["AdmissionNo"].HeaderText = "رقم القبول";
+                    dgvStudents.Columns["AdmissionNo"].Width = 130;
+                }
+                if (dgvStudents.Columns.Contains("AdmissionDate"))
+                {
+                    dgvStudents.Columns["AdmissionDate"].HeaderText = "تاريخ القبول";
+                    dgvStudents.Columns["AdmissionDate"].Width = 130;
+                    dgvStudents.Columns["AdmissionDate"].DefaultCellStyle.Format = "yyyy-MM-dd";
+                }
+                if (dgvStudents.Columns.Contains("PreviousSchool"))
+                {
+                    dgvStudents.Columns["PreviousSchool"].HeaderText = "المدرسة السابقة";
+                    dgvStudents.Columns["PreviousSchool"].Width = 160;
+                }
+                if (dgvStudents.Columns.Contains("HealthStatus"))
+                {
+                    dgvStudents.Columns["HealthStatus"].HeaderText = "الحالة الصحية";
+                    dgvStudents.Columns["HealthStatus"].Width = 140;
+                }
+                if (dgvStudents.Columns.Contains("ProfileImageURL"))
+                {
+                    dgvStudents.Columns["ProfileImageURL"].HeaderText = "رابط الصورة";
+                    dgvStudents.Columns["ProfileImageURL"].Visible = false;
+                }
+                if (dgvStudents.Columns.Contains("CreatedBy"))
+                {
+                    dgvStudents.Columns["CreatedBy"].HeaderText = "أنشئ بواسطة";
+                    dgvStudents.Columns["CreatedBy"].Width = 100;
+                }
+                if (dgvStudents.Columns.Contains("CreatedAt"))
+                {
+                    dgvStudents.Columns["CreatedAt"].HeaderText = "تاريخ الإضافة";
+                    dgvStudents.Columns["CreatedAt"].Width = 130;
+                }
             }
-            //if (dgvStudents.Columns.Contains("StudentID"))
-            //    dgvStudents.Columns["StudentID"].Width = 90;
-            //if (dgvStudents.Columns.Contains("AdmissionNo"))
-            //    dgvStudents.Columns["AdmissionNo"].Width = 140;
-            //if (dgvStudents.Columns.Contains("Gender"))
-            //    dgvStudents.Columns["Gender"].Width = 90;
-            //if (dgvStudents.Columns.Contains("DateOfBirth"))
-            //    dgvStudents.Columns["DateOfBirth"].DefaultCellStyle.Format = "yyyy-MM-dd";
-
 
             UpdateCount();
+            UpdateStatCards();
         }
 
         private void ApplyFilter()
@@ -130,13 +153,14 @@ namespace SchoolManagementSystem.Students
 
             if (!string.IsNullOrEmpty(search))
             {
-                filter = $"(FullName LIKE '%{search}%' OR AdmissionNo LIKE '%{search}%')";
+                filter = $"(FullName LIKE '%{search}%' OR AdmissionNo LIKE '%{search}%' OR NationalID LIKE '%{search}%')";
             }
 
-            if (gender != null && gender != "All")
+            if (!string.IsNullOrEmpty(gender) && gender != "الكل" && gender != "All")
             {
+                string genderVal = gender == "ذكر" ? "Male" : (gender == "أنثى" ? "Female" : gender);
                 if (!string.IsNullOrEmpty(filter)) filter += " AND ";
-                filter += $"Gender = '{gender}'";
+                filter += $"(Gender = '{genderVal}' OR Gender = '{gender}')";
             }
 
             _dvStudents.RowFilter = filter;
@@ -145,7 +169,8 @@ namespace SchoolManagementSystem.Students
 
         private void UpdateCount()
         {
-            lblTotalCount.Text = $"Total Displayed Students: {_dvStudents?.Count ?? 0}";
+            lblTotalCount.Text = $"إجمالي الطلاب المعروضين: {_dvStudents?.Count ?? 0}";
+            clsUITheme.ShowEmptyState(dgvStudents, "لا يوجد طلاب مسجلون بعد.\nاضغط 'تسجيل طالب جديد' للبدء.");
         }
 
         private int GetSelectedStudentID()
@@ -166,6 +191,8 @@ namespace SchoolManagementSystem.Students
 
         private void BtnRefresh_Click(object sender, EventArgs e)
         {
+            txtSearch.Text = "";
+            cbFilterGender.SelectedIndex = 0;
             LoadStudentsList();
         }
 
@@ -174,7 +201,7 @@ namespace SchoolManagementSystem.Students
             frmRegisterStudent frm = new frmRegisterStudent();
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                //LoadStudentsList();
+                LoadStudentsList();
             }
         }
 
@@ -183,7 +210,7 @@ namespace SchoolManagementSystem.Students
             int studentID = GetSelectedStudentID();
             if (studentID == -1)
             {
-                MessageBox.Show("Please select a student from the list.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clsUITheme.ShowArabicMessage("يرجى تحديد طالب من القائمة أولاً.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -202,7 +229,7 @@ namespace SchoolManagementSystem.Students
             int studentID = GetSelectedStudentID();
             if (studentID == -1)
             {
-                MessageBox.Show("Please select a student to edit.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clsUITheme.ShowArabicMessage("يرجى تحديد طالب من القائمة لتعديله.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -218,29 +245,29 @@ namespace SchoolManagementSystem.Students
             int studentID = GetSelectedStudentID();
             if (studentID == -1)
             {
-                MessageBox.Show("Please select a student to delete.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clsUITheme.ShowArabicMessage("يرجى تحديد طالب من القائمة للحذف.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
             string studentName = dgvStudents.CurrentRow.Cells["FullName"].Value.ToString();
 
-            if (MessageBox.Show($"Are you sure you want to delete student '{studentName}' (ID: {studentID})?\nThis action will check all linked dependencies.", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (clsUITheme.ShowArabicMessage($"هل أنت متأكد من رغبتك في حذف الطالب '{studentName}' (رقم المعرف: {studentID})?\nسيقوم النظام بالتحقق من عدم وجود أي سجلات مرتبطة به (تسجيل، فواتير، درجات).", "تأكيد الحذف", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 try
                 {
                     if (clsStudent.DeleteStudent(studentID))
                     {
-                        MessageBox.Show("Student deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        clsUITheme.ShowArabicMessage("تم حذف سجل الطالب بنجاح.", "تمت العملية", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadStudentsList();
                     }
                     else
                     {
-                        MessageBox.Show("Cannot delete student. The student has active records (Enrollment, Invoices, Grades, or Parent links).", "Constraint Restriction", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        clsUITheme.ShowArabicMessage("لا يمكن حذف الطالب لوجود سجلات أكاديمية أو مالية مرتبطة به (تسجيل، فواتير، درجات أو أولياء أمور).", "قيد النظام", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error deleting student: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    clsUITheme.ShowArabicMessage("حدث خطأ أثناء حذف الطالب: " + ex.Message, "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -248,6 +275,117 @@ namespace SchoolManagementSystem.Students
         private void FrmStudentList_Load(object sender, EventArgs e)
         {
             LoadStudentsList();
+        }
+
+        private void UpdateStatCards()
+        {
+            if (pnlStats == null) return;
+            pnlStats.Controls.Clear();
+
+            int total = _dtStudents?.Rows.Count ?? 0;
+            int males = 0, females = 0;
+
+            if (_dtStudents != null && _dtStudents.Columns.Contains("Gender"))
+            {
+                foreach (DataRow row in _dtStudents.Rows)
+                {
+                    string g = row["Gender"]?.ToString() ?? "";
+                    if (g == "Male" || g == "ذكر") males++;
+                    else if (g == "Female" || g == "أنثى") females++;
+                }
+            }
+
+            var cardTotal = clsUITheme.CreateStatCard("إجمالي الطلاب", total.ToString(), clsUITheme.PrimaryColor);
+            var cardMale = clsUITheme.CreateStatCard("ذكور", males.ToString(), clsUITheme.AccentColor);
+            var cardFemale = clsUITheme.CreateStatCard("إناث", females.ToString(), Color.FromArgb(124, 58, 120));
+            var cardUnEnrolled = clsUITheme.CreateStatCard("غير مقيدين", "...", clsUITheme.WarningColor);
+
+            try
+            {
+                int unEnrolled = clsStudent.GetUnEnrolledStudents().Rows.Count;
+                cardUnEnrolled.Controls[0].Text = unEnrolled.ToString();
+            }
+            catch { cardUnEnrolled.Controls[0].Text = "–"; }
+
+            int xPos = pnlStats.Width - 220;
+            foreach (var card in new[] { cardTotal, cardMale, cardFemale, cardUnEnrolled })
+            {
+                card.Location = new Point(xPos, 8);
+                pnlStats.Controls.Add(card);
+                xPos -= 216;
+            }
+        }
+
+        private void BtnShowUnEnrolled_Click(object sender, EventArgs e)
+        {
+            _showingUnEnrolled = !_showingUnEnrolled;
+
+            if (_showingUnEnrolled)
+            {
+                _dtStudents = clsStudent.GetUnEnrolledStudents();
+                _dvStudents = _dtStudents.DefaultView;
+                dgvStudents.DataSource = _dvStudents;
+                btnShowUnEnrolled.Text = "عرض الكل";
+                btnShowUnEnrolled.ForeColor = clsUITheme.SuccessColor;
+                lblHeaderTitle.Text = "الطلاب غير المقيدين في السنة الحالية";
+            }
+            else
+            {
+                LoadStudentsList();
+                btnShowUnEnrolled.Text = "غير المقيدين";
+                btnShowUnEnrolled.ForeColor = clsUITheme.DangerColor;
+                lblHeaderTitle.Text = "سجل وبيانات الطلاب";
+            }
+
+            UpdateCount();
+            UpdateStatCards();
+        }
+
+        private void CmsEnrollStudent_Click(object sender, EventArgs e)
+        {
+            int studentID = GetSelectedStudentID();
+            if (studentID == -1)
+            {
+                clsUITheme.ShowArabicMessage("يرجى تحديد طالب من القائمة أولاً.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            frmEnrollStudent frm = new frmEnrollStudent();
+            frm.PreSelectStudent(studentID);
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                LoadStudentsList();
+            }
+        }
+
+        private void FrmStudentList_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.F5:
+                    BtnRefresh_Click(sender, e);
+                    e.Handled = true;
+                    break;
+                case Keys.Delete:
+                    BtnDelete_Click(sender, e);
+                    e.Handled = true;
+                    break;
+                case Keys.Enter:
+                    BtnViewProfile_Click(sender, e);
+                    e.Handled = true;
+                    break;
+                case Keys.N:
+                    if (e.Control)
+                    {
+                        BtnAddStudent_Click(sender, e);
+                        e.Handled = true;
+                    }
+                    break;
+                case Keys.Escape:
+                    this.Close();
+                    e.Handled = true;
+                    break;
+            }
         }
     }
 }

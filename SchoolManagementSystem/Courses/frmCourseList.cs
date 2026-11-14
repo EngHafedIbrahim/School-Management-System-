@@ -15,13 +15,12 @@ namespace SchoolManagementSystem.Courses
         {
             InitializeComponent();
 
+            clsUITheme.ApplyRTL(this);
             clsUITheme.StyleDataGridView(dgvCourses);
             clsUITheme.StyleSuccessButton(btnAddCourse);
             clsUITheme.StyleSecondaryButton(btnEdit);
             clsUITheme.StyleDangerButton(btnDelete);
             clsUITheme.StyleSecondaryButton(btnRefresh);
-
-            // LoadCourses();
         }
 
         private void LoadCourses()
@@ -32,18 +31,28 @@ namespace SchoolManagementSystem.Courses
 
             if (dgvCourses.Rows.Count > 0)
             {
-                dgvCourses.Columns["CourseID"].HeaderText = "ID";
-                dgvCourses.Columns["CourseID"].Width = 100;
-
-                dgvCourses.Columns["Name"].HeaderText = "Subject Name";
-                dgvCourses.Columns["Name"].Width = 240;
-
-                dgvCourses.Columns["CreditHours"].HeaderText = "Credit Hours";
-                dgvCourses.Columns["CreditHours"].Width = 160;
-
-                dgvCourses.Columns["Description"].HeaderText = "Description";
-                dgvCourses.Columns["Description"].Width = 300;
+                if (dgvCourses.Columns.Contains("CourseID"))
+                {
+                    dgvCourses.Columns["CourseID"].HeaderText = "الرقم";
+                    dgvCourses.Columns["CourseID"].Width = 90;
+                }
+                if (dgvCourses.Columns.Contains("Name"))
+                {
+                    dgvCourses.Columns["Name"].HeaderText = "اسم المادة";
+                    dgvCourses.Columns["Name"].Width = 240;
+                }
+                if (dgvCourses.Columns.Contains("CreditHours"))
+                {
+                    dgvCourses.Columns["CreditHours"].HeaderText = "الساعات الأسبوعية";
+                    dgvCourses.Columns["CreditHours"].Width = 150;
+                }
+                if (dgvCourses.Columns.Contains("Description"))
+                {
+                    dgvCourses.Columns["Description"].HeaderText = "الوصف والملاحظات";
+                    dgvCourses.Columns["Description"].Width = 300;
+                }
             }
+
             if (dgvCourses.Columns.Contains("CreatedBy")) dgvCourses.Columns["CreatedBy"].Visible = false;
             if (dgvCourses.Columns.Contains("UpdatedBy")) dgvCourses.Columns["UpdatedBy"].Visible = false;
             if (dgvCourses.Columns.Contains("CreatedAt")) dgvCourses.Columns["CreatedAt"].Visible = false;
@@ -69,9 +78,9 @@ namespace SchoolManagementSystem.Courses
                     _dvCourses.RowFilter = $"Name LIKE '%{search}%' OR Description LIKE '%{search}%'";
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                clsUITheme.ShowArabicMessage(ex.Message, "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             UpdateCount();
@@ -79,7 +88,7 @@ namespace SchoolManagementSystem.Courses
 
         private void UpdateCount()
         {
-            lblTotalCount.Text = $"Total Courses: {_dvCourses?.Count ?? 0}";
+            lblTotalCount.Text = $"إجمالي المواد والمقررات: {_dvCourses?.Count ?? 0}";
         }
 
         private int GetSelectedCourseID()
@@ -95,6 +104,7 @@ namespace SchoolManagementSystem.Courses
 
         private void BtnRefresh_Click(object sender, EventArgs e)
         {
+            txtSearch.Text = string.Empty;
             LoadCourses();
         }
 
@@ -112,7 +122,7 @@ namespace SchoolManagementSystem.Courses
             int courseID = GetSelectedCourseID();
             if (courseID == -1)
             {
-                MessageBox.Show("Please select a course to edit.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clsUITheme.ShowArabicMessage("يرجى تحديد مادة دراسية للتعديل أولاً.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -133,29 +143,33 @@ namespace SchoolManagementSystem.Courses
             int courseID = GetSelectedCourseID();
             if (courseID == -1)
             {
-                MessageBox.Show("Please select a course to delete.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clsUITheme.ShowArabicMessage("يرجى تحديد مادة دراسية للحذف أولاً.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
             string courseName = dgvCourses.CurrentRow.Cells["Name"].Value.ToString();
 
-            if (MessageBox.Show($"Are you sure you want to delete course '{courseName}' (ID: {courseID})?\nThis action verifies that no assigned classes or grades depend on it.", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (clsUITheme.ShowArabicMessage(
+                $"هل أنت متأكد من رغبتك في حذف المادة الدراسية '{courseName}' (رقم: {courseID})؟\nسيتم التحقق من عدم وجود جداول أو درجات مرتبطة بها.",
+                "تأكيد الحذف",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 try
                 {
                     if (clsCourse.DeleteCourse(courseID))
                     {
-                        MessageBox.Show("Course deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        clsUITheme.ShowArabicMessage("تم حذف المادة الدراسية بنجاح.", "نجاح العملية", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadCourses();
                     }
                     else
                     {
-                        MessageBox.Show("Cannot delete course. Active class-course assignments or grade records are attached to this course.", "Constraint Restriction", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        clsUITheme.ShowArabicMessage("تعذر حذف المادة الدراسية لوجود إسنادات فصول أو جداول أو درجات مسجلة مرتبطة بها.", "قيد تكامل البيانات", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error deleting course: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    clsUITheme.ShowArabicMessage("حدث خطأ أثناء حذف المادة: " + ex.Message, "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -164,5 +178,6 @@ namespace SchoolManagementSystem.Courses
         {
             LoadCourses();
         }
+
     }
 }

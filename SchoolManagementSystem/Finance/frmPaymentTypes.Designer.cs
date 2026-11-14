@@ -17,229 +17,253 @@ namespace SchoolManagementSystem.Finance
 
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.dgvPaymentTypes = new System.Windows.Forms.DataGridView();
-            this.gbPaymentType = new System.Windows.Forms.GroupBox();
-            this.btnCancelEdit = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.txtDescription = new System.Windows.Forms.TextBox();
-            this.lblDescription = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.lblName = new System.Windows.Forms.Label();
-            this.lblTotalCount = new System.Windows.Forms.Label();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnRefresh = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPaymentTypes)).BeginInit();
-            this.gbPaymentType.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            lblTitle = new Label();
+            dgvPaymentTypes = new DataGridView();
+            gbPaymentType = new GroupBox();
+            btnCancelEdit = new Button();
+            btnSave = new Button();
+            txtDescription = new TextBox();
+            lblDescription = new Label();
+            txtName = new TextBox();
+            lblName = new Label();
+            lblTotalCount = new Label();
+            btnEdit = new Button();
+            btnDelete = new Button();
+            btnRefresh = new Button();
+            btnClose = new Button();
+            errorProvider1 = new ErrorProvider(components);
+            ((System.ComponentModel.ISupportInitialize)dgvPaymentTypes).BeginInit();
+            gbPaymentType.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
+            SuspendLayout();
             // 
             // lblTitle
             // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
-            this.lblTitle.Location = new System.Drawing.Point(24, 20);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(262, 30);
-            this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Payment Types Management";
+            lblTitle.AutoSize = true;
+            lblTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            lblTitle.ForeColor = Color.FromArgb(30, 41, 59);
+            lblTitle.Location = new Point(307, 4);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(268, 37);
+            lblTitle.TabIndex = 0;
+            lblTitle.Text = "إدارة طرق وأنواع الدفع";
             // 
             // dgvPaymentTypes
             // 
-            this.dgvPaymentTypes.AllowUserToAddRows = false;
-            this.dgvPaymentTypes.AllowUserToDeleteRows = false;
-            this.dgvPaymentTypes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvPaymentTypes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvPaymentTypes.BackgroundColor = System.Drawing.Color.White;
-            this.dgvPaymentTypes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPaymentTypes.Location = new System.Drawing.Point(29, 70);
-            this.dgvPaymentTypes.MultiSelect = false;
-            this.dgvPaymentTypes.Name = "dgvPaymentTypes";
-            this.dgvPaymentTypes.ReadOnly = true;
-            this.dgvPaymentTypes.RowHeadersWidth = 51;
-            this.dgvPaymentTypes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPaymentTypes.Size = new System.Drawing.Size(480, 360);
-            this.dgvPaymentTypes.TabIndex = 1;
-            this.dgvPaymentTypes.DoubleClick += new System.EventHandler(this.DgvPaymentTypes_DoubleClick);
+            dgvPaymentTypes.AllowUserToAddRows = false;
+            dgvPaymentTypes.AllowUserToDeleteRows = false;
+            dgvPaymentTypes.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvPaymentTypes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvPaymentTypes.BackgroundColor = Color.White;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvPaymentTypes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dgvPaymentTypes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvPaymentTypes.DefaultCellStyle = dataGridViewCellStyle2;
+            dgvPaymentTypes.Location = new Point(370, 77);
+            dgvPaymentTypes.MultiSelect = false;
+            dgvPaymentTypes.Name = "dgvPaymentTypes";
+            dgvPaymentTypes.ReadOnly = true;
+            dgvPaymentTypes.RowHeadersWidth = 51;
+            dgvPaymentTypes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvPaymentTypes.Size = new Size(501, 401);
+            dgvPaymentTypes.TabIndex = 1;
+            dgvPaymentTypes.DoubleClick += DgvPaymentTypes_DoubleClick;
             // 
             // gbPaymentType
             // 
-            this.gbPaymentType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbPaymentType.Controls.Add(this.btnCancelEdit);
-            this.gbPaymentType.Controls.Add(this.btnSave);
-            this.gbPaymentType.Controls.Add(this.txtDescription);
-            this.gbPaymentType.Controls.Add(this.lblDescription);
-            this.gbPaymentType.Controls.Add(this.txtName);
-            this.gbPaymentType.Controls.Add(this.lblName);
-            this.gbPaymentType.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.gbPaymentType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
-            this.gbPaymentType.Location = new System.Drawing.Point(525, 62);
-            this.gbPaymentType.Name = "gbPaymentType";
-            this.gbPaymentType.Size = new System.Drawing.Size(320, 368);
-            this.gbPaymentType.TabIndex = 2;
-            this.gbPaymentType.TabStop = false;
-            this.gbPaymentType.Text = "Add / Edit Payment Type";
+            gbPaymentType.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            gbPaymentType.Controls.Add(btnCancelEdit);
+            gbPaymentType.Controls.Add(btnSave);
+            gbPaymentType.Controls.Add(txtDescription);
+            gbPaymentType.Controls.Add(lblDescription);
+            gbPaymentType.Controls.Add(txtName);
+            gbPaymentType.Controls.Add(lblName);
+            gbPaymentType.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            gbPaymentType.ForeColor = Color.FromArgb(30, 41, 59);
+            gbPaymentType.Location = new Point(24, 69);
+            gbPaymentType.Name = "gbPaymentType";
+            gbPaymentType.Size = new Size(330, 409);
+            gbPaymentType.TabIndex = 2;
+            gbPaymentType.TabStop = false;
+            gbPaymentType.Text = "إضافة / تعديل نوع الدفع";
             // 
             // btnCancelEdit
             // 
-            this.btnCancelEdit.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnCancelEdit.Location = new System.Drawing.Point(20, 310);
-            this.btnCancelEdit.Name = "btnCancelEdit";
-            this.btnCancelEdit.Size = new System.Drawing.Size(130, 36);
-            this.btnCancelEdit.TabIndex = 5;
-            this.btnCancelEdit.Text = "Cancel";
-            this.btnCancelEdit.UseVisualStyleBackColor = true;
-            this.btnCancelEdit.Visible = false;
-            this.btnCancelEdit.Click += new System.EventHandler(this.BtnCancelEdit_Click);
+            btnCancelEdit.Cursor = Cursors.Hand;
+            btnCancelEdit.Font = new Font("Segoe UI", 9F);
+            btnCancelEdit.Location = new Point(20, 310);
+            btnCancelEdit.Name = "btnCancelEdit";
+            btnCancelEdit.Size = new Size(130, 36);
+            btnCancelEdit.TabIndex = 5;
+            btnCancelEdit.Text = "إلغاء التعديل";
+            btnCancelEdit.UseVisualStyleBackColor = true;
+            btnCancelEdit.Visible = false;
+            btnCancelEdit.Click += BtnCancelEdit_Click;
             // 
             // btnSave
             // 
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnSave.Location = new System.Drawing.Point(165, 310);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(135, 36);
-            this.btnSave.TabIndex = 4;
-            this.btnSave.Text = "Save Type";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
+            btnSave.Cursor = Cursors.Hand;
+            btnSave.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnSave.Location = new Point(165, 310);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(145, 36);
+            btnSave.TabIndex = 4;
+            btnSave.Text = "حفظ نوع الدفع";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += BtnSave_Click;
             // 
             // txtDescription
             // 
-            this.txtDescription.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.txtDescription.Location = new System.Drawing.Point(20, 130);
-            this.txtDescription.Multiline = true;
-            this.txtDescription.Name = "txtDescription";
-            this.txtDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtDescription.Size = new System.Drawing.Size(280, 150);
-            this.txtDescription.TabIndex = 3;
+            txtDescription.Font = new Font("Segoe UI", 9.5F);
+            txtDescription.Location = new Point(20, 130);
+            txtDescription.Multiline = true;
+            txtDescription.Name = "txtDescription";
+            txtDescription.ScrollBars = ScrollBars.Vertical;
+            txtDescription.Size = new Size(290, 160);
+            txtDescription.TabIndex = 3;
             // 
             // lblDescription
             // 
-            this.lblDescription.AutoSize = true;
-            this.lblDescription.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lblDescription.Location = new System.Drawing.Point(17, 110);
-            this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(70, 15);
-            this.lblDescription.TabIndex = 2;
-            this.lblDescription.Text = "Description:";
+            lblDescription.AutoSize = true;
+            lblDescription.Font = new Font("Segoe UI", 9F);
+            lblDescription.Location = new Point(220, 107);
+            lblDescription.Name = "lblDescription";
+            lblDescription.Size = new Size(97, 20);
+            lblDescription.TabIndex = 2;
+            lblDescription.Text = "الوصف / بيان:";
             // 
             // txtName
             // 
-            this.txtName.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.txtName.Location = new System.Drawing.Point(20, 60);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(280, 24);
-            this.txtName.TabIndex = 1;
+            txtName.Font = new Font("Segoe UI", 9.5F);
+            txtName.Location = new Point(20, 60);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(290, 29);
+            txtName.TabIndex = 1;
             // 
             // lblName
             // 
-            this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lblName.Location = new System.Drawing.Point(17, 40);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(117, 15);
-            this.lblName.TabIndex = 0;
-            this.lblName.Text = "Payment Type Name:";
+            lblName.AutoSize = true;
+            lblName.Font = new Font("Segoe UI", 9F);
+            lblName.Location = new Point(205, 37);
+            lblName.Name = "lblName";
+            lblName.Size = new Size(121, 20);
+            lblName.TabIndex = 0;
+            lblName.Text = "اسم طريقة الدفع:";
             // 
             // lblTotalCount
             // 
-            this.lblTotalCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblTotalCount.AutoSize = true;
-            this.lblTotalCount.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblTotalCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
-            this.lblTotalCount.Location = new System.Drawing.Point(29, 442);
-            this.lblTotalCount.Name = "lblTotalCount";
-            this.lblTotalCount.Size = new System.Drawing.Size(81, 15);
-            this.lblTotalCount.TabIndex = 3;
-            this.lblTotalCount.Text = "Total Types: 0";
+            lblTotalCount.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            lblTotalCount.AutoSize = true;
+            lblTotalCount.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblTotalCount.ForeColor = Color.FromArgb(100, 116, 139);
+            lblTotalCount.Location = new Point(751, 500);
+            lblTotalCount.Name = "lblTotalCount";
+            lblTotalCount.Size = new Size(112, 20);
+            lblTotalCount.TabIndex = 3;
+            lblTotalCount.Text = "إجمالي الأنواع: 0";
             // 
             // btnEdit
             // 
-            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEdit.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnEdit.Location = new System.Drawing.Point(495, 448);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(100, 32);
-            this.btnEdit.TabIndex = 4;
-            this.btnEdit.Text = "Edit Selected";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            this.btnEdit.Click += new System.EventHandler(this.BtnEdit_Click);
+            btnEdit.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnEdit.Cursor = Cursors.Hand;
+            btnEdit.Font = new Font("Segoe UI", 9F);
+            btnEdit.Location = new Point(135, 492);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Size = new Size(110, 34);
+            btnEdit.TabIndex = 4;
+            btnEdit.Text = "تعديل المحدد";
+            btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += BtnEdit_Click;
             // 
             // btnDelete
             // 
-            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnDelete.Location = new System.Drawing.Point(605, 448);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(115, 32);
-            this.btnDelete.TabIndex = 5;
-            this.btnDelete.Text = "Delete Selected";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
+            btnDelete.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnDelete.Cursor = Cursors.Hand;
+            btnDelete.Font = new Font("Segoe UI", 9F);
+            btnDelete.Location = new Point(255, 492);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(110, 34);
+            btnDelete.TabIndex = 5;
+            btnDelete.Text = "حذف المحدد";
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += BtnDelete_Click;
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRefresh.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnRefresh.Location = new System.Drawing.Point(730, 448);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(85, 32);
-            this.btnRefresh.TabIndex = 6;
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.BtnRefresh_Click);
+            btnRefresh.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnRefresh.Cursor = Cursors.Hand;
+            btnRefresh.Font = new Font("Segoe UI", 9F);
+            btnRefresh.Location = new Point(375, 492);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(95, 34);
+            btnRefresh.TabIndex = 6;
+            btnRefresh.Text = "تحديث";
+            btnRefresh.UseVisualStyleBackColor = true;
+            btnRefresh.Click += BtnRefresh_Click;
             // 
             // btnClose
             // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnClose.Location = new System.Drawing.Point(825, 448);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(85, 32);
-            this.btnClose.TabIndex = 7;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
+            btnClose.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnClose.Cursor = Cursors.Hand;
+            btnClose.Font = new Font("Segoe UI", 9F);
+            btnClose.Location = new Point(24, 492);
+            btnClose.Name = "btnClose";
+            btnClose.Size = new Size(100, 34);
+            btnClose.TabIndex = 7;
+            btnClose.Text = "إغلاق";
+            btnClose.UseVisualStyleBackColor = true;
+            btnClose.Click += BtnClose_Click;
             // 
             // errorProvider1
             // 
-            this.errorProvider1.ContainerControl = this;
+            errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+            errorProvider1.ContainerControl = this;
+            errorProvider1.RightToLeft = true;
             // 
             // frmPaymentTypes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
-            this.ClientSize = new System.Drawing.Size(924, 495);
-            this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.btnRefresh);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnEdit);
-            this.Controls.Add(this.lblTotalCount);
-            this.Controls.Add(this.gbPaymentType);
-            this.Controls.Add(this.dgvPaymentTypes);
-            this.Controls.Add(this.lblTitle);
-            this.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.MinimumSize = new System.Drawing.Size(800, 450);
-            this.Name = "frmPaymentTypes";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Payment Types Management";
-            this.Load += new System.EventHandler(this.FrmPaymentTypes_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPaymentTypes)).EndInit();
-            this.gbPaymentType.ResumeLayout(false);
-            this.gbPaymentType.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(248, 250, 252);
+            ClientSize = new Size(895, 536);
+            Controls.Add(btnClose);
+            Controls.Add(btnRefresh);
+            Controls.Add(btnDelete);
+            Controls.Add(btnEdit);
+            Controls.Add(lblTotalCount);
+            Controls.Add(gbPaymentType);
+            Controls.Add(dgvPaymentTypes);
+            Controls.Add(lblTitle);
+            Font = new Font("Segoe UI", 9F);
+            MinimumSize = new Size(800, 450);
+            Name = "frmPaymentTypes";
+            RightToLeft = RightToLeft.Yes;
+            RightToLeftLayout = true;
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "إدارة طرق وأنواع الدفع";
+            Load += FrmPaymentTypes_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvPaymentTypes).EndInit();
+            gbPaymentType.ResumeLayout(false);
+            gbPaymentType.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

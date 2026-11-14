@@ -38,7 +38,7 @@ namespace SchoolManagementSystem.Students
         {
             if (cbParents.SelectedValue == null)
             {
-                MessageBox.Show("Please select a parent.", "Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                clsUITheme.ShowArabicMessage("يرجى اختيار ولي أمر من القائمة.", "حقل مطلوب", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -56,18 +56,18 @@ namespace SchoolManagementSystem.Students
             {
                 if (sp.Save())
                 {
-                    MessageBox.Show("Parent linked successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    clsUITheme.ShowArabicMessage("تم ربط ولي الأمر بالطالب بنجاح.", "تمت العملية", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Failed to link parent.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    clsUITheme.ShowArabicMessage("فشل ربط ولي الأمر بالطالب.", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Validation error: " + ex.Message, "Constraint Violation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                clsUITheme.ShowArabicMessage("خطأ في التحقق: " + ex.Message, "قيد مكرر أو غير صالح", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

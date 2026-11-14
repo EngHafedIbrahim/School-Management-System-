@@ -1,5 +1,6 @@
 using System;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 using SchoolManagementSystemBusinessLayer;
 using SchoolManagementSystem.Globle_Classes;
@@ -27,8 +28,8 @@ namespace SchoolManagementSystem.Users
 
         private void FrmUserList_Load(object sender, EventArgs e)
         {
-            cbFilterUserType.SelectedIndex = 0; // All Types
-            cbFilterStatus.SelectedIndex = 0;   // All Statuses
+            cbFilterUserType.SelectedIndex = 0; // جميع الأنواع
+            cbFilterStatus.SelectedIndex = 0;   // جميع الحالات
             LoadUsers();
         }
 
@@ -40,38 +41,38 @@ namespace SchoolManagementSystem.Users
 
             if (dgvUsers.Columns.Contains("UserID"))
             {
-                dgvUsers.Columns["UserID"].HeaderText = "ID";
-                dgvUsers.Columns["UserID"].Width = 60;
+                dgvUsers.Columns["UserID"].HeaderText = "رقم المعرف";
+                dgvUsers.Columns["UserID"].Width = 90;
             }
             if (dgvUsers.Columns.Contains("Username"))
             {
-                dgvUsers.Columns["Username"].HeaderText = "Username";
+                dgvUsers.Columns["Username"].HeaderText = "اسم المستخدم";
                 dgvUsers.Columns["Username"].Width = 140;
             }
             if (dgvUsers.Columns.Contains("Email"))
             {
-                dgvUsers.Columns["Email"].HeaderText = "Email";
+                dgvUsers.Columns["Email"].HeaderText = "البريد الإلكتروني";
                 dgvUsers.Columns["Email"].Width = 180;
             }
             if (dgvUsers.Columns.Contains("UserType"))
             {
-                dgvUsers.Columns["UserType"].HeaderText = "Type";
-                dgvUsers.Columns["UserType"].Width = 100;
+                dgvUsers.Columns["UserType"].HeaderText = "نوع الحساب";
+                dgvUsers.Columns["UserType"].Width = 110;
             }
             if (dgvUsers.Columns.Contains("LinkedEntityName"))
             {
-                dgvUsers.Columns["LinkedEntityName"].HeaderText = "Linked Profile";
-                dgvUsers.Columns["LinkedEntityName"].Width = 180;
+                dgvUsers.Columns["LinkedEntityName"].HeaderText = "الملف الشخصي المرتبط";
+                dgvUsers.Columns["LinkedEntityName"].Width = 200;
             }
             if (dgvUsers.Columns.Contains("Status"))
             {
-                dgvUsers.Columns["Status"].HeaderText = "Status";
-                dgvUsers.Columns["Status"].Width = 90;
+                dgvUsers.Columns["IsActive"].HeaderText = "الحالة";
+                dgvUsers.Columns["IsActive"].Width = 90;
             }
             if (dgvUsers.Columns.Contains("CreatedAt"))
             {
-                dgvUsers.Columns["CreatedAt"].HeaderText = "Created At";
-                dgvUsers.Columns["CreatedAt"].Width = 130;
+                dgvUsers.Columns["CreatedAt"].HeaderText = "تاريخ الإنشاء";
+                dgvUsers.Columns["CreatedAt"].Width = 140;
             }
 
             if (dgvUsers.Columns.Contains("ReferenceID"))
@@ -86,28 +87,29 @@ namespace SchoolManagementSystem.Users
 
             string filter = "";
             string search = txtSearch.Text.Trim().Replace("'", "''");
-            string userType = cbFilterUserType.SelectedItem?.ToString() ?? "All Types";
-            string status = cbFilterStatus.SelectedItem?.ToString() ?? "All Statuses";
+            string userType = cbFilterUserType.SelectedItem?.ToString() ?? "جميع الأنواع";
+            string status = cbFilterStatus.SelectedItem?.ToString() ?? "جميع الحالات";
 
             if (!string.IsNullOrEmpty(search))
             {
                 filter = $"(Username LIKE '%{search}%' OR Email LIKE '%{search}%' OR LinkedEntityName LIKE '%{search}%')";
             }
 
-            if (userType != "All Types")
+            if (userType != "جميع الأنواع" && userType != "All Types")
             {
                 if (!string.IsNullOrEmpty(filter)) filter += " AND ";
                 filter += $"UserType = '{userType}'";
             }
 
-            if (status != "All Statuses")
+            if (status != "جميع الحالات" && status != "All Statuses")
             {
+                string statusValue = status == "نشط" ? "Active" : (status == "غير نشط" ? "Inactive" : status);
                 if (!string.IsNullOrEmpty(filter)) filter += " AND ";
-                filter += $"Status = '{status}'";
+                filter += $"Status = '{statusValue}'";
             }
 
             _dvUsers.RowFilter = filter;
-            lblTotalCount.Text = $"Total Users: {_dvUsers.Count}";
+            lblTotalCount.Text = $"إجمالي المستخدمين: {_dvUsers.Count}";
         }
 
         private void Filter_Changed(object sender, EventArgs e)
@@ -136,7 +138,7 @@ namespace SchoolManagementSystem.Users
         {
             if (dgvUsers.CurrentRow == null)
             {
-                MessageBox.Show("Please select a user to edit.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clsUITheme.ShowArabicMessage("يرجى تحديد مستخدم من القائمة للتعديل.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -157,34 +159,35 @@ namespace SchoolManagementSystem.Users
         {
             if (dgvUsers.CurrentRow == null)
             {
-                MessageBox.Show("Please select a user.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clsUITheme.ShowArabicMessage("يرجى تحديد مستخدم من القائمة.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
             int userID = Convert.ToInt32(dgvUsers.CurrentRow.Cells["UserID"].Value);
-            string currentStatus = dgvUsers.CurrentRow.Cells["Status"].Value.ToString();
+            bool currentStatus = Convert.ToBoolean( dgvUsers.CurrentRow.Cells["IsActive"].Value);
             string username = dgvUsers.CurrentRow.Cells["Username"].Value.ToString();
 
             // Prevent deactivating own account
             if (clsGloble.CurrentUser != null && clsGloble.CurrentUser.UserID == userID)
             {
-                MessageBox.Show("You cannot change the status of your currently logged-in account.", "Operation Restricted", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                clsUITheme.ShowArabicMessage("لا يمكنك تغيير حالة الحساب المسجل به حالياً.", "إجراء غير مسموح", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            string newStatus = currentStatus == "Active" ? "Inactive" : "Active";
-            string actionText = newStatus == "Active" ? "activate" : "deactivate";
+            bool newStatus = currentStatus  ? true : false;
+            string actionText = newStatus ? "تفعيل" : "تعطيل";
 
-            if (MessageBox.Show($"Are you sure you want to {actionText} user account '{username}'?", "Confirm Status Change", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (clsUITheme.ShowArabicMessage($"هل أنت متأكد من رغبتك في {actionText} حساب المستخدم '{username}'؟", "تأكيد تغيير الحالة", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 if (clsUser.UpdateUserStatus(userID, newStatus))
                 {
-                    MessageBox.Show($"User '{username}' is now {newStatus}.", "Status Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    bool statusAr = newStatus ? true: false;
+                    clsUITheme.ShowArabicMessage($"أصبح حساب المستخدم '{username}' {statusAr} الآن.", "تم التحديث بنجاح", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadUsers();
                 }
                 else
                 {
-                    MessageBox.Show("Failed to update user status.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    clsUITheme.ShowArabicMessage("فشل تحديث حالة المستخدم.", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -193,32 +196,31 @@ namespace SchoolManagementSystem.Users
         {
             if (dgvUsers.CurrentRow == null)
             {
-                MessageBox.Show("Please select a user to reset password.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clsUITheme.ShowArabicMessage("يرجى تحديد مستخدم لإعادة تعيين كلمة المرور.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
             int userID = Convert.ToInt32(dgvUsers.CurrentRow.Cells["UserID"].Value);
             string username = dgvUsers.CurrentRow.Cells["Username"].Value.ToString();
 
-            // Simple input dialog for new password
             string newPassword = PromptForPassword(username);
             if (string.IsNullOrEmpty(newPassword))
                 return;
 
             if (newPassword.Length < 6)
             {
-                MessageBox.Show("Password must be at least 6 characters long.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                clsUITheme.ShowArabicMessage("يجب أن تتكون كلمة المرور من 6 أحرف أو أرقام على الأقل.", "خطأ في التحقق", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             string hash = clsSecurity.ComputeHash(newPassword);
             if (clsUser.ResetPassword(userID, hash))
             {
-                MessageBox.Show($"Password for '{username}' has been reset successfully.", "Password Reset", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clsUITheme.ShowArabicMessage($"تمت إعادة تعيين كلمة المرور للمستخدم '{username}' بنجاح.", "تمت العملية", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show("Failed to reset password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                clsUITheme.ShowArabicMessage("فشلت عملية إعادة تعيين كلمة المرور.", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -226,19 +228,25 @@ namespace SchoolManagementSystem.Users
         {
             Form prompt = new Form()
             {
-                Width = 400,
-                Height = 180,
+                Width = 420,
+                Height = 190,
                 FormBorderStyle = FormBorderStyle.FixedDialog,
-                Text = $"Reset Password for [{username}]",
+                Text = $"إعادة تعيين كلمة المرور لـ [{username}]",
                 StartPosition = FormStartPosition.CenterParent,
                 MaximizeBox = false,
-                MinimizeBox = false
+                MinimizeBox = false,
+                RightToLeft = RightToLeft.Yes,
+                RightToLeftLayout = true,
+                Font = clsUITheme.ArabicRegularFont
             };
 
-            Label textLabel = new Label() { Left = 20, Top = 20, Text = "Enter New Password (min 6 characters):", AutoSize = true };
-            TextBox textBox = new TextBox() { Left = 20, Top = 45, Width = 340, PasswordChar = '●' };
-            Button confirmation = new Button() { Text = "Save", Left = 190, Width = 80, Top = 85, DialogResult = DialogResult.OK };
-            Button cancel = new Button() { Text = "Cancel", Left = 280, Width = 80, Top = 85, DialogResult = DialogResult.Cancel };
+            Label textLabel = new Label() { Left = 20, Top = 20, Text = "أدخل كلمة المرور الجديدة (6 أحرف على الأقل):", AutoSize = true };
+            TextBox textBox = new TextBox() { Left = 20, Top = 50, Width = 360, PasswordChar = '●', TextAlign = HorizontalAlignment.Right };
+            Button confirmation = new Button() { Text = "حفظ 💾", Left = 130, Width = 100, Top = 95, DialogResult = DialogResult.OK };
+            Button cancel = new Button() { Text = "إلغاء", Left = 240, Width = 100, Top = 95, DialogResult = DialogResult.Cancel };
+
+            clsUITheme.StylePrimaryButton(confirmation);
+            clsUITheme.StyleSecondaryButton(cancel);
 
             confirmation.Click += (sender, e) => { prompt.Close(); };
             prompt.Controls.Add(textLabel);
@@ -260,20 +268,20 @@ namespace SchoolManagementSystem.Users
 
             if (clsGloble.CurrentUser != null && clsGloble.CurrentUser.UserID == userID)
             {
-                MessageBox.Show("You cannot delete your own currently logged-in account.", "Operation Restricted", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                clsUITheme.ShowArabicMessage("لا يمكنك حذف الحساب المسجل به حالياً في النظام.", "إجراء مقيد", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (MessageBox.Show($"Are you sure you want to permanently delete user account '{username}'?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (clsUITheme.ShowArabicMessage($"هل أنت متأكد من رغبتك في حذف حساب المستخدم '{username}' نهائياً؟", "تأكيد الحذف", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 if (clsUser.DeleteUser(userID))
                 {
-                    MessageBox.Show("User account deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    clsUITheme.ShowArabicMessage("تم حذف حساب المستخدم بنجاح.", "تمت العملية", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadUsers();
                 }
                 else
                 {
-                    MessageBox.Show("Failed to delete user account.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    clsUITheme.ShowArabicMessage("فشل حذف حساب المستخدم لوجود ارتباطات في النظام.", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

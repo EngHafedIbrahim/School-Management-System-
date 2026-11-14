@@ -21,7 +21,7 @@ namespace SchoolManagementSystem.Login
 
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
-                lblError.Text = "Username and password are required.";
+                lblError.Text = "يرجى إدخال اسم المستخدم وكلمة المرور.";
                 return;
             }
 
@@ -32,12 +32,15 @@ namespace SchoolManagementSystem.Login
                 if (user != null)
                 {
                     clsGloble.CurrentUser = user;
-                    this.DialogResult = DialogResult.OK;
-                    this.Close(); // instead this is frmDashBoard
+                    
+                    this.Hide();
+                    frmMainScreen frm = new frmMainScreen(this);
+
+                    frm.ShowDialog();
                 }
                 else
                 {
-                    lblError.Text = "Invalid username or password.";
+                    lblError.Text = "اسم المستخدم أو كلمة المرور غير صحيحة.";
                 }
             }
             catch (Exception ex)
@@ -50,7 +53,5 @@ namespace SchoolManagementSystem.Login
         {
             Application.Exit();
         }
-
-        
     }
 }

@@ -18,26 +18,9 @@ namespace SchoolManagementSystem.Dashboard
         private void InitializeComponent()
         {
             this.pnlHeader = new System.Windows.Forms.Panel();
-            this.lblHeaderTitle = new System.Windows.Forms.Label();
             this.lblHeaderSubtitle = new System.Windows.Forms.Label();
+            this.lblHeaderTitle = new System.Windows.Forms.Label();
             this.pnlContent = new System.Windows.Forms.Panel();
-            this.lblKpiTitle = new System.Windows.Forms.Label();
-            this.pnlCards = new System.Windows.Forms.FlowLayoutPanel();
-            this.cardStudents = new System.Windows.Forms.Panel();
-            this.lblTitleStudents = new System.Windows.Forms.Label();
-            this.lblTotalStudents = new System.Windows.Forms.Label();
-            this.cardTeachers = new System.Windows.Forms.Panel();
-            this.lblTitleTeachers = new System.Windows.Forms.Label();
-            this.lblTotalTeachers = new System.Windows.Forms.Label();
-            this.cardClasses = new System.Windows.Forms.Panel();
-            this.lblTitleClasses = new System.Windows.Forms.Label();
-            this.lblTotalClasses = new System.Windows.Forms.Label();
-            this.cardParents = new System.Windows.Forms.Panel();
-            this.lblTitleParents = new System.Windows.Forms.Label();
-            this.lblTotalParents = new System.Windows.Forms.Label();
-            this.cardYear = new System.Windows.Forms.Panel();
-            this.lblTitleYear = new System.Windows.Forms.Label();
-            this.lblAcademicYear = new System.Windows.Forms.Label();
             this.lblModulesTitle = new System.Windows.Forms.Label();
             this.pnlModules = new System.Windows.Forms.FlowLayoutPanel();
             this.btnNavStudents = new System.Windows.Forms.Button();
@@ -51,15 +34,32 @@ namespace SchoolManagementSystem.Dashboard
             this.btnNavFinance = new System.Windows.Forms.Button();
             this.btnNavUsers = new System.Windows.Forms.Button();
             this.btnNavReports = new System.Windows.Forms.Button();
+            this.pnlCards = new System.Windows.Forms.FlowLayoutPanel();
+            this.cardStudents = new System.Windows.Forms.Panel();
+            this.lblTotalStudents = new System.Windows.Forms.Label();
+            this.lblTitleStudents = new System.Windows.Forms.Label();
+            this.cardTeachers = new System.Windows.Forms.Panel();
+            this.lblTotalTeachers = new System.Windows.Forms.Label();
+            this.lblTitleTeachers = new System.Windows.Forms.Label();
+            this.cardClasses = new System.Windows.Forms.Panel();
+            this.lblTotalClasses = new System.Windows.Forms.Label();
+            this.lblTitleClasses = new System.Windows.Forms.Label();
+            this.cardParents = new System.Windows.Forms.Panel();
+            this.lblTotalParents = new System.Windows.Forms.Label();
+            this.lblTitleParents = new System.Windows.Forms.Label();
+            this.cardYear = new System.Windows.Forms.Panel();
+            this.lblAcademicYear = new System.Windows.Forms.Label();
+            this.lblTitleYear = new System.Windows.Forms.Label();
+            this.lblKpiTitle = new System.Windows.Forms.Label();
             this.pnlHeader.SuspendLayout();
             this.pnlContent.SuspendLayout();
+            this.pnlModules.SuspendLayout();
             this.pnlCards.SuspendLayout();
             this.cardStudents.SuspendLayout();
             this.cardTeachers.SuspendLayout();
             this.cardClasses.SuspendLayout();
             this.cardParents.SuspendLayout();
             this.cardYear.SuspendLayout();
-            this.pnlModules.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlHeader
@@ -81,20 +81,20 @@ namespace SchoolManagementSystem.Dashboard
             this.lblHeaderTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
             this.lblHeaderTitle.Location = new System.Drawing.Point(20, 10);
             this.lblHeaderTitle.Name = "lblHeaderTitle";
-            this.lblHeaderTitle.Size = new System.Drawing.Size(325, 30);
+            this.lblHeaderTitle.Size = new System.Drawing.Size(250, 30);
             this.lblHeaderTitle.TabIndex = 0;
-            this.lblHeaderTitle.Text = "Administrative Control Center";
+            this.lblHeaderTitle.Text = "لوحة التحكم الإدارية";
             // 
             // lblHeaderSubtitle
             // 
             this.lblHeaderSubtitle.AutoSize = true;
-            this.lblHeaderSubtitle.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblHeaderSubtitle.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.lblHeaderSubtitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(130)))), ((int)(((byte)(140)))));
-            this.lblHeaderSubtitle.Location = new System.Drawing.Point(22, 40);
+            this.lblHeaderSubtitle.Location = new System.Drawing.Point(22, 42);
             this.lblHeaderSubtitle.Name = "lblHeaderSubtitle";
-            this.lblHeaderSubtitle.Size = new System.Drawing.Size(543, 19);
+            this.lblHeaderSubtitle.Size = new System.Drawing.Size(420, 17);
             this.lblHeaderSubtitle.TabIndex = 1;
-            this.lblHeaderSubtitle.Text = "Monitor system metrics, academic progress, and manage school directory records.";
+            this.lblHeaderSubtitle.Text = "متابعة مؤشرات الأداء، التقدم الأكاديمي، وإدارة سجلات وملفات المدرسة.";
             // 
             // pnlContent
             // 
@@ -117,9 +117,9 @@ namespace SchoolManagementSystem.Dashboard
             this.lblKpiTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
             this.lblKpiTitle.Location = new System.Drawing.Point(30, 20);
             this.lblKpiTitle.Name = "lblKpiTitle";
-            this.lblKpiTitle.Size = new System.Drawing.Size(288, 21);
+            this.lblKpiTitle.Size = new System.Drawing.Size(240, 21);
             this.lblKpiTitle.TabIndex = 0;
-            this.lblKpiTitle.Text = "Institution Overview & Key Indicators";
+            this.lblKpiTitle.Text = "نظرة عامة ومؤشرات الأداء الرئيسية";
             // 
             // pnlCards
             // 
@@ -148,13 +148,13 @@ namespace SchoolManagementSystem.Dashboard
             // lblTitleStudents
             // 
             this.lblTitleStudents.AutoSize = true;
-            this.lblTitleStudents.Font = new System.Drawing.Font("Segoe UI", 8.5F, System.Drawing.FontStyle.Bold);
+            this.lblTitleStudents.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblTitleStudents.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(130)))), ((int)(((byte)(140)))));
             this.lblTitleStudents.Location = new System.Drawing.Point(15, 12);
             this.lblTitleStudents.Name = "lblTitleStudents";
-            this.lblTitleStudents.Size = new System.Drawing.Size(89, 15);
+            this.lblTitleStudents.Size = new System.Drawing.Size(76, 15);
             this.lblTitleStudents.TabIndex = 0;
-            this.lblTitleStudents.Text = "Active Students";
+            this.lblTitleStudents.Text = "الطلاب النشطون";
             // 
             // lblTotalStudents
             // 
@@ -182,13 +182,13 @@ namespace SchoolManagementSystem.Dashboard
             // lblTitleTeachers
             // 
             this.lblTitleTeachers.AutoSize = true;
-            this.lblTitleTeachers.Font = new System.Drawing.Font("Segoe UI", 8.5F, System.Drawing.FontStyle.Bold);
+            this.lblTitleTeachers.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblTitleTeachers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(130)))), ((int)(((byte)(140)))));
             this.lblTitleTeachers.Location = new System.Drawing.Point(15, 12);
             this.lblTitleTeachers.Name = "lblTitleTeachers";
-            this.lblTitleTeachers.Size = new System.Drawing.Size(85, 15);
+            this.lblTitleTeachers.Size = new System.Drawing.Size(71, 15);
             this.lblTitleTeachers.TabIndex = 0;
-            this.lblTitleTeachers.Text = "Teaching Staff";
+            this.lblTitleTeachers.Text = "الكادر التعليمي";
             // 
             // lblTotalTeachers
             // 
@@ -216,13 +216,13 @@ namespace SchoolManagementSystem.Dashboard
             // lblTitleClasses
             // 
             this.lblTitleClasses.AutoSize = true;
-            this.lblTitleClasses.Font = new System.Drawing.Font("Segoe UI", 8.5F, System.Drawing.FontStyle.Bold);
+            this.lblTitleClasses.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblTitleClasses.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(130)))), ((int)(((byte)(140)))));
             this.lblTitleClasses.Location = new System.Drawing.Point(15, 12);
             this.lblTitleClasses.Name = "lblTitleClasses";
-            this.lblTitleClasses.Size = new System.Drawing.Size(95, 15);
+            this.lblTitleClasses.Size = new System.Drawing.Size(81, 15);
             this.lblTitleClasses.TabIndex = 0;
-            this.lblTitleClasses.Text = "Classes / Groups";
+            this.lblTitleClasses.Text = "الفصول والشعب";
             // 
             // lblTotalClasses
             // 
@@ -250,13 +250,13 @@ namespace SchoolManagementSystem.Dashboard
             // lblTitleParents
             // 
             this.lblTitleParents.AutoSize = true;
-            this.lblTitleParents.Font = new System.Drawing.Font("Segoe UI", 8.5F, System.Drawing.FontStyle.Bold);
+            this.lblTitleParents.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblTitleParents.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(130)))), ((int)(((byte)(140)))));
             this.lblTitleParents.Location = new System.Drawing.Point(15, 12);
             this.lblTitleParents.Name = "lblTitleParents";
-            this.lblTitleParents.Size = new System.Drawing.Size(107, 15);
+            this.lblTitleParents.Size = new System.Drawing.Size(65, 15);
             this.lblTitleParents.TabIndex = 0;
-            this.lblTitleParents.Text = "Registered Parents";
+            this.lblTitleParents.Text = "أولياء الأمور";
             // 
             // lblTotalParents
             // 
@@ -283,22 +283,22 @@ namespace SchoolManagementSystem.Dashboard
             // lblTitleYear
             // 
             this.lblTitleYear.AutoSize = true;
-            this.lblTitleYear.Font = new System.Drawing.Font("Segoe UI", 8.5F, System.Drawing.FontStyle.Bold);
+            this.lblTitleYear.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblTitleYear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(130)))), ((int)(((byte)(140)))));
             this.lblTitleYear.Location = new System.Drawing.Point(15, 12);
             this.lblTitleYear.Name = "lblTitleYear";
-            this.lblTitleYear.Size = new System.Drawing.Size(132, 15);
+            this.lblTitleYear.Size = new System.Drawing.Size(109, 15);
             this.lblTitleYear.TabIndex = 0;
-            this.lblTitleYear.Text = "Current Academic Year";
+            this.lblTitleYear.Text = "السنة الأكاديمية الحالية";
             // 
             // lblAcademicYear
             // 
             this.lblAcademicYear.AutoSize = true;
-            this.lblAcademicYear.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
+            this.lblAcademicYear.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.lblAcademicYear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
             this.lblAcademicYear.Location = new System.Drawing.Point(15, 42);
             this.lblAcademicYear.Name = "lblAcademicYear";
-            this.lblAcademicYear.Size = new System.Drawing.Size(26, 25);
+            this.lblAcademicYear.Size = new System.Drawing.Size(22, 21);
             this.lblAcademicYear.TabIndex = 1;
             this.lblAcademicYear.Text = "...";
             // 
@@ -309,9 +309,9 @@ namespace SchoolManagementSystem.Dashboard
             this.lblModulesTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
             this.lblModulesTitle.Location = new System.Drawing.Point(30, 180);
             this.lblModulesTitle.Name = "lblModulesTitle";
-            this.lblModulesTitle.Size = new System.Drawing.Size(183, 21);
+            this.lblModulesTitle.Size = new System.Drawing.Size(125, 21);
             this.lblModulesTitle.TabIndex = 2;
-            this.lblModulesTitle.Text = "Management Modules";
+            this.lblModulesTitle.Text = "وحدات إدارة النظام";
             // 
             // pnlModules
             // 
@@ -343,7 +343,7 @@ namespace SchoolManagementSystem.Dashboard
             this.btnNavStudents.Name = "btnNavStudents";
             this.btnNavStudents.Size = new System.Drawing.Size(250, 100);
             this.btnNavStudents.TabIndex = 0;
-            this.btnNavStudents.Text = "Students\r\n\r\nDirectory & Profiles";
+            this.btnNavStudents.Text = "👨‍🎓 إدارة الطلاب\r\n\r\nالسجلات والملفات الشخصية";
             this.btnNavStudents.UseVisualStyleBackColor = false;
             this.btnNavStudents.Click += new System.EventHandler(this.BtnNavStudents_Click);
             // 
@@ -359,7 +359,7 @@ namespace SchoolManagementSystem.Dashboard
             this.btnNavParents.Name = "btnNavParents";
             this.btnNavParents.Size = new System.Drawing.Size(250, 100);
             this.btnNavParents.TabIndex = 1;
-            this.btnNavParents.Text = "Parents\r\n\r\nGuardians & Linkages";
+            this.btnNavParents.Text = "👨‍👩‍👧 أولياء الأمور\r\n\r\nبيانات التواصل والربط";
             this.btnNavParents.UseVisualStyleBackColor = false;
             this.btnNavParents.Click += new System.EventHandler(this.BtnNavParents_Click);
             // 
@@ -375,7 +375,7 @@ namespace SchoolManagementSystem.Dashboard
             this.btnNavAcademic.Name = "btnNavAcademic";
             this.btnNavAcademic.Size = new System.Drawing.Size(250, 100);
             this.btnNavAcademic.TabIndex = 2;
-            this.btnNavAcademic.Text = "Academic Years\r\n\r\nCalendar Sessions";
+            this.btnNavAcademic.Text = "🏫 الفصول الدراسية\r\n\r\nالشعب وتوزيع الطلاب";
             this.btnNavAcademic.UseVisualStyleBackColor = false;
             this.btnNavAcademic.Click += new System.EventHandler(this.BtnNavAcademic_Click);
             // 
@@ -391,7 +391,7 @@ namespace SchoolManagementSystem.Dashboard
             this.btnNavTeachers.Name = "btnNavTeachers";
             this.btnNavTeachers.Size = new System.Drawing.Size(250, 100);
             this.btnNavTeachers.TabIndex = 3;
-            this.btnNavTeachers.Text = "Teachers & Staff\r\n\r\nFaculty Directory";
+            this.btnNavTeachers.Text = "👨‍🏫 المعلمون والموظفون\r\n\r\nدليل الهيئة التدريسية";
             this.btnNavTeachers.UseVisualStyleBackColor = false;
             this.btnNavTeachers.Click += new System.EventHandler(this.BtnNavTeachers_Click);
             // 
@@ -407,7 +407,7 @@ namespace SchoolManagementSystem.Dashboard
             this.btnNavCourses.Name = "btnNavCourses";
             this.btnNavCourses.Size = new System.Drawing.Size(250, 100);
             this.btnNavCourses.TabIndex = 4;
-            this.btnNavCourses.Text = "Courses & Subjects\r\n\r\nCurriculum Management";
+            this.btnNavCourses.Text = "📖 المقررات والمناهج\r\n\r\nالخطة الدراسية والمواد";
             this.btnNavCourses.UseVisualStyleBackColor = false;
             this.btnNavCourses.Click += new System.EventHandler(this.BtnNavCourses_Click);
             // 
@@ -423,7 +423,7 @@ namespace SchoolManagementSystem.Dashboard
             this.btnNavTimetable.Name = "btnNavTimetable";
             this.btnNavTimetable.Size = new System.Drawing.Size(250, 100);
             this.btnNavTimetable.TabIndex = 5;
-            this.btnNavTimetable.Text = "Timetable & Schedules\r\n\r\nClass Weekly Scheduling";
+            this.btnNavTimetable.Text = "⏰ الجدول المدرسي\r\n\r\nتوزيع الحصص الأسبوعية";
             this.btnNavTimetable.UseVisualStyleBackColor = false;
             this.btnNavTimetable.Click += new System.EventHandler(this.BtnNavTimetable_Click);
             // 
@@ -439,7 +439,7 @@ namespace SchoolManagementSystem.Dashboard
             this.btnNavAttendance.Name = "btnNavAttendance";
             this.btnNavAttendance.Size = new System.Drawing.Size(250, 100);
             this.btnNavAttendance.TabIndex = 6;
-            this.btnNavAttendance.Text = "Attendance\r\n\r\nStudent Attendance Registers";
+            this.btnNavAttendance.Text = "✅ الحضور والغياب\r\n\r\nسجلات حضور الطلاب";
             this.btnNavAttendance.UseVisualStyleBackColor = false;
             this.btnNavAttendance.Click += new System.EventHandler(this.BtnNavAttendance_Click);
             // 
@@ -455,7 +455,7 @@ namespace SchoolManagementSystem.Dashboard
             this.btnNavGrades.Name = "btnNavGrades";
             this.btnNavGrades.Size = new System.Drawing.Size(250, 100);
             this.btnNavGrades.TabIndex = 7;
-            this.btnNavGrades.Text = "Grades & Exams\r\n\r\nMarks & Evaluations";
+            this.btnNavGrades.Text = "📊 الدرجات والامتحانات\r\n\r\nالتقييمات والنتائج";
             this.btnNavGrades.UseVisualStyleBackColor = false;
             this.btnNavGrades.Click += new System.EventHandler(this.BtnNavGrades_Click);
             // 
@@ -471,7 +471,7 @@ namespace SchoolManagementSystem.Dashboard
             this.btnNavFinance.Name = "btnNavFinance";
             this.btnNavFinance.Size = new System.Drawing.Size(250, 100);
             this.btnNavFinance.TabIndex = 8;
-            this.btnNavFinance.Text = "Finance & Invoices\r\n\r\nTuition Fees & Payments";
+            this.btnNavFinance.Text = "💰 المالية والفواتير\r\n\r\nالرسوم الدراسية وسندات القبض";
             this.btnNavFinance.UseVisualStyleBackColor = false;
             this.btnNavFinance.Click += new System.EventHandler(this.BtnNavFinance_Click);
             // 
@@ -487,7 +487,7 @@ namespace SchoolManagementSystem.Dashboard
             this.btnNavUsers.Name = "btnNavUsers";
             this.btnNavUsers.Size = new System.Drawing.Size(250, 100);
             this.btnNavUsers.TabIndex = 9;
-            this.btnNavUsers.Text = "System Users\r\n\r\nAccounts & Roles";
+            this.btnNavUsers.Text = "👥 مستخدمو النظام\r\n\r\nإدارة الحسابات والصلاحيات";
             this.btnNavUsers.UseVisualStyleBackColor = false;
             this.btnNavUsers.Click += new System.EventHandler(this.BtnNavUsers_Click);
             // 
@@ -503,7 +503,7 @@ namespace SchoolManagementSystem.Dashboard
             this.btnNavReports.Name = "btnNavReports";
             this.btnNavReports.Size = new System.Drawing.Size(250, 100);
             this.btnNavReports.TabIndex = 10;
-            this.btnNavReports.Text = "Reports & Analytics\r\n\r\nAcademic Reports";
+            this.btnNavReports.Text = "📋 التقارير والإحصائيات\r\n\r\nتقارير التحصيل والأداء";
             this.btnNavReports.UseVisualStyleBackColor = false;
             this.btnNavReports.Click += new System.EventHandler(this.BtnNavReports_Click);
             // 
@@ -515,13 +515,17 @@ namespace SchoolManagementSystem.Dashboard
             this.ClientSize = new System.Drawing.Size(1150, 700);
             this.Controls.Add(this.pnlContent);
             this.Controls.Add(this.pnlHeader);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmAdminDashboard";
-            this.Text = "Admin Dashboard";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.RightToLeftLayout = true;
+            this.Text = "لوحة التحكم الإدارية";
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
             this.pnlContent.ResumeLayout(false);
             this.pnlContent.PerformLayout();
+            this.pnlModules.ResumeLayout(false);
             this.pnlCards.ResumeLayout(false);
             this.cardStudents.ResumeLayout(false);
             this.cardStudents.PerformLayout();
@@ -533,7 +537,6 @@ namespace SchoolManagementSystem.Dashboard
             this.cardParents.PerformLayout();
             this.cardYear.ResumeLayout(false);
             this.cardYear.PerformLayout();
-            this.pnlModules.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

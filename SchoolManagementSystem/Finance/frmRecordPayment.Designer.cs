@@ -17,384 +17,405 @@ namespace SchoolManagementSystem.Finance
 
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.gbInvoiceInfo = new System.Windows.Forms.GroupBox();
-            this.lblRemainingVal = new System.Windows.Forms.Label();
-            this.lblRemaining = new System.Windows.Forms.Label();
-            this.lblPaidVal = new System.Windows.Forms.Label();
-            this.lblPaid = new System.Windows.Forms.Label();
-            this.lblTotalVal = new System.Windows.Forms.Label();
-            this.lblTotal = new System.Windows.Forms.Label();
-            this.lblStudentNameVal = new System.Windows.Forms.Label();
-            this.lblStudentName = new System.Windows.Forms.Label();
-            this.lblInvoiceNoVal = new System.Windows.Forms.Label();
-            this.lblInvoiceNo = new System.Windows.Forms.Label();
-            this.gbPaymentDetails = new System.Windows.Forms.GroupBox();
-            this.txtNotes = new System.Windows.Forms.TextBox();
-            this.lblNotes = new System.Windows.Forms.Label();
-            this.txtReceiptNo = new System.Windows.Forms.TextBox();
-            this.lblReceiptNo = new System.Windows.Forms.Label();
-            this.cbPaymentType = new System.Windows.Forms.ComboBox();
-            this.lblPaymentType = new System.Windows.Forms.Label();
-            this.dtpPaymentDate = new System.Windows.Forms.DateTimePicker();
-            this.lblPaymentDate = new System.Windows.Forms.Label();
-            this.numAmount = new System.Windows.Forms.NumericUpDown();
-            this.lblAmount = new System.Windows.Forms.Label();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.gbInvoiceInfo.SuspendLayout();
-            this.gbPaymentDetails.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numAmount)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            pnlHeader = new Panel();
+            lblTitle = new Label();
+            gbInvoiceInfo = new GroupBox();
+            lblRemainingVal = new Label();
+            lblRemaining = new Label();
+            lblPaidVal = new Label();
+            lblPaid = new Label();
+            lblTotalVal = new Label();
+            lblTotal = new Label();
+            lblStudentNameVal = new Label();
+            lblStudentName = new Label();
+            lblInvoiceNoVal = new Label();
+            lblInvoiceNo = new Label();
+            gbPaymentDetails = new GroupBox();
+            txtNotes = new TextBox();
+            lblNotes = new Label();
+            txtReceiptNo = new TextBox();
+            lblReceiptNo = new Label();
+            cbPaymentType = new ComboBox();
+            lblPaymentType = new Label();
+            dtpPaymentDate = new DateTimePicker();
+            lblPaymentDate = new Label();
+            numAmount = new NumericUpDown();
+            lblAmount = new Label();
+            btnSave = new Button();
+            btnCancel = new Button();
+            errorProvider1 = new ErrorProvider(components);
+            pnlHeader.SuspendLayout();
+            gbInvoiceInfo.SuspendLayout();
+            gbPaymentDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numAmount).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
+            SuspendLayout();
+            // 
+            // pnlHeader
+            // 
+            pnlHeader.BackColor = Color.White;
+            pnlHeader.Controls.Add(lblTitle);
+            pnlHeader.Dock = DockStyle.Top;
+            pnlHeader.Location = new Point(0, 0);
+            pnlHeader.Name = "pnlHeader";
+            pnlHeader.Padding = new Padding(24, 15, 24, 15);
+            pnlHeader.Size = new Size(620, 60);
+            pnlHeader.TabIndex = 0;
             // 
             // lblTitle
             // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
-            this.lblTitle.Location = new System.Drawing.Point(24, 20);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(248, 30);
-            this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Record Student Payment";
+            lblTitle.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblTitle.AutoSize = true;
+            lblTitle.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            lblTitle.ForeColor = Color.FromArgb(44, 62, 80);
+            lblTitle.Location = new Point(178, 9);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(275, 35);
+            lblTitle.TabIndex = 0;
+            lblTitle.Text = "تسجيل دفعة مالية لطالب";
             // 
             // gbInvoiceInfo
             // 
-            this.gbInvoiceInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbInvoiceInfo.Controls.Add(this.lblRemainingVal);
-            this.gbInvoiceInfo.Controls.Add(this.lblRemaining);
-            this.gbInvoiceInfo.Controls.Add(this.lblPaidVal);
-            this.gbInvoiceInfo.Controls.Add(this.lblPaid);
-            this.gbInvoiceInfo.Controls.Add(this.lblTotalVal);
-            this.gbInvoiceInfo.Controls.Add(this.lblTotal);
-            this.gbInvoiceInfo.Controls.Add(this.lblStudentNameVal);
-            this.gbInvoiceInfo.Controls.Add(this.lblStudentName);
-            this.gbInvoiceInfo.Controls.Add(this.lblInvoiceNoVal);
-            this.gbInvoiceInfo.Controls.Add(this.lblInvoiceNo);
-            this.gbInvoiceInfo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.gbInvoiceInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
-            this.gbInvoiceInfo.Location = new System.Drawing.Point(29, 65);
-            this.gbInvoiceInfo.Name = "gbInvoiceInfo";
-            this.gbInvoiceInfo.Size = new System.Drawing.Size(560, 140);
-            this.gbInvoiceInfo.TabIndex = 1;
-            this.gbInvoiceInfo.TabStop = false;
-            this.gbInvoiceInfo.Text = "Invoice Information";
+            gbInvoiceInfo.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            gbInvoiceInfo.Controls.Add(lblRemainingVal);
+            gbInvoiceInfo.Controls.Add(lblRemaining);
+            gbInvoiceInfo.Controls.Add(lblPaidVal);
+            gbInvoiceInfo.Controls.Add(lblPaid);
+            gbInvoiceInfo.Controls.Add(lblTotalVal);
+            gbInvoiceInfo.Controls.Add(lblTotal);
+            gbInvoiceInfo.Controls.Add(lblStudentNameVal);
+            gbInvoiceInfo.Controls.Add(lblStudentName);
+            gbInvoiceInfo.Controls.Add(lblInvoiceNoVal);
+            gbInvoiceInfo.Controls.Add(lblInvoiceNo);
+            gbInvoiceInfo.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            gbInvoiceInfo.ForeColor = Color.FromArgb(44, 62, 80);
+            gbInvoiceInfo.Location = new Point(24, 75);
+            gbInvoiceInfo.Name = "gbInvoiceInfo";
+            gbInvoiceInfo.Size = new Size(572, 140);
+            gbInvoiceInfo.TabIndex = 1;
+            gbInvoiceInfo.TabStop = false;
+            gbInvoiceInfo.Text = "بيانات الفاتورة المستحقة";
             // 
             // lblRemainingVal
             // 
-            this.lblRemainingVal.AutoSize = true;
-            this.lblRemainingVal.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.lblRemainingVal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.lblRemainingVal.Location = new System.Drawing.Point(390, 95);
-            this.lblRemainingVal.Name = "lblRemainingVal";
-            this.lblRemainingVal.Size = new System.Drawing.Size(49, 20);
-            this.lblRemainingVal.TabIndex = 9;
-            this.lblRemainingVal.Text = "$ 0.00";
+            lblRemainingVal.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblRemainingVal.AutoSize = true;
+            lblRemainingVal.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            lblRemainingVal.ForeColor = Color.FromArgb(220, 53, 69);
+            lblRemainingVal.Location = new Point(25, 95);
+            lblRemainingVal.Name = "lblRemainingVal";
+            lblRemainingVal.Size = new Size(75, 25);
+            lblRemainingVal.TabIndex = 9;
+            lblRemainingVal.Text = "0.00 د.أ";
             // 
             // lblRemaining
             // 
-            this.lblRemaining.AutoSize = true;
-            this.lblRemaining.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.lblRemaining.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
-            this.lblRemaining.Location = new System.Drawing.Point(390, 72);
-            this.lblRemaining.Name = "lblRemaining";
-            this.lblRemaining.Size = new System.Drawing.Size(123, 17);
-            this.lblRemaining.TabIndex = 8;
-            this.lblRemaining.Text = "Remaining Balance:";
+            lblRemaining.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblRemaining.AutoSize = true;
+            lblRemaining.Font = new Font("Segoe UI", 9.5F);
+            lblRemaining.ForeColor = Color.FromArgb(120, 130, 140);
+            lblRemaining.Location = new Point(115, 97);
+            lblRemaining.Name = "lblRemaining";
+            lblRemaining.Size = new Size(103, 21);
+            lblRemaining.TabIndex = 8;
+            lblRemaining.Text = "المبلغ المتبقي:";
             // 
             // lblPaidVal
             // 
-            this.lblPaidVal.AutoSize = true;
-            this.lblPaidVal.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblPaidVal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(163)))), ((int)(((byte)(74)))));
-            this.lblPaidVal.Location = new System.Drawing.Point(210, 96);
-            this.lblPaidVal.Name = "lblPaidVal";
-            this.lblPaidVal.Size = new System.Drawing.Size(45, 19);
-            this.lblPaidVal.TabIndex = 7;
-            this.lblPaidVal.Text = "$ 0.00";
+            lblPaidVal.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblPaidVal.AutoSize = true;
+            lblPaidVal.Font = new Font("Segoe UI", 10.5F, FontStyle.Bold);
+            lblPaidVal.ForeColor = Color.FromArgb(46, 204, 113);
+            lblPaidVal.Location = new Point(225, 95);
+            lblPaidVal.Name = "lblPaidVal";
+            lblPaidVal.Size = new Size(71, 25);
+            lblPaidVal.TabIndex = 7;
+            lblPaidVal.Text = "0.00 د.أ";
             // 
             // lblPaid
             // 
-            this.lblPaid.AutoSize = true;
-            this.lblPaid.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.lblPaid.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
-            this.lblPaid.Location = new System.Drawing.Point(210, 72);
-            this.lblPaid.Name = "lblPaid";
-            this.lblPaid.Size = new System.Drawing.Size(86, 17);
-            this.lblPaid.TabIndex = 6;
-            this.lblPaid.Text = "Total Paid:";
+            lblPaid.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblPaid.AutoSize = true;
+            lblPaid.Font = new Font("Segoe UI", 9.5F);
+            lblPaid.ForeColor = Color.FromArgb(120, 130, 140);
+            lblPaid.Location = new Point(305, 97);
+            lblPaid.Name = "lblPaid";
+            lblPaid.Size = new Size(60, 21);
+            lblPaid.TabIndex = 6;
+            lblPaid.Text = "المسدد:";
             // 
             // lblTotalVal
             // 
-            this.lblTotalVal.AutoSize = true;
-            this.lblTotalVal.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblTotalVal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
-            this.lblTotalVal.Location = new System.Drawing.Point(25, 96);
-            this.lblTotalVal.Name = "lblTotalVal";
-            this.lblTotalVal.Size = new System.Drawing.Size(45, 19);
-            this.lblTotalVal.TabIndex = 5;
-            this.lblTotalVal.Text = "$ 0.00";
+            lblTotalVal.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblTotalVal.AutoSize = true;
+            lblTotalVal.Font = new Font("Segoe UI", 10.5F, FontStyle.Bold);
+            lblTotalVal.ForeColor = Color.FromArgb(44, 62, 80);
+            lblTotalVal.Location = new Point(380, 95);
+            lblTotalVal.Name = "lblTotalVal";
+            lblTotalVal.Size = new Size(71, 25);
+            lblTotalVal.TabIndex = 5;
+            lblTotalVal.Text = "0.00 د.أ";
             // 
             // lblTotal
             // 
-            this.lblTotal.AutoSize = true;
-            this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.lblTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
-            this.lblTotal.Location = new System.Drawing.Point(25, 72);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(99, 17);
-            this.lblTotal.TabIndex = 4;
-            this.lblTotal.Text = "Invoice Total:";
+            lblTotal.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblTotal.AutoSize = true;
+            lblTotal.Font = new Font("Segoe UI", 9.5F);
+            lblTotal.ForeColor = Color.FromArgb(120, 130, 140);
+            lblTotal.Location = new Point(460, 97);
+            lblTotal.Name = "lblTotal";
+            lblTotal.Size = new Size(109, 21);
+            lblTotal.TabIndex = 4;
+            lblTotal.Text = "إجمالي الفاتورة:";
             // 
             // lblStudentNameVal
             // 
-            this.lblStudentNameVal.AutoSize = true;
-            this.lblStudentNameVal.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblStudentNameVal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
-            this.lblStudentNameVal.Location = new System.Drawing.Point(280, 35);
-            this.lblStudentNameVal.Name = "lblStudentNameVal";
-            this.lblStudentNameVal.Size = new System.Drawing.Size(24, 19);
-            this.lblStudentNameVal.TabIndex = 3;
-            this.lblStudentNameVal.Text = "---";
+            lblStudentNameVal.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblStudentNameVal.AutoSize = true;
+            lblStudentNameVal.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblStudentNameVal.ForeColor = Color.FromArgb(44, 62, 80);
+            lblStudentNameVal.Location = new Point(25, 40);
+            lblStudentNameVal.Name = "lblStudentNameVal";
+            lblStudentNameVal.Size = new Size(31, 23);
+            lblStudentNameVal.TabIndex = 3;
+            lblStudentNameVal.Text = "---";
             // 
             // lblStudentName
             // 
-            this.lblStudentName.AutoSize = true;
-            this.lblStudentName.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.lblStudentName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
-            this.lblStudentName.Location = new System.Drawing.Point(210, 35);
-            this.lblStudentName.Name = "lblStudentName";
-            this.lblStudentName.Size = new System.Drawing.Size(56, 17);
-            this.lblStudentName.TabIndex = 2;
-            this.lblStudentName.Text = "Student:";
+            lblStudentName.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblStudentName.AutoSize = true;
+            lblStudentName.Font = new Font("Segoe UI", 9.5F);
+            lblStudentName.ForeColor = Color.FromArgb(120, 130, 140);
+            lblStudentName.Location = new Point(200, 40);
+            lblStudentName.Name = "lblStudentName";
+            lblStudentName.Size = new Size(89, 21);
+            lblStudentName.TabIndex = 2;
+            lblStudentName.Text = "اسم الطالب:";
             // 
             // lblInvoiceNoVal
             // 
-            this.lblInvoiceNoVal.AutoSize = true;
-            this.lblInvoiceNoVal.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblInvoiceNoVal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
-            this.lblInvoiceNoVal.Location = new System.Drawing.Point(95, 35);
-            this.lblInvoiceNoVal.Name = "lblInvoiceNoVal";
-            this.lblInvoiceNoVal.Size = new System.Drawing.Size(24, 19);
-            this.lblInvoiceNoVal.TabIndex = 1;
-            this.lblInvoiceNoVal.Text = "---";
+            lblInvoiceNoVal.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblInvoiceNoVal.AutoSize = true;
+            lblInvoiceNoVal.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblInvoiceNoVal.ForeColor = Color.FromArgb(41, 128, 185);
+            lblInvoiceNoVal.Location = new Point(320, 40);
+            lblInvoiceNoVal.Name = "lblInvoiceNoVal";
+            lblInvoiceNoVal.Size = new Size(31, 23);
+            lblInvoiceNoVal.TabIndex = 1;
+            lblInvoiceNoVal.Text = "---";
             // 
             // lblInvoiceNo
             // 
-            this.lblInvoiceNo.AutoSize = true;
-            this.lblInvoiceNo.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.lblInvoiceNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
-            this.lblInvoiceNo.Location = new System.Drawing.Point(25, 35);
-            this.lblInvoiceNo.Name = "lblInvoiceNo";
-            this.lblInvoiceNo.Size = new System.Drawing.Size(65, 17);
-            this.lblInvoiceNo.TabIndex = 0;
-            this.lblInvoiceNo.Text = "Invoice #:";
+            lblInvoiceNo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblInvoiceNo.AutoSize = true;
+            lblInvoiceNo.Font = new Font("Segoe UI", 9.5F);
+            lblInvoiceNo.ForeColor = Color.FromArgb(120, 130, 140);
+            lblInvoiceNo.Location = new Point(470, 40);
+            lblInvoiceNo.Name = "lblInvoiceNo";
+            lblInvoiceNo.Size = new Size(88, 21);
+            lblInvoiceNo.TabIndex = 0;
+            lblInvoiceNo.Text = "رقم الفاتورة:";
             // 
             // gbPaymentDetails
             // 
-            this.gbPaymentDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbPaymentDetails.Controls.Add(this.txtNotes);
-            this.gbPaymentDetails.Controls.Add(this.lblNotes);
-            this.gbPaymentDetails.Controls.Add(this.txtReceiptNo);
-            this.gbPaymentDetails.Controls.Add(this.lblReceiptNo);
-            this.gbPaymentDetails.Controls.Add(this.cbPaymentType);
-            this.gbPaymentDetails.Controls.Add(this.lblPaymentType);
-            this.gbPaymentDetails.Controls.Add(this.dtpPaymentDate);
-            this.gbPaymentDetails.Controls.Add(this.lblPaymentDate);
-            this.gbPaymentDetails.Controls.Add(this.numAmount);
-            this.gbPaymentDetails.Controls.Add(this.lblAmount);
-            this.gbPaymentDetails.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.gbPaymentDetails.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
-            this.gbPaymentDetails.Location = new System.Drawing.Point(29, 215);
-            this.gbPaymentDetails.Name = "gbPaymentDetails";
-            this.gbPaymentDetails.Size = new System.Drawing.Size(560, 240);
-            this.gbPaymentDetails.TabIndex = 2;
-            this.gbPaymentDetails.TabStop = false;
-            this.gbPaymentDetails.Text = "Payment Details";
+            gbPaymentDetails.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            gbPaymentDetails.Controls.Add(txtNotes);
+            gbPaymentDetails.Controls.Add(lblNotes);
+            gbPaymentDetails.Controls.Add(txtReceiptNo);
+            gbPaymentDetails.Controls.Add(lblReceiptNo);
+            gbPaymentDetails.Controls.Add(cbPaymentType);
+            gbPaymentDetails.Controls.Add(lblPaymentType);
+            gbPaymentDetails.Controls.Add(dtpPaymentDate);
+            gbPaymentDetails.Controls.Add(lblPaymentDate);
+            gbPaymentDetails.Controls.Add(numAmount);
+            gbPaymentDetails.Controls.Add(lblAmount);
+            gbPaymentDetails.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            gbPaymentDetails.ForeColor = Color.FromArgb(44, 62, 80);
+            gbPaymentDetails.Location = new Point(24, 225);
+            gbPaymentDetails.Name = "gbPaymentDetails";
+            gbPaymentDetails.Size = new Size(572, 235);
+            gbPaymentDetails.TabIndex = 2;
+            gbPaymentDetails.TabStop = false;
+            gbPaymentDetails.Text = "تفاصيل الدفعة المالية";
             // 
             // txtNotes
             // 
-            this.txtNotes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNotes.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.txtNotes.Location = new System.Drawing.Point(145, 175);
-            this.txtNotes.Multiline = true;
-            this.txtNotes.Name = "txtNotes";
-            this.txtNotes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtNotes.Size = new System.Drawing.Size(380, 50);
-            this.txtNotes.TabIndex = 9;
+            txtNotes.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtNotes.Font = new Font("Segoe UI", 9.5F);
+            txtNotes.Location = new Point(25, 175);
+            txtNotes.Multiline = true;
+            txtNotes.Name = "txtNotes";
+            txtNotes.ScrollBars = ScrollBars.Vertical;
+            txtNotes.Size = new Size(375, 48);
+            txtNotes.TabIndex = 9;
             // 
             // lblNotes
             // 
-            this.lblNotes.AutoSize = true;
-            this.lblNotes.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.lblNotes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
-            this.lblNotes.Location = new System.Drawing.Point(25, 178);
-            this.lblNotes.Name = "lblNotes";
-            this.lblNotes.Size = new System.Drawing.Size(46, 17);
-            this.lblNotes.TabIndex = 8;
-            this.lblNotes.Text = "Notes:";
+            lblNotes.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblNotes.AutoSize = true;
+            lblNotes.Font = new Font("Segoe UI", 9.5F);
+            lblNotes.ForeColor = Color.FromArgb(44, 62, 80);
+            lblNotes.Location = new Point(415, 178);
+            lblNotes.Name = "lblNotes";
+            lblNotes.Size = new Size(121, 21);
+            lblNotes.TabIndex = 8;
+            lblNotes.Text = "ملاحظات إضافية:";
             // 
             // txtReceiptNo
             // 
-            this.txtReceiptNo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtReceiptNo.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.txtReceiptNo.Location = new System.Drawing.Point(145, 140);
-            this.txtReceiptNo.Name = "txtReceiptNo";
-            this.txtReceiptNo.Size = new System.Drawing.Size(380, 24);
-            this.txtReceiptNo.TabIndex = 7;
+            txtReceiptNo.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtReceiptNo.Font = new Font("Segoe UI", 9.5F);
+            txtReceiptNo.Location = new Point(25, 138);
+            txtReceiptNo.Name = "txtReceiptNo";
+            txtReceiptNo.Size = new Size(375, 29);
+            txtReceiptNo.TabIndex = 7;
             // 
             // lblReceiptNo
             // 
-            this.lblReceiptNo.AutoSize = true;
-            this.lblReceiptNo.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.lblReceiptNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
-            this.lblReceiptNo.Location = new System.Drawing.Point(25, 143);
-            this.lblReceiptNo.Name = "lblReceiptNo";
-            this.lblReceiptNo.Size = new System.Drawing.Size(73, 17);
-            this.lblReceiptNo.TabIndex = 6;
-            this.lblReceiptNo.Text = "Receipt No:";
+            lblReceiptNo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblReceiptNo.AutoSize = true;
+            lblReceiptNo.Font = new Font("Segoe UI", 9.5F);
+            lblReceiptNo.ForeColor = Color.FromArgb(44, 62, 80);
+            lblReceiptNo.Location = new Point(415, 141);
+            lblReceiptNo.Name = "lblReceiptNo";
+            lblReceiptNo.Size = new Size(127, 21);
+            lblReceiptNo.TabIndex = 6;
+            lblReceiptNo.Text = "رقم إيصال القبض:";
             // 
             // cbPaymentType
             // 
-            this.cbPaymentType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbPaymentType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbPaymentType.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.cbPaymentType.FormattingEnabled = true;
-            this.cbPaymentType.Location = new System.Drawing.Point(145, 103);
-            this.cbPaymentType.Name = "cbPaymentType";
-            this.cbPaymentType.Size = new System.Drawing.Size(380, 24);
-            this.cbPaymentType.TabIndex = 5;
+            cbPaymentType.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            cbPaymentType.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbPaymentType.Font = new Font("Segoe UI", 9.5F);
+            cbPaymentType.FormattingEnabled = true;
+            cbPaymentType.Location = new Point(25, 101);
+            cbPaymentType.Name = "cbPaymentType";
+            cbPaymentType.Size = new Size(375, 29);
+            cbPaymentType.TabIndex = 5;
             // 
             // lblPaymentType
             // 
-            this.lblPaymentType.AutoSize = true;
-            this.lblPaymentType.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.lblPaymentType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
-            this.lblPaymentType.Location = new System.Drawing.Point(25, 106);
-            this.lblPaymentType.Name = "lblPaymentType";
-            this.lblPaymentType.Size = new System.Drawing.Size(92, 17);
-            this.lblPaymentType.TabIndex = 4;
-            this.lblPaymentType.Text = "Payment Type:";
+            lblPaymentType.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblPaymentType.AutoSize = true;
+            lblPaymentType.Font = new Font("Segoe UI", 9.5F);
+            lblPaymentType.ForeColor = Color.FromArgb(44, 62, 80);
+            lblPaymentType.Location = new Point(415, 104);
+            lblPaymentType.Name = "lblPaymentType";
+            lblPaymentType.Size = new Size(93, 21);
+            lblPaymentType.TabIndex = 4;
+            lblPaymentType.Text = "طريقة الدفع:";
             // 
             // dtpPaymentDate
             // 
-            this.dtpPaymentDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpPaymentDate.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.dtpPaymentDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpPaymentDate.Location = new System.Drawing.Point(145, 68);
-            this.dtpPaymentDate.Name = "dtpPaymentDate";
-            this.dtpPaymentDate.Size = new System.Drawing.Size(380, 24);
-            this.dtpPaymentDate.TabIndex = 3;
+            dtpPaymentDate.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            dtpPaymentDate.Font = new Font("Segoe UI", 9.5F);
+            dtpPaymentDate.Format = DateTimePickerFormat.Short;
+            dtpPaymentDate.Location = new Point(25, 65);
+            dtpPaymentDate.Name = "dtpPaymentDate";
+            dtpPaymentDate.Size = new Size(375, 29);
+            dtpPaymentDate.TabIndex = 3;
             // 
             // lblPaymentDate
             // 
-            this.lblPaymentDate.AutoSize = true;
-            this.lblPaymentDate.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.lblPaymentDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
-            this.lblPaymentDate.Location = new System.Drawing.Point(25, 71);
-            this.lblPaymentDate.Name = "lblPaymentDate";
-            this.lblPaymentDate.Size = new System.Drawing.Size(91, 17);
-            this.lblPaymentDate.TabIndex = 2;
-            this.lblPaymentDate.Text = "Payment Date:";
+            lblPaymentDate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblPaymentDate.AutoSize = true;
+            lblPaymentDate.Font = new Font("Segoe UI", 9.5F);
+            lblPaymentDate.ForeColor = Color.FromArgb(44, 62, 80);
+            lblPaymentDate.Location = new Point(415, 68);
+            lblPaymentDate.Name = "lblPaymentDate";
+            lblPaymentDate.Size = new Size(90, 21);
+            lblPaymentDate.TabIndex = 2;
+            lblPaymentDate.Text = "تاريخ السداد:";
             // 
             // numAmount
             // 
-            this.numAmount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.numAmount.DecimalPlaces = 2;
-            this.numAmount.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.numAmount.Location = new System.Drawing.Point(145, 33);
-            this.numAmount.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.numAmount.Name = "numAmount";
-            this.numAmount.Size = new System.Drawing.Size(380, 25);
-            this.numAmount.TabIndex = 1;
-            this.numAmount.ThousandsSeparator = true;
+            numAmount.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            numAmount.DecimalPlaces = 2;
+            numAmount.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            numAmount.Location = new Point(25, 28);
+            numAmount.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
+            numAmount.Name = "numAmount";
+            numAmount.Size = new Size(375, 30);
+            numAmount.TabIndex = 1;
+            numAmount.ThousandsSeparator = true;
             // 
             // lblAmount
             // 
-            this.lblAmount.AutoSize = true;
-            this.lblAmount.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.lblAmount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
-            this.lblAmount.Location = new System.Drawing.Point(25, 36);
-            this.lblAmount.Name = "lblAmount";
-            this.lblAmount.Size = new System.Drawing.Size(89, 17);
-            this.lblAmount.TabIndex = 0;
-            this.lblAmount.Text = "Amount ($): *";
+            lblAmount.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblAmount.AutoSize = true;
+            lblAmount.Font = new Font("Segoe UI", 9.5F);
+            lblAmount.ForeColor = Color.FromArgb(44, 62, 80);
+            lblAmount.Location = new Point(415, 31);
+            lblAmount.Name = "lblAmount";
+            lblAmount.Size = new Size(145, 21);
+            lblAmount.TabIndex = 0;
+            lblAmount.Text = "المبلغ المدفوع (د.أ): *";
             // 
             // btnSave
             // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.btnSave.Location = new System.Drawing.Point(340, 470);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(130, 36);
-            this.btnSave.TabIndex = 3;
-            this.btnSave.Text = "Save Payment";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
+            btnSave.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnSave.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            btnSave.Location = new Point(145, 472);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(130, 36);
+            btnSave.TabIndex = 3;
+            btnSave.Text = "💾 حفظ الدفعة";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += BtnSave_Click;
             // 
             // btnCancel
             // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.btnCancel.Location = new System.Drawing.Point(480, 470);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(109, 36);
-            this.btnCancel.TabIndex = 4;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
+            btnCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnCancel.Font = new Font("Segoe UI", 9.5F);
+            btnCancel.Location = new Point(24, 472);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(110, 36);
+            btnCancel.TabIndex = 4;
+            btnCancel.Text = "إلغاء";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += BtnCancel_Click;
             // 
             // errorProvider1
             // 
-            this.errorProvider1.ContainerControl = this;
+            errorProvider1.ContainerControl = this;
+            errorProvider1.RightToLeft = true;
             // 
             // frmRecordPayment
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
-            this.ClientSize = new System.Drawing.Size(619, 520);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.gbPaymentDetails);
-            this.Controls.Add(this.gbInvoiceInfo);
-            this.Controls.Add(this.lblTitle);
-            this.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "frmRecordPayment";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Record Payment";
-            this.Load += new System.EventHandler(this.FrmRecordPayment_Load);
-            this.gbInvoiceInfo.ResumeLayout(false);
-            this.gbInvoiceInfo.PerformLayout();
-            this.gbPaymentDetails.ResumeLayout(false);
-            this.gbPaymentDetails.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numAmount)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(248, 250, 252);
+            ClientSize = new Size(620, 524);
+            Controls.Add(btnCancel);
+            Controls.Add(btnSave);
+            Controls.Add(gbPaymentDetails);
+            Controls.Add(gbInvoiceInfo);
+            Controls.Add(pnlHeader);
+            Font = new Font("Segoe UI", 9F);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "frmRecordPayment";
+            RightToLeft = RightToLeft.Yes;
+            RightToLeftLayout = true;
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "تسجيل دفعة طالب";
+            Load += FrmRecordPayment_Load;
+            pnlHeader.ResumeLayout(false);
+            pnlHeader.PerformLayout();
+            gbInvoiceInfo.ResumeLayout(false);
+            gbInvoiceInfo.PerformLayout();
+            gbPaymentDetails.ResumeLayout(false);
+            gbPaymentDetails.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numAmount).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
 
+        private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.GroupBox gbInvoiceInfo;
         private System.Windows.Forms.Label lblInvoiceNo;

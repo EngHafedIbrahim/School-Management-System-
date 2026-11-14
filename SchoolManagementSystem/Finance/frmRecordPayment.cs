@@ -43,7 +43,7 @@ namespace SchoolManagementSystem.Finance
             DataTable dt = clsInvoice.GetInvoiceDetailed(_invoiceID);
             if (dt == null || dt.Rows.Count == 0)
             {
-                MessageBox.Show("Invoice details could not be loaded.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                clsUITheme.ShowArabicMessage("تعذر تحميل تفاصيل الفاتورة المطلوبة.", "خطأ في التحميل", MessageBoxIcon.Error);
                 this.Close();
                 return;
             }
@@ -56,13 +56,13 @@ namespace SchoolManagementSystem.Finance
             _paidAmount = Convert.ToDecimal(row["PaidAmount"]);
             _remainingAmount = Convert.ToDecimal(row["RemainingAmount"]);
 
-            lblTotalVal.Text = $"$ {_totalAmount:N2}";
-            lblPaidVal.Text = $"$ {_paidAmount:N2}";
-            lblRemainingVal.Text = $"$ {_remainingAmount:N2}";
+            lblTotalVal.Text = $"{_totalAmount:N2} د.أ";
+            lblPaidVal.Text = $"{_paidAmount:N2} د.أ";
+            lblRemainingVal.Text = $"{_remainingAmount:N2} د.أ";
 
             if (_remainingAmount <= 0)
             {
-                MessageBox.Show("This invoice is already fully paid. No further payments can be recorded.", "Invoice Settled", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clsUITheme.ShowArabicMessage("تم سداد كامل قيمة هذه الفاتورة مسبقاً، ولا يمكن تسجيل دفعات إضافية عليها.", "فاتورة مسددة", MessageBoxIcon.Information);
                 btnSave.Enabled = false;
                 numAmount.Enabled = false;
                 return;
@@ -73,8 +73,8 @@ namespace SchoolManagementSystem.Finance
             numAmount.Value = _remainingAmount;
             dtpPaymentDate.Value = DateTime.Today;
 
-            // Generate receipt number suggestion
-            txtReceiptNo.Text = $"REC-{DateTime.Now:yyyyMMdd}-{new Random().Next(1000, 9999)}";
+            // Generate sequential receipt number (concurrency-safe)
+            txtReceiptNo.Text = clsPayment.GetNextReceiptNumber();
         }
 
         private bool ValidatePayment()
@@ -84,24 +84,24 @@ namespace SchoolManagementSystem.Finance
 
             if (numAmount.Value <= 0)
             {
-                errorProvider1.SetError(numAmount, "Payment amount must be greater than zero.");
+                errorProvider1.SetError(numAmount, "يجب أن تكون قيمة الدفعة أكبر من صفر.");
                 isValid = false;
             }
             else if (numAmount.Value > _remainingAmount)
             {
-                errorProvider1.SetError(numAmount, $"Amount cannot exceed remaining balance (${_remainingAmount:N2}).");
+                errorProvider1.SetError(numAmount, $"لا يمكن أن يتجاوز المبلغ الرصيد المتبقي ({_remainingAmount:N2} د.أ).");
                 isValid = false;
             }
 
             if (cbPaymentType.SelectedValue == null)
             {
-                errorProvider1.SetError(cbPaymentType, "Please select a payment type.");
+                errorProvider1.SetError(cbPaymentType, "يرجى تحديد طريقة الدفع.");
                 isValid = false;
             }
 
             if (string.IsNullOrWhiteSpace(txtReceiptNo.Text))
             {
-                errorProvider1.SetError(txtReceiptNo, "Receipt number is required.");
+                errorProvider1.SetError(txtReceiptNo, "رقم إيصال القبض مطلوب.");
                 isValid = false;
             }
 
@@ -119,24 +119,35 @@ namespace SchoolManagementSystem.Finance
             string paymentMethod = cbPaymentType.Text;
             string receiptNumber = txtReceiptNo.Text.Trim();
             string notes = txtNotes.Text.Trim();
-            int currentUserID = clsGloble.CurrentUser?.UserID ?? 1;
+            int currentUserID = clsGloble.UserID;
+
+            // FIX: Separate TransactionID from ReceiptNumber
+            // TransactionID is for bank/card transactions; empty for cash payments
+            string transactionID = "";
+            if (paymentMethod != "Cash" && paymentMethod != "نقداً")
+            {
+                transactionID = receiptNumber;
+            }
 
             // Execute Transaction in DAL: Payment Insert + Invoice Recalculation & Status Update
             int paymentID = clsPayment.RecordPaymentWithTransaction(
                 _invoiceID, paymentDate, amount, paymentMethod, paymentTypeID,
-                receiptNumber, receiptNumber, notes, currentUserID, out string errorMessage);
+                transactionID, receiptNumber, notes, currentUserID, out string errorMessage);
 
             if (paymentID > 0)
             {
                 PaymentRecordedSuccessfully = true;
-                MessageBox.Show($"Payment of ${amount:N2} recorded successfully!\nReceipt No: {receiptNumber}\nPayment ID: {paymentID}",
-                    "Payment Recorded", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clsUITheme.ShowArabicMessage(
+                    $"تم تسجيل دفعة مالية بقيمة {amount:N2} د.أ بنجاح!\n\nرقم الإيصال: {receiptNumber}\nرقم السند: {paymentID}",
+                    "تم تسجيل الدفعة بنجاح", 
+                    MessageBoxIcon.Information);
+                    
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
             else
             {
-                MessageBox.Show($"Failed to record payment:\n{errorMessage}", "Transaction Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                clsUITheme.ShowArabicMessage($"تعذر تسجيل الدفعة:\n{errorMessage}", "فشل تسجيل الدفعة", MessageBoxIcon.Error);
                 // Refresh remaining in case it was a concurrency issue
                 LoadInvoiceDetails();
             }

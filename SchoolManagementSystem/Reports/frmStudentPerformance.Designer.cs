@@ -17,514 +17,553 @@ namespace SchoolManagementSystem.Reports
 
         private void InitializeComponent()
         {
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.gbFilter = new System.Windows.Forms.GroupBox();
-            this.btnGenerate = new System.Windows.Forms.Button();
-            this.cbYear = new System.Windows.Forms.ComboBox();
-            this.lblYear = new System.Windows.Forms.Label();
-            this.cbStudent = new System.Windows.Forms.ComboBox();
-            this.lblStudent = new System.Windows.Forms.Label();
-            this.gbStudentSummary = new System.Windows.Forms.GroupBox();
-            this.lblClassVal = new System.Windows.Forms.Label();
-            this.lblClass = new System.Windows.Forms.Label();
-            this.lblAcademicYearVal = new System.Windows.Forms.Label();
-            this.lblAcademicYear = new System.Windows.Forms.Label();
-            this.lblAdmissionNoVal = new System.Windows.Forms.Label();
-            this.lblAdmissionNo = new System.Windows.Forms.Label();
-            this.lblStudentNameVal = new System.Windows.Forms.Label();
-            this.lblStudentName = new System.Windows.Forms.Label();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabGrades = new System.Windows.Forms.TabPage();
-            this.dgvGrades = new System.Windows.Forms.DataGridView();
-            this.tabAttendance = new System.Windows.Forms.TabPage();
-            this.gbAttendanceMetrics = new System.Windows.Forms.GroupBox();
-            this.lblAttendanceRateVal = new System.Windows.Forms.Label();
-            this.lblAttendanceRate = new System.Windows.Forms.Label();
-            this.lblLateVal = new System.Windows.Forms.Label();
-            this.lblLate = new System.Windows.Forms.Label();
-            this.lblAbsentVal = new System.Windows.Forms.Label();
-            this.lblAbsent = new System.Windows.Forms.Label();
-            this.lblPresentVal = new System.Windows.Forms.Label();
-            this.lblPresent = new System.Windows.Forms.Label();
-            this.lblTotalSessionsVal = new System.Windows.Forms.Label();
-            this.lblTotalSessions = new System.Windows.Forms.Label();
-            this.tabEnrollment = new System.Windows.Forms.TabPage();
-            this.dgvEnrollments = new System.Windows.Forms.DataGridView();
-            this.btnPrint = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.gbFilter.SuspendLayout();
-            this.gbStudentSummary.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabGrades.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvGrades)).BeginInit();
-            this.tabAttendance.SuspendLayout();
-            this.gbAttendanceMetrics.SuspendLayout();
-            this.tabEnrollment.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEnrollments)).BeginInit();
-            this.SuspendLayout();
+            pnlHeader = new Panel();
+            lblTitle = new Label();
+            gbFilter = new GroupBox();
+            btnGenerate = new Button();
+            cbYear = new ComboBox();
+            lblYear = new Label();
+            cbStudent = new ComboBox();
+            lblStudent = new Label();
+            gbStudentSummary = new GroupBox();
+            lblClassVal = new Label();
+            lblClass = new Label();
+            lblAcademicYearVal = new Label();
+            lblAcademicYear = new Label();
+            lblAdmissionNoVal = new Label();
+            lblAdmissionNo = new Label();
+            lblStudentNameVal = new Label();
+            lblStudentName = new Label();
+            tabControl1 = new TabControl();
+            tabGrades = new TabPage();
+            dgvGrades = new DataGridView();
+            tabAttendance = new TabPage();
+            gbAttendanceMetrics = new GroupBox();
+            lblAttendanceRateVal = new Label();
+            lblAttendanceRate = new Label();
+            lblLateVal = new Label();
+            lblLate = new Label();
+            lblAbsentVal = new Label();
+            lblAbsent = new Label();
+            lblPresentVal = new Label();
+            lblPresent = new Label();
+            lblTotalSessionsVal = new Label();
+            lblTotalSessions = new Label();
+            tabEnrollment = new TabPage();
+            dgvEnrollments = new DataGridView();
+            btnPrint = new Button();
+            btnClose = new Button();
+            pnlHeader.SuspendLayout();
+            gbFilter.SuspendLayout();
+            gbStudentSummary.SuspendLayout();
+            tabControl1.SuspendLayout();
+            tabGrades.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvGrades).BeginInit();
+            tabAttendance.SuspendLayout();
+            gbAttendanceMetrics.SuspendLayout();
+            tabEnrollment.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvEnrollments).BeginInit();
+            SuspendLayout();
+            // 
+            // pnlHeader
+            // 
+            pnlHeader.BackColor = Color.White;
+            pnlHeader.Controls.Add(lblTitle);
+            pnlHeader.Dock = DockStyle.Top;
+            pnlHeader.Location = new Point(0, 0);
+            pnlHeader.Name = "pnlHeader";
+            pnlHeader.Padding = new Padding(24, 15, 24, 15);
+            pnlHeader.Size = new Size(984, 60);
+            pnlHeader.TabIndex = 0;
             // 
             // lblTitle
             // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
-            this.lblTitle.Location = new System.Drawing.Point(24, 18);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(306, 30);
-            this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Student Performance Report";
+            lblTitle.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblTitle.AutoSize = true;
+            lblTitle.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            lblTitle.ForeColor = Color.FromArgb(44, 62, 80);
+            lblTitle.Location = new Point(620, 12);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(340, 35);
+            lblTitle.TabIndex = 0;
+            lblTitle.Text = "تقرير الأداء الأكاديمي الشامل للطالب";
             // 
             // gbFilter
             // 
-            this.gbFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbFilter.Controls.Add(this.btnGenerate);
-            this.gbFilter.Controls.Add(this.cbYear);
-            this.gbFilter.Controls.Add(this.lblYear);
-            this.gbFilter.Controls.Add(this.cbStudent);
-            this.gbFilter.Controls.Add(this.lblStudent);
-            this.gbFilter.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.gbFilter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
-            this.gbFilter.Location = new System.Drawing.Point(29, 60);
-            this.gbFilter.Name = "gbFilter";
-            this.gbFilter.Size = new System.Drawing.Size(910, 75);
-            this.gbFilter.TabIndex = 1;
-            this.gbFilter.TabStop = false;
-            this.gbFilter.Text = "Select Target Student & Academic Period";
+            gbFilter.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            gbFilter.Controls.Add(btnGenerate);
+            gbFilter.Controls.Add(cbYear);
+            gbFilter.Controls.Add(lblYear);
+            gbFilter.Controls.Add(cbStudent);
+            gbFilter.Controls.Add(lblStudent);
+            gbFilter.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            gbFilter.ForeColor = Color.FromArgb(44, 62, 80);
+            gbFilter.Location = new Point(24, 72);
+            gbFilter.Name = "gbFilter";
+            gbFilter.Size = new Size(936, 80);
+            gbFilter.TabIndex = 1;
+            gbFilter.TabStop = false;
+            gbFilter.Text = "تحديد الطالب والعام الدراسي";
             // 
             // btnGenerate
             // 
-            this.btnGenerate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGenerate.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.btnGenerate.Location = new System.Drawing.Point(760, 27);
-            this.btnGenerate.Name = "btnGenerate";
-            this.btnGenerate.Size = new System.Drawing.Size(130, 34);
-            this.btnGenerate.TabIndex = 4;
-            this.btnGenerate.Text = "Load Report";
-            this.btnGenerate.UseVisualStyleBackColor = true;
-            this.btnGenerate.Click += new System.EventHandler(this.BtnGenerate_Click);
+            btnGenerate.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            btnGenerate.Cursor = Cursors.Hand;
+            btnGenerate.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            btnGenerate.Location = new Point(20, 28);
+            btnGenerate.Name = "btnGenerate";
+            btnGenerate.Size = new Size(130, 36);
+            btnGenerate.TabIndex = 4;
+            btnGenerate.Text = "🔍 عرض التقرير";
+            btnGenerate.UseVisualStyleBackColor = true;
+            btnGenerate.Click += BtnGenerate_Click;
             // 
             // cbYear
             // 
-            this.cbYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbYear.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.cbYear.FormattingEnabled = true;
-            this.cbYear.Location = new System.Drawing.Point(520, 32);
-            this.cbYear.Name = "cbYear";
-            this.cbYear.Size = new System.Drawing.Size(210, 24);
-            this.cbYear.TabIndex = 3;
+            cbYear.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            cbYear.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbYear.Font = new Font("Segoe UI", 9.5F);
+            cbYear.FormattingEnabled = true;
+            cbYear.Location = new Point(190, 32);
+            cbYear.Name = "cbYear";
+            cbYear.Size = new Size(200, 29);
+            cbYear.TabIndex = 3;
             // 
             // lblYear
             // 
-            this.lblYear.AutoSize = true;
-            this.lblYear.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.lblYear.Location = new System.Drawing.Point(415, 35);
-            this.lblYear.Name = "lblYear";
-            this.lblYear.Size = new System.Drawing.Size(96, 17);
-            this.lblYear.TabIndex = 2;
-            this.lblYear.Text = "Academic Year:";
+            lblYear.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblYear.AutoSize = true;
+            lblYear.Font = new Font("Segoe UI", 9.5F);
+            lblYear.Location = new Point(395, 36);
+            lblYear.Name = "lblYear";
+            lblYear.Size = new Size(99, 21);
+            lblYear.TabIndex = 2;
+            lblYear.Text = "العام الدراسي:";
             // 
             // cbStudent
             // 
-            this.cbStudent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbStudent.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.cbStudent.FormattingEnabled = true;
-            this.cbStudent.Location = new System.Drawing.Point(115, 32);
-            this.cbStudent.Name = "cbStudent";
-            this.cbStudent.Size = new System.Drawing.Size(280, 24);
-            this.cbStudent.TabIndex = 1;
+            cbStudent.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            cbStudent.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbStudent.Font = new Font("Segoe UI", 9.5F);
+            cbStudent.FormattingEnabled = true;
+            cbStudent.Location = new Point(510, 32);
+            cbStudent.Name = "cbStudent";
+            cbStudent.Size = new Size(300, 29);
+            cbStudent.TabIndex = 1;
             // 
             // lblStudent
             // 
-            this.lblStudent.AutoSize = true;
-            this.lblStudent.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.lblStudent.Location = new System.Drawing.Point(20, 35);
-            this.lblStudent.Name = "lblStudent";
-            this.lblStudent.Size = new System.Drawing.Size(92, 17);
-            this.lblStudent.TabIndex = 0;
-            this.lblStudent.Text = "Target Student:";
+            lblStudent.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblStudent.AutoSize = true;
+            lblStudent.Font = new Font("Segoe UI", 9.5F);
+            lblStudent.Location = new Point(815, 36);
+            lblStudent.Name = "lblStudent";
+            lblStudent.Size = new Size(106, 21);
+            lblStudent.TabIndex = 0;
+            lblStudent.Text = "الطالب المستهدف:";
             // 
             // gbStudentSummary
             // 
-            this.gbStudentSummary.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbStudentSummary.Controls.Add(this.lblClassVal);
-            this.gbStudentSummary.Controls.Add(this.lblClass);
-            this.gbStudentSummary.Controls.Add(this.lblAcademicYearVal);
-            this.gbStudentSummary.Controls.Add(this.lblAcademicYear);
-            this.gbStudentSummary.Controls.Add(this.lblAdmissionNoVal);
-            this.gbStudentSummary.Controls.Add(this.lblAdmissionNo);
-            this.gbStudentSummary.Controls.Add(this.lblStudentNameVal);
-            this.gbStudentSummary.Controls.Add(this.lblStudentName);
-            this.gbStudentSummary.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.gbStudentSummary.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
-            this.gbStudentSummary.Location = new System.Drawing.Point(29, 145);
-            this.gbStudentSummary.Name = "gbStudentSummary";
-            this.gbStudentSummary.Size = new System.Drawing.Size(910, 75);
-            this.gbStudentSummary.TabIndex = 2;
-            this.gbStudentSummary.TabStop = false;
-            this.gbStudentSummary.Text = "Student Profile Overview";
+            gbStudentSummary.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            gbStudentSummary.Controls.Add(lblClassVal);
+            gbStudentSummary.Controls.Add(lblClass);
+            gbStudentSummary.Controls.Add(lblAcademicYearVal);
+            gbStudentSummary.Controls.Add(lblAcademicYear);
+            gbStudentSummary.Controls.Add(lblAdmissionNoVal);
+            gbStudentSummary.Controls.Add(lblAdmissionNo);
+            gbStudentSummary.Controls.Add(lblStudentNameVal);
+            gbStudentSummary.Controls.Add(lblStudentName);
+            gbStudentSummary.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            gbStudentSummary.ForeColor = Color.FromArgb(44, 62, 80);
+            gbStudentSummary.Location = new Point(24, 160);
+            gbStudentSummary.Name = "gbStudentSummary";
+            gbStudentSummary.Size = new Size(936, 75);
+            gbStudentSummary.TabIndex = 2;
+            gbStudentSummary.TabStop = false;
+            gbStudentSummary.Text = "الملخص التعريفي للطالب";
             // 
             // lblClassVal
             // 
-            this.lblClassVal.AutoSize = true;
-            this.lblClassVal.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.lblClassVal.Location = new System.Drawing.Point(745, 35);
-            this.lblClassVal.Name = "lblClassVal";
-            this.lblClassVal.Size = new System.Drawing.Size(23, 17);
-            this.lblClassVal.TabIndex = 7;
-            this.lblClassVal.Text = "---";
+            lblClassVal.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblClassVal.AutoSize = true;
+            lblClassVal.Font = new Font("Segoe UI", 9.5F);
+            lblClassVal.ForeColor = Color.FromArgb(44, 62, 80);
+            lblClassVal.Location = new Point(30, 35);
+            lblClassVal.Name = "lblClassVal";
+            lblClassVal.Size = new Size(27, 21);
+            lblClassVal.TabIndex = 7;
+            lblClassVal.Text = "---";
             // 
             // lblClass
             // 
-            this.lblClass.AutoSize = true;
-            this.lblClass.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.lblClass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
-            this.lblClass.Location = new System.Drawing.Point(695, 35);
-            this.lblClass.Name = "lblClass";
-            this.lblClass.Size = new System.Drawing.Size(41, 17);
-            this.lblClass.TabIndex = 6;
-            this.lblClass.Text = "Class:";
+            lblClass.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblClass.AutoSize = true;
+            lblClass.Font = new Font("Segoe UI", 9.5F);
+            lblClass.ForeColor = Color.FromArgb(120, 130, 140);
+            lblClass.Location = new Point(160, 35);
+            lblClass.Name = "lblClass";
+            lblClass.Size = new Size(98, 21);
+            lblClass.TabIndex = 6;
+            lblClass.Text = "الصف والشعبة:";
             // 
             // lblAcademicYearVal
             // 
-            this.lblAcademicYearVal.AutoSize = true;
-            this.lblAcademicYearVal.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.lblAcademicYearVal.Location = new System.Drawing.Point(545, 35);
-            this.lblAcademicYearVal.Name = "lblAcademicYearVal";
-            this.lblAcademicYearVal.Size = new System.Drawing.Size(23, 17);
-            this.lblAcademicYearVal.TabIndex = 5;
-            this.lblAcademicYearVal.Text = "---";
+            lblAcademicYearVal.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblAcademicYearVal.AutoSize = true;
+            lblAcademicYearVal.Font = new Font("Segoe UI", 9.5F);
+            lblAcademicYearVal.ForeColor = Color.FromArgb(44, 62, 80);
+            lblAcademicYearVal.Location = new Point(270, 35);
+            lblAcademicYearVal.Name = "lblAcademicYearVal";
+            lblAcademicYearVal.Size = new Size(27, 21);
+            lblAcademicYearVal.TabIndex = 5;
+            lblAcademicYearVal.Text = "---";
             // 
             // lblAcademicYear
             // 
-            this.lblAcademicYear.AutoSize = true;
-            this.lblAcademicYear.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.lblAcademicYear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
-            this.lblAcademicYear.Location = new System.Drawing.Point(440, 35);
-            this.lblAcademicYear.Name = "lblAcademicYear";
-            this.lblAcademicYear.Size = new System.Drawing.Size(96, 17);
-            this.lblAcademicYear.TabIndex = 4;
-            this.lblAcademicYear.Text = "Academic Year:";
+            lblAcademicYear.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblAcademicYear.AutoSize = true;
+            lblAcademicYear.Font = new Font("Segoe UI", 9.5F);
+            lblAcademicYear.ForeColor = Color.FromArgb(120, 130, 140);
+            lblAcademicYear.Location = new Point(390, 35);
+            lblAcademicYear.Name = "lblAcademicYear";
+            lblAcademicYear.Size = new Size(99, 21);
+            lblAcademicYear.TabIndex = 4;
+            lblAcademicYear.Text = "العام الدراسي:";
             // 
             // lblAdmissionNoVal
             // 
-            this.lblAdmissionNoVal.AutoSize = true;
-            this.lblAdmissionNoVal.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.lblAdmissionNoVal.Location = new System.Drawing.Point(335, 35);
-            this.lblAdmissionNoVal.Name = "lblAdmissionNoVal";
-            this.lblAdmissionNoVal.Size = new System.Drawing.Size(23, 17);
-            this.lblAdmissionNoVal.TabIndex = 3;
-            this.lblAdmissionNoVal.Text = "---";
+            lblAdmissionNoVal.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblAdmissionNoVal.AutoSize = true;
+            lblAdmissionNoVal.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            lblAdmissionNoVal.ForeColor = Color.FromArgb(41, 128, 185);
+            lblAdmissionNoVal.Location = new Point(500, 35);
+            lblAdmissionNoVal.Name = "lblAdmissionNoVal";
+            lblAdmissionNoVal.Size = new Size(27, 21);
+            lblAdmissionNoVal.TabIndex = 3;
+            lblAdmissionNoVal.Text = "---";
             // 
             // lblAdmissionNo
             // 
-            this.lblAdmissionNo.AutoSize = true;
-            this.lblAdmissionNo.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.lblAdmissionNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
-            this.lblAdmissionNo.Location = new System.Drawing.Point(235, 35);
-            this.lblAdmissionNo.Name = "lblAdmissionNo";
-            this.lblAdmissionNo.Size = new System.Drawing.Size(91, 17);
-            this.lblAdmissionNo.TabIndex = 2;
-            this.lblAdmissionNo.Text = "Admission No:";
+            lblAdmissionNo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblAdmissionNo.AutoSize = true;
+            lblAdmissionNo.Font = new Font("Segoe UI", 9.5F);
+            lblAdmissionNo.ForeColor = Color.FromArgb(120, 130, 140);
+            lblAdmissionNo.Location = new Point(620, 35);
+            lblAdmissionNo.Name = "lblAdmissionNo";
+            lblAdmissionNo.Size = new Size(81, 21);
+            lblAdmissionNo.TabIndex = 2;
+            lblAdmissionNo.Text = "رقم القبول:";
             // 
             // lblStudentNameVal
             // 
-            this.lblStudentNameVal.AutoSize = true;
-            this.lblStudentNameVal.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.lblStudentNameVal.Location = new System.Drawing.Point(75, 35);
-            this.lblStudentNameVal.Name = "lblStudentNameVal";
-            this.lblStudentNameVal.Size = new System.Drawing.Size(23, 17);
-            this.lblStudentNameVal.TabIndex = 1;
-            this.lblStudentNameVal.Text = "---";
+            lblStudentNameVal.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblStudentNameVal.AutoSize = true;
+            lblStudentNameVal.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblStudentNameVal.ForeColor = Color.FromArgb(44, 62, 80);
+            lblStudentNameVal.Location = new Point(710, 34);
+            lblStudentNameVal.Name = "lblStudentNameVal";
+            lblStudentNameVal.Size = new Size(31, 23);
+            lblStudentNameVal.TabIndex = 1;
+            lblStudentNameVal.Text = "---";
             // 
             // lblStudentName
             // 
-            this.lblStudentName.AutoSize = true;
-            this.lblStudentName.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.lblStudentName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
-            this.lblStudentName.Location = new System.Drawing.Point(20, 35);
-            this.lblStudentName.Name = "lblStudentName";
-            this.lblStudentName.Size = new System.Drawing.Size(46, 17);
-            this.lblStudentName.TabIndex = 0;
-            this.lblStudentName.Text = "Name:";
+            lblStudentName.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblStudentName.AutoSize = true;
+            lblStudentName.Font = new Font("Segoe UI", 9.5F);
+            lblStudentName.ForeColor = Color.FromArgb(120, 130, 140);
+            lblStudentName.Location = new Point(835, 35);
+            lblStudentName.Name = "lblStudentName";
+            lblStudentName.Size = new Size(82, 21);
+            lblStudentName.TabIndex = 0;
+            lblStudentName.Text = "اسم الطالب:";
             // 
             // tabControl1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabGrades);
-            this.tabControl1.Controls.Add(this.tabAttendance);
-            this.tabControl1.Controls.Add(this.tabEnrollment);
-            this.tabControl1.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.tabControl1.Location = new System.Drawing.Point(29, 230);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(910, 320);
-            this.tabControl1.TabIndex = 3;
+            tabControl1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tabControl1.Controls.Add(tabGrades);
+            tabControl1.Controls.Add(tabAttendance);
+            tabControl1.Controls.Add(tabEnrollment);
+            tabControl1.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            tabControl1.Location = new Point(24, 245);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(936, 310);
+            tabControl1.TabIndex = 3;
             // 
             // tabGrades
             // 
-            this.tabGrades.Controls.Add(this.dgvGrades);
-            this.tabGrades.Location = new System.Drawing.Point(4, 26);
-            this.tabGrades.Name = "tabGrades";
-            this.tabGrades.Padding = new System.Windows.Forms.Padding(10);
-            this.tabGrades.Size = new System.Drawing.Size(902, 290);
-            this.tabGrades.TabIndex = 0;
-            this.tabGrades.Text = "  Academic Grades  ";
-            this.tabGrades.UseVisualStyleBackColor = true;
+            tabGrades.Controls.Add(dgvGrades);
+            tabGrades.Location = new Point(4, 30);
+            tabGrades.Name = "tabGrades";
+            tabGrades.Padding = new Padding(10);
+            tabGrades.Size = new Size(928, 276);
+            tabGrades.TabIndex = 0;
+            tabGrades.Text = "  الدرجات والنتائج الأكاديمية  ";
+            tabGrades.UseVisualStyleBackColor = true;
             // 
             // dgvGrades
             // 
-            this.dgvGrades.AllowUserToAddRows = false;
-            this.dgvGrades.AllowUserToDeleteRows = false;
-            this.dgvGrades.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvGrades.BackgroundColor = System.Drawing.Color.White;
-            this.dgvGrades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvGrades.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvGrades.Location = new System.Drawing.Point(10, 10);
-            this.dgvGrades.MultiSelect = false;
-            this.dgvGrades.Name = "dgvGrades";
-            this.dgvGrades.ReadOnly = true;
-            this.dgvGrades.RowHeadersWidth = 51;
-            this.dgvGrades.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvGrades.Size = new System.Drawing.Size(882, 270);
-            this.dgvGrades.TabIndex = 0;
+            dgvGrades.AllowUserToAddRows = false;
+            dgvGrades.AllowUserToDeleteRows = false;
+            dgvGrades.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvGrades.BackgroundColor = Color.White;
+            dgvGrades.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvGrades.Dock = DockStyle.Fill;
+            dgvGrades.Location = new Point(10, 10);
+            dgvGrades.MultiSelect = false;
+            dgvGrades.Name = "dgvGrades";
+            dgvGrades.ReadOnly = true;
+            dgvGrades.RowHeadersWidth = 51;
+            dgvGrades.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvGrades.Size = new Size(908, 256);
+            dgvGrades.TabIndex = 0;
             // 
             // tabAttendance
             // 
-            this.tabAttendance.Controls.Add(this.gbAttendanceMetrics);
-            this.tabAttendance.Location = new System.Drawing.Point(4, 26);
-            this.tabAttendance.Name = "tabAttendance";
-            this.tabAttendance.Padding = new System.Windows.Forms.Padding(10);
-            this.tabAttendance.Size = new System.Drawing.Size(902, 290);
-            this.tabAttendance.TabIndex = 1;
-            this.tabAttendance.Text = "  Attendance Summary  ";
-            this.tabAttendance.UseVisualStyleBackColor = true;
+            tabAttendance.Controls.Add(gbAttendanceMetrics);
+            tabAttendance.Location = new Point(4, 30);
+            tabAttendance.Name = "tabAttendance";
+            tabAttendance.Padding = new Padding(10);
+            tabAttendance.Size = new Size(928, 276);
+            tabAttendance.TabIndex = 1;
+            tabAttendance.Text = "  ملخص الحضور والغياب  ";
+            tabAttendance.UseVisualStyleBackColor = true;
             // 
             // gbAttendanceMetrics
             // 
-            this.gbAttendanceMetrics.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbAttendanceMetrics.Controls.Add(this.lblAttendanceRateVal);
-            this.gbAttendanceMetrics.Controls.Add(this.lblAttendanceRate);
-            this.gbAttendanceMetrics.Controls.Add(this.lblLateVal);
-            this.gbAttendanceMetrics.Controls.Add(this.lblLate);
-            this.gbAttendanceMetrics.Controls.Add(this.lblAbsentVal);
-            this.gbAttendanceMetrics.Controls.Add(this.lblAbsent);
-            this.gbAttendanceMetrics.Controls.Add(this.lblPresentVal);
-            this.gbAttendanceMetrics.Controls.Add(this.lblPresent);
-            this.gbAttendanceMetrics.Controls.Add(this.lblTotalSessionsVal);
-            this.gbAttendanceMetrics.Controls.Add(this.lblTotalSessions);
-            this.gbAttendanceMetrics.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.gbAttendanceMetrics.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
-            this.gbAttendanceMetrics.Location = new System.Drawing.Point(20, 20);
-            this.gbAttendanceMetrics.Name = "gbAttendanceMetrics";
-            this.gbAttendanceMetrics.Size = new System.Drawing.Size(860, 160);
-            this.gbAttendanceMetrics.TabIndex = 0;
-            this.gbAttendanceMetrics.TabStop = false;
-            this.gbAttendanceMetrics.Text = "Attendance Metrics for the Academic Year";
+            gbAttendanceMetrics.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            gbAttendanceMetrics.Controls.Add(lblAttendanceRateVal);
+            gbAttendanceMetrics.Controls.Add(lblAttendanceRate);
+            gbAttendanceMetrics.Controls.Add(lblLateVal);
+            gbAttendanceMetrics.Controls.Add(lblLate);
+            gbAttendanceMetrics.Controls.Add(lblAbsentVal);
+            gbAttendanceMetrics.Controls.Add(lblAbsent);
+            gbAttendanceMetrics.Controls.Add(lblPresentVal);
+            gbAttendanceMetrics.Controls.Add(lblPresent);
+            gbAttendanceMetrics.Controls.Add(lblTotalSessionsVal);
+            gbAttendanceMetrics.Controls.Add(lblTotalSessions);
+            gbAttendanceMetrics.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            gbAttendanceMetrics.ForeColor = Color.FromArgb(44, 62, 80);
+            gbAttendanceMetrics.Location = new Point(15, 20);
+            gbAttendanceMetrics.Name = "gbAttendanceMetrics";
+            gbAttendanceMetrics.Size = new Size(895, 160);
+            gbAttendanceMetrics.TabIndex = 0;
+            gbAttendanceMetrics.TabStop = false;
+            gbAttendanceMetrics.Text = "مؤشرات الحضور والغياب للعام الدراسي المحدد";
             // 
             // lblAttendanceRateVal
             // 
-            this.lblAttendanceRateVal.AutoSize = true;
-            this.lblAttendanceRateVal.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.lblAttendanceRateVal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
-            this.lblAttendanceRateVal.Location = new System.Drawing.Point(680, 75);
-            this.lblAttendanceRateVal.Name = "lblAttendanceRateVal";
-            this.lblAttendanceRateVal.Size = new System.Drawing.Size(73, 30);
-            this.lblAttendanceRateVal.TabIndex = 9;
-            this.lblAttendanceRateVal.Text = "0.0 %";
+            lblAttendanceRateVal.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblAttendanceRateVal.AutoSize = true;
+            lblAttendanceRateVal.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            lblAttendanceRateVal.ForeColor = Color.FromArgb(37, 99, 235);
+            lblAttendanceRateVal.Location = new Point(40, 75);
+            lblAttendanceRateVal.Name = "lblAttendanceRateVal";
+            lblAttendanceRateVal.Size = new Size(94, 37);
+            lblAttendanceRateVal.TabIndex = 9;
+            lblAttendanceRateVal.Text = "0.0 %";
             // 
             // lblAttendanceRate
             // 
-            this.lblAttendanceRate.AutoSize = true;
-            this.lblAttendanceRate.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.lblAttendanceRate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
-            this.lblAttendanceRate.Location = new System.Drawing.Point(680, 45);
-            this.lblAttendanceRate.Name = "lblAttendanceRate";
-            this.lblAttendanceRate.Size = new System.Drawing.Size(105, 17);
-            this.lblAttendanceRate.TabIndex = 8;
-            this.lblAttendanceRate.Text = "Attendance Rate:";
+            lblAttendanceRate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblAttendanceRate.AutoSize = true;
+            lblAttendanceRate.Font = new Font("Segoe UI", 9.5F);
+            lblAttendanceRate.ForeColor = Color.FromArgb(120, 130, 140);
+            lblAttendanceRate.Location = new Point(40, 45);
+            lblAttendanceRate.Name = "lblAttendanceRate";
+            lblAttendanceRate.Size = new Size(137, 21);
+            lblAttendanceRate.TabIndex = 8;
+            lblAttendanceRate.Text = "نسبة الالتزام بالحضور:";
             // 
             // lblLateVal
             // 
-            this.lblLateVal.AutoSize = true;
-            this.lblLateVal.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.lblLateVal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(119)))), ((int)(((byte)(6)))));
-            this.lblLateVal.Location = new System.Drawing.Point(520, 75);
-            this.lblLateVal.Name = "lblLateVal";
-            this.lblLateVal.Size = new System.Drawing.Size(26, 30);
-            this.lblLateVal.TabIndex = 7;
-            this.lblLateVal.Text = "0";
+            lblLateVal.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblLateVal.AutoSize = true;
+            lblLateVal.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            lblLateVal.ForeColor = Color.FromArgb(217, 119, 6);
+            lblLateVal.Location = new Point(230, 75);
+            lblLateVal.Name = "lblLateVal";
+            lblLateVal.Size = new Size(32, 37);
+            lblLateVal.TabIndex = 7;
+            lblLateVal.Text = "0";
             // 
             // lblLate
             // 
-            this.lblLate.AutoSize = true;
-            this.lblLate.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.lblLate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
-            this.lblLate.Location = new System.Drawing.Point(520, 45);
-            this.lblLate.Name = "lblLate";
-            this.lblLate.Size = new System.Drawing.Size(84, 17);
-            this.lblLate.TabIndex = 6;
-            this.lblLate.Text = "Late Arrivals:";
+            lblLate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblLate.AutoSize = true;
+            lblLate.Font = new Font("Segoe UI", 9.5F);
+            lblLate.ForeColor = Color.FromArgb(120, 130, 140);
+            lblLate.Location = new Point(230, 45);
+            lblLate.Name = "lblLate";
+            lblLate.Size = new Size(99, 21);
+            lblLate.TabIndex = 6;
+            lblLate.Text = "حالات التأخير:";
             // 
             // lblAbsentVal
             // 
-            this.lblAbsentVal.AutoSize = true;
-            this.lblAbsentVal.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.lblAbsentVal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.lblAbsentVal.Location = new System.Drawing.Point(360, 75);
-            this.lblAbsentVal.Name = "lblAbsentVal";
-            this.lblAbsentVal.Size = new System.Drawing.Size(26, 30);
-            this.lblAbsentVal.TabIndex = 5;
-            this.lblAbsentVal.Text = "0";
+            lblAbsentVal.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblAbsentVal.AutoSize = true;
+            lblAbsentVal.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            lblAbsentVal.ForeColor = Color.FromArgb(220, 38, 38);
+            lblAbsentVal.Location = new Point(410, 75);
+            lblAbsentVal.Name = "lblAbsentVal";
+            lblAbsentVal.Size = new Size(32, 37);
+            lblAbsentVal.TabIndex = 5;
+            lblAbsentVal.Text = "0";
             // 
             // lblAbsent
             // 
-            this.lblAbsent.AutoSize = true;
-            this.lblAbsent.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.lblAbsent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
-            this.lblAbsent.Location = new System.Drawing.Point(360, 45);
-            this.lblAbsent.Name = "lblAbsent";
-            this.lblAbsent.Size = new System.Drawing.Size(107, 17);
-            this.lblAbsent.TabIndex = 4;
-            this.lblAbsent.Text = "Absent Sessions:";
+            lblAbsent.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblAbsent.AutoSize = true;
+            lblAbsent.Font = new Font("Segoe UI", 9.5F);
+            lblAbsent.ForeColor = Color.FromArgb(120, 130, 140);
+            lblAbsent.Location = new Point(410, 45);
+            lblAbsent.Name = "lblAbsent";
+            lblAbsent.Size = new Size(96, 21);
+            lblAbsent.TabIndex = 4;
+            lblAbsent.Text = "حصص الغياب:";
             // 
             // lblPresentVal
             // 
-            this.lblPresentVal.AutoSize = true;
-            this.lblPresentVal.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.lblPresentVal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(163)))), ((int)(((byte)(74)))));
-            this.lblPresentVal.Location = new System.Drawing.Point(200, 75);
-            this.lblPresentVal.Name = "lblPresentVal";
-            this.lblPresentVal.Size = new System.Drawing.Size(26, 30);
-            this.lblPresentVal.TabIndex = 3;
-            this.lblPresentVal.Text = "0";
+            lblPresentVal.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblPresentVal.AutoSize = true;
+            lblPresentVal.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            lblPresentVal.ForeColor = Color.FromArgb(22, 163, 74);
+            lblPresentVal.Location = new Point(590, 75);
+            lblPresentVal.Name = "lblPresentVal";
+            lblPresentVal.Size = new Size(32, 37);
+            lblPresentVal.TabIndex = 3;
+            lblPresentVal.Text = "0";
             // 
             // lblPresent
             // 
-            this.lblPresent.AutoSize = true;
-            this.lblPresent.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.lblPresent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
-            this.lblPresent.Location = new System.Drawing.Point(200, 45);
-            this.lblPresent.Name = "lblPresent";
-            this.lblPresent.Size = new System.Drawing.Size(109, 17);
-            this.lblPresent.TabIndex = 2;
-            this.lblPresent.Text = "Present Sessions:";
+            lblPresent.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblPresent.AutoSize = true;
+            lblPresent.Font = new Font("Segoe UI", 9.5F);
+            lblPresent.ForeColor = Color.FromArgb(120, 130, 140);
+            lblPresent.Location = new Point(590, 45);
+            lblPresent.Name = "lblPresent";
+            lblPresent.Size = new Size(103, 21);
+            lblPresent.TabIndex = 2;
+            lblPresent.Text = "حصص الحضور:";
             // 
             // lblTotalSessionsVal
             // 
-            this.lblTotalSessionsVal.AutoSize = true;
-            this.lblTotalSessionsVal.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.lblTotalSessionsVal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
-            this.lblTotalSessionsVal.Location = new System.Drawing.Point(40, 75);
-            this.lblTotalSessionsVal.Name = "lblTotalSessionsVal";
-            this.lblTotalSessionsVal.Size = new System.Drawing.Size(26, 30);
-            this.lblTotalSessionsVal.TabIndex = 1;
-            this.lblTotalSessionsVal.Text = "0";
+            lblTotalSessionsVal.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblTotalSessionsVal.AutoSize = true;
+            lblTotalSessionsVal.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            lblTotalSessionsVal.ForeColor = Color.FromArgb(44, 62, 80);
+            lblTotalSessionsVal.Location = new Point(750, 75);
+            lblTotalSessionsVal.Name = "lblTotalSessionsVal";
+            lblTotalSessionsVal.Size = new Size(32, 37);
+            lblTotalSessionsVal.TabIndex = 1;
+            lblTotalSessionsVal.Text = "0";
             // 
             // lblTotalSessions
             // 
-            this.lblTotalSessions.AutoSize = true;
-            this.lblTotalSessions.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.lblTotalSessions.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
-            this.lblTotalSessions.Location = new System.Drawing.Point(40, 45);
-            this.lblTotalSessions.Name = "lblTotalSessions";
-            this.lblTotalSessions.Size = new System.Drawing.Size(92, 17);
-            this.lblTotalSessions.TabIndex = 0;
-            this.lblTotalSessions.Text = "Total Sessions:";
+            lblTotalSessions.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblTotalSessions.AutoSize = true;
+            lblTotalSessions.Font = new Font("Segoe UI", 9.5F);
+            lblTotalSessions.ForeColor = Color.FromArgb(120, 130, 140);
+            lblTotalSessions.Location = new Point(750, 45);
+            lblTotalSessions.Name = "lblTotalSessions";
+            lblTotalSessions.Size = new Size(100, 21);
+            lblTotalSessions.TabIndex = 0;
+            lblTotalSessions.Text = "إجمالي الحصص:";
             // 
             // tabEnrollment
             // 
-            this.tabEnrollment.Controls.Add(this.dgvEnrollments);
-            this.tabEnrollment.Location = new System.Drawing.Point(4, 26);
-            this.tabEnrollment.Name = "tabEnrollment";
-            this.tabEnrollment.Padding = new System.Windows.Forms.Padding(10);
-            this.tabEnrollment.Size = new System.Drawing.Size(902, 290);
-            this.tabEnrollment.TabIndex = 2;
-            this.tabEnrollment.Text = "  Enrollment History  ";
-            this.tabEnrollment.UseVisualStyleBackColor = true;
+            tabEnrollment.Controls.Add(dgvEnrollments);
+            tabEnrollment.Location = new Point(4, 30);
+            tabEnrollment.Name = "tabEnrollment";
+            tabEnrollment.Padding = new Padding(10);
+            tabEnrollment.Size = new Size(928, 276);
+            tabEnrollment.TabIndex = 2;
+            tabEnrollment.Text = "  سجل التسجيل والصفوف  ";
+            tabEnrollment.UseVisualStyleBackColor = true;
             // 
             // dgvEnrollments
             // 
-            this.dgvEnrollments.AllowUserToAddRows = false;
-            this.dgvEnrollments.AllowUserToDeleteRows = false;
-            this.dgvEnrollments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvEnrollments.BackgroundColor = System.Drawing.Color.White;
-            this.dgvEnrollments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEnrollments.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvEnrollments.Location = new System.Drawing.Point(10, 10);
-            this.dgvEnrollments.MultiSelect = false;
-            this.dgvEnrollments.Name = "dgvEnrollments";
-            this.dgvEnrollments.ReadOnly = true;
-            this.dgvEnrollments.RowHeadersWidth = 51;
-            this.dgvEnrollments.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEnrollments.Size = new System.Drawing.Size(882, 270);
-            this.dgvEnrollments.TabIndex = 0;
+            dgvEnrollments.AllowUserToAddRows = false;
+            dgvEnrollments.AllowUserToDeleteRows = false;
+            dgvEnrollments.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvEnrollments.BackgroundColor = Color.White;
+            dgvEnrollments.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvEnrollments.Dock = DockStyle.Fill;
+            dgvEnrollments.Location = new Point(10, 10);
+            dgvEnrollments.MultiSelect = false;
+            dgvEnrollments.Name = "dgvEnrollments";
+            dgvEnrollments.ReadOnly = true;
+            dgvEnrollments.RowHeadersWidth = 51;
+            dgvEnrollments.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvEnrollments.Size = new Size(908, 256);
+            dgvEnrollments.TabIndex = 0;
             // 
             // btnPrint
             // 
-            this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPrint.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.btnPrint.Location = new System.Drawing.Point(725, 565);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(120, 34);
-            this.btnPrint.TabIndex = 4;
-            this.btnPrint.Text = "Print / Export";
-            this.btnPrint.UseVisualStyleBackColor = true;
-            this.btnPrint.Click += new System.EventHandler(this.BtnPrint_Click);
+            btnPrint.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnPrint.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            btnPrint.Location = new Point(135, 568);
+            btnPrint.Name = "btnPrint";
+            btnPrint.Size = new Size(160, 36);
+            btnPrint.TabIndex = 4;
+            btnPrint.Text = "🖨 طباعة / تصدير التقرير";
+            btnPrint.UseVisualStyleBackColor = true;
+            btnPrint.Click += BtnPrint_Click;
             // 
             // btnClose
             // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.btnClose.Location = new System.Drawing.Point(855, 565);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(80, 34);
-            this.btnClose.TabIndex = 5;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
+            btnClose.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnClose.Font = new Font("Segoe UI", 9.5F);
+            btnClose.Location = new Point(24, 568);
+            btnClose.Name = "btnClose";
+            btnClose.Size = new Size(100, 36);
+            btnClose.TabIndex = 5;
+            btnClose.Text = "إغلاق";
+            btnClose.UseVisualStyleBackColor = true;
+            btnClose.Click += BtnClose_Click;
             // 
             // frmStudentPerformance
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
-            this.ClientSize = new System.Drawing.Size(969, 615);
-            this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.btnPrint);
-            this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.gbStudentSummary);
-            this.Controls.Add(this.gbFilter);
-            this.Controls.Add(this.lblTitle);
-            this.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.MinimumSize = new System.Drawing.Size(880, 560);
-            this.Name = "frmStudentPerformance";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Student Performance Report";
-            this.Load += new System.EventHandler(this.FrmStudentPerformance_Load);
-            this.gbFilter.ResumeLayout(false);
-            this.gbFilter.PerformLayout();
-            this.gbStudentSummary.ResumeLayout(false);
-            this.gbStudentSummary.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
-            this.tabGrades.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvGrades)).EndInit();
-            this.tabAttendance.ResumeLayout(false);
-            this.gbAttendanceMetrics.ResumeLayout(false);
-            this.gbAttendanceMetrics.PerformLayout();
-            this.tabEnrollment.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEnrollments)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(248, 250, 252);
+            ClientSize = new Size(984, 620);
+            Controls.Add(btnClose);
+            Controls.Add(btnPrint);
+            Controls.Add(tabControl1);
+            Controls.Add(gbStudentSummary);
+            Controls.Add(gbFilter);
+            Controls.Add(pnlHeader);
+            Font = new Font("Segoe UI", 9F);
+            MinimumSize = new Size(900, 600);
+            Name = "frmStudentPerformance";
+            RightToLeft = RightToLeft.Yes;
+            RightToLeftLayout = true;
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "تقرير الأداء الأكاديمي الشامل للطالب";
+            Load += FrmStudentPerformance_Load;
+            pnlHeader.ResumeLayout(false);
+            pnlHeader.PerformLayout();
+            gbFilter.ResumeLayout(false);
+            gbFilter.PerformLayout();
+            gbStudentSummary.ResumeLayout(false);
+            gbStudentSummary.PerformLayout();
+            tabControl1.ResumeLayout(false);
+            tabGrades.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvGrades).EndInit();
+            tabAttendance.ResumeLayout(false);
+            gbAttendanceMetrics.ResumeLayout(false);
+            gbAttendanceMetrics.PerformLayout();
+            tabEnrollment.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvEnrollments).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
 
+        private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.GroupBox gbFilter;
         private System.Windows.Forms.Label lblStudent;
