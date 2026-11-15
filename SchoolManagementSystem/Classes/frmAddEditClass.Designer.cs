@@ -18,6 +18,7 @@ namespace SchoolManagementSystem.Classes
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddEditClass));
             pnlHeader = new Panel();
             lblHeaderTitle = new Label();
             pnlCard = new Panel();
@@ -37,29 +38,26 @@ namespace SchoolManagementSystem.Classes
             // 
             // pnlHeader
             // 
+            resources.ApplyResources(pnlHeader, "pnlHeader");
             pnlHeader.BackColor = Color.White;
             pnlHeader.Controls.Add(lblHeaderTitle);
-            pnlHeader.Dock = DockStyle.Top;
-            pnlHeader.Location = new Point(0, 0);
+            errorProvider1.SetError(pnlHeader, resources.GetString("pnlHeader.Error"));
+            errorProvider1.SetIconAlignment(pnlHeader, (ErrorIconAlignment)resources.GetObject("pnlHeader.IconAlignment"));
+            errorProvider1.SetIconPadding(pnlHeader, (int)resources.GetObject("pnlHeader.IconPadding"));
             pnlHeader.Name = "pnlHeader";
-            pnlHeader.Size = new Size(540, 75);
-            pnlHeader.TabIndex = 0;
             // 
             // lblHeaderTitle
             // 
-            lblHeaderTitle.Anchor = AnchorStyles.Top;
-            lblHeaderTitle.AutoSize = true;
-            lblHeaderTitle.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            resources.ApplyResources(lblHeaderTitle, "lblHeaderTitle");
+            errorProvider1.SetError(lblHeaderTitle, resources.GetString("lblHeaderTitle.Error"));
             lblHeaderTitle.ForeColor = Color.FromArgb(30, 41, 59);
-            lblHeaderTitle.Location = new Point(170, 20);
+            errorProvider1.SetIconAlignment(lblHeaderTitle, (ErrorIconAlignment)resources.GetObject("lblHeaderTitle.IconAlignment"));
+            errorProvider1.SetIconPadding(lblHeaderTitle, (int)resources.GetObject("lblHeaderTitle.IconPadding"));
             lblHeaderTitle.Name = "lblHeaderTitle";
-            lblHeaderTitle.Size = new Size(200, 35);
-            lblHeaderTitle.TabIndex = 0;
-            lblHeaderTitle.Text = "إضافة شعبة دراسية";
             // 
             // pnlCard
             // 
-            pnlCard.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            resources.ApplyResources(pnlCard, "pnlCard");
             pnlCard.BackColor = Color.White;
             pnlCard.BorderStyle = BorderStyle.FixedSingle;
             pnlCard.Controls.Add(txtDetails);
@@ -68,105 +66,86 @@ namespace SchoolManagementSystem.Classes
             pnlCard.Controls.Add(lblGradeLevel);
             pnlCard.Controls.Add(txtName);
             pnlCard.Controls.Add(lblName);
-            pnlCard.Location = new Point(25, 95);
+            errorProvider1.SetError(pnlCard, resources.GetString("pnlCard.Error"));
+            errorProvider1.SetIconAlignment(pnlCard, (ErrorIconAlignment)resources.GetObject("pnlCard.IconAlignment"));
+            errorProvider1.SetIconPadding(pnlCard, (int)resources.GetObject("pnlCard.IconPadding"));
             pnlCard.Name = "pnlCard";
-            pnlCard.Padding = new Padding(20);
-            pnlCard.Size = new Size(490, 310);
-            pnlCard.TabIndex = 1;
-            // 
-            // lblName
-            // 
-            lblName.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            lblName.AutoSize = true;
-            lblName.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            lblName.ForeColor = Color.FromArgb(30, 41, 59);
-            lblName.Location = new Point(310, 20);
-            lblName.Name = "lblName";
-            lblName.Size = new Size(153, 21);
-            lblName.TabIndex = 0;
-            lblName.Text = "اسم الشعبة / الفصل *:";
-            // 
-            // txtName
-            // 
-            txtName.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtName.Font = new Font("Segoe UI", 9.5F);
-            txtName.Location = new Point(25, 48);
-            txtName.Name = "txtName";
-            txtName.Size = new Size(435, 29);
-            txtName.TabIndex = 1;
-            // 
-            // lblGradeLevel
-            // 
-            lblGradeLevel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            lblGradeLevel.AutoSize = true;
-            lblGradeLevel.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            lblGradeLevel.ForeColor = Color.FromArgb(30, 41, 59);
-            lblGradeLevel.Location = new Point(292, 95);
-            lblGradeLevel.Name = "lblGradeLevel";
-            lblGradeLevel.Size = new Size(171, 21);
-            lblGradeLevel.TabIndex = 2;
-            lblGradeLevel.Text = "المرحلة / الصف الدراسي *:";
-            // 
-            // cbGradeLevels
-            // 
-            cbGradeLevels.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            cbGradeLevels.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbGradeLevels.Font = new Font("Segoe UI", 9.5F);
-            cbGradeLevels.FormattingEnabled = true;
-            cbGradeLevels.Location = new Point(25, 123);
-            cbGradeLevels.Name = "cbGradeLevels";
-            cbGradeLevels.Size = new Size(435, 29);
-            cbGradeLevels.TabIndex = 3;
-            // 
-            // lblDetails
-            // 
-            lblDetails.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            lblDetails.AutoSize = true;
-            lblDetails.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            lblDetails.ForeColor = Color.FromArgb(30, 41, 59);
-            lblDetails.Location = new Point(345, 170);
-            lblDetails.Name = "lblDetails";
-            lblDetails.Size = new Size(118, 21);
-            lblDetails.TabIndex = 4;
-            lblDetails.Text = "ملاحظات وتفاصيل:";
             // 
             // txtDetails
             // 
-            txtDetails.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtDetails.Font = new Font("Segoe UI", 9.5F);
-            txtDetails.Location = new Point(25, 198);
-            txtDetails.Multiline = true;
+            resources.ApplyResources(txtDetails, "txtDetails");
+            errorProvider1.SetError(txtDetails, resources.GetString("txtDetails.Error"));
+            errorProvider1.SetIconAlignment(txtDetails, (ErrorIconAlignment)resources.GetObject("txtDetails.IconAlignment"));
+            errorProvider1.SetIconPadding(txtDetails, (int)resources.GetObject("txtDetails.IconPadding"));
             txtDetails.Name = "txtDetails";
-            txtDetails.Size = new Size(435, 80);
-            txtDetails.TabIndex = 5;
+            // 
+            // lblDetails
+            // 
+            resources.ApplyResources(lblDetails, "lblDetails");
+            errorProvider1.SetError(lblDetails, resources.GetString("lblDetails.Error"));
+            lblDetails.ForeColor = Color.FromArgb(30, 41, 59);
+            errorProvider1.SetIconAlignment(lblDetails, (ErrorIconAlignment)resources.GetObject("lblDetails.IconAlignment"));
+            errorProvider1.SetIconPadding(lblDetails, (int)resources.GetObject("lblDetails.IconPadding"));
+            lblDetails.Name = "lblDetails";
+            // 
+            // cbGradeLevels
+            // 
+            resources.ApplyResources(cbGradeLevels, "cbGradeLevels");
+            cbGradeLevels.DropDownStyle = ComboBoxStyle.DropDownList;
+            errorProvider1.SetError(cbGradeLevels, resources.GetString("cbGradeLevels.Error"));
+            cbGradeLevels.FormattingEnabled = true;
+            errorProvider1.SetIconAlignment(cbGradeLevels, (ErrorIconAlignment)resources.GetObject("cbGradeLevels.IconAlignment"));
+            errorProvider1.SetIconPadding(cbGradeLevels, (int)resources.GetObject("cbGradeLevels.IconPadding"));
+            cbGradeLevels.Name = "cbGradeLevels";
+            // 
+            // lblGradeLevel
+            // 
+            resources.ApplyResources(lblGradeLevel, "lblGradeLevel");
+            errorProvider1.SetError(lblGradeLevel, resources.GetString("lblGradeLevel.Error"));
+            lblGradeLevel.ForeColor = Color.FromArgb(30, 41, 59);
+            errorProvider1.SetIconAlignment(lblGradeLevel, (ErrorIconAlignment)resources.GetObject("lblGradeLevel.IconAlignment"));
+            errorProvider1.SetIconPadding(lblGradeLevel, (int)resources.GetObject("lblGradeLevel.IconPadding"));
+            lblGradeLevel.Name = "lblGradeLevel";
+            // 
+            // txtName
+            // 
+            resources.ApplyResources(txtName, "txtName");
+            errorProvider1.SetError(txtName, resources.GetString("txtName.Error"));
+            errorProvider1.SetIconAlignment(txtName, (ErrorIconAlignment)resources.GetObject("txtName.IconAlignment"));
+            errorProvider1.SetIconPadding(txtName, (int)resources.GetObject("txtName.IconPadding"));
+            txtName.Name = "txtName";
+            // 
+            // lblName
+            // 
+            resources.ApplyResources(lblName, "lblName");
+            errorProvider1.SetError(lblName, resources.GetString("lblName.Error"));
+            lblName.ForeColor = Color.FromArgb(30, 41, 59);
+            errorProvider1.SetIconAlignment(lblName, (ErrorIconAlignment)resources.GetObject("lblName.IconAlignment"));
+            errorProvider1.SetIconPadding(lblName, (int)resources.GetObject("lblName.IconPadding"));
+            lblName.Name = "lblName";
             // 
             // btnSave
             // 
-            btnSave.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            resources.ApplyResources(btnSave, "btnSave");
             btnSave.BackColor = Color.FromArgb(37, 99, 235);
             btnSave.Cursor = Cursors.Hand;
+            errorProvider1.SetError(btnSave, resources.GetString("btnSave.Error"));
             btnSave.FlatAppearance.BorderSize = 0;
-            btnSave.FlatStyle = FlatStyle.Flat;
-            btnSave.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             btnSave.ForeColor = Color.White;
-            btnSave.Location = new Point(145, 425);
+            errorProvider1.SetIconAlignment(btnSave, (ErrorIconAlignment)resources.GetObject("btnSave.IconAlignment"));
+            errorProvider1.SetIconPadding(btnSave, (int)resources.GetObject("btnSave.IconPadding"));
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(130, 42);
-            btnSave.TabIndex = 2;
-            btnSave.Text = "حفظ البيانات";
             btnSave.UseVisualStyleBackColor = false;
             btnSave.Click += BtnSave_Click;
             // 
             // btnCancel
             // 
-            btnCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            resources.ApplyResources(btnCancel, "btnCancel");
             btnCancel.Cursor = Cursors.Hand;
-            btnCancel.Font = new Font("Segoe UI", 9.5F);
-            btnCancel.Location = new Point(25, 425);
+            errorProvider1.SetError(btnCancel, resources.GetString("btnCancel.Error"));
+            errorProvider1.SetIconAlignment(btnCancel, (ErrorIconAlignment)resources.GetObject("btnCancel.IconAlignment"));
+            errorProvider1.SetIconPadding(btnCancel, (int)resources.GetObject("btnCancel.IconPadding"));
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(110, 42);
-            btnCancel.TabIndex = 3;
-            btnCancel.Text = "إلغاء";
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += BtnCancel_Click;
             // 
@@ -174,28 +153,22 @@ namespace SchoolManagementSystem.Classes
             // 
             errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
             errorProvider1.ContainerControl = this;
-            errorProvider1.RightToLeft = true;
+            resources.ApplyResources(errorProvider1, "errorProvider1");
             // 
             // frmAddEditClass
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
             AutoValidate = AutoValidate.EnableAllowFocusChange;
             BackColor = Color.FromArgb(248, 250, 252);
-            ClientSize = new Size(540, 485);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
             Controls.Add(pnlCard);
             Controls.Add(pnlHeader);
-            Font = new Font("Segoe UI", 9F);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "frmAddEditClass";
-            RightToLeft = RightToLeft.Yes;
-            RightToLeftLayout = true;
-            StartPosition = FormStartPosition.CenterParent;
-            Text = "بيانات الشعبة الدراسية";
             Load += FrmAddEditClass_Load;
             pnlHeader.ResumeLayout(false);
             pnlHeader.PerformLayout();

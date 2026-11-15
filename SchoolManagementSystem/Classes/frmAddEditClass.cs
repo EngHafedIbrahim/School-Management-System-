@@ -39,6 +39,7 @@ namespace SchoolManagementSystem.Classes
 
             if (_Mode == enMode.AddNew)
             {
+                cbGradeLevels.SelectedIndex = -1;
                 _Class = new clsClass();
                 return;
             }

@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using SchoolManagementSystemBusinessLayer;
 using SchoolManagementSystem.Globle_Classes;
 using SchoolManagementSystem.Enrollment;
+using SchoolManagementSystem.Properties;
 
 namespace SchoolManagementSystem.Students
 {
@@ -66,7 +67,7 @@ namespace SchoolManagementSystem.Students
                 if (!string.IsNullOrEmpty(_Student.ProfileImageURL) && File.Exists(_Student.ProfileImageURL))
                     pbxStudentImage.Image = Image.FromFile(_Student.ProfileImageURL);
                 else
-                    pbxStudentImage.Image = null;
+                    pbxStudentImage.Image = Resources.icons8_student_male_1000;
             }
             catch (Exception)
             {

@@ -333,6 +333,8 @@ namespace SchoolManagementSystem.Enrollment
         {
            try{
                 
+
+
                 DataTable dtClasses = clsClass.GetAllClasss(gradeLevelID).DefaultView.ToTable(false, "Name", "ClassID");
 
                 cbClass.DataSource = dtClasses;

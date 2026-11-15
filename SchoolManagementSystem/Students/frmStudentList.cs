@@ -33,7 +33,7 @@ namespace SchoolManagementSystem.Students
 
             this.KeyPreview = true;
             this.KeyDown += FrmStudentList_KeyDown;
-            this.Resize += (s, e) => { if (_dtStudents != null) UpdateStatCards(); };
+            //this.Resize += (s, e) => { if (_dtStudents != null) UpdateStatCards(); };
         }
 
         private void LoadStudentsList()
@@ -139,7 +139,7 @@ namespace SchoolManagementSystem.Students
             }
 
             UpdateCount();
-            UpdateStatCards();
+            //UpdateStatCards();
         }
 
         private void ApplyFilter()
@@ -277,44 +277,44 @@ namespace SchoolManagementSystem.Students
             LoadStudentsList();
         }
 
-        private void UpdateStatCards()
-        {
-            if (pnlStats == null) return;
-            pnlStats.Controls.Clear();
+        //private void UpdateStatCards()
+        //{
+        //    if (pnlStats == null) return;
+        //    pnlStats.Controls.Clear();
 
-            int total = _dtStudents?.Rows.Count ?? 0;
-            int males = 0, females = 0;
+        //    int total = _dtStudents?.Rows.Count ?? 0;
+        //    int males = 0, females = 0;
 
-            if (_dtStudents != null && _dtStudents.Columns.Contains("Gender"))
-            {
-                foreach (DataRow row in _dtStudents.Rows)
-                {
-                    string g = row["Gender"]?.ToString() ?? "";
-                    if (g == "Male" || g == "ذكر") males++;
-                    else if (g == "Female" || g == "أنثى") females++;
-                }
-            }
+        //    if (_dtStudents != null && _dtStudents.Columns.Contains("Gender"))
+        //    {
+        //        foreach (DataRow row in _dtStudents.Rows)
+        //        {
+        //            string g = row["Gender"]?.ToString() ?? "";
+        //            if (g == "Male" || g == "ذكر") males++;
+        //            else if (g == "Female" || g == "أنثى") females++;
+        //        }
+        //    }
 
-            var cardTotal = clsUITheme.CreateStatCard("إجمالي الطلاب", total.ToString(), clsUITheme.PrimaryColor);
-            var cardMale = clsUITheme.CreateStatCard("ذكور", males.ToString(), clsUITheme.AccentColor);
-            var cardFemale = clsUITheme.CreateStatCard("إناث", females.ToString(), Color.FromArgb(124, 58, 120));
-            var cardUnEnrolled = clsUITheme.CreateStatCard("غير مقيدين", "...", clsUITheme.WarningColor);
+        //    var cardTotal = clsUITheme.CreateStatCard("إجمالي الطلاب", total.ToString(), clsUITheme.PrimaryColor);
+        //    var cardMale = clsUITheme.CreateStatCard("ذكور", males.ToString(), clsUITheme.AccentColor);
+        //    var cardFemale = clsUITheme.CreateStatCard("إناث", females.ToString(), Color.FromArgb(124, 58, 120));
+        //    var cardUnEnrolled = clsUITheme.CreateStatCard("غير مقيدين", "...", clsUITheme.WarningColor);
 
-            try
-            {
-                int unEnrolled = clsStudent.GetUnEnrolledStudents().Rows.Count;
-                cardUnEnrolled.Controls[0].Text = unEnrolled.ToString();
-            }
-            catch { cardUnEnrolled.Controls[0].Text = "–"; }
+        //    try
+        //    {
+        //        int unEnrolled = clsStudent.GetUnEnrolledStudents().Rows.Count;
+        //        cardUnEnrolled.Controls[0].Text = unEnrolled.ToString();
+        //    }
+        //    catch { cardUnEnrolled.Controls[0].Text = "–"; }
 
-            int xPos = pnlStats.Width - 220;
-            foreach (var card in new[] { cardTotal, cardMale, cardFemale, cardUnEnrolled })
-            {
-                card.Location = new Point(xPos, 8);
-                pnlStats.Controls.Add(card);
-                xPos -= 216;
-            }
-        }
+        //    int xPos = pnlStats.Width - 220;
+        //    foreach (var card in new[] { cardTotal, cardMale, cardFemale, cardUnEnrolled })
+        //    {
+        //        card.Location = new Point(xPos, 8);
+        //        pnlStats.Controls.Add(card);
+        //        xPos -= 216;
+        //    }
+        //}
 
         private void BtnShowUnEnrolled_Click(object sender, EventArgs e)
         {
@@ -338,7 +338,7 @@ namespace SchoolManagementSystem.Students
             }
 
             UpdateCount();
-            UpdateStatCards();
+            //UpdateStatCards();
         }
 
         private void CmsEnrollStudent_Click(object sender, EventArgs e)

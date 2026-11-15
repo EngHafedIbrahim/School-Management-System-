@@ -20,7 +20,6 @@ namespace SchoolManagementSystem.Students
             components = new System.ComponentModel.Container();
             pnlHeader = new Panel();
             lblHeaderTitle = new Label();
-            pnlStats = new Panel();
             pnlFilter = new Panel();
             btnRefresh = new Button();
             btnDelete = new Button();
@@ -60,7 +59,7 @@ namespace SchoolManagementSystem.Students
             pnlHeader.Margin = new Padding(3, 4, 3, 4);
             pnlHeader.Name = "pnlHeader";
             pnlHeader.Padding = new Padding(23, 13, 23, 13);
-            pnlHeader.Size = new Size(1287, 80);
+            pnlHeader.Size = new Size(1261, 80);
             pnlHeader.TabIndex = 0;
             // 
             // lblHeaderTitle
@@ -70,20 +69,10 @@ namespace SchoolManagementSystem.Students
             lblHeaderTitle.ForeColor = Color.FromArgb(38, 42, 51);
             lblHeaderTitle.Location = new Point(23, 13);
             lblHeaderTitle.Name = "lblHeaderTitle";
-            lblHeaderTitle.Size = new Size(1241, 54);
+            lblHeaderTitle.Size = new Size(1215, 54);
             lblHeaderTitle.TabIndex = 0;
             lblHeaderTitle.Text = "سجل وبيانات الطلاب";
             lblHeaderTitle.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // pnlStats
-            // 
-            pnlStats.BackColor = Color.FromArgb(243, 244, 246);
-            pnlStats.Dock = DockStyle.Top;
-            pnlStats.Location = new Point(0, 80);
-            pnlStats.Name = "pnlStats";
-            pnlStats.Padding = new Padding(20, 8, 20, 8);
-            pnlStats.Size = new Size(1287, 90);
-            pnlStats.TabIndex = 4;
             // 
             // pnlFilter
             // 
@@ -99,11 +88,11 @@ namespace SchoolManagementSystem.Students
             pnlFilter.Controls.Add(txtSearch);
             pnlFilter.Controls.Add(lblSearch);
             pnlFilter.Dock = DockStyle.Top;
-            pnlFilter.Location = new Point(0, 170);
+            pnlFilter.Location = new Point(0, 80);
             pnlFilter.Margin = new Padding(3, 4, 3, 4);
             pnlFilter.Name = "pnlFilter";
             pnlFilter.Padding = new Padding(23, 15, 23, 13);
-            pnlFilter.Size = new Size(1287, 108);
+            pnlFilter.Size = new Size(1261, 108);
             pnlFilter.TabIndex = 1;
             // 
             // btnRefresh
@@ -199,7 +188,7 @@ namespace SchoolManagementSystem.Students
             btnShowUnEnrolled.FlatStyle = FlatStyle.Flat;
             btnShowUnEnrolled.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             btnShowUnEnrolled.ForeColor = Color.FromArgb(185, 28, 28);
-            btnShowUnEnrolled.Location = new Point(675, 39);
+            btnShowUnEnrolled.Location = new Point(640, 45);
             btnShowUnEnrolled.Margin = new Padding(3, 4, 3, 4);
             btnShowUnEnrolled.Name = "btnShowUnEnrolled";
             btnShowUnEnrolled.Size = new Size(120, 42);
@@ -215,10 +204,10 @@ namespace SchoolManagementSystem.Students
             cbFilterGender.Font = new Font("Segoe UI", 9.5F);
             cbFilterGender.FormattingEnabled = true;
             cbFilterGender.Items.AddRange(new object[] { "الكل", "ذكر", "أنثى" });
-            cbFilterGender.Location = new Point(820, 52);
+            cbFilterGender.Location = new Point(770, 52);
             cbFilterGender.Margin = new Padding(3, 4, 3, 4);
             cbFilterGender.Name = "cbFilterGender";
-            cbFilterGender.Size = new Size(135, 29);
+            cbFilterGender.Size = new Size(159, 29);
             cbFilterGender.TabIndex = 3;
             cbFilterGender.SelectedIndexChanged += CbFilterGender_SelectedIndexChanged;
             // 
@@ -228,7 +217,7 @@ namespace SchoolManagementSystem.Students
             lblGender.AutoSize = true;
             lblGender.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             lblGender.ForeColor = Color.FromArgb(31, 41, 55);
-            lblGender.Location = new Point(820, 23);
+            lblGender.Location = new Point(794, 23);
             lblGender.Name = "lblGender";
             lblGender.Size = new Size(143, 21);
             lblGender.TabIndex = 2;
@@ -238,7 +227,7 @@ namespace SchoolManagementSystem.Students
             // 
             txtSearch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             txtSearch.Font = new Font("Segoe UI", 10F);
-            txtSearch.Location = new Point(964, 52);
+            txtSearch.Location = new Point(938, 52);
             txtSearch.Margin = new Padding(3, 4, 3, 4);
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(300, 30);
@@ -252,7 +241,7 @@ namespace SchoolManagementSystem.Students
             lblSearch.AutoSize = true;
             lblSearch.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             lblSearch.ForeColor = Color.FromArgb(31, 41, 55);
-            lblSearch.Location = new Point(990, 23);
+            lblSearch.Location = new Point(964, 23);
             lblSearch.Name = "lblSearch";
             lblSearch.Size = new Size(269, 21);
             lblSearch.TabIndex = 0;
@@ -267,7 +256,7 @@ namespace SchoolManagementSystem.Students
             pnlBottom.Margin = new Padding(3, 4, 3, 4);
             pnlBottom.Name = "pnlBottom";
             pnlBottom.Padding = new Padding(23, 13, 23, 13);
-            pnlBottom.Size = new Size(1287, 53);
+            pnlBottom.Size = new Size(1261, 53);
             pnlBottom.TabIndex = 2;
             // 
             // lblTotalCount
@@ -276,7 +265,7 @@ namespace SchoolManagementSystem.Students
             lblTotalCount.Dock = DockStyle.Right;
             lblTotalCount.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             lblTotalCount.ForeColor = Color.FromArgb(107, 114, 128);
-            lblTotalCount.Location = new Point(1066, 13);
+            lblTotalCount.Location = new Point(1040, 13);
             lblTotalCount.Name = "lblTotalCount";
             lblTotalCount.Size = new Size(198, 21);
             lblTotalCount.TabIndex = 0;
@@ -286,11 +275,11 @@ namespace SchoolManagementSystem.Students
             // 
             pnlGridWrapper.Controls.Add(dgvStudents);
             pnlGridWrapper.Dock = DockStyle.Fill;
-            pnlGridWrapper.Location = new Point(0, 278);
+            pnlGridWrapper.Location = new Point(0, 188);
             pnlGridWrapper.Margin = new Padding(3, 4, 3, 4);
             pnlGridWrapper.Name = "pnlGridWrapper";
             pnlGridWrapper.Padding = new Padding(23, 20, 23, 20);
-            pnlGridWrapper.Size = new Size(1287, 353);
+            pnlGridWrapper.Size = new Size(1261, 443);
             pnlGridWrapper.TabIndex = 3;
             // 
             // dgvStudents
@@ -301,7 +290,7 @@ namespace SchoolManagementSystem.Students
             dgvStudents.Location = new Point(23, 20);
             dgvStudents.Name = "dgvStudents";
             dgvStudents.RowHeadersWidth = 51;
-            dgvStudents.Size = new Size(1241, 313);
+            dgvStudents.Size = new Size(1215, 403);
             dgvStudents.TabIndex = 0;
             dgvStudents.DoubleClick += DgvStudents_DoubleClick;
             // 
@@ -361,11 +350,10 @@ namespace SchoolManagementSystem.Students
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(243, 244, 246);
-            ClientSize = new Size(1287, 684);
+            ClientSize = new Size(1261, 684);
             Controls.Add(pnlGridWrapper);
             Controls.Add(pnlBottom);
             Controls.Add(pnlFilter);
-            Controls.Add(pnlStats);
             Controls.Add(pnlHeader);
             Font = new Font("Segoe UI", 9.5F);
             Margin = new Padding(3, 4, 3, 4);
@@ -391,7 +379,6 @@ namespace SchoolManagementSystem.Students
 
         private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.Label lblHeaderTitle;
-        private System.Windows.Forms.Panel pnlStats;
         private System.Windows.Forms.Panel pnlFilter;
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.TextBox txtSearch;
