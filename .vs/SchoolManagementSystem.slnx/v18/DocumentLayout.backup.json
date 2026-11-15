@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|c:\\users\\eng.hafed\\desktop\\school management system\\schoolmanagementsystem\\enrollment\\frmenrollstudent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|solutionrelative:schoolmanagementsystem\\enrollment\\frmenrollstudent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|c:\\users\\eng.hafed\\desktop\\school management system\\schoolmanagementsystem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|solutionrelative:schoolmanagementsystem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -19,24 +23,8 @@
       "RelativeMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|solutionrelative:schoolmanagementsystem\\students\\frmstudentprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|c:\\users\\eng.hafed\\desktop\\school management system\\schoolmanagementsystem\\students\\frmstudentprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|solutionrelative:schoolmanagementsystem\\students\\frmstudentprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|c:\\users\\eng.hafed\\desktop\\school management system\\schoolmanagementsystem\\classes\\frmaddeditclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|solutionrelative:schoolmanagementsystem\\classes\\frmaddeditclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|c:\\users\\eng.hafed\\desktop\\school management system\\schoolmanagementsystem\\classes\\frmaddeditclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|solutionrelative:schoolmanagementsystem\\classes\\frmaddeditclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|c:\\users\\eng.hafed\\desktop\\school management system\\schoolmanagementsystem\\enrollment\\frmenrollstudent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|solutionrelative:schoolmanagementsystem\\enrollment\\frmenrollstudent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|c:\\users\\eng.hafed\\desktop\\school management system\\schoolmanagementsystem\\enrollment\\frmenrollstudent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|solutionrelative:schoolmanagementsystem\\enrollment\\frmenrollstudent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{40908EAC-D93B-38AB-C314-485FBF8097C0}|SchoolManagementSystem\\SchoolManagementSystem.csproj|c:\\users\\eng.hafed\\desktop\\school management system\\schoolmanagementsystem\\enrollment\\frmstudentenrollmentlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -62,17 +50,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Program.cs",
               "RelativeDocumentMoniker": "SchoolManagementSystem\\Program.cs",
               "ToolTip": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Program.cs*",
               "RelativeToolTip": "SchoolManagementSystem\\Program.cs*",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAcwBEAAAAuAAAAAAAAAA==",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAcwBAAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-10-17T15:58:22.148Z",
               "IsPinned": true,
@@ -103,12 +91,8 @@
               "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "frmStudentList.cs",
               "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Students\\frmStudentList.cs",
               "RelativeDocumentMoniker": "SchoolManagementSystem\\Students\\frmStudentList.cs",
@@ -121,7 +105,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "frmStudentList.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Students\\frmStudentList.cs",
               "RelativeDocumentMoniker": "SchoolManagementSystem\\Students\\frmStudentList.cs",
@@ -133,7 +117,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "frmStudentProfile.cs",
               "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Students\\frmStudentProfile.cs",
               "RelativeDocumentMoniker": "SchoolManagementSystem\\Students\\frmStudentProfile.cs",
@@ -146,44 +130,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "frmStudentProfile.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Students\\frmStudentProfile.cs",
-              "RelativeDocumentMoniker": "SchoolManagementSystem\\Students\\frmStudentProfile.cs",
-              "ToolTip": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Students\\frmStudentProfile.cs [Design]",
-              "RelativeToolTip": "SchoolManagementSystem\\Students\\frmStudentProfile.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-15T13:02:16.64Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "frmAddEditClass.cs",
-              "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Classes\\frmAddEditClass.cs",
-              "RelativeDocumentMoniker": "SchoolManagementSystem\\Classes\\frmAddEditClass.cs",
-              "ToolTip": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Classes\\frmAddEditClass.cs",
-              "RelativeToolTip": "SchoolManagementSystem\\Classes\\frmAddEditClass.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAAAwwC0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-15T12:56:11.781Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "frmAddEditClass.cs [Design - Arabic]",
-              "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Classes\\frmAddEditClass.cs",
-              "RelativeDocumentMoniker": "SchoolManagementSystem\\Classes\\frmAddEditClass.cs",
-              "ToolTip": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Classes\\frmAddEditClass.cs [Design - Arabic]",
-              "RelativeToolTip": "SchoolManagementSystem\\Classes\\frmAddEditClass.cs [Design - Arabic]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-15T12:54:32.605Z",
-              "EditorCaption": " [Design - Arabic]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 0,
               "Title": "frmEnrollStudent.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Enrollment\\frmEnrollStudent.cs",
               "RelativeDocumentMoniker": "SchoolManagementSystem\\Enrollment\\frmEnrollStudent.cs",
@@ -195,7 +142,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 7,
               "Title": "clsStudent.cs",
               "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystemBusinessLayer\\clsStudent.cs",
               "RelativeDocumentMoniker": "SchoolManagementSystemBusinessLayer\\clsStudent.cs",
@@ -207,7 +154,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 5,
               "Title": "frmEnrollStudent.cs",
               "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Enrollment\\frmEnrollStudent.cs",
               "RelativeDocumentMoniker": "SchoolManagementSystem\\Enrollment\\frmEnrollStudent.cs",
@@ -220,7 +167,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 8,
               "Title": "frmRegisterStudent.cs",
               "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Students\\frmRegisterStudent.cs",
               "RelativeDocumentMoniker": "SchoolManagementSystem\\Students\\frmRegisterStudent.cs",
@@ -233,7 +180,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 6,
               "Title": "frmStudentEnrollmentList.cs",
               "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Enrollment\\frmStudentEnrollmentList.cs",
               "RelativeDocumentMoniker": "SchoolManagementSystem\\Enrollment\\frmStudentEnrollmentList.cs",
@@ -246,7 +193,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 9,
               "Title": "frmStudentEnrollmentList.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Eng.Hafed\\Desktop\\School Management System\\SchoolManagementSystem\\Enrollment\\frmStudentEnrollmentList.cs",
               "RelativeDocumentMoniker": "SchoolManagementSystem\\Enrollment\\frmStudentEnrollmentList.cs",
